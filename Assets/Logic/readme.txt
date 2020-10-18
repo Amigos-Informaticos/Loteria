@@ -1,2 +1,1 @@
-Hello there
-Soy Edson
+Aquí pondremos notas sobre los archivos de la carpeta
