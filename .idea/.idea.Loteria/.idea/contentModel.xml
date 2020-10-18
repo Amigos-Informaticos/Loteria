@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\griml\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\griml\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Loteria.2062859276.00" t="ExcludeRecursive" />
-    <e p="C:\Users\griml\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
-    <e p="C:\Users\griml\Loteria\Loteria" t="IncludeRecursive">
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_Loteria.-1579139674.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -71,21 +72,76 @@
           </e>
           <e p="READ ME.txt" t="Include" />
         </e>
+        <e p="Logic" t="Include">
+          <e p="Model" t="Include">
+            <e p="Jugador.cs" t="Include" />
+            <e p="Tablero.cs" t="Include" />
+          </e>
+          <e p="readme.txt" t="Include" />
+        </e>
         <e p="Plugins" t="Include">
           <e p="GitHub" t="Include">
             <e p="Editor" t="Include">
-              <e p="credits.txt" t="Include" />
-              <e p="eula.txt" t="Include" />
               <e p="ExtensionLoader.cs" t="Include" />
               <e p="UnityAPIWrapper.cs" t="Include" />
+              <e p="credits.txt" t="Include" />
+              <e p="eula.txt" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scenes" t="Include">
+          <e p="Login" t="Include">
+            <e p="Login_Scripts" t="Include">
+              <e p="Login.cs" t="Include" />
             </e>
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Login.cs" t="Include" />
           <e p="SceneManager.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
+          <e p="Examples &amp; Extras" t="Include">
+            <e p="Fonts" t="Include">
+              <e p="Anton OFL.txt" t="Include" />
+              <e p="Bangers - OFL.txt" t="Include" />
+              <e p="Oswald-Bold - OFL.txt" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Benchmark01.cs" t="Include" />
+              <e p="Benchmark01_UGUI.cs" t="Include" />
+              <e p="Benchmark02.cs" t="Include" />
+              <e p="Benchmark03.cs" t="Include" />
+              <e p="Benchmark04.cs" t="Include" />
+              <e p="CameraController.cs" t="Include" />
+              <e p="ChatController.cs" t="Include" />
+              <e p="EnvMapAnimator.cs" t="Include" />
+              <e p="ObjectSpin.cs" t="Include" />
+              <e p="ShaderPropAnimator.cs" t="Include" />
+              <e p="SimpleScript.cs" t="Include" />
+              <e p="SkewTextExample.cs" t="Include" />
+              <e p="TMP_DigitValidator.cs" t="Include" />
+              <e p="TMP_ExampleScript_01.cs" t="Include" />
+              <e p="TMP_FrameRateCounter.cs" t="Include" />
+              <e p="TMP_PhoneNumberValidator.cs" t="Include" />
+              <e p="TMP_TextEventCheck.cs" t="Include" />
+              <e p="TMP_TextEventHandler.cs" t="Include" />
+              <e p="TMP_TextInfoDebugTool.cs" t="Include" />
+              <e p="TMP_TextSelector_A.cs" t="Include" />
+              <e p="TMP_TextSelector_B.cs" t="Include" />
+              <e p="TMP_UiFrameRateCounter.cs" t="Include" />
+              <e p="TMPro_InstructionOverlay.cs" t="Include" />
+              <e p="TeleType.cs" t="Include" />
+              <e p="TextConsoleSimulator.cs" t="Include" />
+              <e p="TextMeshProFloatingText.cs" t="Include" />
+              <e p="TextMeshSpawner.cs" t="Include" />
+              <e p="VertexColorCycler.cs" t="Include" />
+              <e p="VertexJitter.cs" t="Include" />
+              <e p="VertexShakeA.cs" t="Include" />
+              <e p="VertexShakeB.cs" t="Include" />
+              <e p="VertexZoom.cs" t="Include" />
+              <e p="WarpTextExample.cs" t="Include" />
+            </e>
+          </e>
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
           </e>
@@ -117,9 +173,9 @@
       <e p="LeanCommon.csproj" t="IncludeRecursive" />
       <e p="LeanLocalization.csproj" t="IncludeRecursive" />
       <e p="Loteria.sln" t="IncludeFlat" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
-      <e p="Packages" t="ExcludeRecursive" />
-      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
     </e>
   </component>
 </project>
