@@ -19,16 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Model/Jugador.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Model/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Model/Jugador.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Model/Player.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Model/Tablero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Model/Board.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Model/Tablero.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Model/Board.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/readme.txt" afterDir="false" />
-    </list>
+    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +41,7 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Model/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Model/Jugador.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Model/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
       </list>
     </option>
   </component>
