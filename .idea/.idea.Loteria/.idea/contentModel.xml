@@ -72,6 +72,13 @@
           </e>
           <e p="READ ME.txt" t="Include" />
         </e>
+        <e p="Logic" t="Include">
+          <e p="Model" t="Include">
+            <e p="Jugador.cs" t="Include" />
+            <e p="Tablero.cs" t="Include" />
+          </e>
+          <e p="readme.txt" t="Include" />
+        </e>
         <e p="Plugins" t="Include">
           <e p="GitHub" t="Include">
             <e p="Editor" t="Include">
@@ -87,9 +94,6 @@
             <e p="Login_Scripts" t="Include">
               <e p="Login.cs" t="Include" />
             </e>
-          </e>
-          <e p="MainMenu" t="Include">
-            <e p="MainMenu.unity" t="Include" />
           </e>
         </e>
         <e p="Scripts" t="Include">
