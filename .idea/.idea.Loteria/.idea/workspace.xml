@@ -23,11 +23,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/Model/Jugador.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Model/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/Model/Jugador.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Model/Player.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/Model/Tablero.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Model/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/Model/Tablero.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Model/Board.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/readme.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,14 +38,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Tablero.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Jugador.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Logic/Model/Tablero.cs" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Assets/Logic/readme.txt" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Model/Tablero.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Model/Board.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Model/Jugador.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Model/Player.cs" />
       </list>
     </option>
   </component>
@@ -96,6 +100,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -111,6 +116,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2384" y="175" width="992" height="732" key="SettingsEditor/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603038163765" />
+    <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog" timestamp="1603056969977">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603056969977" />
     <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1603037703758">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
