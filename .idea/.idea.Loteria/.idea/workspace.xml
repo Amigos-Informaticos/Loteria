@@ -20,7 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Configuration.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Logic/Util.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/label.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +54,9 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Model/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Util/TCPSocket.cs" />
       </list>
     </option>
   </component>
@@ -60,6 +72,7 @@
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/RiderProjects/TCPSocketClient" />
     <property name="settings.editor.selected.configurable" value="preferences.build.unityPlugin" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
@@ -107,6 +120,14 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2475" y="184" width="800" height="714" key="#Plugins/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603036843559" />
+    <state x="2663" y="298" width="424" height="486" key="FileChooserDialogImpl" timestamp="1603063105807">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2663" y="298" width="424" height="486" key="FileChooserDialogImpl/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603063105807" />
+    <state x="2626" y="258" width="497" height="566" key="RiderGenerateDialog" timestamp="1603061102645">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2626" y="258" width="497" height="566" key="RiderGenerateDialog/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603061102645" />
     <state x="2384" y="175" width="992" height="732" key="SettingsEditor" timestamp="1603038163765">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
