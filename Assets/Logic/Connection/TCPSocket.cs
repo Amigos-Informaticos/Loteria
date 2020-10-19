@@ -16,6 +16,12 @@ public class TCPSocket {
 		this.Messages = new List<string>();
 	}
 
+	public void PrepareClient() {
+		if (!this.client.Connected) {
+			this.client.Connect(this.Server, this.Port);
+		}
+	}
+
 	public void AddMessage(string message) {
 		this.Messages.Add(message);
 	}
@@ -24,13 +30,12 @@ public class TCPSocket {
 		bool sent = false;
 		if (this.Messages.Count <= 0) return false;
 		try {
-			if (!this.client.Connected) {
-				this.client = new TcpClient(this.Server, this.Port);
-			}
+			this.PrepareClient();
 			byte[] data = Encoding.ASCII.GetBytes(this.Messages[0]);
 			this.stream = this.client.GetStream();
+			
 			try {
-				stream.Write(data, 0, data.Length);
+				this.stream.Write(data, 0, data.Length);
 				this.Messages.RemoveAt(0);
 				sent = true;
 			}
@@ -64,7 +69,7 @@ public class TCPSocket {
 			this.client = new TcpClient(this.Server, this.Port);
 			this.stream = this.client.GetStream();
 			bytes = stream.Read(received, 0, received.Length);
-			stream.Close();
+			this.stream.Close();
 			this.client.Close();
 		}
 		catch (Exception e) {

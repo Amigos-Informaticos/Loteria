@@ -20,16 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Configuration.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/Util.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/label.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +49,7 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Connection.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Util/TCPSocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
       </list>
     </option>
   </component>
