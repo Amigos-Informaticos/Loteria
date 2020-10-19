@@ -33,7 +33,7 @@ public class TCPSocket {
 			this.PrepareClient();
 			byte[] data = Encoding.ASCII.GetBytes(this.Messages[0]);
 			this.stream = this.client.GetStream();
-			
+
 			try {
 				this.stream.Write(data, 0, data.Length);
 				this.Messages.RemoveAt(0);
