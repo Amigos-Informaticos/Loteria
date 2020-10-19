@@ -27,7 +27,6 @@
     </explicitIncludes>
     <explicitExcludes>
       <Path>.git</Path>
-      <Path>.github</Path>
       <Path>.idea</Path>
       <Path>.vscode</Path>
       <Path>Library</Path>
