@@ -74,7 +74,6 @@
         </e>
         <e p="Logic" t="Include">
           <e p="Connection" t="Include">
-            <e p="Configuration" t="Include" />
             <e p="Connection.cs" t="Include" />
             <e p="TCPSocket.cs" t="Include" />
           </e>
@@ -82,7 +81,6 @@
             <e p="Board.cs" t="Include" />
             <e p="Player.cs" t="Include" />
           </e>
-          <e p="Util" t="Include" />
           <e p="readme.txt" t="Include" />
         </e>
         <e p="Plugins" t="Include">
@@ -99,6 +97,11 @@
           <e p="Login" t="Include">
             <e p="Login_Scripts" t="Include">
               <e p="Login.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Party" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="PopulateGrid.cs" t="Include" />
             </e>
           </e>
         </e>
