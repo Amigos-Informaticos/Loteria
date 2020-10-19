@@ -1150,7 +1150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 436673265855731429, guid: 44ab6114957ed4442847e6a11df74696, type: 3}
-  numberToCreate: 500
+  numberToCreate: 25
 --- !u!114 &1046669074
 MonoBehaviour:
   m_ObjectHideFlags: 0

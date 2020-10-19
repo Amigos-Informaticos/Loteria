@@ -23,68 +23,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/1.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/10.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/11.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/12.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/13.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/14.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/15.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/16.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/17.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/18.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/19.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/2.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/20.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/21.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/22.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/23.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/24.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/25.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/26.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/27.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/28.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/29.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/3.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/30.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/31.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/32.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/33.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/34.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/35.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/36.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/37.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/38.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/39.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/4.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/40.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/41.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/42.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/43.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/44.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/45.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/46.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/47.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/48.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/49.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/5.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/50.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/51.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/52.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/53.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/54.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/6.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/7.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/8.jpg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Images/Cards/9.jpg.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Lean/Localization/TextMeshPro.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/Configuration.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Configuration.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Model/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Model/Board.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Util.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Util.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/1 el gallo.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/10 arbol.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/11 melon.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/12 el valiente.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/13 el gorrito.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/14 la muerte.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/15 la pera.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/16 la bandera.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/17 el bandolon.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/18 el violoncello.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/19 la garza.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/2 el diablito.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/20 el pajaro.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/21 la mano.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/22 la bota.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/23 la luna.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/24 el cotorro.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/25 el borracho.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/26 el negrito.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/27 el corazon.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/28 la sandia.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/29 el tambor.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/3 la dama.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/30 el camaron.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/31 las jaras.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/32 el musico.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/33 la arana.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/34 el soldado.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/35 la estrella.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/36 el cazo.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/37 el mundo.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/38 el apache.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/39 el nopal.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/4 el catrin.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/40 el alacran.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/41 la rosa.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/42 la calavera.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/43 la campana.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/44 el cantarito.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/45 el venado.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/46 el sol.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/47 la corona.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/48 la chalupa.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/49 el pino.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/5 el paraguas.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/50 el pescado.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/51 la palma.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/52 la maceta.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/53 el arpa.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/54 la rana.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/6 la sirena.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/7 la escalera.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/8 la botella.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/9 barril.jpg.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Party/Party.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Party/Party.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,8 +93,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/55/5d51222d/Console.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/ca/32102ade/File.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/c7/aa333865/String.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -135,19 +134,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.build.unityPlugin" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="400212">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="400212" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="400212">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="400212" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -187,70 +186,70 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2663" y="298" width="424" height="486" key="FileChooserDialogImpl/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603063105807" />
-    <state width="1878" height="354" key="GridCell.Tab.0.bottom" timestamp="1603079237971">
+    <state width="1878" height="354" key="GridCell.Tab.0.bottom" timestamp="1603083237398">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.0.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237971" />
-    <state width="1878" height="354" key="GridCell.Tab.0.center" timestamp="1603079237971">
+    <state width="1878" height="354" key="GridCell.Tab.0.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
+    <state width="1878" height="354" key="GridCell.Tab.0.center" timestamp="1603083237398">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.0.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237971" />
-    <state width="1878" height="354" key="GridCell.Tab.0.left" timestamp="1603079237971">
+    <state width="1878" height="354" key="GridCell.Tab.0.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
+    <state width="1878" height="354" key="GridCell.Tab.0.left" timestamp="1603083237398">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.0.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237971" />
-    <state width="1878" height="354" key="GridCell.Tab.0.right" timestamp="1603079237971">
+    <state width="1878" height="354" key="GridCell.Tab.0.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
+    <state width="1878" height="354" key="GridCell.Tab.0.right" timestamp="1603083237398">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.0.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237971" />
-    <state width="1878" height="354" key="GridCell.Tab.1.bottom" timestamp="1603079237971">
+    <state width="1878" height="354" key="GridCell.Tab.0.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
+    <state width="1878" height="354" key="GridCell.Tab.1.bottom" timestamp="1603083237399">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.1.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237971" />
-    <state width="1878" height="354" key="GridCell.Tab.1.center" timestamp="1603079237971">
+    <state width="1878" height="354" key="GridCell.Tab.1.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237399" />
+    <state width="1878" height="354" key="GridCell.Tab.1.center" timestamp="1603083237399">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.1.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237971" />
-    <state width="1878" height="354" key="GridCell.Tab.1.left" timestamp="1603079237971">
+    <state width="1878" height="354" key="GridCell.Tab.1.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237399" />
+    <state width="1878" height="354" key="GridCell.Tab.1.left" timestamp="1603083237399">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.1.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237971" />
-    <state width="1878" height="354" key="GridCell.Tab.1.right" timestamp="1603079237971">
+    <state width="1878" height="354" key="GridCell.Tab.1.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237399" />
+    <state width="1878" height="354" key="GridCell.Tab.1.right" timestamp="1603083237399">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.1.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237971" />
-    <state width="1878" height="354" key="GridCell.Tab.2.bottom" timestamp="1603079237972">
+    <state width="1878" height="354" key="GridCell.Tab.1.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237399" />
+    <state width="1878" height="354" key="GridCell.Tab.2.bottom" timestamp="1603083237400">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.2.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237972" />
-    <state width="1878" height="354" key="GridCell.Tab.2.center" timestamp="1603079237972">
+    <state width="1878" height="354" key="GridCell.Tab.2.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237400" />
+    <state width="1878" height="354" key="GridCell.Tab.2.center" timestamp="1603083237399">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.2.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237972" />
-    <state width="1878" height="354" key="GridCell.Tab.2.left" timestamp="1603079237972">
+    <state width="1878" height="354" key="GridCell.Tab.2.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237399" />
+    <state width="1878" height="354" key="GridCell.Tab.2.left" timestamp="1603083237399">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.2.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237972" />
-    <state width="1878" height="354" key="GridCell.Tab.2.right" timestamp="1603079237972">
+    <state width="1878" height="354" key="GridCell.Tab.2.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237399" />
+    <state width="1878" height="354" key="GridCell.Tab.2.right" timestamp="1603083237400">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.2.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237972" />
-    <state width="1878" height="354" key="GridCell.Tab.3.bottom" timestamp="1603079237972">
+    <state width="1878" height="354" key="GridCell.Tab.2.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237400" />
+    <state width="1878" height="354" key="GridCell.Tab.3.bottom" timestamp="1603083237400">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.3.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237972" />
-    <state width="1878" height="354" key="GridCell.Tab.3.center" timestamp="1603079237972">
+    <state width="1878" height="354" key="GridCell.Tab.3.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237400" />
+    <state width="1878" height="354" key="GridCell.Tab.3.center" timestamp="1603083237400">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.3.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237972" />
-    <state width="1878" height="354" key="GridCell.Tab.3.left" timestamp="1603079237972">
+    <state width="1878" height="354" key="GridCell.Tab.3.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237400" />
+    <state width="1878" height="354" key="GridCell.Tab.3.left" timestamp="1603083237400">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.3.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237972" />
-    <state width="1878" height="354" key="GridCell.Tab.3.right" timestamp="1603079237972">
+    <state width="1878" height="354" key="GridCell.Tab.3.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237400" />
+    <state width="1878" height="354" key="GridCell.Tab.3.right" timestamp="1603083237400">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="354" key="GridCell.Tab.3.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603079237972" />
+    <state width="1878" height="354" key="GridCell.Tab.3.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237400" />
     <state x="2626" y="258" width="497" height="566" key="RiderGenerateDialog" timestamp="1603061102645">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
