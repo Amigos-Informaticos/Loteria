@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PopulateGrid : MonoBehaviour
-{
+public class PopulateGrid : MonoBehaviour {
 	public GameObject prefab;
 	public int numberToCreate;
 
@@ -16,7 +15,7 @@ public class PopulateGrid : MonoBehaviour
 		
 	}
 
-	void Populate(){
+	void Populate() {
 		GameObject newObject;
 		for (int i = 0; i < numberToCreate; i++) {
 			newObject = (GameObject)Instantiate(prefab, transform);
