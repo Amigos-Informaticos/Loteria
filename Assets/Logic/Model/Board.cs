@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 public class Board {
 	public int[,] Cards { get; set; }
@@ -71,5 +72,15 @@ public class Board {
 			i++;
 		}
 		return position;
+	}
+
+	public int[] GetNumbers() {
+		List<int> numbers = new List<int>();
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				numbers.Add(this.Cards[i, j]);
+			}
+		}
+		return numbers.ToArray();
 	}
 }
