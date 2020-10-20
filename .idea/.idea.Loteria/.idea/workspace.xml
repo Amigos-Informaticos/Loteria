@@ -23,65 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/1 el gallo.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/10 arbol.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/11 melon.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/12 el valiente.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/13 el gorrito.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/14 la muerte.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/15 la pera.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/16 la bandera.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/17 el bandolon.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/18 el violoncello.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/19 la garza.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/2 el diablito.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/20 el pajaro.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/21 la mano.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/22 la bota.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/23 la luna.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/24 el cotorro.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/25 el borracho.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/26 el negrito.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/27 el corazon.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/28 la sandia.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/29 el tambor.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/3 la dama.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/30 el camaron.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/31 las jaras.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/32 el musico.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/33 la arana.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/34 el soldado.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/35 la estrella.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/36 el cazo.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/37 el mundo.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/38 el apache.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/39 el nopal.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/4 el catrin.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/40 el alacran.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/41 la rosa.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/42 la calavera.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/43 la campana.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/44 el cantarito.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/45 el venado.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/46 el sol.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/47 la corona.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/48 la chalupa.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/49 el pino.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/5 el paraguas.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/50 el pescado.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/51 la palma.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/52 la maceta.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/53 el arpa.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/54 la rana.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/6 la sirena.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/7 la escalera.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/8 la botella.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/Cards/9 barril.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Party/Party.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Party/Party.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,11 +36,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/55/5d51222d/Console.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/55/5d51222d/Console.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/ca/32102ade/File.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/c7/aa333865/String.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/c7/aa333865/String.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -108,13 +51,13 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Model/Jugador.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Model/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Util/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Model/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
