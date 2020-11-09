@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PopulateGrid : MonoBehaviour {
@@ -8,18 +9,28 @@ public class PopulateGrid : MonoBehaviour {
 	public int numberToCreate;
 
 	public void Start() {
-		this.Populate();
+		this.Populate(this.LoadSprites());
 	}
 
-	public void Update() {
-		
+	private Sprite[] LoadSprites() {
+		const string path = "Assets/Images/Cards/1.jpg";
+		Debug.Log(File.Exists(path));
+		int[] cards = new Board().GetNumbers();
+		Sprite[] textures = new Sprite[this.numberToCreate];
+		for (int i = 0; i < textures.Length; i++) {
+			textures[i] = Resources.Load<Sprite>(path);
+		}
+		return textures;
 	}
 
-	void Populate() {
+	public void Update() { }
+
+	public void Populate(Sprite[] textures) {
 		GameObject newObject;
-		for (int i = 0; i < numberToCreate; i++) {
-			newObject = (GameObject)Instantiate(prefab, transform);
-			newObject.GetComponent<Image>().color = Random.ColorHSV();
+		for (int i = 0; i < this.numberToCreate; i++) {
+			newObject = (GameObject) Instantiate(this.prefab, this.transform);
+			newObject.GetComponent<Image>().sprite =
+				Resources.Load("Assets/Images/Cards/1.jpg") as Sprite;
 		}
 	}
 }
