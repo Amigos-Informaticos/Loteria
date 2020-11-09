@@ -74,6 +74,7 @@
         </e>
         <e p="Logic" t="Include">
           <e p="Connection" t="Include">
+            <e p="Command.cs" t="Include" />
             <e p="Connection.cs" t="Include" />
             <e p="TCPSocket.cs" t="Include" />
           </e>
