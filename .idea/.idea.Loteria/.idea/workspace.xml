@@ -23,11 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,14 +33,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/55/5d51222d/Console.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/ca/32102ade/File.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/c7/aa333865/String.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -56,7 +59,6 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Model/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection.cs" />
-        <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Model/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -64,6 +66,7 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Util/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
       </list>
     </option>
   </component>
@@ -207,10 +210,15 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2384" y="175" width="992" height="732" key="SettingsEditor/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603038163765" />
-    <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog" timestamp="1603056969977">
+    <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog" timestamp="1604964910909">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604964910909" />
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603056969977" />
+    <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog" timestamp="1604899892572">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604899892572" />
     <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1603080923085">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
