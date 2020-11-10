@@ -3,31 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class Login : MonoBehaviour {
-	[SerializeField] private InputField userNameInput = null;
-	[SerializeField] private InputField emailInput = null;
-	[SerializeField] private InputField passwordInput = null;
 
-	public void CreateUser(Action<Response> response) {
-		StartCoroutine(CO_CreateUser(userNameInput.text, emailInput.text, passwordInput.text,
-			response));
+	public TextMeshProUGUI ingresoEmail;
+	public TextMeshProUGUI ingresoContrasenia;
+	
+	public void CreateUser() {
+		Command command = new Command("login");
+		command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
+		command.AddArgument("password", "relojito");
+
+		TCPSocket tcp = new TCPSocket("201.105.200.72", 42069);
+		//Debug.Log(ingresoEmail.text + " " + ingresoContrasenia.text);
+		string salida = tcp.Chat(command);
+
+		Debug.Log(salida);
 	}
 
-	private IEnumerator CO_CreateUser(string userName, string email, string password,
-	                                  Action<Response> response) {
-		WWWForm form = new WWWForm();
-		form.AddField("userName", userName);
-		form.AddField("email", email);
-		form.AddField("password", password);
+	public void ProbarInput()
+	{
+		string email = ingresoEmail.text;
+		string password = ingresoContrasenia.text;
 
-		WWW connection = new WWW("http://localhost/Game/createUser.php", form);
-
-		yield return connection;
-
-		response(JsonUtility.FromJson<Response>(connection.text));
+		Debug.Log(email + " " +  password);
 	}
+
+	
 }
 
 [Serializable]

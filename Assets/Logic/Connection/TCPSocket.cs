@@ -22,13 +22,15 @@ public class TCPSocket {
 	}
 
 	private void Prepare() {
-		if (this._client == null) {
+		if (this._client == null)
+		{
 			this._client = new TcpClient(this.Server, this.Port);
 		}
 		if (!this._client.Connected) {
 			this._client.Connect(this.Server, this.Port);
 		}
-		if (this._stream == null) {
+		if (this._stream == null)
+		{
 			this._stream = this._client.GetStream();
 		}
 	}
