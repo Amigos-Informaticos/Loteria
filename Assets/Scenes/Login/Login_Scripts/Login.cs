@@ -16,7 +16,7 @@ public class Login : MonoBehaviour {
 		command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
 		command.AddArgument("password", "relojito");
 
-		TCPSocket tcp = new TCPSocket("192.168.1.99", 42069);
+		TCPSocket tcp = new TCPSocket("201.105.200.72", 42069);
 		//Debug.Log(ingresoEmail.text + " " + ingresoContrasenia.text);
 		string salida = tcp.Chat(command);
 
