@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" afterDir="false" />
-    </list>
+    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correcciones a clase Command.cs" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +153,8 @@
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="Correcciones a clase TCPSocket.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correcciones a clase TCPSocket.cs" />
+    <MESSAGE value="Correcciones a clase Command.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correcciones a clase Command.cs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2440" y="207" width="918" height="677" key="#C#" timestamp="1603071398774">
@@ -171,10 +169,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2663" y="298" width="424" height="486" key="FileChooserDialogImpl/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603063105807" />
-    <state x="2629" y="410" width="501" height="266" key="Github.CreatePullRequestDialog" timestamp="1604965233875">
+    <state x="2629" y="410" width="501" height="266" key="Github.CreatePullRequestDialog" timestamp="1604971993488">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2629" y="410" width="501" height="266" key="Github.CreatePullRequestDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965233875" />
+    <state x="2629" y="410" width="501" height="266" key="Github.CreatePullRequestDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604971993488" />
     <state width="1878" height="354" key="GridCell.Tab.0.bottom" timestamp="1603083237398">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -253,10 +251,10 @@
     </state>
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965218179" />
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603056969977" />
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1604965191600">
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1604971973858">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965191600" />
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604971973858" />
     <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog" timestamp="1604899892572">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
