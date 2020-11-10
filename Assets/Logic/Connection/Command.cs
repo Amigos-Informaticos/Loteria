@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Command {
-	public string Method { get; set; }
-	public Dictionary<string, string> Arguments { get; set; }
+[Serializable]
+public class Command
+{
+	public string Method;
+	public Dictionary<string, string> Arguments;
 
 	public Command(string method) {
 		this.Method = method;
@@ -15,7 +18,7 @@ public class Command {
 	}
 
 	public string GetJSON() {
-		return JsonUtility.ToJson(this);
+		return JsonUtility.ToJson(this).ToString();
 	}
 
 	public void FromResponse(string json) {

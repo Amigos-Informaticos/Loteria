@@ -23,9 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,12 +45,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/55/5d51222d/Console.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/ca/32102ade/File.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/c7/aa333865/String.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -66,8 +63,9 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Util/Command.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Util/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" />
-        <option value="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" />
       </list>
     </option>
   </component>
@@ -91,7 +89,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.build.unityPlugin" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
@@ -122,7 +120,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604964517137</updated>
-      <workItem from="1604964526842" duration="2226000" />
+      <workItem from="1604964526842" duration="6489000" />
     </task>
     <servers />
   </component>
@@ -229,9 +227,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2626" y="258" width="497" height="566" key="RiderGenerateDialog/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603061102645" />
-    <state x="2384" y="175" width="992" height="732" key="SettingsEditor" timestamp="1603038163765">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="464" y="169" width="992" height="708" key="SettingsEditor" timestamp="1604967681246">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="464" y="169" width="992" height="708" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1604967681246" />
     <state x="2384" y="175" width="992" height="732" key="SettingsEditor/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603038163765" />
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog" timestamp="1604964910909">
       <screen x="1920" y="0" width="1920" height="1080" />
