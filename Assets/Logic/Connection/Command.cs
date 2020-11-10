@@ -1,24 +1,36 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Command {
 	public string Method { get; set; }
-	public Dictionary<string, string> Arguments { get; set; }
+	public List<string> Arguments { get; set; }
 
 	public Command(string method) {
 		this.Method = method;
-		this.Arguments = new Dictionary<string, string>();
+		this.Arguments = new List<string>();
 	}
 
 	public void AddArgument(string name, string value) {
-		this.Arguments.Add(name, value);
+		this.Arguments.Add(name);
+		this.Arguments.Add(value);
 	}
 
 	public string GetJSON() {
-		return JsonUtility.ToJson(this);
-	}
-
-	public void FromResponse(string json) {
-		JsonUtility.FromJson<Command>(json);
+		string json = "{\"Method\":\"";
+		json += this.Method;
+		json += "\",\"Arguments\":{";
+		for (int i = 0; i < this.Arguments.Count;) {
+			json += "\"";
+			json += this.Arguments[i];
+			json += "\":\"";
+			i++;
+			json += this.Arguments[i];
+			json += "\"";
+			if (i < this.Arguments.Count - 1) {
+				json += ",";
+			}
+			i++;
+		}
+		json += "}}";
+		return json;
 	}
 }
