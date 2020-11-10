@@ -10,15 +10,24 @@ public class Login : MonoBehaviour {
 
 	public TextMeshProUGUI ingresoEmail;
 	public TextMeshProUGUI ingresoContrasenia;
-	
-	public void CreateUser() {
-		Command command = new Command("login");
-		command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
-		command.AddArgument("password", "relojito");
 
-		TCPSocket tcp = new TCPSocket("201.105.200.72", 42069);
-		//Debug.Log(ingresoEmail.text + " " + ingresoContrasenia.text);
-		string salida = tcp.Chat(command);
+	private Command _command;
+	private TCPSocket _tcpSocket;
+	private void Start()
+	{
+		this._command = new Command("login");
+		this._command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
+		this._command.AddArgument("password", "relojito");
+
+		this._tcpSocket = new TCPSocket("201.105.200.72", 42069);
+		this._tcpSocket.AddCommand(this._command);
+		this._tcpSocket.Prepare();
+	}
+
+	public void CreateUser() {
+		
+		this._tcpSocket.SendCommand();
+		string salida = this._tcpSocket.GetResponse();
 
 		Debug.Log(salida);
 	}
