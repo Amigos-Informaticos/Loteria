@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correcciones a clase Command.cs" />
+    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correcciones a clase Command.cs">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +129,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604964517137</updated>
-      <workItem from="1604964526842" duration="10673000" />
+      <workItem from="1604964526842" duration="10674000" />
+      <workItem from="1605022594851" duration="1450000" />
     </task>
     <servers />
   </component>
