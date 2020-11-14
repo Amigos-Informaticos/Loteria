@@ -25,7 +25,11 @@
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correcciones a clase Command.cs">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +57,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8691AD70-05ED-4755-A182-8378FF0B52B1/cb/e8d8c1ab/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
@@ -76,6 +81,8 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection/Configuration/TCPSocketConfiguration.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" />
       </list>
@@ -136,7 +143,7 @@
       <workItem from="1605022594851" duration="1450000" />
       <workItem from="1605225381037" duration="1227000" />
       <workItem from="1605289089067" duration="598000" />
-      <workItem from="1605325008381" duration="3508000" />
+      <workItem from="1605325008381" duration="9449000" />
     </task>
     <servers />
   </component>

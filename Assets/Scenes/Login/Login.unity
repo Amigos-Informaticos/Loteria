@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 56227957}
   - component: {fileID: 56227956}
   m_Layer: 0
-  m_Name: EscribirJugador
+  m_Name: Login
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1199,7 +1199,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1098224701}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 56227956}
+        m_MethodName: BackToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1098224701
 MonoBehaviour:
   m_ObjectHideFlags: 0

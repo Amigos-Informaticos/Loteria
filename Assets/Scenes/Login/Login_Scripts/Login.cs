@@ -1,5 +1,4 @@
 ﻿using System;
-using TCPSocketClient;
 using TMPro;
 using UnityEngine;
 
@@ -10,13 +9,18 @@ public class Login : MonoBehaviour {
 	private Command _command;
 	private TCPSocket _tcpSocket;
 
+	public void BackToMainMenu()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+	}
+
 	private void Start() {
 		this._command = new Command("login");
 		this._command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
 		this._command.AddArgument("password", "relojito");
 
 		this._tcpSocket = new TCPSocket("201.105.200.72", 42069);
-		this._tcpSocket.AddCommand(this._command)ñ
+		this._tcpSocket.AddCommand(this._command);
 	}
 
 	public void CreateUser() {
@@ -32,10 +36,6 @@ public class Login : MonoBehaviour {
 
 		Debug.Log(email + " " + password);
 	}
-}
-
-[Serializable]
-public class Response {
-	public bool done = false;
-	public string message = "";
+	
+	
 }
