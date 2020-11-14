@@ -103,6 +103,11 @@
               <e p="PopulateGrid.cs" t="Include" />
             </e>
           </e>
+          <e p="SignUp" t="Include">
+            <e p="SignUp_Scirpt" t="Include">
+              <e p="SignUp.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="SceneManager.cs" t="Include" />
