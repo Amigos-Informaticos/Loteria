@@ -22,7 +22,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correción de problemas de comunicación" />
+    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correcciones a clase Command.cs">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,10 +57,11 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -71,8 +80,8 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" />
       </list>
     </option>
   </component>
@@ -158,8 +167,7 @@
     </ignored-roots>
     <MESSAGE value="Correcciones a clase TCPSocket.cs" />
     <MESSAGE value="Correcciones a clase Command.cs" />
-    <MESSAGE value="Creación de clase TCPSocketConfiguration.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creación de clase TCPSocketConfiguration.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correcciones a clase Command.cs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2440" y="207" width="918" height="677" key="#C#" timestamp="1603071398774">
@@ -174,10 +182,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2663" y="298" width="424" height="486" key="FileChooserDialogImpl/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603063105807" />
-    <state x="2538" y="397" width="501" height="266" key="Github.CreatePullRequestDialog" timestamp="1605330167054">
+    <state x="2629" y="410" width="501" height="266" key="Github.CreatePullRequestDialog" timestamp="1604971993488">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2538" y="397" width="501" height="266" key="Github.CreatePullRequestDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605330167054" />
+    <state x="2629" y="410" width="501" height="266" key="Github.CreatePullRequestDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604971993488" />
     <state width="1878" height="354" key="GridCell.Tab.0.bottom" timestamp="1603083237398">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -242,10 +250,6 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="354" key="GridCell.Tab.3.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237400" />
-    <state x="2450" y="301" width="718" height="479" key="MultipleFileMergeDialog" timestamp="1605330049911">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2450" y="301" width="718" height="479" key="MultipleFileMergeDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605330049911" />
     <state x="2626" y="258" width="497" height="566" key="RiderGenerateDialog" timestamp="1603061102645">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -260,10 +264,10 @@
     </state>
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965218179" />
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603056969977" />
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605330160569">
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1604971973858">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605330160569" />
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604971973858" />
     <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog" timestamp="1604899892572">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
