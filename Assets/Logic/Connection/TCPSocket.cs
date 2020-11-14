@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class TCPSocket
@@ -68,7 +69,9 @@ public class TCPSocket
 		try
 		{
 			this.IsPrepared();
-			byte[] data = Encoding.UTF8.GetBytes(this.Messages[0].GetJSON());
+			string message = Regex.Replace(this.Messages[0].GetJSON(), @"[^\u0000-\u007F]+",
+				string.Empty);
+			byte[] data = Encoding.ASCII.GetBytes(message);
 			try
 			{
 				this._stream.Write(data, 0, data.Length);
@@ -103,7 +106,7 @@ public class TCPSocket
 				this._stream.ReadTimeout = 600000;
 			}
 			tamanio = this._stream.Read(received, 0, received.Length);
-			response = Encoding.UTF8.GetString(received, 0, tamanio);
+			response = Encoding.ASCII.GetString(received, 0, tamanio);
 		}
 		catch (IOException exception)
 		{
@@ -143,7 +146,7 @@ public class TCPSocket
 					data = new byte[1024];
 					this._stream.ReadTimeout = MAXTIMEOUT;
 					int tamanio = this._stream.Read(data, 0, data.Length);
-					response = Encoding.UTF8.GetString(data, 0, tamanio);
+					response = Encoding.ASCII.GetString(data, 0, tamanio);
 				}
 				catch (IOException)
 				{

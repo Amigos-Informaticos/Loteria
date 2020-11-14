@@ -1,75 +1,76 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 public class SignUp : MonoBehaviour
 {
-    public TextMeshProUGUI txtEmail;
+	public TextMeshProUGUI txtEmail;
 
-    public TextMeshProUGUI txtNickname;
+	public TextMeshProUGUI txtNickname;
 
-    public TextMeshProUGUI txtPassword;
+	public TextMeshProUGUI txtPassword;
 
-    public TextMeshProUGUI txtPasswordConfirm;
+	public TextMeshProUGUI txtPasswordConfirm;
 
-    public TextMeshProUGUI txtConfirmationCode;
+	public TextMeshProUGUI txtConfirmationCode;
 
-    public TextMeshProUGUI txtName;
-    
-    public TextMeshProUGUI txtLastame;
-    
-    TCPSocket _socket;
+	public TextMeshProUGUI txtName;
 
-    public void SignUpPlayer()
-    {
-        string emailText = txtEmail.text;
-        string nicknameText = txtNickname.text;
-        string passwordText = txtPassword.text;
-        string passwordConfirmText = txtPasswordConfirm.text;
-        string nameText = txtName.text;
-        string lastameText = txtLastame.text;
-        string codeText = txtConfirmationCode.text;
-        
-        Command command = new Command("sign_up");
-        command.AddArgument("email",emailText);
-        command.AddArgument("nickname",nicknameText);
-        command.AddArgument("password",passwordText);
-        command.AddArgument("name",nameText);
-        command.AddArgument("lastname",lastameText);
-        command.AddArgument("code",codeText);
-        
-        TCPSocketConfiguration.BuildDefaultConfiguration(out _socket);
-        _socket.AddCommand(command);
-        _socket.SendCommand();
-        
-        Debug.Log(emailText);
-        Debug.Log(nicknameText);
-        Debug.Log(passwordText);
-        Debug.Log(passwordConfirmText);
-        Debug.Log(nameText);
-        Debug.Log(lastameText);
-        Debug.Log(codeText);
-    }
+	public TextMeshProUGUI txtLastame;
 
-    public void SendCodeToEmail()
-    {
-        string email = txtEmail.text;
-        byte[] bytes = Encoding.Default.GetBytes(email);
-        email = Encoding.UTF8.GetString(bytes);
-        Command command = new Command("send_code_to_email");
-        command.AddArgument("email",email);
-        TCPSocketConfiguration.BuildDefaultConfiguration(out _socket);
-        _socket.AddCommand(command);
-        _socket.SendCommand();
-        
-        Debug.Log(_socket.GetResponse());
-    }
+	private TCPSocket socket;
 
-    public void BackToMainMenu()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-    }
+	public void SignUpPlayer()
+	{
+		string emailText = this.txtEmail.text;
+		string nicknameText = this.txtNickname.text;
+		string passwordText = this.txtPassword.text;
+		string passwordConfirmText = this.txtPasswordConfirm.text;
+		string nameText = this.txtName.text;
+		string lastameText = this.txtLastame.text;
+		string codeText = this.txtConfirmationCode.text;
+
+		Command command = new Command("sign_up");
+		command.AddArgument("email", emailText);
+		command.AddArgument("nickname", nicknameText);
+		command.AddArgument("password", passwordText);
+		command.AddArgument("name", nameText);
+		command.AddArgument("lastname", lastameText);
+		command.AddArgument("code", codeText);
+
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.socket);
+		this.socket.AddCommand(command);
+		this.socket.SendCommand();
+
+		Debug.Log(emailText);
+		Debug.Log(nicknameText);
+		Debug.Log(passwordText);
+		Debug.Log(passwordConfirmText);
+		Debug.Log(nameText);
+		Debug.Log(lastameText);
+		Debug.Log(codeText);
+	}
+
+	public void SendCodeToEmail()
+	{
+		string email = this.txtEmail.text;
+		byte[] bytes = Encoding.Default.GetBytes(email);
+		email = Encoding.UTF8.GetString(bytes);
+		Command command = new Command("send_code_to_email");
+		command.AddArgument("email", email);
+		this.socket = new TCPSocket("localhost", 42069);
+		this.socket.AddCommand(command);
+		this.socket.SendCommand();
+
+		Debug.Log(this.socket.GetResponse(true));
+		command = new Command("close");
+		this.socket.AddCommand(command);
+		this.socket.SendCommand();
+		this.socket.Close();
+	}
+
+	public void BackToMainMenu()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+	}
 }
