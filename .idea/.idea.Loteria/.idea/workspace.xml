@@ -22,8 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correcciones a clase Command.cs">
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" afterDir="false" />
+    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Mejora de clase TCPSocket.cs">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +53,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/TCPSocket.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
@@ -166,7 +168,8 @@
     </ignored-roots>
     <MESSAGE value="Correcciones a clase TCPSocket.cs" />
     <MESSAGE value="Correcciones a clase Command.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correcciones a clase Command.cs" />
+    <MESSAGE value="Mejora de clase TCPSocket.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mejora de clase TCPSocket.cs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="308" y="187" width="1174" height="749" key="#C#" timestamp="1605376458659">
@@ -272,10 +275,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604899892572" />
-    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup" timestamp="1605376378800">
+    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup" timestamp="1605376657655">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605376378800" />
+    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605376657655" />
     <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965143149" />
     <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603080923085" />
   </component>
