@@ -23,13 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correcciones a clase Command.cs">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +51,16 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/InputField.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/TCPSocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/TCPSocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration/TCPSocketConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration/TCPSocketConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -79,9 +78,9 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Util/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" />
-        <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
       </list>
     </option>
   </component>
@@ -170,9 +169,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Correcciones a clase Command.cs" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2440" y="207" width="918" height="677" key="#C#" timestamp="1603071398774">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="308" y="187" width="1174" height="749" key="#C#" timestamp="1605376458659">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="308" y="187" width="1174" height="749" key="#C#/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605376458659" />
     <state x="2440" y="207" width="918" height="677" key="#C#/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603071398774" />
     <state x="2475" y="184" width="800" height="714" key="#Plugins" timestamp="1603036843559">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -272,9 +272,10 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604899892572" />
-    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1604965143149">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup" timestamp="1605376378800">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605376378800" />
     <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965143149" />
     <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603080923085" />
   </component>
