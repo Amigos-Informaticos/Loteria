@@ -101,6 +101,11 @@
               <e p="Login.cs" t="Include" />
             </e>
           </e>
+          <e p="MainMenu" t="Include">
+            <e p="MainMenu_Script" t="Include">
+              <e p="MainMenuScript.cs" t="Include" />
+            </e>
+          </e>
           <e p="Party" t="Include">
             <e p="Scripts" t="Include">
               <e p="PopulateGrid.cs" t="Include" />
