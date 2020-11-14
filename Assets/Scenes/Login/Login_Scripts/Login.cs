@@ -1,5 +1,4 @@
 ﻿using System;
-using TCPSocketClient;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public class Login : MonoBehaviour {
 		this._command.AddArgument("password", "relojito");
 
 		this._tcpSocket = new TCPSocket("201.105.200.72", 42069);
-		this._tcpSocket.AddCommand(this._command)ñ
+		this._tcpSocket.AddCommand(this._command);
 	}
 
 	public void CreateUser() {

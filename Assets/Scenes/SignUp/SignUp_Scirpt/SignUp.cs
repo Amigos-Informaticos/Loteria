@@ -38,4 +38,10 @@ public class SignUp : MonoBehaviour
         Debug.Log(lastameText);
         Debug.Log(codeText);
     }
+
+    public void sendCodeToEmail()
+    {
+        string codeText = txtConfirmationCode.text;
+        Debug.Log((codeText));
+    }
 }
