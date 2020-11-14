@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Mejora de clase TCPSocket.cs">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs.meta" afterDir="false" />
-    </list>
+    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +166,8 @@
     <MESSAGE value="Correcciones a clase TCPSocket.cs" />
     <MESSAGE value="Correcciones a clase Command.cs" />
     <MESSAGE value="Mejora de clase TCPSocket.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mejora de clase TCPSocket.cs" />
+    <MESSAGE value="Cambio de nombre&#10;De SignUp_Scirpt =&gt; SignUp_Scripts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambio de nombre&#10;De SignUp_Scirpt =&gt; SignUp_Scripts" />
   </component>
   <component name="WindowStateProjectService">
     <state x="308" y="187" width="1174" height="749" key="#C#" timestamp="1605376458659">
@@ -181,6 +179,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2475" y="184" width="800" height="714" key="#Plugins/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603036843559" />
+    <state x="590" y="146" width="730" height="821" key="CommitChangelistDialog2" timestamp="1605376864626">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="590" y="146" width="730" height="821" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605376864626" />
     <state x="2663" y="298" width="424" height="486" key="FileChooserDialogImpl" timestamp="1603063105807">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -267,9 +269,10 @@
     </state>
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965218179" />
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603056969977" />
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1604971973858">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="555" y="296" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605376869411">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="555" y="296" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605376869411" />
     <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604971973858" />
     <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog" timestamp="1604899892572">
       <screen x="0" y="27" width="1920" height="1053" />

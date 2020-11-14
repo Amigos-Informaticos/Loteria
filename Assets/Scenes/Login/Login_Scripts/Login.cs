@@ -1,8 +1,8 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
-public class Login : MonoBehaviour {
+public class Login : MonoBehaviour
+{
 	public TextMeshProUGUI ingresoEmail;
 	public TextMeshProUGUI ingresoContrasenia;
 
@@ -14,7 +14,8 @@ public class Login : MonoBehaviour {
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
-	private void Start() {
+	private void Start()
+	{
 		this._command = new Command("login");
 		this._command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
 		this._command.AddArgument("password", "relojito");
@@ -23,19 +24,19 @@ public class Login : MonoBehaviour {
 		this._tcpSocket.AddCommand(this._command);
 	}
 
-	public void CreateUser() {
+	public void CreateUser()
+	{
 		this._tcpSocket.SendCommand();
 		string salida = this._tcpSocket.GetResponse();
 
 		Debug.Log(salida);
 	}
 
-	public void ProbarInput() {
+	public void ProbarInput()
+	{
 		string email = ingresoEmail.text;
 		string password = ingresoContrasenia.text;
 
 		Debug.Log(email + " " + password);
 	}
-	
-	
 }
