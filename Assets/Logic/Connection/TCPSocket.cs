@@ -56,7 +56,6 @@ public class TCPSocket {
 
 	private void SendAndGet() {
 		this.Send();
-		this.Read();
 	}
 
 	public void Send() {
@@ -80,7 +79,8 @@ public class TCPSocket {
 		}
 	}
 
-	public string GetResponse() {
+	public string GetResponse(bool wait = false) {
+		this.Read(wait);
 		string response = null;
 		response = this._response;
 		return response;

@@ -22,10 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correción de problemas de comunicación">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" afterDir="false" />
-    </list>
+    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correción de problemas de comunicación" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
