@@ -21,7 +21,7 @@ public class TCPSocket {
 		this.Messages = new List<Command>();
 	}
 
-	private void Prepare() {
+	public void Prepare() {
 		if (this._client == null) {
 			this._client = new TcpClient(this.Server, this.Port);
 		}
@@ -44,14 +44,17 @@ public class TCPSocket {
 
 	public void SendCommand() {
 		this._thread = new Thread(this.SendAndGet);
+		this._thread.IsBackground = true;
 		this._thread.Start();
 	}
 
 	private void SendAndGet() {
 		Thread newThread = new Thread(this.Send);
+		newThread.IsBackground = true;
 		newThread.Start();
 		newThread.Join();
 		newThread = new Thread(this.Read);
+		newThread.IsBackground = true;
 		newThread.Start();
 		newThread.Join();
 	}
@@ -61,7 +64,7 @@ public class TCPSocket {
 			return;
 		}
 		try {
-			this.Prepare();
+			
 			byte[] data = Encoding.UTF8.GetBytes(this.Messages[0].GetJSON());
 			try {
 				this._stream.Write(data, 0, data.Length);
@@ -91,7 +94,6 @@ public class TCPSocket {
 		string response = "NO RESPONSE";
 		int tamanio = 0;
 		try {
-			this.Prepare();
 			this._stream.ReadTimeout = MAXTIMEOUT;
 			tamanio = this._stream.Read(received, 0, received.Length);
 			response = Encoding.UTF8.GetString(received, 0, tamanio);
@@ -99,8 +101,9 @@ public class TCPSocket {
 		catch (IOException exception) {
 			response = "ERROR. TIMEOUT";
 		}
-		catch (Exception e) {
-			Console.Error.Write(e.Message);
+		catch (Exception e)
+		{
+			response = e.Message;
 		}
 		this.response = response;
 	}
