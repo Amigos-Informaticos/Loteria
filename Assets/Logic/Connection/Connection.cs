@@ -1,30 +1,38 @@
-using System.IO;
-using UnityEngine;
+namespace Logic.Connection {
+	using System.Collections.Generic;
 
-public class Connection {
-	private TCPSocket socket;
+	public class Command {
+		public string Method { get; set; }
+		public List<string> Arguments { get; set; }
 
-	public Connection() {
-		this.LoadFromJSON();
-	}
-
-	public Connection(string serverIP, int port) {
-		this.socket = new TCPSocket(serverIP, port);
-	}
-
-	public bool LoadFromJSON(string connectionConfigFile = "/Configuration/connection.json") {
-		if (!File.Exists(connectionConfigFile)) return false;
-		if (File.ReadAllBytes(connectionConfigFile).Length <= 0) return false;
-		using (StreamReader reader = new StreamReader(connectionConfigFile)) {
-			string configurations = reader.ReadToEnd();
-			this.socket = JsonUtility.FromJson<TCPSocket>(configurations);
+		public Command(string method) {
+			this.Method = method;
+			this.Arguments = new List<string>();
 		}
-		return true;
-	}
 
-	public void SaveToJSON(string connectionConfigFile = "/Configuration/connection.json") {
-		string json = JsonUtility.ToJson(this.socket, true);
-		StreamWriter writer = new StreamWriter(connectionConfigFile, false);
-		writer.Write(json);
+		public void AddArgument(string name, string value) {
+			this.Arguments.Add(name);
+			this.Arguments.Add(value);
+		}
+
+		public string GetJSON() {
+			string json = "{\"Method\":\"";
+			json += this.Method;
+			json += "\",\"Arguments\":{";
+			for (int i = 0; i < this.Arguments.Count;) {
+				json += "\"";
+				json += this.Arguments[i];
+				json += "\":\"";
+				i++;
+				json += this.Arguments[i];
+				json += "\"";
+				if (i < this.Arguments.Count - 1) {
+					json += ",";
+				}
+				i++;
+			}
+			json += "}}";
+			return json;
+		}
 	}
 }
