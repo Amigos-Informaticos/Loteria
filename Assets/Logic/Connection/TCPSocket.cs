@@ -103,7 +103,7 @@ public class TCPSocket
 				this._stream.ReadTimeout = MAXTIMEOUT;
 			} else
 			{
-				this._stream.ReadTimeout = 600000;
+				this._stream.ReadTimeout = 120000;
 			}
 			tamanio = this._stream.Read(received, 0, received.Length);
 			response = Encoding.ASCII.GetString(received, 0, tamanio);
