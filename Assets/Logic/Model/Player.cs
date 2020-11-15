@@ -1,3 +1,4 @@
+using Assets.Logic.Util;
 using System;
 using System.Text.RegularExpressions;
 
@@ -5,6 +6,7 @@ public class Player {
 	private string names;
 	private string lastName;
 	private string email;
+	private string password;
 	public string Names
     {
         get
@@ -63,6 +65,18 @@ public class Player {
         }
     }
 
+	public string Password
+    {
+        get
+        {
+			return this.password;
+        }
+        set
+        {
+			this.password = Util.Encrypt(value);
+        }
+    }
+
     public int Score { get; set; }
 	public Board Board { get; set; }
 
@@ -94,6 +108,11 @@ public class Player {
 		return isEmail;
     }
 
+	public bool IsComplete()
+    {
+		return this.email != null && this.names != null && this.lastName != null;
+    }
+
 	public void MakeNewBoard() {
 		this.Board = new Board();
 	}
@@ -104,7 +123,7 @@ public class Player {
 			for (int j = 0; j < 5; j++) {
 				if (this.Board.Pattern[i, j] == this.Board.Marks[i, j]) continue;
 				won = false;
-				break;
+				break;	
 			}
 			if (!won) {
 				break;
