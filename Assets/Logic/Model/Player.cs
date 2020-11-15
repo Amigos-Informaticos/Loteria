@@ -90,8 +90,7 @@ public class Player {
         if (regex.IsMatch(email))
         {
 			isEmail = true;
-        }
-        
+        }        
 		return isEmail;
     }
 
