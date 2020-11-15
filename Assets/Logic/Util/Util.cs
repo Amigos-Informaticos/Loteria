@@ -12,7 +12,14 @@ namespace Assets.Logic.Util
         {
             string result = string.Empty;
             byte[] encrypted = Encoding.Unicode.GetBytes(_stringToEncrypt);
+            int count = 0;
+            while(count < _stringToEncrypt.Length)  
+            {
+                encrypted = Encoding.Unicode.GetBytes(Convert.ToBase64String(encrypted));
+                count++;
+            }
             result = Convert.ToBase64String(encrypted);
+
             return result;
         }
     }
