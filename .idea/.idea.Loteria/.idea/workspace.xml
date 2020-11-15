@@ -22,14 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="Correcciones a clase Command.cs">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
+    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,12 +53,19 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8691AD70-05ED-4755-A182-8378FF0B52B1/cb/e8d8c1ab/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/InputField.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/TCPSocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5A42A0DB-0BFD-4389-9489-41F1DD09A11A/a8/e1cac6dd/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/TCPSocket.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.18/UnityEditor.TestRunner/GUI/Views/EditModeTestListGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration/TCPSocketConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration/TCPSocketConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -80,11 +83,17 @@
         <option value="$PROJECT_DIR$/Assets/Logic/Util/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Connection.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" />
-        <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
-        <option value="$PROJECT_DIR$/Assets/Logic/Connection/Configuration/TCPSocketConfiguration.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt/SignUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection/Configuration/TCPSocketConfiguration.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/Login/Login_Scripts/Login.cs" />
+        <option value="$PROJECT_DIR$/Assets/Testing/Test.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tests/NewTestScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/NewAssembly.asmdef" />
+        <option value="$PROJECT_DIR$/Assets/Tests/Tests.asmdef" />
+        <option value="$PROJECT_DIR$/Assets/Tests/EmailTest.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" />
       </list>
     </option>
   </component>
@@ -111,7 +120,23 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
+  <component name="RunManager" selected=".NET Static Method.Testing.Test.Main">
+    <configuration name="Testing.Test.Main" type="DotNetStaticMethod" factoryName=".NET Static Method" temporary="true">
+      <option name="EXE_PATH" value="$APPLICATION_HOME_DIR$/lib/ReSharperHost/JetLauncherILc.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Assembly-CSharp.csproj" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.7.1" />
+      <option name="CLASS_NAME" value="Testing.Test" />
+      <option name="METHOD_NAME" value="Main" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -130,6 +155,11 @@
       </option>
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue=".NET Static Method.Testing.Test.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -143,7 +173,7 @@
       <workItem from="1605022594851" duration="1450000" />
       <workItem from="1605225381037" duration="1227000" />
       <workItem from="1605289089067" duration="598000" />
-      <workItem from="1605325008381" duration="9449000" />
+      <workItem from="1605325008381" duration="3508000" />
     </task>
     <servers />
   </component>
@@ -170,17 +200,39 @@
     </ignored-roots>
     <MESSAGE value="Correcciones a clase TCPSocket.cs" />
     <MESSAGE value="Correcciones a clase Command.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correcciones a clase Command.cs" />
+    <MESSAGE value="Mejora de clase TCPSocket.cs" />
+    <MESSAGE value="Cambio de nombre&#10;De SignUp_Scirpt =&gt; SignUp_Scripts" />
+    <MESSAGE value="Correcciones indicadas por CodeFactor" />
+    <MESSAGE value="Enviar codigo personal a correo funcional" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enviar codigo personal a correo funcional" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2440" y="207" width="918" height="677" key="#C#" timestamp="1603071398774">
+    <state x="308" y="187" width="1174" height="749" key="#C#" timestamp="1605376458659">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="308" y="187" width="1174" height="749" key="#C#/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605376458659" />
+    <state x="2440" y="207" width="918" height="677" key="#C#/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603071398774" />
+    <state x="2652" y="252" width="456" height="582" key="#JSON" timestamp="1605380381544">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2440" y="207" width="918" height="677" key="#C#/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603071398774" />
+    <state x="2652" y="252" width="456" height="582" key="#JSON/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605380381544" />
     <state x="2475" y="184" width="800" height="714" key="#Plugins" timestamp="1603036843559">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2475" y="184" width="800" height="714" key="#Plugins/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603036843559" />
+    <state x="2338" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605377900491">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2338" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605377900491" />
+    <state x="2510" y="122" width="730" height="821" key="CommitChangelistDialog2" timestamp="1605384390988">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="590" y="146" width="730" height="821" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605377230498" />
+    <state x="2510" y="122" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605384390988" />
+    <state x="2734" y="312" width="281" height="463" key="EnvironmentVariablesDialog" timestamp="1605377896322">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2734" y="312" width="281" height="463" key="EnvironmentVariablesDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605377896322" />
     <state x="2663" y="298" width="424" height="486" key="FileChooserDialogImpl" timestamp="1603063105807">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -189,21 +241,29 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2629" y="410" width="501" height="266" key="Github.CreatePullRequestDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604971993488" />
-    <state width="1878" height="354" key="GridCell.Tab.0.bottom" timestamp="1603083237398">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1878" height="286" key="GridCell.Tab.0.bottom" timestamp="1605387665019">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605387665019" />
+    <state width="1878" height="286" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605378477788" />
     <state width="1878" height="354" key="GridCell.Tab.0.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
-    <state width="1878" height="354" key="GridCell.Tab.0.center" timestamp="1603083237398">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1878" height="286" key="GridCell.Tab.0.center" timestamp="1605387665019">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605387665019" />
+    <state width="1878" height="286" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605378477787" />
     <state width="1878" height="354" key="GridCell.Tab.0.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
-    <state width="1878" height="354" key="GridCell.Tab.0.left" timestamp="1603083237398">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1878" height="286" key="GridCell.Tab.0.left" timestamp="1605387665018">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605387665018" />
+    <state width="1878" height="286" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605378477787" />
     <state width="1878" height="354" key="GridCell.Tab.0.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
-    <state width="1878" height="354" key="GridCell.Tab.0.right" timestamp="1603083237398">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1878" height="286" key="GridCell.Tab.0.right" timestamp="1605387665019">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605387665019" />
+    <state width="1878" height="286" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605378477788" />
     <state width="1878" height="354" key="GridCell.Tab.0.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
     <state width="1878" height="354" key="GridCell.Tab.1.bottom" timestamp="1603083237399">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -267,17 +327,19 @@
     </state>
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965218179" />
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603056969977" />
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1604971973858">
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605384397350">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604971973858" />
+    <state x="555" y="296" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605377234204" />
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605384397350" />
     <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog" timestamp="1604899892572">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1604899892572" />
-    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1604965143149">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup" timestamp="1605376657655">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="623" y="260" width="672" height="662" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605376657655" />
     <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965143149" />
     <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603080923085" />
   </component>
