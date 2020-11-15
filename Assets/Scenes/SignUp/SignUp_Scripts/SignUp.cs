@@ -58,7 +58,7 @@ public class SignUp : MonoBehaviour
 		email = Encoding.UTF8.GetString(bytes);
 		Command command = new Command("send_code_to_email");
 		command.AddArgument("email", email);
-		this.socket = new TCPSocket("localhost", 42069);
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.socket);
 		this.socket.AddCommand(command);
 		this.socket.SendCommand();
 

@@ -23,21 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Logic/LogicAssembly.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EmailTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/EmailTest.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/Tests.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Tests/Tests.asmdef.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scirpt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +55,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/TCPSocket.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/Configuration.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5A42A0DB-0BFD-4389-9489-41F1DD09A11A/a8/e1cac6dd/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///home/w3edd/Documentos/Lotería/src/Loteria/Assets/Logic/Connection/TCPSocket.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.18/UnityEditor.TestRunner/GUI/Views/EditModeTestListGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="FORCE_HIGHLIGHTING" />
@@ -104,6 +93,7 @@
         <option value="$PROJECT_DIR$/Assets/Tests/EmailTest.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" />
       </list>
     </option>
   </component>
@@ -213,7 +203,8 @@
     <MESSAGE value="Mejora de clase TCPSocket.cs" />
     <MESSAGE value="Cambio de nombre&#10;De SignUp_Scirpt =&gt; SignUp_Scripts" />
     <MESSAGE value="Correcciones indicadas por CodeFactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correcciones indicadas por CodeFactor" />
+    <MESSAGE value="Enviar codigo personal a correo funcional" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enviar codigo personal a correo funcional" />
   </component>
   <component name="WindowStateProjectService">
     <state x="308" y="187" width="1174" height="749" key="#C#" timestamp="1605376458659">
@@ -233,10 +224,11 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2338" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605377900491" />
-    <state x="590" y="146" width="730" height="821" key="CommitChangelistDialog2" timestamp="1605377230498">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="2510" y="122" width="730" height="821" key="CommitChangelistDialog2" timestamp="1605384390988">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="590" y="146" width="730" height="821" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605377230498" />
+    <state x="2510" y="122" key="CommitChangelistDialog2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605384390988" />
     <state x="2734" y="312" width="281" height="463" key="EnvironmentVariablesDialog" timestamp="1605377896322">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -249,24 +241,28 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2629" y="410" width="501" height="266" key="Github.CreatePullRequestDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604971993488" />
-    <state width="1878" height="286" key="GridCell.Tab.0.bottom" timestamp="1605378477788">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1878" height="286" key="GridCell.Tab.0.bottom" timestamp="1605387665019">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605387665019" />
     <state width="1878" height="286" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605378477788" />
     <state width="1878" height="354" key="GridCell.Tab.0.bottom/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
-    <state width="1878" height="286" key="GridCell.Tab.0.center" timestamp="1605378477787">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1878" height="286" key="GridCell.Tab.0.center" timestamp="1605387665019">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605387665019" />
     <state width="1878" height="286" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605378477787" />
     <state width="1878" height="354" key="GridCell.Tab.0.center/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
-    <state width="1878" height="286" key="GridCell.Tab.0.left" timestamp="1605378477787">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1878" height="286" key="GridCell.Tab.0.left" timestamp="1605387665018">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605387665018" />
     <state width="1878" height="286" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605378477787" />
     <state width="1878" height="354" key="GridCell.Tab.0.left/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
-    <state width="1878" height="286" key="GridCell.Tab.0.right" timestamp="1605378477788">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1878" height="286" key="GridCell.Tab.0.right" timestamp="1605387665019">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state width="1878" height="286" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605387665019" />
     <state width="1878" height="286" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605378477788" />
     <state width="1878" height="354" key="GridCell.Tab.0.right/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603083237398" />
     <state width="1878" height="354" key="GridCell.Tab.1.bottom" timestamp="1603083237399">
@@ -331,11 +327,11 @@
     </state>
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604965218179" />
     <state x="2020" y="100" width="1720" height="880" key="VCS.FileHistoryDialog/0.28.1920.1052/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603056969977" />
-    <state x="555" y="296" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605377234204">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605384397350">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="555" y="296" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@0.27.1920.1053" timestamp="1605377234204" />
-    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604971973858" />
+    <state x="2475" y="276" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605384397350" />
     <state x="680" y="259" width="549" height="591" key="git4idea.branch.GitSmartOperationDialog" timestamp="1604899892572">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
