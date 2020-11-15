@@ -9,7 +9,7 @@
 		{
 			TCPSocket socket = new TCPSocket("localhost", 42069);
 			Command command = new Command("send_code_to_email");
-			command.AddArgument("email", "efrain_escuela@outlook.com");
+			command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
 			socket.AddCommand(command);
 			socket.SendCommand();
 			Assert.AreEqual(
