@@ -1,37 +1,42 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
+public class Login : MonoBehaviour
+{
+	public TextMeshProUGUI ingresoEmail;
+	public TextMeshProUGUI ingresoContrasenia;
 
-public class Login : MonoBehaviour {
-	[SerializeField] private InputField userNameInput = null;
-	[SerializeField] private InputField emailInput = null;
-	[SerializeField] private InputField passwordInput = null;
+	private Command _command;
+	private TCPSocket _tcpSocket;
 
-	public void CreateUser(Action<Response> response) {
-		StartCoroutine(CO_CreateUser(userNameInput.text, emailInput.text, passwordInput.text,
-			response));
+	public void BackToMainMenu()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
-	private IEnumerator CO_CreateUser(string userName, string email, string password,
-	                                  Action<Response> response) {
-		WWWForm form = new WWWForm();
-		form.AddField("userName", userName);
-		form.AddField("email", email);
-		form.AddField("password", password);
+	private void Start()
+	{
+		this._command = new Command("login");
+		this._command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
+		this._command.AddArgument("password", "relojito");
 
-		WWW connection = new WWW("http://localhost/Game/createUser.php", form);
-
-		yield return connection;
-
-		response(JsonUtility.FromJson<Response>(connection.text));
+		this._tcpSocket = new TCPSocket("201.105.200.72", 42069);
+		this._tcpSocket.AddCommand(this._command);
 	}
-}
 
-[Serializable]
-public class Response {
-	public bool done = false;
-	public string message = "";
+	public void CreateUser()
+	{
+		this._tcpSocket.SendCommand();
+		string salida = this._tcpSocket.GetResponse();
+
+		Debug.Log(salida);
+	}
+
+	public void ProbarInput()
+	{
+		string email = ingresoEmail.text;
+		string password = ingresoContrasenia.text;
+
+		Debug.Log(email + " " + password);
+	}
 }

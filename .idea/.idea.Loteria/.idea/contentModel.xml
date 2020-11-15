@@ -75,9 +75,13 @@
         <e p="Logic" t="Include">
           <e p="Connection" t="Include">
             <e p="Command.cs" t="Include" />
+            <e p="Configuration" t="Include">
+              <e p="TCPSocketConfiguration.cs" t="Include" />
+            </e>
             <e p="Connection.cs" t="Include" />
             <e p="TCPSocket.cs" t="Include" />
           </e>
+          <e p="LogicAssembly.asmdef" t="Include" />
           <e p="Model" t="Include">
             <e p="Board.cs" t="Include" />
             <e p="Player.cs" t="Include" />
@@ -100,14 +104,28 @@
               <e p="Login.cs" t="Include" />
             </e>
           </e>
+          <e p="MainMenu" t="Include">
+            <e p="MainMenu_Script" t="Include">
+              <e p="MainMenuScript.cs" t="Include" />
+            </e>
+          </e>
           <e p="Party" t="Include">
             <e p="Scripts" t="Include">
               <e p="PopulateGrid.cs" t="Include" />
             </e>
           </e>
+          <e p="SignUp" t="Include">
+            <e p="SignUp_Scripts" t="Include">
+              <e p="SignUp.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="SceneManager.cs" t="Include" />
+        </e>
+        <e p="Tests" t="Include">
+          <e p="EmailTest.cs" t="Include" />
+          <e p="Tests.asmdef" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
@@ -182,8 +200,10 @@
       </e>
       <e p="LeanCommon.csproj" t="IncludeRecursive" />
       <e p="LeanLocalization.csproj" t="IncludeRecursive" />
+      <e p="LogicAssembly.csproj" t="IncludeRecursive" />
       <e p="Loteria.sln" t="IncludeFlat" />
       <e p="Temp/bin" t="ExcludeRecursive" />
+      <e p="Tests.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
     </e>
