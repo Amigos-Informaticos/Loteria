@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SignUp : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class SignUp : MonoBehaviour
 	public TextMeshProUGUI txtName;
 
 	public TextMeshProUGUI txtLastame;
+	
+	public Text feedbackMessage;
 
 	private TCPSocket socket;
 
@@ -38,9 +41,29 @@ public class SignUp : MonoBehaviour
 		command.AddArgument("lastname", lastameText);
 		command.AddArgument("code", codeText);
 
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.socket);
-		this.socket.AddCommand(command);
-		this.socket.SendCommand();
+		if (passwordText.Equals(passwordConfirmText))
+		{
+			TCPSocketConfiguration.BuildDefaultConfiguration(out this.socket);
+			this.socket.AddCommand(command);
+			this.socket.SendCommand();
+			string response = this.socket.GetResponse(true);
+			this.CloseSocket();
+			if (response.Equals("OK"))
+			{
+				feedbackMessage.text = "Registro exitoso. Puedes volver al menú.";
+			}else if (response.Equals("WRONG CODE"))
+			{
+				feedbackMessage.text = "El código de verificación no es correcto.";
+			}
+			else
+			{
+				feedbackMessage.text = "No fue posible registrar al jugador, inténtelo más tarde";
+			}
+		}
+		else
+		{
+			feedbackMessage.text = "Verifica que las contraseñas coincidan.";
+		}
 
 		Debug.Log(emailText);
 		Debug.Log(nicknameText);
@@ -61,9 +84,20 @@ public class SignUp : MonoBehaviour
 		TCPSocketConfiguration.BuildDefaultConfiguration(out this.socket);
 		this.socket.AddCommand(command);
 		this.socket.SendCommand();
+		string response = this.socket.GetResponse(true);
+		if (response.Equals("OK"))
+		{
+			this.feedbackMessage.text="Código enviado con éxito";
+		}
+		else if(response.Equals("WRONG EMAIL"))
+		{
+			this.feedbackMessage.text = "No se pudo enviar el correo, verifique su email";
+		}
+	}
 
-		Debug.Log(this.socket.GetResponse(true));
-		command = new Command("close");
+	public void CloseSocket()
+	{
+		Command command = new Command("close");
 		this.socket.AddCommand(command);
 		this.socket.SendCommand();
 		this.socket.Close();

@@ -22,7 +22,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="3d682606-f8fe-4efd-9921-b37277127832" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Loteria/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/EmailTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/EmailTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+    </list>
+>>>>>>> ce5284abae65f2dcf0eb8f0b26f5a9d7da4e1bde
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +62,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+<<<<<<< HEAD
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5A42A0DB-0BFD-4389-9489-41F1DD09A11A/a8/e1cac6dd/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -56,6 +70,16 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.18/UnityEditor.TestRunner/GUI/Views/EditModeTestListGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
+=======
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8691AD70-05ED-4755-A182-8378FF0B52B1/cb/e8d8c1ab/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/9e/40bffb1f/Void.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/InputField.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Text.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Model/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scenes/Party/Scripts/PopulateGrid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Logic/Connection/Command.cs" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> ce5284abae65f2dcf0eb8f0b26f5a9d7da4e1bde
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -80,10 +104,17 @@
         <option value="$PROJECT_DIR$/Assets/Tests/NewTestScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Logic/NewAssembly.asmdef" />
         <option value="$PROJECT_DIR$/Assets/Tests/Tests.asmdef" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" />
         <option value="$PROJECT_DIR$/Assets/Tests/EmailTest.cs" />
+=======
+        <option value="$PROJECT_DIR$/Assets/Scenes/MainMenu/MainMenu_Script/MainMenuScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Tests/EmailTest.cs" />
+        <option value="$PROJECT_DIR$/Assets/Logic/Connection/TCPSocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scenes/SignUp/SignUp_Scripts/SignUp.cs" />
+>>>>>>> ce5284abae65f2dcf0eb8f0b26f5a9d7da4e1bde
       </list>
     </option>
   </component>
@@ -164,6 +195,7 @@
       <workItem from="1605225381037" duration="1227000" />
       <workItem from="1605289089067" duration="598000" />
       <workItem from="1605325008381" duration="3508000" />
+      <workItem from="1605417764730" duration="7235000" />
     </task>
     <servers />
   </component>

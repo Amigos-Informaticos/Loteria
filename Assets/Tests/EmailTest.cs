@@ -1,4 +1,4 @@
-﻿namespace Tests
+namespace Tests
 {
 	using NUnit.Framework;
 
@@ -7,7 +7,8 @@
 		[Test]
 		public void SendCodeToEmailTest()
 		{
-			TCPSocket socket = new TCPSocket("localhost", 42069);
+			TCPSocket socket;
+			TCPSocketConfiguration.BuildDefaultConfiguration(out socket);
 			Command command = new Command("send_code_to_email");
 			command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
 			socket.AddCommand(command);
