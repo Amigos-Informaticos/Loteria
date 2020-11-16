@@ -1,0 +1,78 @@
+{
+	"MainMenu": {
+		"Login": {
+			"Español": "Iniciar Sesión",
+			"English": "Login"
+		},
+		"SignUp": {
+			"Español": "Registrarse",
+			"English": "Sign Up"
+		},
+		"Exit": {
+			"Español": "Salir",
+			"English": "Exit"
+		}
+	},
+	"SignUp": {
+		"Back": {
+			"Español": "Atrás",
+			"English": "Back"
+		},
+		"Email": {
+			"Español": "Correo Electrónico",
+			"English": "Email"
+		},
+		"Username": {
+			"Español": "Nombre de Usuario",
+			"English": "Username"
+		},
+		"Name": {
+			"Español": "Nombre(s)",
+			"English": "Name"
+		},
+		"Lastname": {
+			"Español": "Apellidos",
+			"English": "Lastname"
+		},
+		"Password": {
+			"Español": "Contraseña",
+			"English": "Password"
+		},
+		"RepeatPassword": {
+			"Español": "Repetir Contraseña",
+			"English": "Confirm Password"
+		},
+		"SendCode": {
+			"Español": "Enviar código a mi correo",
+			"English": "Send code to my email"
+		},
+		"Code": {
+			"Español": "Código",
+			"English": "Code"
+		},
+		"SignUp": {
+			"Español": "Registrarse",
+			"English": "Sign Up"
+		}
+	},
+	"Login":
+	{
+		"Email":
+		{
+			"Español": "Correo Electrónico",
+			"English": "Email"
+		},
+		"Password": {
+			"Español": "Contraseña",
+			"English": "Password"
+		},
+		"Back": {
+			"Español": "Atrás",
+			"English": "Back"
+		},
+		"Login": {
+			"Español": "Entrar",
+			"English": "Login"
+		}
+	}
+}
