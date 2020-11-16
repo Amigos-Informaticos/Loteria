@@ -1,14 +1,27 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-    public void GoToSignIn()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-    }
+	public TextMeshProUGUI loginButton;
+	public TextMeshProUGUI signUpButton;
+	public TextMeshProUGUI exitButton;
 
-    public void GoToSignUp()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
-    }
+	public void Start()
+	{
+		this.loginButton.text = Localization.GetMessage("MainMenu", "Login");
+		this.signUpButton.text = Localization.GetMessage("MainMenu", "SignUp");
+		this.exitButton.text = Localization.GetMessage("MainMenu", "Exit");
+	}
+
+	public void GoToSignIn()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+	}
+
+	public void GoToSignUp()
+	{
+		Localization.Language = "English";
+		UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+	}
 }

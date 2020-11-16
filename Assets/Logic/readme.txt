@@ -1,1 +1,0 @@
-Aquí pondremos notas sobre los archivos de la carpeta
