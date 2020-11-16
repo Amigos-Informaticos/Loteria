@@ -5,8 +5,6 @@ public class Login : MonoBehaviour
 {
 	public TextMeshProUGUI ingresoEmail;
 	public TextMeshProUGUI ingresoContrasenia;
-
-
 	private Command command;
 	private TCPSocket tcpSocket;
 
