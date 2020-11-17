@@ -24,8 +24,7 @@ public class Player
             else
             {
 				this.names = null;
-            }
-			
+            }			
 		}
     }
 
