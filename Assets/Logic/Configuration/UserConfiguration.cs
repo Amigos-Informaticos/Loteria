@@ -6,7 +6,7 @@ public static class UserConfiguration
 {
 	public static string Language { get; set; } = "Español";
 	public static string MusicVolume { get; set; } = "100";
-	public static string FXSVolume = "100";
+	public static string FXSVolume { get; set; } = "100";
 
 	private const string SETTINGS_PATH =
 		"Assets/Resources/UserConfigurationFiles/UserConfiguration.json";
