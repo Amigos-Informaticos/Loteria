@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using UnityEngine;
-using Assets.Logic.Util;
 using System.Security.Cryptography;
 
 namespace Assets.Tests
