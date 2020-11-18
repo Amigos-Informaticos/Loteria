@@ -11,7 +11,7 @@ public class Player
 
 	public string Names
 	{
-		get { return this.names; }
+		get => this.names;
 		set
 		{
 			if (IsName(value))
@@ -26,7 +26,7 @@ public class Player
 
 	public string LastName
 	{
-		get { return this.lastName; }
+		get => this.lastName;
 		set
 		{
 			if (IsName(value))
@@ -43,7 +43,7 @@ public class Player
 
 	public string Email
 	{
-		get { return this.email; }
+		get => this.email;
 		set
 		{
 			if (IsEmail(value))
@@ -58,19 +58,17 @@ public class Player
 
 	public string Password
 	{
-		get { return this.password; }
+		get => this.password;
 		set { this.password = Util.GetHashString(value); }
 	}
 
 	public string Code { get; set; }
-	public int Score { get; set; }
-	public Board Board { get; set; }
+	public int Score { get; set; } = 0;
+	public Board Board { get; set; } = new Board();
 
 	public Player()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-		this.Score = 0;
-		this.Board = new Board();
 	}
 
 	public bool LogIn()
@@ -91,18 +89,18 @@ public class Player
 	public string SignUp()
 	{
 		string signedUp = "Error";
-		if (IsComplete())
+		if (this.IsComplete())
 		{
 			this.command = new Command("sign_up");
-			command.AddArgument("email", this.email);
-			command.AddArgument("nickname", this.NickName);
-			command.AddArgument("password", this.password);
-			command.AddArgument("name", this.names);
-			command.AddArgument("lastname", this.lastName);
-			command.AddArgument("code", this.Code);
-			tcpSocket.AddCommand(command);
-			tcpSocket.SendCommand();
-			signedUp = tcpSocket.GetResponse();
+			this.command.AddArgument("email", this.email);
+			this.command.AddArgument("nickname", this.NickName);
+			this.command.AddArgument("password", this.password);
+			this.command.AddArgument("name", this.names);
+			this.command.AddArgument("lastname", this.lastName);
+			this.command.AddArgument("code", this.Code);
+			this.tcpSocket.AddCommand(this.command);
+			this.tcpSocket.SendCommand();
+			signedUp = this.tcpSocket.GetResponse();
 		}
 		return signedUp;
 	}
