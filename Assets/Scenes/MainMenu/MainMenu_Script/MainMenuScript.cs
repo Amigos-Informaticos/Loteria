@@ -21,7 +21,6 @@ public class MainMenuScript : MonoBehaviour
 
 	public void GoToSignUp()
 	{
-		Localization.Language = "English";
 		UnityEngine.SceneManagement.SceneManager.LoadScene(2);
 	}
 }
