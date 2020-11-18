@@ -6,6 +6,9 @@ public class Player
 	private string lastName;
 	private string email;
 	private string password;
+	private Command command;
+	private TCPSocket tcpSocket;
+
 	public string Names
     {
         get
@@ -44,6 +47,7 @@ public class Player
         }
     }
 
+	public string NickName { get; set; }
 	public string Email
     {
         get
@@ -75,15 +79,51 @@ public class Player
         }
     }
 
+	public string Code { get; set; }
     public int Score { get; set; }
 	public Board Board { get; set; }
 
 	public Player() 
 	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		this.Score = 0;
-		this.Board = new Board();
+		this.Board = new Board();		
 	}
 
+	public bool LogIn()
+    {
+		bool loggedIn = false;
+		this.command = new Command("login");
+		this.command.AddArgument("email", this.email);
+		this.command.AddArgument("password", this.password);				
+		this.tcpSocket.AddCommand(this.command);
+		this.tcpSocket.SendCommand();
+		if (this.tcpSocket.GetResponse().Equals("OK"))
+		{
+			loggedIn = true;
+		}		
+		return loggedIn;
+	}
+
+	public string SignUp()
+    {
+		string signedUp = "Error";
+        if (IsComplete())
+        {
+			this.command = new Command("sign_up");
+			command.AddArgument("email", this.email);
+			command.AddArgument("nickname", this.NickName);
+			command.AddArgument("password", this.password);
+			command.AddArgument("name", this.names);
+			command.AddArgument("lastname", this.lastName);
+			command.AddArgument("code", this.Code);
+			tcpSocket.AddCommand(command);
+			tcpSocket.SendCommand();
+			signedUp = tcpSocket.GetResponse();			
+		}
+		return signedUp;
+    }
+	
 	public static bool IsName(string names)
 	{
 		bool isName = false;
