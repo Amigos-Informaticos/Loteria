@@ -5,22 +5,19 @@ public class Login : MonoBehaviour
 {
 	public TextMeshProUGUI ingresoEmail;
 	public TextMeshProUGUI ingresoContrasenia;
+	public TextMeshProUGUI emailPlaceHolder;
+	public TextMeshProUGUI passwordPlaceHolder;
+	public TextMeshProUGUI backButton;
+	public TextMeshProUGUI loginButton;
 	private Command command;
 	private TCPSocket tcpSocket;
 
-	public void BackToMainMenu()
-	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-	}
-
 	private void Start()
 	{
-		this.command = new Command("login");
-		this.command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
-		this.command.AddArgument("password", "relojito");
-
-		this.tcpSocket = new TCPSocket("201.105.200.72", 42069);
-		this.tcpSocket.AddCommand(this.command);
+		this.emailPlaceHolder.text = Localization.GetMessage("Login", "Email");
+		this.passwordPlaceHolder.text = Localization.GetMessage("Login", "Password");
+		this.backButton.text = Localization.GetMessage("Login", "Back");
+		this.loginButton.text = Localization.GetMessage("Login", "Login");
 	}
 
 	public void CreateUser()
@@ -29,6 +26,11 @@ public class Login : MonoBehaviour
 		string salida = this.tcpSocket.GetResponse();
 
 		Debug.Log(salida);
+	}
+
+	public void BackToMainMenu()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
 	public void ProbarInput()
