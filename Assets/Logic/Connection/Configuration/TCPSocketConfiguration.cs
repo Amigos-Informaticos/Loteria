@@ -8,8 +8,7 @@ public abstract class TCPSocketConfiguration
 		using (WebClient client = new WebClient())
 		{
 			string address = client.DownloadString("https://amigosinformaticos.000webhostapp.com/");
-			string serverAddress = address == "201.105.200.72" ? "192.168.1.99" : "201.105.200.72";
-			socket = new TCPSocket(serverAddress, 42069);
+			socket = new TCPSocket(address, 42069);
 		}
 	}
 }
