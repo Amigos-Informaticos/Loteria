@@ -1,8 +1,8 @@
-﻿namespace Tests
-{
-	using System.IO;
-	using NUnit.Framework;
+﻿using System.IO;
+using NUnit.Framework;
 
+namespace Tests
+{
 	public class UserSettings
 	{
 		[Test]
