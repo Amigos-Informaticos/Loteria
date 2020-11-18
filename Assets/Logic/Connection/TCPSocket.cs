@@ -52,6 +52,11 @@ public class TCPSocket
 
 	public void Close()
 	{
+		if (this.IsPrepared())
+		{
+			this.AddCommand(new Command("close"));
+			this.SendCommand();
+		}
 		this._stream.Close();
 		this._client.Close();
 	}
