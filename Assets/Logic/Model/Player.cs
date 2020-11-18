@@ -100,8 +100,10 @@ public class Player
 		this.tcpSocket.SendCommand();
 		if (this.tcpSocket.GetResponse().Equals("OK"))
 		{
-			loggedIn = true;
-		}		
+			loggedIn = true;			
+		}
+		this.tcpSocket.AddCommand(new Command("close"));
+		this.tcpSocket.SendCommand();
 		return loggedIn;
 	}
 
@@ -119,8 +121,11 @@ public class Player
 			command.AddArgument("code", this.Code);
 			tcpSocket.AddCommand(command);
 			tcpSocket.SendCommand();
-			signedUp = tcpSocket.GetResponse();			
+			signedUp = tcpSocket.GetResponse();
+			this.tcpSocket.AddCommand(new Command("close"));
+			this.tcpSocket.SendCommand();
 		}
+		
 		return signedUp;
     }
 	
@@ -149,7 +154,7 @@ public class Player
 
 	public bool IsComplete()
     {
-		return this.email != null && this.names != null && this.lastName != null;
+		return this.email != null && this.NickName != null && this.password != null && this.names != null && this.lastName != null;
     }
 
 	public void MakeNewBoard() 
