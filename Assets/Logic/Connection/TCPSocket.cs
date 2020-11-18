@@ -8,9 +8,9 @@ using UnityEngine;
 
 public class TCPSocket
 {
-	public string Server { get; set; }
-	public int Port { get; set; }
-	public List<Command> Messages { get; set; }
+	private string Server { get; set; }
+	private int Port { get; set; }
+	private List<Command> Messages { get; set; }
 	private TcpClient _client;
 	private NetworkStream _stream;
 	public static readonly int MAXTIMEOUT = 500;
@@ -99,19 +99,12 @@ public class TCPSocket
 	{
 		byte[] received = new byte[1024];
 		string response = "NO RESPONSE";
-		int tamanio = 0;
 		try
 		{
 			this.IsPrepared();
-			if (!wait)
-			{
-				this._stream.ReadTimeout = MAXTIMEOUT;
-			} else
-			{
-				this._stream.ReadTimeout = timeOut;
-			}
-			tamanio = this._stream.Read(received, 0, received.Length);
-			response = Encoding.ASCII.GetString(received, 0, tamanio);
+			this._stream.ReadTimeout = wait ? timeOut : MAXTIMEOUT;
+			int size = this._stream.Read(received, 0, received.Length);
+			response = Encoding.ASCII.GetString(received, 0, size);
 		}
 		catch (IOException exception)
 		{
