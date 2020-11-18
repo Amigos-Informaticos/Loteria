@@ -124,7 +124,6 @@ public class Player
 		return signedUp;
     }
 	
-
 	public static bool IsName(string names)
 	{
 		bool isName = false;
