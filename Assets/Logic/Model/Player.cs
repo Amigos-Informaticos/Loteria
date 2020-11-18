@@ -63,7 +63,7 @@ public class Player
 	}
 
 	public string Code { get; set; }
-	public int Score { get; set; } = 0;
+	public int Score { get; set; }
 	public Board Board { get; set; } = new Board();
 
 	public Player()
