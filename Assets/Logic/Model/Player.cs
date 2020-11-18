@@ -17,7 +17,7 @@ public class Player
         }
         set
         {            
-            if (Player.IsName(value))
+            if (IsName(value))
             {
 				this.names = value;
 			}
@@ -36,7 +36,7 @@ public class Player
         }
         set
         {
-            if (Player.IsName(value))
+            if (IsName(value))
             {
 				this.lastName = value;
             }
@@ -56,7 +56,7 @@ public class Player
         }
 		set
         {
-			if (Player.IsEmail(value))
+			if (IsEmail(value))
 			{
 				this.email = value;
 			}
@@ -75,7 +75,7 @@ public class Player
         }
         set
         {
-			this.password = Util.GetHashString(value);
+	        this.password = Util.GetHashString(value);
         }
     }
 
