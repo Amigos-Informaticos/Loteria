@@ -73,11 +73,12 @@
           <e p="READ ME.txt" t="Include" />
         </e>
         <e p="Logic" t="Include">
+          <e p="Configuration" t="Include">
+            <e p="TCPSocketConfiguration.cs" t="Include" />
+            <e p="UserConfiguration.cs" t="Include" />
+          </e>
           <e p="Connection" t="Include">
             <e p="Command.cs" t="Include" />
-            <e p="Configuration" t="Include">
-              <e p="TCPSocketConfiguration.cs" t="Include" />
-            </e>
             <e p="TCPSocket.cs" t="Include" />
           </e>
           <e p="Localization" t="Include">
@@ -132,6 +133,7 @@
           <e p="LocalizationTest.cs" t="Include" />
           <e p="PlayerTest.cs" t="Include" />
           <e p="Tests.asmdef" t="Include" />
+          <e p="UserSettings.cs" t="Include" />
           <e p="UtilTests.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
