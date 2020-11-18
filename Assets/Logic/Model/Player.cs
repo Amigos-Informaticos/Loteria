@@ -71,8 +71,7 @@ public class Player
         }
         set
         {
-			this.password = Util.GetHashString(value);
-			Util
+	        this.password = Util.GetHashString(value);
         }
     }
 
