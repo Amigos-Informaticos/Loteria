@@ -55,10 +55,8 @@
 			"English": "Sign Up"
 		}
 	},
-	"Login":
-	{
-		"Email":
-		{
+	"Login": {
+		"Email": {
 			"Español": "Correo Electrónico",
 			"English": "Email"
 		},

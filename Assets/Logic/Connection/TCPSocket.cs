@@ -88,9 +88,9 @@ public class TCPSocket
 		}
 	}
 
-	public string GetResponse(bool wait = false) => this.Read(wait);
+	public string GetResponse(bool wait = false, int timeOut = 500) => this.Read(wait, timeOut);
 
-	public string Read(bool wait = false)
+	public string Read(bool wait = false, int timeOut = 500)
 	{
 		byte[] received = new byte[1024];
 		string response = "NO RESPONSE";
@@ -103,7 +103,7 @@ public class TCPSocket
 				this._stream.ReadTimeout = MAXTIMEOUT;
 			} else
 			{
-				this._stream.ReadTimeout = 120000;
+				this._stream.ReadTimeout = timeOut;
 			}
 			tamanio = this._stream.Read(received, 0, received.Length);
 			response = Encoding.ASCII.GetString(received, 0, tamanio);
