@@ -1,6 +1,6 @@
 using System.Net;
 
-public abstract class TCPSocketConfiguration
+public static class TCPSocketConfiguration
 {
 	public static void BuildDefaultConfiguration(out TCPSocket socket)
 	{
