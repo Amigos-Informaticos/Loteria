@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Assets.Tests
+namespace Tests
 {
     class PlayerTest
     {        
@@ -41,10 +41,10 @@ namespace Assets.Tests
             Assert.IsTrue(Player.IsName("Alexis"));
         }
 
-        [Test]
-        public void IsEmail()
-        {
-            Assert.IsTrue(Player.IsEmail("alexisao@hotmail.com"));
-        }
-    }
+		[Test]
+		public void IsEmail()
+		{
+			Assert.IsTrue(Player.IsEmail("alexisao@hotmail.com"));
+		}
+	}
 }

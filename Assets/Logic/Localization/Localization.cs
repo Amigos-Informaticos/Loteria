@@ -4,14 +4,14 @@ using GitHub.Unity.Json;
 
 public abstract class Localization
 {
-	public static string Language { get; set; } = "Español";
+	public static string Language { get; set; } = UserConfiguration.Language;
 
 	public static Dictionary<string, Dictionary<string, Dictionary<string, string>>> Messages =
 		new Dictionary<string, Dictionary<string, Dictionary<string, string>>>();
 
 	public static void LoadMessages()
 	{
-		if (Messages.Count == 0)
+		if (Messages.Count == 0 || Localization.Language != UserConfiguration.Language)
 		{
 			const string MESSAGES_PATH = "Assets/Resources/LanguageFiles/Messages.json";
 			using (StreamReader reader = new StreamReader(MESSAGES_PATH))
@@ -27,7 +27,7 @@ public abstract class Localization
 
 	public static string GetMessage(string scene, string item)
 	{
-		if (Messages.Count == 0)
+		if (Messages.Count == 0 || Localization.Language != UserConfiguration.Language)
 		{
 			LoadMessages();
 		}
