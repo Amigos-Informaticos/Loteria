@@ -13,13 +13,18 @@ public class SignUp : MonoBehaviour
 	public TextMeshProUGUI txtPasswordConfirm;
 	public TextMeshProUGUI txtConfirmationCode;
 	public TextMeshProUGUI txtName;
-	public TextMeshProUGUI txtLastame;	
+	public TextMeshProUGUI txtLastame;
+	public TextMeshProUGUI emailPlaceHolder;
 	public Text feedbackMessage;
 
 	private TCPSocket socket;
 
+	private void Start()
+    {
+		
+	}
 	public void SignUpPlayer()
-	{
+	{		
 		Player player = InstancePlayer();
 		string response = null;
 		Debug.Log(player.Names);
@@ -35,7 +40,7 @@ public class SignUp : MonoBehaviour
 				response = player.SignUp();
 				if (String.Equals(response, "OK"))
 				{
-					feedbackMessage.text = "Registro exitoso. Puedes volver al menú.";
+					feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpSuccess");
 				}
 				else if (String.Equals(response, "WRONG CODE"))
 				{
@@ -48,12 +53,12 @@ public class SignUp : MonoBehaviour
 			}
 			else
 			{
-				feedbackMessage.text = "Las contraseñas no coinciden";
+				feedbackMessage.text = Localization.GetMessage("SignUp", "IncompleteFields");
 			}
 		} 
 		else
         {
-			feedbackMessage.text = "Campos incompletos";
+			feedbackMessage.text = Localization.GetMessage("SigUp", "IncompleteFields");
         }		
 		Debug.Log(response);
 		
@@ -61,30 +66,23 @@ public class SignUp : MonoBehaviour
 
 	public void SendCodeToEmail()
 	{
-		string email = this.txtEmail.text;
-		byte[] bytes = Encoding.Default.GetBytes(email);
-		email = Encoding.UTF8.GetString(bytes);
-		Command command = new Command("send_code_to_email");
-		command.AddArgument("email", email);
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.socket);
-		this.socket.AddCommand(command);
-		this.socket.SendCommand();
-		string response = this.socket.GetResponse(true);
-		if (response.Equals("OK"))
-		{
-			this.feedbackMessage.text="Código enviado con éxito";
-		}
-		else if(response.Equals("WRONG EMAIL"))
-		{
-			this.feedbackMessage.text = "No se pudo enviar el correo, verifique su email";
-		}
-	}
-
-	public void CloseSocket()
-	{
-		Command command = new Command("close");
-		this.socket.AddCommand(command);
-		this.socket.SendCommand();
+		Player player = InstancePlayer();			
+		string response = player.SendCode();
+        if (player.IsComplete())
+        {
+			if (String.Equals(response, "OK"))
+			{
+				this.feedbackMessage.text = "Código enviado con éxito";
+			}
+			else if (String.Equals(response, "WRONG EMAIL"))
+			{
+				this.feedbackMessage.text = "No se pudo enviar el correo, verifique su email";
+			}
+		} 
+		else
+        {
+			this.feedbackMessage.text = "Campos incompletos";
+        }
 		this.socket.Close();
 	}
 
