@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,31 +19,44 @@ public class SignUp : MonoBehaviour
 	private TCPSocket socket;
 
 	public void SignUpPlayer()
-	{		
-		InstancePlayer(out Player player);
+	{
+		Player player = InstancePlayer();
 		string response = null;
-		string passwordConfirmText = this.txtPasswordConfirm.text;
-		string codeText = this.txtConfirmationCode.text;
-
-		if (String.Equals(this.txtPassword.text, this.txtPasswordConfirm))
-		{
-			response = player.SignUp();
-			if (String.Equals(response, "OK"))
+		Debug.Log(player.Names);
+		Debug.Log(player.NickName);
+		Debug.Log(player.LastName);
+		Debug.Log(player.Email);
+		Debug.Log(player.Password);
+		Debug.Log(player.Code);
+		if (player.IsComplete())
+        {
+			if (String.Equals(this.txtPassword.text, this.txtPasswordConfirm.text))
 			{
-				feedbackMessage.text = "Registro exitoso. Puedes volver al menú.";
-			}
-			else if (String.Equals(response, "WRONG CODE"))
-			{
-				feedbackMessage.text = "El código de verificación no es correcto.";
+				response = player.SignUp();
+				if (String.Equals(response, "OK"))
+				{
+					feedbackMessage.text = "Registro exitoso. Puedes volver al menú.";
+				}
+				else if (String.Equals(response, "WRONG CODE"))
+				{
+					feedbackMessage.text = "El código de verificación no es correcto.";
+				}
+				else
+				{
+					feedbackMessage.text = "No fue posible registrar al jugador, inténtelo más tarde";
+				}
 			}
 			else
 			{
-				feedbackMessage.text = "No fue posible registrar al jugador, inténtelo más tarde";
+				feedbackMessage.text = "Las contraseñas no coinciden";
 			}
-		}
+		} 
+		else
+        {
+			feedbackMessage.text = "Campos incompletos";
+        }		
 		Debug.Log(response);
-		Debug.Log(passwordConfirmText);
-		Debug.Log(codeText);
+		
 	}
 
 	public void SendCodeToEmail()
@@ -79,16 +93,15 @@ public class SignUp : MonoBehaviour
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
-	public void InstancePlayer(out Player player)
-    {		
-		player = new Player
-		{
-			Email = txtEmail.text,
-			NickName = txtNickname.text,
-			Password = txtPassword.text,
-			Names = txtName.text,
-			LastName = txtLastame.text,
-			Code = txtConfirmationCode.text
-		};
+	public Player InstancePlayer()
+    {
+		Player player = new Player();		
+		player.Email = Regex.Replace(txtEmail.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.NickName = Regex.Replace(txtNickname.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Password = Regex.Replace(txtPassword.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Names = Regex.Replace(txtName.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.LastName = Regex.Replace(txtLastame.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Code = Regex.Replace(txtConfirmationCode.text, @"[^\u0000-\u007F]+", string.Empty);
+		return player;
     }
 }

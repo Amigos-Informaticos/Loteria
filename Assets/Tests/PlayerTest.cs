@@ -59,13 +59,13 @@ namespace Tests
         [Test]
         public void IsName()
         {            
-            Assert.IsTrue(Player.IsName("Alexis"));
+            Assert.IsTrue(Player.IsName("Efrain Razziel"));
         }
 
 		[Test]
 		public void IsEmail()
 		{
-			Assert.IsTrue(Player.IsEmail("alexisao@hotmail.com"));
+			Assert.IsTrue(Player.IsEmail("grimlicrash@outlook.com"));
 		}
 	}
 }

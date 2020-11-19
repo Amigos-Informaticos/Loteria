@@ -2,7 +2,7 @@ using System;
 using System.Text.RegularExpressions;
 
 public class Player
-{
+{	
 	private string names;
 	private string lastName;
 	private string email;
@@ -142,7 +142,7 @@ public class Player
 
 	public bool IsComplete()
     {
-		return this.email != null && this.NickName != null && this.password != null && this.names != null && this.lastName != null;
+		return this.Email != null && this.NickName != null && this.Password != null && this.Names != null && this.LastName != null;
     }
 
 	public void MakeNewBoard()
