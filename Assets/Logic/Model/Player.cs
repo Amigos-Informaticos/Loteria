@@ -108,7 +108,7 @@ public class Player
 
 	public string SendCode()
     {		
-		Command command = new Command("send_code_to_email");
+		this.command = new Command("send_code_to_email");
 		command.AddArgument("email", this.email);		
 		this.tcpSocket.AddCommand(command);
 		this.tcpSocket.SendCommand();
