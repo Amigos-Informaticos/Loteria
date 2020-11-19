@@ -13,13 +13,17 @@ namespace Tests
         [Test]
         public void LogIn()
         {
-            Player edsonsito = new Player
+            string response = null;
+            Player alexito = new Player
             {
-                Email = "efrain_escuela@outlook.com",
-                Password = "beethoven123"
+                Email = "alexisao@hotmail.com",
+                Password = "charlotte123"
             };
-            Assert.IsTrue(edsonsito.LogIn());
+            response = alexito.LogIn();
+            Debug.Log(response);
+            Assert.AreEqual(response, "OK");
         }
+
         [Test]
         public void SignUp()
         {
@@ -29,11 +33,28 @@ namespace Tests
                 Password = "charlotte123",
                 NickName = "VeggieCode",
                 Names = "Alexis",
-                LastName = "Alvarez Ortega"
+                LastName = "Alvarez Ortega",
+                Code = "8cd6f"
             };
             string response = alexito.SignUp();
             Debug.Log(response);
             Assert.IsTrue(response.Equals("OK"));
+        }
+
+        [Test]
+        public void SendCode()
+        {                       
+            Player alexito = new Player
+            {
+                Email = "alexisao@hotmail.com",
+                Password = "charlotte123",
+                NickName = "VeggieCode",
+                Names = "Alexis",
+                LastName = "Alvarez Ortega"
+            };
+            string response = alexito.SendCode();
+            Debug.Log(response);
+            Assert.AreEqual(response, "OK");
         }
         [Test]
         public void IsName()

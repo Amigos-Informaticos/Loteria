@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,52 +7,32 @@ using UnityEngine.UI;
 public class SignUp : MonoBehaviour
 {
 	public TextMeshProUGUI txtEmail;
-
 	public TextMeshProUGUI txtNickname;
-
 	public TextMeshProUGUI txtPassword;
-
 	public TextMeshProUGUI txtPasswordConfirm;
-
 	public TextMeshProUGUI txtConfirmationCode;
-
 	public TextMeshProUGUI txtName;
-
-	public TextMeshProUGUI txtLastame;
-	
+	public TextMeshProUGUI txtLastame;	
 	public Text feedbackMessage;
 
 	private TCPSocket socket;
 
 	public void SignUpPlayer()
-	{
-		string emailText = this.txtEmail.text;
-		string nicknameText = this.txtNickname.text;
-		string passwordText = this.txtPassword.text;
+	{		
+		InstancePlayer(out Player player);
+		string response = null;
 		string passwordConfirmText = this.txtPasswordConfirm.text;
-		string nameText = this.txtName.text;
-		string lastameText = this.txtLastame.text;
 		string codeText = this.txtConfirmationCode.text;
 
-		Command command = new Command("sign_up");
-		command.AddArgument("email", emailText);
-		command.AddArgument("nickname", nicknameText);
-		command.AddArgument("password", passwordText);
-		command.AddArgument("name", nameText);
-		command.AddArgument("lastname", lastameText);
-		command.AddArgument("code", codeText);
-
-		if (passwordText.Equals(passwordConfirmText))
+		if (String.Equals(this.txtPassword.text, this.txtPasswordConfirm))
 		{
-			TCPSocketConfiguration.BuildDefaultConfiguration(out this.socket);
-			this.socket.AddCommand(command);
-			this.socket.SendCommand();
-			string response = this.socket.GetResponse(true);
-			this.CloseSocket();
-			if (response.Equals("OK"))
+
+			response = player.SignUp();
+			if (String.Equals(response, "OK"))
 			{
 				feedbackMessage.text = "Registro exitoso. Puedes volver al menú.";
-			}else if (response.Equals("WRONG CODE"))
+			}
+			else if (String.Equals(response, "WRONG CODE"))
 			{
 				feedbackMessage.text = "El código de verificación no es correcto.";
 			}
@@ -59,23 +40,16 @@ public class SignUp : MonoBehaviour
 			{
 				feedbackMessage.text = "No fue posible registrar al jugador, inténtelo más tarde";
 			}
-		}
-		else
-		{
-			feedbackMessage.text = "Verifica que las contraseñas coincidan.";
-		}
 
-		Debug.Log(emailText);
-		Debug.Log(nicknameText);
-		Debug.Log(passwordText);
+		}
+		Debug.Log(response);
 		Debug.Log(passwordConfirmText);
-		Debug.Log(nameText);
-		Debug.Log(lastameText);
 		Debug.Log(codeText);
 	}
 
 	public void SendCodeToEmail()
 	{
+
 		string email = this.txtEmail.text;
 		byte[] bytes = Encoding.Default.GetBytes(email);
 		email = Encoding.UTF8.GetString(bytes);
@@ -107,4 +81,17 @@ public class SignUp : MonoBehaviour
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
+
+	public void InstancePlayer(out Player player)
+    {		
+		player = new Player
+		{
+			Email = txtEmail.text,
+			NickName = txtNickname.text,
+			Password = txtPassword.text,
+			Names = txtName.text,
+			LastName = txtLastame.text,
+			Code = txtConfirmationCode.text
+		};
+    }
 }

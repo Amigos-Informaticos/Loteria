@@ -1,3 +1,4 @@
+using System;
 using System.Text.RegularExpressions;
 
 public class Player
@@ -71,18 +72,17 @@ public class Player
 		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 	}
 
-	public bool LogIn()
+	public string LogIn()
 	{
-		bool loggedIn = false;
+		string loggedIn = "Error";
 		this.command = new Command("login");
 		this.command.AddArgument("email", this.email);
 		this.command.AddArgument("password", this.password);
 		this.tcpSocket.AddCommand(this.command);
-		this.tcpSocket.SendCommand();
-		if (this.tcpSocket.GetResponse().Equals("OK"))
-		{
-			loggedIn = true;
-		}
+		this.tcpSocket.SendCommand();		
+			loggedIn = this.tcpSocket.GetResponse(true, 1000);		
+
+		this.tcpSocket.Close();
 		return loggedIn;
 	}
 
@@ -100,10 +100,21 @@ public class Player
 			this.command.AddArgument("code", this.Code);
 			this.tcpSocket.AddCommand(this.command);
 			this.tcpSocket.SendCommand();
-			signedUp = this.tcpSocket.GetResponse();
-		}
-		
+			signedUp = this.tcpSocket.GetResponse(true, 1000);
+			this.tcpSocket.Close();
+		}		
 		return signedUp;
+	}
+
+	public string SendCode()
+    {		
+		Command command = new Command("send_code_to_email");
+		command.AddArgument("email", this.email);		
+		this.tcpSocket.AddCommand(command);
+		this.tcpSocket.SendCommand();
+		string response = this.tcpSocket.GetResponse(true, 1000);
+		this.tcpSocket.Close();
+		return response;
 	}
 
 	public static bool IsName(string names)
