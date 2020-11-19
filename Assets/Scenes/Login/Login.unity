@@ -324,6 +324,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingresoEmail: {fileID: 1487877646}
   ingresoContrasenia: {fileID: 1978985186}
+  emailPlaceHolder: {fileID: 522246238}
+  passwordPlaceHolder: {fileID: 0}
+  backButton: {fileID: 0}
+  loginButton: {fileID: 0}
 --- !u!4 &56227957
 Transform:
   m_ObjectHideFlags: 0
@@ -729,7 +733,7 @@ GameObject:
   - component: {fileID: 825967733}
   - component: {fileID: 825967732}
   m_Layer: 5
-  m_Name: ButtonRegister
+  m_Name: ButtonLogIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

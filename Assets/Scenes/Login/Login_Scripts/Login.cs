@@ -14,9 +14,11 @@ public class Login : MonoBehaviour
 
 	private void Start()
 	{
+		Localization.Language = "English";
+		this.ingresoEmail.text = Localization.GetMessage("Login", "Email");
 		this.emailPlaceHolder.text = Localization.GetMessage("Login", "Email");
 		this.passwordPlaceHolder.text = Localization.GetMessage("Login", "Password");
-		this.backButton.text = Localization.GetMessage("Login", "Back");
+		this.backButton.text = Localization.GetMessage("Login","Back");
 		this.loginButton.text = Localization.GetMessage("Login", "Login");
 	}
 
