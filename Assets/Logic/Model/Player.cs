@@ -74,13 +74,13 @@ public class Player
 
 	public string LogIn()
 	{
-		string loggedIn = "Error";
+		string loggedIn;
 		this.command = new Command("login");
 		this.command.AddArgument("email", this.email);
 		this.command.AddArgument("password", this.password);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();		
-			loggedIn = this.tcpSocket.GetResponse(true, 1000);		
+		loggedIn = this.tcpSocket.GetResponse(true, 1000);		
 
 		this.tcpSocket.Close();
 		return loggedIn;

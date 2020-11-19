@@ -18,8 +18,9 @@ public class SignUp : MonoBehaviour
 	private TCPSocket socket;
 
 	public void SignUpPlayer()
-	{		
-		InstancePlayer(out Player player);
+	{
+		Player player = null;
+		InstancePlayer(player);
 		string response = null;
 		string passwordConfirmText = this.txtPasswordConfirm.text;
 		string codeText = this.txtConfirmationCode.text;
@@ -79,7 +80,7 @@ public class SignUp : MonoBehaviour
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
-	public void InstancePlayer(out Player player)
+	public void InstancePlayer(Player player)
     {		
 		player = new Player
 		{
