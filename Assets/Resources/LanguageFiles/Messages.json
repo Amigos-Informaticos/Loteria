@@ -53,6 +53,14 @@
 		"SignUp": {
 			"Español": "Registrarse",
 			"English": "Sign Up"
+		},
+		"SignUpSuccess":{
+			"Español": "Registro exitoso. Puede volver al menú",
+			"English": "Succesful registration. You can go back to the menu"
+		},
+		"IncompleteFields":{
+			"Español": "Campos incompletos",
+			"English": "Incomplete fields"
 		}
 	},
 	"Login": {
