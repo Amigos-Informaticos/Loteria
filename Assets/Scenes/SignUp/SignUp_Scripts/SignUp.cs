@@ -26,7 +26,6 @@ public class SignUp : MonoBehaviour
 
 		if (String.Equals(this.txtPassword.text, this.txtPasswordConfirm))
 		{
-
 			response = player.SignUp();
 			if (String.Equals(response, "OK"))
 			{
@@ -40,7 +39,6 @@ public class SignUp : MonoBehaviour
 			{
 				feedbackMessage.text = "No fue posible registrar al jugador, inténtelo más tarde";
 			}
-
 		}
 		Debug.Log(response);
 		Debug.Log(passwordConfirmText);
@@ -49,7 +47,6 @@ public class SignUp : MonoBehaviour
 
 	public void SendCodeToEmail()
 	{
-
 		string email = this.txtEmail.text;
 		byte[] bytes = Encoding.Default.GetBytes(email);
 		email = Encoding.UTF8.GetString(bytes);
