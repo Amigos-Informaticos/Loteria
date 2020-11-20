@@ -77,6 +77,22 @@
 		"UnmatchedPassword": {
 			"Español": "Las contraseñas no coinciden",
 			"English": "Unmatched password"
+		},
+		"SendCodeSuccess": {
+			"Español": "Código enviado exitosamente",
+			"English": "Send code success"
+		},
+		"UnidentifiedError": {
+			"Español": "Error",
+			"English": "Error"
+		},
+		"EmailNotSet": {
+			"Español": "Especifique un email",
+			"English": "Write an email"
+		},
+		"WrongEmail": {
+			"Español": "Correo electronico incorrecto",
+			"English": "Wrong email"
 		}
 	},
 	"Login": {

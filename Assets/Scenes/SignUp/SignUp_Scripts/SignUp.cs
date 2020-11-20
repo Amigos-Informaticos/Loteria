@@ -17,10 +17,7 @@ public class SignUp : MonoBehaviour
 	public Text feedbackMessage;
 	
 	public void Start()
-    {
-		feedbackMessage.text = Localization.GetMessage("SignUp", "IncompleteFields");
-		Debug.Log(feedbackMessage.text);
-		
+    {		
     }
 	public void SignUpPlayer()
 	{		
@@ -48,22 +45,7 @@ public class SignUp : MonoBehaviour
     public void SendCodeToEmail()
 	{
 		Player player = InstancePlayer();			
-		string response = player.SendCode();
-        if (player.IsComplete())
-        {
-			if (String.Equals(response, "OK"))
-			{
-				this.feedbackMessage.text = "Código enviado con éxito";
-			}
-			else if (String.Equals(response, "WRONG EMAIL"))
-			{
-				this.feedbackMessage.text = "No se pudo enviar el correo, verifique su email";
-			}
-		} 
-		else
-        {
-			this.feedbackMessage.text = Localization.GetMessage("SignUp", "IncompleteFields");
-        }		
+		string response = player.SendCode();	
 	}
 
 	public void BackToMainMenu()
@@ -110,19 +92,17 @@ public class SignUp : MonoBehaviour
 		switch (response)
 		{
 			case "OK":
-				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpSuccess");
+				feedbackMessage.text = Localization.GetMessage("SignUp", "SendCodeSuccess");
 				break;
+			case "ERROR":				
 			case "UNIDENTIFIED ERROR":
-				feedbackMessage.text = Localization.GetMessage("SignUp", "WrongCode");
+				feedbackMessage.text = Localization.GetMessage("SignUp", "UnidentifiedError");
 				break;
 			case "EMAIL NOT SET":
-				feedbackMessage.text = Localization.GetMessage("SignUp", "AlreadyRegistered");
-				break;
-			case "ERROR":
-				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpError");
-				break;
+				feedbackMessage.text = Localization.GetMessage("SignUp", "EmailNotSet");
+				break;			
 			case "WRONG EMAIL":
-				feedbackMessage.text = Localization.GetMessage("SignUp", "");
+				feedbackMessage.text = Localization.GetMessage("SignUp", "WrongEmail");
 				break;
 			default:
 				feedbackMessage.text = "";

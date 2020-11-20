@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Text.RegularExpressions;
+using TMPro;
 using UnityEngine;
 
 public class Login : MonoBehaviour
@@ -22,10 +23,14 @@ public class Login : MonoBehaviour
 
 	public void CreateUser()
 	{
-		this.tcpSocket.SendCommand();
-		string salida = this.tcpSocket.GetResponse();
-
-		Debug.Log(salida);
+		Player player = new Player();
+		player.Email = Regex.Replace(ingresoEmail.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Password = Regex.Replace(ingresoContrasenia.text, @"[^\u0000-\u007F]+", string.Empty);
+		string response = player.LogIn();
+        if (response.Equals("OK"))
+        {
+			UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+		}
 	}
 
 	public void BackToMainMenu()
