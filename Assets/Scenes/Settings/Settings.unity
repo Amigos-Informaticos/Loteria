@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 198778266}
   - component: {fileID: 198778265}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SaveButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -647,8 +647,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fc02e5166000e4b98c74df254baa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicVolumeText: {fileID: 1284537633}
+  SFXVolumeText: {fileID: 1971303363}
+  LanguageText: {fileID: 2095241968}
+  SaveButton: {fileID: 198778265}
+  BackButton: {fileID: 1917414335}
   languageDD: {fileID: 1215245488}
-  languageLabel: {fileID: 1497798428}
 --- !u!4 &431324406
 Transform:
   m_ObjectHideFlags: 0
@@ -765,7 +769,7 @@ GameObject:
   - component: {fileID: 599307128}
   - component: {fileID: 599307127}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,7 +899,7 @@ GameObject:
   - component: {fileID: 689045346}
   - component: {fileID: 689045345}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SaveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1654,7 +1658,7 @@ GameObject:
   - component: {fileID: 1284537634}
   - component: {fileID: 1284537633}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MusicVolumeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1676,8 +1680,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -91.39799, y: 81.1}
-  m_SizeDelta: {x: 139.53119, y: 25}
+  m_AnchoredPosition: {x: -135.04, y: 81.1}
+  m_SizeDelta: {x: 208.66321, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1284537633
 MonoBehaviour:
@@ -1733,7 +1737,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 260
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -2597,7 +2601,7 @@ GameObject:
   - component: {fileID: 1917414336}
   - component: {fileID: 1917414335}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: BackButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2753,7 +2757,7 @@ GameObject:
   - component: {fileID: 1971303364}
   - component: {fileID: 1971303363}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: SFXVolumeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2775,8 +2779,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -91.397964, y: 22.199997}
-  m_SizeDelta: {x: 121.390564, y: 25}
+  m_AnchoredPosition: {x: -135.04, y: 22.199997}
+  m_SizeDelta: {x: 208.66699, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1971303363
 MonoBehaviour:
@@ -2832,7 +2836,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 260
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -3148,7 +3152,7 @@ GameObject:
   - component: {fileID: 2095241969}
   - component: {fileID: 2095241968}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: LanguageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
