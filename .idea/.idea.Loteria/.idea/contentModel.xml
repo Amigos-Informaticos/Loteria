@@ -64,6 +64,11 @@
               <e p="Settings.cs" t="Include" />
             </e>
           </e>
+          <e p="SignedIn" t="Include">
+            <e p="SignedInScripts" t="Include">
+              <e p="SignedIn.cs" t="Include" />
+            </e>
+          </e>
           <e p="SignUp" t="Include">
             <e p="SignUp_Scripts" t="Include">
               <e p="SignUp.cs" t="Include" />
