@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     [SerializeField] private Transform languageDD;
-    [SerializeField] private Text languageLabel;
+    
     void Start()
     {
-        //UserConfiguration.LoadSettings();
-        int menuIndex = languageDD.GetComponent<Dropdown>().value;
-        List<Dropdown.OptionData> menuOptions = languageDD.GetComponent<Dropdown>().options;
+        
         languageDD.GetComponent<Dropdown>().value = 1;
     }
+    
+    //public void SetLanguage
 
     public void BackToMenu()
     {
