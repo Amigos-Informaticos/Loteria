@@ -108,10 +108,10 @@ public class Player
 
 	public static Dictionary<int, Dictionary<string, string>> GetGlobalScore()
 	{
-		Command command = new Command("get_top_ten");
+		Command getTopTen = new Command("get_top_ten");
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Dictionary<int, Dictionary<string, string>> scoreDictionary = null;
-		tcpSocket.AddCommand(command);
+		tcpSocket.AddCommand(getTopTen);
 		string response = tcpSocket.GetResponse(true, 2000);
 		Debug.Log(response);
 		if(!response.Equals("ERROR. TIMEOUT"))
