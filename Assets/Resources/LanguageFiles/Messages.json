@@ -99,12 +99,12 @@
 	},
 	"Settings": {
 		"Music Volume":{
-			"Español": "Volumen de musica",
-			"English": "Music Volume"
+			"Español": "Volumen de musica:",
+			"English": "Music Volume:"
 		},
 		"SFX Volume": {
-			"Español": "Volumen de efectos",
-			"English": "SFX Volume"
+			"Español": "Volumen de efectos:",
+			"English": "SFX Volume:"
 		},
 		"Language": {
 			"Español": "Lenguaje",
