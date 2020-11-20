@@ -16,9 +16,6 @@ public class SignUp : MonoBehaviour
 	public TextMeshProUGUI txtLastame;	
 	public Text feedbackMessage;
 	
-	public void Start()
-    {		
-    }
 	public void SignUpPlayer()
 	{		
 		Player player = InstancePlayer();
@@ -45,7 +42,8 @@ public class SignUp : MonoBehaviour
     public void SendCodeToEmail()
 	{
 		Player player = InstancePlayer();			
-		string response = player.SendCode();	
+		string response = player.SendCode();
+		Debug.Log(response);
 	}
 
 	public void BackToMainMenu()
