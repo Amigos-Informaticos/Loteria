@@ -325,9 +325,9 @@ MonoBehaviour:
   ingresoEmail: {fileID: 1487877646}
   ingresoContrasenia: {fileID: 1978985186}
   emailPlaceHolder: {fileID: 522246238}
-  passwordPlaceHolder: {fileID: 0}
-  backButton: {fileID: 0}
-  loginButton: {fileID: 0}
+  passwordPlaceHolder: {fileID: 1459066641}
+  backButton: {fileID: 941296504}
+  loginButton: {fileID: 1986529591}
 --- !u!4 &56227957
 Transform:
   m_ObjectHideFlags: 0

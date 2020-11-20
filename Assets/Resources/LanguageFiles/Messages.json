@@ -96,5 +96,45 @@
 			"Español": "Entrar",
 			"English": "Login"
 		}
+	},
+	"Settings": {
+		"Music Volume":{
+			"Español": "Volumen de musica",
+			"English": "Music Volume"
+		},
+		"SFX Volume": {
+			"Español": "Volumen de efectos",
+			"English": "SFX Volume"
+		},
+		"Language": {
+			"Español": "Lenguaje",
+			"English": "Language"
+		},
+		"Back": {
+			"Español": "Atrás",
+			"English": "Back"
+		},
+		"Save": {
+			"Español": "Guardar",
+			"English": "Save"
+		}
+	},
+	"SignedIn": {
+		"Play": {
+			"Español": "Jugar",
+			"English": "Play"
+		},
+		"Score": {
+			"Español": "Puntajes",
+			"English": "Score"
+		},
+		"Settings": {
+			"Español": "Configuración",
+			"English": "Settings"
+		},
+		"Exit": {
+			"Español": "Salir",
+			"English": "Exit"
+		}
 	}
 }
