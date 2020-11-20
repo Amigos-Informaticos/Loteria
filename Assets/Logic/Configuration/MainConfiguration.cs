@@ -1,30 +1,24 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using GitHub.Unity.Json;
+using UnityEngine;
 
-public static class UserConfiguration
+public static class MainConfiguration
 {
 	public static Dictionary<string, string> Settings { get; set; } =
 		new Dictionary<string, string>();
 
-	private static readonly string SETTINGS_PATH =
-		MainConfiguration.GetSetting("UserConfigurationFile");
+	private const string MAIN_SETTINGS_PATH =
+		"Assets/Resources/MainConfiguration/MainConfiguration.json";
 
-	public static void LoadSettings()
+	private static void LoadSettings()
 	{
-		string content = new StreamReader(SETTINGS_PATH).ReadToEnd();
+		string content = new StreamReader(MAIN_SETTINGS_PATH).ReadToEnd();
 		Settings = SimpleJson.DeserializeObject<Dictionary<string, string>>(content);
 	}
 
-	public static void SaveSettings()
-	{
-		string content = SimpleJson.SerializeObject(Settings);
-		StreamWriter writer = new StreamWriter(SETTINGS_PATH, false);
-		writer.Write(content);
-		writer.Close();
-	}
-
-	private static bool SettingExists(string settingName)
+	public static bool SettingExists(string settingName)
 	{
 		if (Settings.Count == 0)
 		{

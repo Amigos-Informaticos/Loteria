@@ -1,4 +1,3 @@
-using System;
 using System.Text.RegularExpressions;
 
 public class Player
@@ -112,7 +111,7 @@ public class Player
 		command.AddArgument("email", this.email);		
 		this.tcpSocket.AddCommand(command);
 		this.tcpSocket.SendCommand();
-		string response = this.tcpSocket.GetResponse(true, 1000);
+		string response = this.tcpSocket.GetResponse(true, 3000);
 		this.tcpSocket.Close();
 		return response;
 	}
