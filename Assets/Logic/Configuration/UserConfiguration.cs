@@ -42,4 +42,12 @@ public static class UserConfiguration
 		}
 		return setting;
 	}
+
+	public static void SetSetting(string settingName, string settingValue)
+	{
+		if (SettingExists(settingName))
+		{
+			Settings[settingName] = settingValue;
+		}
+	}
 }
