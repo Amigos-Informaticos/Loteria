@@ -9,7 +9,7 @@ namespace Tests
 		{
 			Localization.LoadMessages();
 			string spanishMessage = Localization.GetMessage("Login", "Login");
-			Localization.Language = "English";
+			UserConfiguration.SetSetting("Language", "English");
 			string englishMessage = Localization.GetMessage("Login", "Login");
 			Assert.AreEqual(spanishMessage, "Entrar");
 			Assert.AreEqual(englishMessage, "Login");

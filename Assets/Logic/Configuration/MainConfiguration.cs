@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using GitHub.Unity.Json;
-using UnityEngine;
 
 public static class MainConfiguration
 {
