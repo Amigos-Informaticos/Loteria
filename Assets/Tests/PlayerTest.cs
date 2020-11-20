@@ -54,7 +54,7 @@ namespace Tests
             };
             string response = alexito.SendCode();
             Debug.Log(response);
-            Assert.AreEqual(response, "OK");
+            Assert.AreEqual("OK", response);
         }
         [Test]
         public void IsName()

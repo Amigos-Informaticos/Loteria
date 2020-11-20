@@ -4,31 +4,50 @@ using GitHub.Unity.Json;
 
 public static class UserConfiguration
 {
-	public static string Language { get; set; } = "English";
-	public static string MusicVolume { get; set; } = "100";
-	public static string FXSVolume { get; set; } = "100";
+	public static Dictionary<string, string> Settings { get; set; } =
+		new Dictionary<string, string>();
 
-	private const string SETTINGS_PATH =
-		"Assets/Resources/UserConfigurationFiles/UserConfiguration.json";
+	private static readonly string SETTINGS_PATH =
+		MainConfiguration.GetSetting("UserConfigurationFile");
 
 	public static void LoadSettings()
 	{
-		Dictionary<string, string> settings =
-			SimpleJson.DeserializeObject<Dictionary<string, string>>(SETTINGS_PATH);
-		Language = settings["Language"];
-		MusicVolume = settings["MusicVolume"];
-		FXSVolume = settings["FSXVolume"];
+		string content = new StreamReader(SETTINGS_PATH).ReadToEnd();
+		Settings = SimpleJson.DeserializeObject<Dictionary<string, string>>(content);
 	}
 
 	public static void SaveSettings()
 	{
-		Dictionary<string, string> settings = new Dictionary<string, string>();
-		settings.Add("Language", Language);
-		settings.Add("MusicVolume", MusicVolume);
-		settings.Add("FSXVolume", FXSVolume);
-		string content = SimpleJson.SerializeObject(settings);
+		string content = SimpleJson.SerializeObject(Settings);
 		StreamWriter writer = new StreamWriter(SETTINGS_PATH, false);
 		writer.Write(content);
 		writer.Close();
+	}
+
+	private static bool SettingExists(string settingName)
+	{
+		if (Settings.Count == 0)
+		{
+			LoadSettings();
+		}
+		return Settings.ContainsKey(settingName);
+	}
+
+	public static string GetSetting(string settingName)
+	{
+		string setting = null;
+		if (SettingExists(settingName))
+		{
+			setting = Settings[settingName];
+		}
+		return setting;
+	}
+
+	public static void SetSetting(string settingName, string settingValue)
+	{
+		if (SettingExists(settingName))
+		{
+			Settings[settingName] = settingValue;
+		}
 	}
 }
