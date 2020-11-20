@@ -4,17 +4,15 @@ using GitHub.Unity.Json;
 
 public abstract class Localization
 {
-	public static string Language { get; set; } = UserConfiguration.GetSetting("Language");
-
 	public static Dictionary<string, Dictionary<string, Dictionary<string, string>>> Messages =
 		new Dictionary<string, Dictionary<string, Dictionary<string, string>>>();
 
 	public static void LoadMessages()
 	{
-		if (Messages.Count == 0 || Language != UserConfiguration.GetSetting("Language"))
+		if (Messages.Count == 0)
 		{
-			const string MESSAGES_PATH = "Assets/Resources/LanguageFiles/Messages.json";
-			using (StreamReader reader = new StreamReader(MESSAGES_PATH))
+			string messagesPath = MainConfiguration.GetSetting("LanguagesFile");
+			using (StreamReader reader = new StreamReader(messagesPath))
 			{
 				string contents = reader.ReadToEnd();
 				Messages = SimpleJson
@@ -27,11 +25,10 @@ public abstract class Localization
 
 	public static string GetMessage(string scene, string item)
 	{
-		if (Messages.Count == 0 || Language != UserConfiguration.GetSetting("Language"))
+		if (Messages.Count == 0)
 		{
 			LoadMessages();
 		}
-
-		return Messages[scene][item][Language];
+		return Messages[scene][item][UserConfiguration.GetSetting("Language")];
 	}
 }
