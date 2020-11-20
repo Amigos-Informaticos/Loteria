@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class TCPSocket
 {
-	private string Server { get; set; }
-	private int Port { get; set; }
+	public string Server { get; set; }
+	public int Port { get; set; }
 	private List<Command> Messages { get; set; }
 	private TcpClient _client;
 	private NetworkStream _stream;
@@ -106,7 +106,7 @@ public class TCPSocket
 			int size = this._stream.Read(received, 0, received.Length);
 			response = Encoding.ASCII.GetString(received, 0, size);
 		}
-		catch (IOException exception)
+		catch (IOException)
 		{
 			response = "ERROR. TIMEOUT";
 		}
