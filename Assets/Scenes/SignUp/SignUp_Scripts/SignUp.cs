@@ -7,15 +7,15 @@ using UnityEngine.UI;
 
 public class SignUp : MonoBehaviour
 {
-	public TextMeshProUGUI txtEmail;
-	public TextMeshProUGUI txtNickname;
-	public TextMeshProUGUI txtPassword;
-	public TextMeshProUGUI txtPasswordConfirm;
-	public TextMeshProUGUI txtConfirmationCode;
-	public TextMeshProUGUI txtName;
-	public TextMeshProUGUI txtLastame;
-	public TextMeshProUGUI emailPlaceHolder;
-	public Text feedbackMessage;
+	private TextMeshProUGUI txtEmail;
+	private TextMeshProUGUI txtNickname;
+	private TextMeshProUGUI txtPassword;
+	private TextMeshProUGUI txtPasswordConfirm;
+	private TextMeshProUGUI txtConfirmationCode;
+	private TextMeshProUGUI txtName;
+	private TextMeshProUGUI txtLastame;
+	private TextMeshProUGUI emailPlaceHolder;
+	private Text feedbackMessage;
 	private void Start()
     {
 		Localization.Language = "English";
@@ -97,6 +97,8 @@ public class SignUp : MonoBehaviour
 			case "Error":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpError");
 				break;
+			default:
+				feedbackMessage.text = "";
 		}
 	}
 
@@ -118,6 +120,9 @@ public class SignUp : MonoBehaviour
 				break;
 			case "WRONG EMAIL":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "");
+				break;
+			default:
+				feedbackMessage.text = "";
 				break;
 		}
 	}

@@ -112,10 +112,13 @@ public class Player
 		Command command = new Command("get_top_ten");
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Dictionary<int, Dictionary<string, string>> scoreDictionary = null;
-		string response = tcpSocket.GetResponse(true, 8000);		
+		tcpSocket.AddCommand(command);
+		string response = tcpSocket.GetResponse(true, 2000);
 		Debug.Log(response);
 		if(!response.Equals("ERROR. TIMEOUT"))
-			scoreDictionary = SimpleJson.DeserializeObject<Dictionary<int, Dictionary<string,string>>>(response);
+        {
+			scoreDictionary = SimpleJson.DeserializeObject<Dictionary<int, Dictionary<string, string>>>(response);
+		}			
 		tcpSocket.Close();
 		return scoreDictionary;
     }
