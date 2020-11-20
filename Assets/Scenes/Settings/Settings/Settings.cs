@@ -10,10 +10,10 @@ public class Settings : MonoBehaviour
     [SerializeField] private Text languageLabel;
     void Start()
     {
-        UserConfiguration.LoadSettings();
+        //UserConfiguration.LoadSettings();
         int menuIndex = languageDD.GetComponent<Dropdown>().value;
         List<Dropdown.OptionData> menuOptions = languageDD.GetComponent<Dropdown>().options;
-        languageDD.GetComponent<Dropdown>().value = 0;
+        languageDD.GetComponent<Dropdown>().value = 1;
     }
 
     public void BackToMenu()
