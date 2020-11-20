@@ -1,7 +1,12 @@
+using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using GitHub.Unity.Json;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class Player
-{
+{	
 	private string names;
 	private string lastName;
 	private string email;
@@ -79,8 +84,7 @@ public class Player
 		this.command.AddArgument("password", this.password);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();		
-		loggedIn = this.tcpSocket.GetResponse(true, 1000);		
-
+		loggedIn = this.tcpSocket.GetResponse(true, 1000);
 		this.tcpSocket.Close();
 		return loggedIn;
 	}
@@ -88,22 +92,35 @@ public class Player
 	public string SignUp()
 	{
 		string signedUp = "Error";
-		if (this.IsComplete())
-		{
-			this.command = new Command("sign_up");
-			this.command.AddArgument("email", this.email);
-			this.command.AddArgument("nickname", this.NickName);
-			this.command.AddArgument("password", this.password);
-			this.command.AddArgument("name", this.names);
-			this.command.AddArgument("lastname", this.lastName);
-			this.command.AddArgument("code", this.Code);
-			this.tcpSocket.AddCommand(this.command);
-			this.tcpSocket.SendCommand();
-			signedUp = this.tcpSocket.GetResponse(true, 1000);
-			this.tcpSocket.Close();
-		}		
+		this.command = new Command("sign_up");
+		this.command.AddArgument("email", this.email);
+		this.command.AddArgument("nickname", this.NickName);
+		this.command.AddArgument("password", this.password);
+		this.command.AddArgument("name", this.names);
+		this.command.AddArgument("lastname", this.lastName);
+		this.command.AddArgument("code", this.Code);
+		this.tcpSocket.AddCommand(this.command);
+		this.tcpSocket.SendCommand();
+		signedUp = this.tcpSocket.GetResponse(true, 1000);
+		this.tcpSocket.Close();		
 		return signedUp;
 	}
+
+	public static Dictionary<int, Dictionary<string, string>> GetGlobalScore()
+	{
+		Command command = new Command("get_top_ten");
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Dictionary<int, Dictionary<string, string>> scoreDictionary = null;
+		tcpSocket.AddCommand(command);
+		string response = tcpSocket.GetResponse(true, 2000);
+		Debug.Log(response);
+		if(!response.Equals("ERROR. TIMEOUT"))
+        {
+			scoreDictionary = SimpleJson.DeserializeObject<Dictionary<int, Dictionary<string, string>>>(response);
+		}			
+		tcpSocket.Close();
+		return scoreDictionary;
+    }
 
 	public string SendCode()
     {		
@@ -111,7 +128,7 @@ public class Player
 		command.AddArgument("email", this.email);		
 		this.tcpSocket.AddCommand(command);
 		this.tcpSocket.SendCommand();
-		string response = this.tcpSocket.GetResponse(true, 3000);
+		string response = this.tcpSocket.GetResponse(true, 2000);
 		this.tcpSocket.Close();
 		return response;
 	}
@@ -141,7 +158,7 @@ public class Player
 
 	public bool IsComplete()
     {
-		return this.email != null && this.NickName != null && this.password != null && this.names != null && this.lastName != null;
+		return this.Email != null && this.NickName != null && this.Password != null && this.Names != null && this.LastName != null;
     }
 
 	public void MakeNewBoard()
