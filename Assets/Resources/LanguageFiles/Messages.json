@@ -54,13 +54,29 @@
 			"Español": "Registrarse",
 			"English": "Sign Up"
 		},
-		"SignUpSuccess":{
+		"SignUpSuccess": {
 			"Español": "Registro exitoso. Puede volver al menú",
 			"English": "Succesful registration. You can go back to the menu"
 		},
-		"IncompleteFields":{
+		"IncompleteFields": {
 			"Español": "Campos incompletos",
 			"English": "Incomplete fields"
+		},
+		"WrongCode": {
+			"Español": "El código introducido es incorrecto",
+			"English": "Wrong code"
+		},
+		"AlreadyRegistered": {
+			"Español": "Email ya registrado",
+			"English": "Email already registered"
+		},
+		"SignUpError": {
+			"Español": "No fue posible registrar al jugador",
+			"English": "The player could not be registered"
+		},
+		"UnmatchedPassword": {
+			"Español": "Las contraseñas no coinciden",
+			"English": "Unmatched password"
 		}
 	},
 	"Login": {

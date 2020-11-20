@@ -16,55 +16,34 @@ public class SignUp : MonoBehaviour
 	public TextMeshProUGUI txtLastame;
 	public TextMeshProUGUI emailPlaceHolder;
 	public Text feedbackMessage;
-
-	private TCPSocket socket;
-
 	private void Start()
     {
-		
+		Localization.Language = "English";
 	}
 	public void SignUpPlayer()
 	{		
 		Player player = InstancePlayer();
 		string response = null;
-		Debug.Log(player.Names);
-		Debug.Log(player.NickName);
-		Debug.Log(player.LastName);
-		Debug.Log(player.Email);
-		Debug.Log(player.Password);
-		Debug.Log(player.Code);
 		if (player.IsComplete())
         {
 			if (String.Equals(this.txtPassword.text, this.txtPasswordConfirm.text))
 			{
 				response = player.SignUp();
-				if (String.Equals(response, "OK"))
-				{
-					feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpSuccess");
-				}
-				else if (String.Equals(response, "WRONG CODE"))
-				{
-					feedbackMessage.text = "El código de verificación no es correcto.";
-				}
-				else
-				{
-					feedbackMessage.text = "No fue posible registrar al jugador, inténtelo más tarde";
-				}
+				EvaluateResponseSignUp(response);
 			}
 			else
 			{
-				feedbackMessage.text = Localization.GetMessage("SignUp", "IncompleteFields");
+				feedbackMessage.text = Localization.GetMessage("SignUp", "UnmatchedPassword");
 			}
 		} 
 		else
         {
 			feedbackMessage.text = Localization.GetMessage("SigUp", "IncompleteFields");
         }		
-		Debug.Log(response);
-		
-	}
+		Debug.Log(response);		
+	}    
 
-	public void SendCodeToEmail()
+    public void SendCodeToEmail()
 	{
 		Player player = InstancePlayer();			
 		string response = player.SendCode();
@@ -81,9 +60,8 @@ public class SignUp : MonoBehaviour
 		} 
 		else
         {
-			this.feedbackMessage.text = "Campos incompletos";
-        }
-		this.socket.Close();
+			this.feedbackMessage.text = Localization.GetMessage("SignUp", "IncompleteFields");
+        }		
 	}
 
 	public void BackToMainMenu()
@@ -91,7 +69,7 @@ public class SignUp : MonoBehaviour
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 
-	public Player InstancePlayer()
+	private Player InstancePlayer()
     {
 		Player player = new Player();		
 		player.Email = Regex.Replace(txtEmail.text, @"[^\u0000-\u007F]+", string.Empty);
@@ -102,4 +80,45 @@ public class SignUp : MonoBehaviour
 		player.Code = Regex.Replace(txtConfirmationCode.text, @"[^\u0000-\u007F]+", string.Empty);
 		return player;
     }
+
+	private void EvaluateResponseSignUp(string response)
+	{
+		switch (response)
+		{
+			case "OK":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpSuccess");
+				break;
+			case "WRONG CODE":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "WrongCode");
+				break;
+			case "Already Registered":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "AlreadyRegistered");
+				break;
+			case "Error":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpError");
+				break;
+		}
+	}
+
+	private void EvaluateResponseSendCode(string response)
+	{
+		switch (response)
+		{
+			case "OK":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpSuccess");
+				break;
+			case "UNIDENTIFIED ERROR":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "WrongCode");
+				break;
+			case "EMAIL NOT SET":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "AlreadyRegistered");
+				break;
+			case "ERROR":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpError");
+				break;
+			case "WRONG EMAIL":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "");
+				break;
+		}
+	}
 }

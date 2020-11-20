@@ -9,6 +9,10 @@ public class GlobalScores : MonoBehaviour
     [SerializeField] private GameObject entryContainer;
     [SerializeField] private GameObject entryTemplate;
 
+    public void Start()
+    {
+        Player.GetGlobalScore();
+    }
     private void Awake()
     {
         entryTemplate.gameObject.SetActive(false);
