@@ -7,19 +7,21 @@ using UnityEngine.UI;
 
 public class SignUp : MonoBehaviour
 {
-	private TextMeshProUGUI txtEmail;
-	private TextMeshProUGUI txtNickname;
-	private TextMeshProUGUI txtPassword;
-	private TextMeshProUGUI txtPasswordConfirm;
-	private TextMeshProUGUI txtConfirmationCode;
-	private TextMeshProUGUI txtName;
-	private TextMeshProUGUI txtLastame;
-	private TextMeshProUGUI emailPlaceHolder;
-	private Text feedbackMessage;
-	private void Start()
+	public TextMeshProUGUI txtEmail;
+	public TextMeshProUGUI txtNickname;
+	public TextMeshProUGUI txtPassword;
+	public TextMeshProUGUI txtPasswordConfirm;
+	public TextMeshProUGUI txtConfirmationCode;
+	public TextMeshProUGUI txtName;
+	public TextMeshProUGUI txtLastame;	
+	public Text feedbackMessage;
+	
+	public void Start()
     {
-		Localization.Language = "English";
-	}
+		feedbackMessage.text = Localization.GetMessage("SignUp", "IncompleteFields");
+		Debug.Log(feedbackMessage.text);
+		
+    }
 	public void SignUpPlayer()
 	{		
 		Player player = InstancePlayer();
@@ -38,8 +40,8 @@ public class SignUp : MonoBehaviour
 		} 
 		else
         {
-			feedbackMessage.text = Localization.GetMessage("SigUp", "IncompleteFields");
-        }		
+			feedbackMessage.text = Localization.GetMessage("SignUp", "IncompleteFields");
+		}		
 		Debug.Log(response);		
 	}    
 
@@ -99,6 +101,7 @@ public class SignUp : MonoBehaviour
 				break;
 			default:
 				feedbackMessage.text = "";
+			break;
 		}
 	}
 
@@ -123,7 +126,7 @@ public class SignUp : MonoBehaviour
 				break;
 			default:
 				feedbackMessage.text = "";
-				break;
+			break;
 		}
 	}
 }
