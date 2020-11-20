@@ -7,11 +7,10 @@ namespace Tests
 		[Test]
 		public void SettingTest()
 		{
-			TCPSocket socket;
-			TCPSocketConfiguration.BuildDefaultConfiguration(out socket);
+			TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket socket);
 			Assert.AreEqual(
 				socket.Server,
-				"201.105.97.102"
+				TCPSocketConfiguration.GetSetting("Address")
 			);
 		}
 	}

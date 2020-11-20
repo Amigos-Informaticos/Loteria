@@ -26,8 +26,12 @@ public static class TCPSocketConfiguration
 		return Settings.ContainsKey(settingName);
 	}
 
-	private static string GetSetting(string settingName)
+	public static string GetSetting(string settingName)
 	{
+		if (Settings.Count == 0)
+		{
+			LoadSettings();
+		}
 		string setting = null;
 		if (SettingExists(settingName))
 		{
@@ -36,13 +40,17 @@ public static class TCPSocketConfiguration
 		return setting;
 	}
 
+	public static void SetSetting(string settingName, string settingValue)
+	{
+		Settings[settingName] = settingValue;
+	}
+
 	public static void BuildDefaultConfiguration(out TCPSocket socket)
 	{
 		socket = null;
-		using (WebClient client = new WebClient())
-		{
-			string address = client.DownloadString(GetSetting("AddressServiceAddress"));
-			socket = new TCPSocket(address, 42069);
-		}
+		WebClient client = new WebClient();
+		string address = client.DownloadString(GetSetting("AddressServiceAddress"));
+		socket = new TCPSocket(address, 42069);
+		SetSetting("Address", address);
 	}
 }
