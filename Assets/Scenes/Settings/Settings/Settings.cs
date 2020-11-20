@@ -6,15 +6,23 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI MusicVolumeText;
+    [SerializeField] private TextMeshProUGUI SFXVolumeText;
+    [SerializeField] private TextMeshProUGUI LanguageText;
+    [SerializeField] private TextMeshProUGUI SaveButton;
+    [SerializeField] private TextMeshProUGUI BackButton;
+    
     [SerializeField] private Transform languageDD;
     
     void Start()
     {
-        
+        this.MusicVolumeText.text = Localization.GetMessage("Settings", "Music Volume");
+        this.SFXVolumeText.text = Localization.GetMessage("Settings", "SFX Volume");
+        this.LanguageText.text = Localization.GetMessage("Settings", "Language");
+        this.SaveButton.text = Localization.GetMessage("Settings", "Save");
+        this.BackButton.text = Localization.GetMessage("Settings", "Back");
         languageDD.GetComponent<Dropdown>().value = 1;
     }
-    
-    //public void SetLanguage
 
     public void BackToMenu()
     {
