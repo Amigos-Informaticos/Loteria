@@ -19,12 +19,20 @@ public class SignUp : MonoBehaviour
 
 	public void SignUpPlayer()
 	{		
-		InstancePlayer(out Player player);
+		Player player = new Player
+		{
+			Email = txtEmail.text,
+			NickName = txtNickname.text,
+			Password = txtPassword.text,
+			Names = txtName.text,
+			LastName = txtLastame.text,
+			Code = txtConfirmationCode.text
+		};
 		string response = null;
 		string passwordConfirmText = this.txtPasswordConfirm.text;
 		string codeText = this.txtConfirmationCode.text;
 
-		if (String.Equals(this.txtPassword.text, this.txtPasswordConfirm))
+		if (String.Equals(this.txtPassword.text, this.txtPasswordConfirm.text))
 		{
 			response = player.SignUp();
 			if (String.Equals(response, "OK"))
@@ -82,13 +90,13 @@ public class SignUp : MonoBehaviour
 	public void InstancePlayer(out Player player)
     {		
 		player = new Player
-		{
-			Email = txtEmail.text,
-			NickName = txtNickname.text,
-			Password = txtPassword.text,
-			Names = txtName.text,
-			LastName = txtLastame.text,
-			Code = txtConfirmationCode.text
-		};
+        {
+            Email = txtEmail.text,
+            NickName = txtNickname.text,
+            Password = txtPassword.text,
+            Names = txtName.text,
+            LastName = txtLastame.text,
+            Code = txtConfirmationCode.text
+        };
     }
 }
