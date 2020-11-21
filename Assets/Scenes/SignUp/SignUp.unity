@@ -4752,6 +4752,16 @@ MonoBehaviour:
   txtConfirmationCode: {fileID: 79225106}
   txtName: {fileID: 2095836940}
   txtLastame: {fileID: 219205561}
+  emailPlaceHolder: {fileID: 1692658011}
+  passwordPlaceHolder: {fileID: 641310846}
+  repeatPasswordPlaceHolder: {fileID: 156823853}
+  nickNameFieldPlaceHolder: {fileID: 795414375}
+  namesPlaceHolder: {fileID: 1049249543}
+  lastNamePlaceHolder: {fileID: 1218162826}
+  codePlaceHolder: {fileID: 206179974}
+  btnSignUp: {fileID: 2131438277}
+  btnGoBack: {fileID: 276239722}
+  btnSendCode: {fileID: 1759833080}
   feedbackMessage: {fileID: 1635100063}
 --- !u!4 &1933633026
 Transform:

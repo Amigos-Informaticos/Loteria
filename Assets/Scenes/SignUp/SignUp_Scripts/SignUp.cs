@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -13,8 +14,41 @@ public class SignUp : MonoBehaviour
 	public TextMeshProUGUI txtPasswordConfirm;
 	public TextMeshProUGUI txtConfirmationCode;
 	public TextMeshProUGUI txtName;
-	public TextMeshProUGUI txtLastame;	
+	public TextMeshProUGUI txtLastame;
+	public TextMeshProUGUI emailPlaceHolder;
+	public TextMeshProUGUI passwordPlaceHolder;
+	public TextMeshProUGUI repeatPasswordPlaceHolder;
+	public TextMeshProUGUI nickNameFieldPlaceHolder;
+	public TextMeshProUGUI namesPlaceHolder;
+	public TextMeshProUGUI lastNamePlaceHolder;
+	public TextMeshProUGUI codePlaceHolder;
+
+	public TextMeshProUGUI btnSignUp;
+	public TextMeshProUGUI btnGoBack;
+	public TextMeshProUGUI btnSendCode;	
 	public Text feedbackMessage;
+
+	public void Start()
+	{
+        try
+        {
+			this.emailPlaceHolder.text = Localization.GetMessage("SignUp", "Email");
+			this.passwordPlaceHolder.text = Localization.GetMessage("SignUp", "Password");
+			this.repeatPasswordPlaceHolder.text = Localization.GetMessage("SignUp", "RepeatPassword");
+			this.nickNameFieldPlaceHolder.text = Localization.GetMessage("SignUp", "Username");
+			this.namesPlaceHolder.text = Localization.GetMessage("SignUp", "Name");
+			this.lastNamePlaceHolder.text = Localization.GetMessage("SignUp", "LastName");
+			this.codePlaceHolder.text = Localization.GetMessage("SignUp", "Code");
+			this.btnSignUp.text = Localization.GetMessage("SignUp", "SignUp");
+			this.btnGoBack.text = Localization.GetMessage("SignUp", "Back");
+			this.btnSendCode.text = Localization.GetMessage("SignUp", "SendCode");
+		}
+        catch (KeyNotFoundException exception)
+        {
+			Debug.LogError(exception.StackTrace);
+        }		
+		
+	}
 	
 	public void SignUpPlayer()
 	{		
