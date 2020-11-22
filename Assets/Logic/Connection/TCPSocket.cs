@@ -40,7 +40,7 @@ public class TCPSocket
 			}
 			catch (SocketException exception)
             {
-				Debug.Log("SocketException: " + exception);				
+				Debug.Log("SocketException: " + exception + "With code: " + exception.ErrorCode);				
             }
 			catch (ObjectDisposedException exception)
             {
@@ -59,7 +59,7 @@ public class TCPSocket
 			}
 			catch (SocketException exception)
 			{
-				Debug.Log("SocketException: " + exception);				
+				Debug.Log("SocketException: " + exception + "With code: " + exception.ErrorCode);
 			}
 			catch (ObjectDisposedException exception)
 			{
