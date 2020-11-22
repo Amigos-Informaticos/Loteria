@@ -46,8 +46,7 @@ public class SignUp : MonoBehaviour
         catch (KeyNotFoundException exception)
         {
 			Debug.LogError(exception.StackTrace);
-        }		
-		
+        }				
 	}
 	
 	public void SignUpPlayer()
