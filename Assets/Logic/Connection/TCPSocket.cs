@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using UnityEngine;
 
 public class TCPSocket
@@ -14,7 +15,7 @@ public class TCPSocket
 	private TcpClient _client;
 	private NetworkStream _stream;
 	public static readonly int MAXTIMEOUT = 500;
-	private volatile string _response;
+	public List<string> Responses = new List<string>();
 
 	public TCPSocket(string server, int port)
 	{
@@ -93,9 +94,30 @@ public class TCPSocket
 		}
 	}
 
-	public string GetResponse(bool wait = false, int timeOut = 500) => this.Read(wait, timeOut);
+	public string GetResponse(bool wait = false, int timeOut = 500)
+	{
+		string response = null;
+		this.Read(wait, timeOut);
+		if (this.Responses.Count > 0)
+		{
+			response = this.Responses[0];
+			this.Responses.RemoveAt(0);
+		}
+		return response;
+	}
 
-	public string Read(bool wait = false, int timeOut = 500)
+	public string GetSavedResponse()
+	{
+		string response = null;
+		if (this.Responses.Count > 0)
+		{
+			response = this.Responses[0];
+			this.Responses.RemoveAt(0);
+		}
+		return response;
+	}
+
+	public void Read(bool wait = false, int timeOut = 500)
 	{
 		byte[] received = new byte[1024];
 		string response = "NO RESPONSE";
@@ -114,8 +136,7 @@ public class TCPSocket
 		{
 			Debug.Log(e);
 		}
-		this._response = response;
-		return response;
+		this.Responses.Add(response);
 	}
 
 	public string Chat(Command message = null)

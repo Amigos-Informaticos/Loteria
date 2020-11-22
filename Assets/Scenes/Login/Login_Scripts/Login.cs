@@ -24,7 +24,6 @@ public class Login : MonoBehaviour
 	{
 		this.tcpSocket.SendCommand();
 		string salida = this.tcpSocket.GetResponse();
-
 		Debug.Log(salida);
 	}
 
