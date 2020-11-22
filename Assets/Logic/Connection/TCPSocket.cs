@@ -36,18 +36,15 @@ public class TCPSocket
 			}
 			catch (ArgumentNullException exception)
 			{
-				Debug.Log("ArgumentNullException: " + exception);
-				prepared = false;
+				Debug.Log("ArgumentNullException: " + exception);				
 			}
 			catch (SocketException exception)
             {
-				Debug.Log("SocketException: " + exception);
-				prepared = false;
+				Debug.Log("SocketException: " + exception);				
             }
 			catch (ObjectDisposedException exception)
             {
-				Debug.Log("ObjectDisposedException: " + exception);
-				prepared = false;
+				Debug.Log("ObjectDisposedException: " + exception);				
             }
 		}
 		if (!this._client.Connected)
@@ -58,15 +55,15 @@ public class TCPSocket
 			}
 			catch (ArgumentNullException exception)
 			{
-				Debug.Log("ArgumentNullException: " + exception);
+				Debug.Log("ArgumentNullException: " + exception);				
 			}
 			catch (SocketException exception)
 			{
-				Debug.Log("SocketException: " + exception);
+				Debug.Log("SocketException: " + exception);				
 			}
 			catch (ObjectDisposedException exception)
 			{
-				Debug.Log("ObjectDisposedException: " + exception);
+				Debug.Log("ObjectDisposedException: " + exception);				
 			}
 		}
 		if (this._stream == null)

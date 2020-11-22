@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using GitHub.Unity.Json;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player
 {	
@@ -112,12 +111,21 @@ public class Player
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Dictionary<int, Dictionary<string, string>> scoreDictionary = null;
 		tcpSocket.AddCommand(getTopTen);
+		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 2000);
 		Debug.Log(response);
 		if(!response.Equals("ERROR. TIMEOUT"))
         {
-			scoreDictionary = SimpleJson.DeserializeObject<Dictionary<int, Dictionary<string, string>>>(response);
-		}			
+            try
+            {
+				scoreDictionary = SimpleJson.DeserializeObject<Dictionary<int, Dictionary<string, string>>>(response);
+			}
+            catch (SerializationException)
+            {
+				Debug.Log("Invalid JSON");
+				scoreDictionary = null;
+            }			
+		}
 		tcpSocket.Close();
 		return scoreDictionary;
     }
