@@ -11,7 +11,7 @@ public class GlobalScores : MonoBehaviour
 
     public void Start()
     {
-        Player.GetGlobalScore();
+        
     }
     private void Awake()
     {
