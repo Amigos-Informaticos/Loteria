@@ -1,3 +1,4 @@
 {
-	"AddressServiceAddress": "https://amigosinformaticos.000webhostapp.com/"
+	"AddressServiceAddress": "https://amigosinformaticos.000webhostapp.com/",
+	"NumberServicePort": "42069"
 }
