@@ -35,14 +35,40 @@ public class TCPSocket
 				this._client.Connect(this.Server, this.Port);
 				prepared = true;
 			}
-			catch (Exception e)
+			catch (ArgumentNullException exception)
 			{
-				Debug.Log(e);
+				Debug.Log("ArgumentNullException: " + exception);
+				prepared = false;
 			}
+			catch (SocketException exception)
+            {
+				Debug.Log("SocketException: " + exception);
+				prepared = false;
+            }
+			catch (ObjectDisposedException exception)
+            {
+				Debug.Log("ObjectDisposedException: " + exception);
+				prepared = false;
+            }
 		}
 		if (!this._client.Connected)
 		{
-			this._client.Connect(this.Server, this.Port);
+			try
+			{
+				this._client.Connect(this.Server, this.Port);
+			}
+			catch (ArgumentNullException exception)
+			{
+				Debug.Log("ArgumentNullException: " + exception);
+			}
+			catch (SocketException exception)
+			{
+				Debug.Log("SocketException: " + exception);
+			}
+			catch (ObjectDisposedException exception)
+			{
+				Debug.Log("ObjectDisposedException: " + exception);
+			}
 		}
 		if (this._stream == null)
 		{

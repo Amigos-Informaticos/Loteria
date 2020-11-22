@@ -54,18 +54,18 @@ namespace Tests
             };
             string response = alexito.SendCode();
             Debug.Log(response);
-            Assert.AreEqual("OK", response);
+            Assert.IsTrue(response.Equals("OK"));
         }
         [Test]
         public void IsName()
         {            
-            Assert.IsTrue(Player.IsName("Alexis"));
+            Assert.IsTrue(Player.IsName("Efrain Razziel"));
         }
 
 		[Test]
 		public void IsEmail()
 		{
-			Assert.IsTrue(Player.IsEmail("alexisao@hotmail.com"));
+			Assert.IsTrue(Player.IsEmail("grimlicrash@outlook.com"));
 		}
 	}
 }
