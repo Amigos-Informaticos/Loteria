@@ -109,6 +109,9 @@ public class SignUp : MonoBehaviour
 			case "Already Registered":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "AlreadyRegistered");
 				break;
+			case "Nickname occupied":
+				feedbackMessage.text = Localization.GetMessage("SignUp","NicknameOccupied");
+				break;
 			case "Error":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpError");
 				break;

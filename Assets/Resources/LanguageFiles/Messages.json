@@ -70,6 +70,10 @@
 			"Español": "Email ya registrado",
 			"English": "Email already registered"
 		},
+		"NicknameOccupied": {
+			"Español": "Nombre de usuario ocupado",
+			"English": "Nickname occupied"
+		},
 		"SignUpError": {
 			"Español": "No fue posible registrar al jugador",
 			"English": "The player could not be registered"
