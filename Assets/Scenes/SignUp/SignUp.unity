@@ -4745,13 +4745,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5671febca5a67874cb45827251171544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txtEmail: {fileID: 69423951}
-  txtNickname: {fileID: 1671491233}
-  txtPassword: {fileID: 322804874}
-  txtPasswordConfirm: {fileID: 1191930443}
-  txtConfirmationCode: {fileID: 79225106}
-  txtName: {fileID: 2095836940}
-  txtLastame: {fileID: 219205561}
+  TxtEmail: {fileID: 69423951}
+  TxtNickname: {fileID: 1671491233}
+  TxtPassword: {fileID: 322804874}
+  TxtPasswordConfirm: {fileID: 1191930443}
+  TxtConfirmationCode: {fileID: 79225106}
+  TxtName: {fileID: 2095836940}
+  TxtLastname: {fileID: 219205561}
+  PhEmail: {fileID: 1692658011}
+  PhPassword: {fileID: 641310846}
+  PhRepeatPassword: {fileID: 156823853}
+  PhNickname: {fileID: 795414375}
+  PhNames: {fileID: 1049249543}
+  PhLastname: {fileID: 1218162826}
+  PhCode: {fileID: 206179974}
+  BtnSignUp: {fileID: 2131438277}
+  BtnGoBack: {fileID: 276239722}
+  BtnSendCode: {fileID: 1759833080}
   feedbackMessage: {fileID: 1635100063}
 --- !u!4 &1933633026
 Transform:

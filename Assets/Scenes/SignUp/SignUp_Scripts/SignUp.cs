@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -13,8 +14,40 @@ public class SignUp : MonoBehaviour
 	public TextMeshProUGUI txtPasswordConfirm;
 	public TextMeshProUGUI txtConfirmationCode;
 	public TextMeshProUGUI txtName;
-	public TextMeshProUGUI txtLastame;	
+	public TextMeshProUGUI txtLastname;
+	public TextMeshProUGUI phEmail;
+	public TextMeshProUGUI phPassword;
+	public TextMeshProUGUI phRepeatPassword;
+	public TextMeshProUGUI phNickname;
+	public TextMeshProUGUI phNames;
+	public TextMeshProUGUI phLastname;
+	public TextMeshProUGUI phCode;
+
+	public TextMeshProUGUI btnSignUp;
+	public TextMeshProUGUI btnGoBack;
+	public TextMeshProUGUI btnSendCode;	
 	public Text feedbackMessage;
+
+	public void Start()
+	{
+        try
+        {
+			this.phEmail.text = Localization.GetMessage("SignUp", "Email");
+			this.phPassword.text = Localization.GetMessage("SignUp", "Password");
+			this.phRepeatPassword.text = Localization.GetMessage("SignUp", "RepeatPassword");
+			this.phNickname.text = Localization.GetMessage("SignUp", "Username");
+			this.phNames.text = Localization.GetMessage("SignUp", "Name");
+			this.phLastname.text = Localization.GetMessage("SignUp", "LastName");
+			this.phCode.text = Localization.GetMessage("SignUp", "Code");
+			this.btnSignUp.text = Localization.GetMessage("SignUp", "SignUp");
+			this.btnGoBack.text = Localization.GetMessage("SignUp", "Back");
+			this.btnSendCode.text = Localization.GetMessage("SignUp", "SendCode");
+		}
+        catch (KeyNotFoundException exception)
+        {
+			Debug.LogError(exception.StackTrace);
+        }				
+	}
 	
 	public void SignUpPlayer()
 	{		
@@ -58,7 +91,7 @@ public class SignUp : MonoBehaviour
 		player.NickName = Regex.Replace(txtNickname.text, @"[^\u0000-\u007F]+", string.Empty);
 		player.Password = Regex.Replace(txtPassword.text, @"[^\u0000-\u007F]+", string.Empty);
 		player.Names = Regex.Replace(txtName.text, @"[^\u0000-\u007F]+", string.Empty);
-		player.LastName = Regex.Replace(txtLastame.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.LastName = Regex.Replace(txtLastname.text, @"[^\u0000-\u007F]+", string.Empty);
 		player.Code = Regex.Replace(txtConfirmationCode.text, @"[^\u0000-\u007F]+", string.Empty);
 		return player;
     }
@@ -73,8 +106,11 @@ public class SignUp : MonoBehaviour
 			case "WRONG CODE":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "WrongCode");
 				break;
-			case "Already Registered":
+			case "Already registered":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "AlreadyRegistered");
+				break;
+			case "Nickname occupied":
+				feedbackMessage.text = Localization.GetMessage("SignUp","NicknameOccupied");
 				break;
 			case "Error":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpError");
