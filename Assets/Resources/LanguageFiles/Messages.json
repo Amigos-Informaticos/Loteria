@@ -30,7 +30,7 @@
 			"Español": "Nombre(s)",
 			"English": "Name"
 		},
-		"Lastname": {
+		"LastName": {
 			"Español": "Apellidos",
 			"English": "Lastname"
 		},
@@ -69,6 +69,10 @@
 		"AlreadyRegistered": {
 			"Español": "Email ya registrado",
 			"English": "Email already registered"
+		},
+		"NicknameOccupied": {
+			"Español": "Nombre de usuario ocupado",
+			"English": "Nickname occupied"
 		},
 		"SignUpError": {
 			"Español": "No fue posible registrar al jugador",

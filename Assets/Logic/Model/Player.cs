@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using GitHub.Unity.Json;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player
 {	
@@ -79,12 +78,13 @@ public class Player
 	public string LogIn()
 	{
 		string loggedIn;
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		this.command = new Command("login");
 		this.command.AddArgument("email", this.email);
 		this.command.AddArgument("password", this.password);
 		this.tcpSocket.AddCommand(this.command);
-		this.tcpSocket.SendCommand();		
-		loggedIn = this.tcpSocket.GetResponse(true, 1000);
+		this.tcpSocket.SendCommand();
+		loggedIn = this.tcpSocket.GetResponse(true);
 		this.tcpSocket.Close();
 		return loggedIn;
 	}
@@ -108,16 +108,25 @@ public class Player
 
 	public static Dictionary<int, Dictionary<string, string>> GetGlobalScore()
 	{
-		Command command = new Command("get_top_ten");
+		Command getTopTen = new Command("get_top_ten");
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Dictionary<int, Dictionary<string, string>> scoreDictionary = null;
-		tcpSocket.AddCommand(command);
+		tcpSocket.AddCommand(getTopTen);
+		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 2000);
 		Debug.Log(response);
 		if(!response.Equals("ERROR. TIMEOUT"))
         {
-			scoreDictionary = SimpleJson.DeserializeObject<Dictionary<int, Dictionary<string, string>>>(response);
-		}			
+            try
+            {
+				scoreDictionary = SimpleJson.DeserializeObject<Dictionary<int, Dictionary<string, string>>>(response);
+			}
+            catch (SerializationException)
+            {
+				Debug.Log("Invalid JSON");
+				scoreDictionary = null;
+            }			
+		}
 		tcpSocket.Close();
 		return scoreDictionary;
     }
