@@ -8,40 +8,40 @@ using UnityEngine.UI;
 
 public class SignUp : MonoBehaviour
 {
-	public TextMeshProUGUI TxtEmail;
-	public TextMeshProUGUI TxtNickname;
-	public TextMeshProUGUI TxtPassword;
-	public TextMeshProUGUI TxtPasswordConfirm;
-	public TextMeshProUGUI TxtConfirmationCode;
-	public TextMeshProUGUI TxtName;
-	public TextMeshProUGUI TxtLastname;
-	public TextMeshProUGUI PhEmail;
-	public TextMeshProUGUI PhPassword;
-	public TextMeshProUGUI PhRepeatPassword;
-	public TextMeshProUGUI PhNickname;
-	public TextMeshProUGUI PhNames;
-	public TextMeshProUGUI PhLastname;
-	public TextMeshProUGUI PhCode;
+	public TextMeshProUGUI txtEmail;
+	public TextMeshProUGUI txtNickname;
+	public TextMeshProUGUI txtPassword;
+	public TextMeshProUGUI txtPasswordConfirm;
+	public TextMeshProUGUI txtConfirmationCode;
+	public TextMeshProUGUI txtName;
+	public TextMeshProUGUI txtLastname;
+	public TextMeshProUGUI phEmail;
+	public TextMeshProUGUI phPassword;
+	public TextMeshProUGUI phRepeatPassword;
+	public TextMeshProUGUI phNickname;
+	public TextMeshProUGUI phNames;
+	public TextMeshProUGUI phLastname;
+	public TextMeshProUGUI phCode;
 
-	public TextMeshProUGUI BtnSignUp;
-	public TextMeshProUGUI BtnGoBack;
-	public TextMeshProUGUI BtnSendCode;	
+	public TextMeshProUGUI btnSignUp;
+	public TextMeshProUGUI btnGoBack;
+	public TextMeshProUGUI btnSendCode;	
 	public Text feedbackMessage;
 
 	public void Start()
 	{
         try
         {
-			this.PhEmail.text = Localization.GetMessage("SignUp", "Email");
-			this.PhPassword.text = Localization.GetMessage("SignUp", "Password");
-			this.PhRepeatPassword.text = Localization.GetMessage("SignUp", "RepeatPassword");
-			this.PhNickname.text = Localization.GetMessage("SignUp", "Username");
-			this.PhNames.text = Localization.GetMessage("SignUp", "Name");
-			this.PhLastname.text = Localization.GetMessage("SignUp", "LastName");
-			this.PhCode.text = Localization.GetMessage("SignUp", "Code");
-			this.BtnSignUp.text = Localization.GetMessage("SignUp", "SignUp");
-			this.BtnGoBack.text = Localization.GetMessage("SignUp", "Back");
-			this.BtnSendCode.text = Localization.GetMessage("SignUp", "SendCode");
+			this.phEmail.text = Localization.GetMessage("SignUp", "Email");
+			this.phPassword.text = Localization.GetMessage("SignUp", "Password");
+			this.phRepeatPassword.text = Localization.GetMessage("SignUp", "RepeatPassword");
+			this.phNickname.text = Localization.GetMessage("SignUp", "Username");
+			this.phNames.text = Localization.GetMessage("SignUp", "Name");
+			this.phLastname.text = Localization.GetMessage("SignUp", "LastName");
+			this.phCode.text = Localization.GetMessage("SignUp", "Code");
+			this.btnSignUp.text = Localization.GetMessage("SignUp", "SignUp");
+			this.btnGoBack.text = Localization.GetMessage("SignUp", "Back");
+			this.btnSendCode.text = Localization.GetMessage("SignUp", "SendCode");
 		}
         catch (KeyNotFoundException exception)
         {
@@ -55,7 +55,7 @@ public class SignUp : MonoBehaviour
 		string response = null;
 		if (player.IsComplete())
         {
-			if (String.Equals(this.TxtPassword.text, this.TxtPasswordConfirm.text))
+			if (String.Equals(this.txtPassword.text, this.txtPasswordConfirm.text))
 			{
 				response = player.SignUp();
 				EvaluateResponseSignUp(response);
@@ -87,12 +87,12 @@ public class SignUp : MonoBehaviour
 	private Player InstancePlayer()
     {
 		Player player = new Player();		
-		player.Email = Regex.Replace(TxtEmail.text, @"[^\u0000-\u007F]+", string.Empty);
-		player.NickName = Regex.Replace(TxtNickname.text, @"[^\u0000-\u007F]+", string.Empty);
-		player.Password = Regex.Replace(TxtPassword.text, @"[^\u0000-\u007F]+", string.Empty);
-		player.Names = Regex.Replace(TxtName.text, @"[^\u0000-\u007F]+", string.Empty);
-		player.LastName = Regex.Replace(TxtLastname.text, @"[^\u0000-\u007F]+", string.Empty);
-		player.Code = Regex.Replace(TxtConfirmationCode.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Email = Regex.Replace(txtEmail.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.NickName = Regex.Replace(txtNickname.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Password = Regex.Replace(txtPassword.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Names = Regex.Replace(txtName.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.LastName = Regex.Replace(txtLastname.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Code = Regex.Replace(txtConfirmationCode.text, @"[^\u0000-\u007F]+", string.Empty);
 		return player;
     }
 
