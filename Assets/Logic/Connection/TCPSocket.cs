@@ -38,20 +38,17 @@ public class TCPSocket
 			catch (ArgumentNullException exception)
 			{
 				Debug.Log("ArgumentNullException: " + exception);
-				prepared = false;
 			}
 			catch (SocketException exception)
-			{
-				Debug.Log("SocketException: " + exception);
-				prepared = false;
-			}
+            {
+				Debug.Log("SocketException: " + exception + "With code: " + exception.ErrorCode);
+            }
 			catch (ObjectDisposedException exception)
-			{
+            {
 				Debug.Log("ObjectDisposedException: " + exception);
-				prepared = false;
-			}
+            }
 		}
-		/*if (!this._client.Connected)
+		if (!this._client.Connected)
 		{
 			try
 			{
@@ -63,13 +60,13 @@ public class TCPSocket
 			}
 			catch (SocketException exception)
 			{
-				Debug.Log("SocketException: " + exception);
+				Debug.Log("SocketException: " + exception + "With code: " + exception.ErrorCode);
 			}
 			catch (ObjectDisposedException exception)
 			{
 				Debug.Log("ObjectDisposedException: " + exception);
 			}
-		}*/
+		}
 		if (this._stream == null)
 		{
 			this._stream = this._client.GetStream();
@@ -150,15 +147,7 @@ public class TCPSocket
 		try
 		{
 			this.IsPrepared();
-			if (wait)
-			{
-				this._client.ReceiveTimeout = timeOut;
-
-				this._stream.ReadTimeout = timeOut;
-			} else
-			{
-				this._stream.ReadTimeout = MAXTIMEOUT;
-			}
+			this._stream.ReadTimeout = wait ? timeOut : MAXTIMEOUT;
 			int size = this._stream.Read(received, 0, received.Length);
 			response = Encoding.ASCII.GetString(received, 0, size);
 		}

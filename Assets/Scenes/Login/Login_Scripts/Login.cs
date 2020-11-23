@@ -21,7 +21,7 @@ public class Login : MonoBehaviour
 		this.loginButton.text = Localization.GetMessage("Login", "Login");
 	}
 
-	public void CreateUser()
+	public void LogIn()
 	{
 		Player player = new Player();
 		player.Email = Regex.Replace(this.ingresoEmail.text, @"[^\u0000-\u007F]+", string.Empty);
@@ -40,13 +40,5 @@ public class Login : MonoBehaviour
 	public void BackToMainMenu()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-	}
-
-	public void ProbarInput()
-	{
-		string email = ingresoEmail.text;
-		string password = ingresoContrasenia.text;
-
-		Debug.Log(email + " " + password);
 	}
 }

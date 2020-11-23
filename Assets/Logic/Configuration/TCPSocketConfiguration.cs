@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -50,7 +51,8 @@ public static class TCPSocketConfiguration
 		socket = null;
 		WebClient client = new WebClient();
 		string address = client.DownloadString(GetSetting("AddressServiceAddress"));
-		socket = new TCPSocket(address, 42069);
+		int port = Convert.ToInt32(GetSetting("NumberServicePort"));
+		socket = new TCPSocket(address, port);
 		SetSetting("Address", address);
 	}
 }

@@ -21,7 +21,7 @@ namespace Tests
             };
             response = alexito.LogIn();
             Debug.Log(response);
-            Assert.AreEqual(response, "OK");
+            Assert.IsTrue(response.Equals("OK"));
         }
 
         [Test]
