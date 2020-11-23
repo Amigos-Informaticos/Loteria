@@ -27,7 +27,7 @@ public class TCPSocket
 	private bool IsPrepared()
 	{
 		bool prepared = false;
-		if (this._client == null)
+		if (this._client == null || !this._client.Connected)
 		{
 			this._client = new TcpClient();
 			try
@@ -41,17 +41,17 @@ public class TCPSocket
 				prepared = false;
 			}
 			catch (SocketException exception)
-            {
+			{
 				Debug.Log("SocketException: " + exception);
 				prepared = false;
-            }
+			}
 			catch (ObjectDisposedException exception)
-            {
+			{
 				Debug.Log("ObjectDisposedException: " + exception);
 				prepared = false;
-            }
+			}
 		}
-		if (!this._client.Connected)
+		/*if (!this._client.Connected)
 		{
 			try
 			{
@@ -69,7 +69,7 @@ public class TCPSocket
 			{
 				Debug.Log("ObjectDisposedException: " + exception);
 			}
-		}
+		}*/
 		if (this._stream == null)
 		{
 			this._stream = this._client.GetStream();

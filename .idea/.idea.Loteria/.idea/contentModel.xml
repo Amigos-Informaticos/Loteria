@@ -83,6 +83,7 @@
         </e>
         <e p="Tests" t="Include">
           <e p="EmailTest.cs" t="Include" />
+          <e p="GlobalScoreTest.cs" t="Include" />
           <e p="LocalizationTest.cs" t="Include" />
           <e p="PlayerTest.cs" t="Include" />
           <e p="SettingsTest.cs" t="Include" />

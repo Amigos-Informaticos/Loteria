@@ -17,19 +17,23 @@ public class Login : MonoBehaviour
 	{
 		this.emailPlaceHolder.text = Localization.GetMessage("Login", "Email");
 		this.passwordPlaceHolder.text = Localization.GetMessage("Login", "Password");
-		this.backButton.text = Localization.GetMessage("Login","Back");
+		this.backButton.text = Localization.GetMessage("Login", "Back");
 		this.loginButton.text = Localization.GetMessage("Login", "Login");
 	}
 
 	public void CreateUser()
 	{
 		Player player = new Player();
-		player.Email = Regex.Replace(ingresoEmail.text, @"[^\u0000-\u007F]+", string.Empty);
-		player.Password = Regex.Replace(ingresoContrasenia.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Email = Regex.Replace(this.ingresoEmail.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Password =
+			Regex.Replace(this.ingresoContrasenia.text, @"[^\u0000-\u007F]+", string.Empty);
 		string response = player.LogIn();
-        if (response.Equals("OK"))
-        {
+		if (response.Equals("OK"))
+		{
 			UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+		} else
+		{
+			Debug.Log(response);
 		}
 	}
 
