@@ -7,7 +7,7 @@ public class MainMenuScript : MonoBehaviour
 	public TextMeshProUGUI signUpButton;
 	public TextMeshProUGUI exitButton;
 
-	public void Start()
+	public void Awake()
 	{
 		this.loginButton.text = Localization.GetMessage("MainMenu", "Login");
 		this.signUpButton.text = Localization.GetMessage("MainMenu", "SignUp");

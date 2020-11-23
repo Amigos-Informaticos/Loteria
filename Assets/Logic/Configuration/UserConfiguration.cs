@@ -12,7 +12,9 @@ public static class UserConfiguration
 
 	public static void LoadSettings()
 	{
-		string content = new StreamReader(SETTINGS_PATH).ReadToEnd();
+		StreamReader streamReader = new StreamReader(SETTINGS_PATH);
+		string content = streamReader.ReadToEnd();
+		streamReader.Close();
 		Settings = SimpleJson.DeserializeObject<Dictionary<string, string>>(content);
 	}
 
@@ -45,9 +47,6 @@ public static class UserConfiguration
 
 	public static void SetSetting(string settingName, string settingValue)
 	{
-		if (SettingExists(settingName))
-		{
-			Settings[settingName] = settingValue;
-		}
+		Settings[settingName] = settingValue;
 	}
 }
