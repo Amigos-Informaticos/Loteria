@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using GitHub.Unity.Json;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player
 {
@@ -72,7 +70,7 @@ public class Player
 		this.command.AddArgument("code", this.Code);
 		this._tcpSocket.AddCommand(this.command);
 		this._tcpSocket.SendCommand();
-		string signedUp = this._tcpSocket.GetResponse(true, 1000);
+		string signedUp = this._tcpSocket.GetResponse(true, 5000);
 		this._tcpSocket.Close();
 		return signedUp;
 	}

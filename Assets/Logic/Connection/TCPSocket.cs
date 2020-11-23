@@ -150,7 +150,15 @@ public class TCPSocket
 		try
 		{
 			this.IsPrepared();
-			this._stream.ReadTimeout = wait ? timeOut : MAXTIMEOUT;
+			if (wait)
+			{
+				this._client.ReceiveTimeout = timeOut;
+
+				this._stream.ReadTimeout = timeOut;
+			} else
+			{
+				this._stream.ReadTimeout = MAXTIMEOUT;
+			}
 			int size = this._stream.Read(received, 0, received.Length);
 			response = Encoding.ASCII.GetString(received, 0, size);
 		}
