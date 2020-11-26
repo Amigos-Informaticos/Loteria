@@ -84,7 +84,7 @@ public class Player
 		this.command.AddArgument("password", this.password);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
-		loggedIn = this.tcpSocket.GetResponse(true);
+		loggedIn = this.tcpSocket.GetResponse();
 		this.tcpSocket.Close();
 		return loggedIn;
 	}

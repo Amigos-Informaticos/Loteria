@@ -116,9 +116,9 @@ public class TCPSocket
 		}
 	}
 
-	public string GetResponse() => this.GetResponse(false);
+	public string GetResponse() => this.GetResponse(false, 500);
 
-	public string GetResponse(bool wait = false, int timeOut = 500)
+	public string GetResponse(bool wait, int timeOut)
 	{
 		string response = null;
 		this.Read(wait, timeOut);
