@@ -40,6 +40,11 @@
           </e>
         </e>
         <e p="Scenes" t="Include">
+          <e p="CreatePattern" t="Include">
+            <e p="CreatePattern_Scripts" t="Include">
+              <e p="CreatePattern.cs" t="Include" />
+            </e>
+          </e>
           <e p="GlobalScore" t="Include">
             <e p="GlobalScore_Scripts" t="Include">
               <e p="GlobalScores.cs" t="Include" />
@@ -57,7 +62,7 @@
           </e>
           <e p="Party" t="Include">
             <e p="Scripts" t="Include">
-              <e p="PopulateGrid.cs" t="Include" />
+              <e p="PartyScript.cs" t="Include" />
             </e>
           </e>
           <e p="Settings" t="Include">
