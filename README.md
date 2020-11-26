@@ -2,7 +2,6 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/amigos-informaticos/loteria/badge)](https://www.codefactor.io/repository/github/amigos-informaticos/loteria)
 ![GitHub Logo](Assets/Images/Loteria.png)
 
-#Desarrolladores
 
 Alvarez Ortega Alexis | Arenas Ramíres Efraín Razziel | Edson Manuel Carballo Vera |
 --------------------- |------------------------------ |------------------------------
