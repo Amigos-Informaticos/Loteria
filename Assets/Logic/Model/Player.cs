@@ -108,8 +108,8 @@ public class Player
 
 	public static Dictionary<int, Dictionary<string, string>> GetGlobalScore()
 	{
-		Command getTopTen = new Command("get_top_ten");
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command getTopTen = new Command("get_top_ten");		
 		Dictionary<int, Dictionary<string, string>> scoreDictionary = null;
 		tcpSocket.AddCommand(getTopTen);
 		tcpSocket.SendCommand();
