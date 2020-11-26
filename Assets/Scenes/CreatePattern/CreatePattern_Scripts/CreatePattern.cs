@@ -25,11 +25,7 @@ public class CreatePattern : MonoBehaviour
 			toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));
 		}
 	}
-
-    void Update()
-    {
-        
-    }
+    void Update() { }
 	public void OnClick()
     {
 		PrintPattern();
