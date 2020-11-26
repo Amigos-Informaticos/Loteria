@@ -116,6 +116,8 @@ public class TCPSocket
 		}
 	}
 
+	public string GetResponse() => this.GetResponse(false);
+
 	public string GetResponse(bool wait = false, int timeOut = 500)
 	{
 		string response = null;
@@ -139,7 +141,7 @@ public class TCPSocket
 		return response;
 	}
 
-	public void Read(bool wait = false, int timeOut = 500)
+	private void Read(bool wait, int timeOut)
 	{
 		byte[] received = new byte[1024];
 		string response = "NO RESPONSE";
