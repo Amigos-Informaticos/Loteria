@@ -13,8 +13,8 @@ public class TCPSocket
 	private List<Command> Messages { get; set; }
 	private TcpClient _client;
 	private NetworkStream _stream;
-	public static readonly int MAXTIMEOUT = 500;
-	private List<string> Responses = new List<string>();
+	private static readonly int MAXTIMEOUT = 500;
+	private readonly List<string> _responses = new List<string>();
 
 	public TCPSocket(string server, int port)
 	{
@@ -120,28 +120,25 @@ public class TCPSocket
 	{
 		string response = null;
 		this.Read(wait, timeOut);
-		if (this.Responses.Count > 0)
+		if (this._responses.Count > 0)
 		{
-			response = this.Responses[0];
-			this.Responses.RemoveAt(0);
+			response = this._responses[0];
+			this._responses.RemoveAt(0);
 		}
 		return response;
 	}
-
-	public string GetResponse() => this.GetResponse(false, 500);
 
 	public string GetSavedResponse()
 	{
 		string response = null;
-		if (this.Responses.Count > 0)
+		if (this._responses.Count > 0)
 		{
-			response = this.Responses[0];
-			this.Responses.RemoveAt(0);
+			response = this._responses[0];
+			this._responses.RemoveAt(0);
 		}
 		return response;
 	}
 
-	public void Read() => this.Read(false, 500);
 	public void Read(bool wait = false, int timeOut = 500)
 	{
 		byte[] received = new byte[1024];
@@ -161,51 +158,6 @@ public class TCPSocket
 		{
 			Debug.Log(e);
 		}
-		this.Responses.Add(response);
-	}
-
-	public string Chat(Command message = null)
-	{
-		string response = "NO RESPONSE";
-		if (this.Messages.Count <= 0 && message == null) return null;
-		if (message != null)
-		{
-			if (this.Messages.Count > 0)
-			{
-				this.Messages.Insert(0, message);
-			} else
-			{
-				this.Messages.Add(message);
-			}
-		}
-		try
-		{
-			if (this.IsPrepared())
-			{
-				byte[] data = Encoding.UTF8.GetBytes(this.Messages[0].GetJSON());
-				try
-				{
-					this._stream.Write(data, 0, data.Length);
-					this.Messages.RemoveAt(0);
-					data = new byte[1024];
-					this._stream.ReadTimeout = MAXTIMEOUT;
-					int tamanio = this._stream.Read(data, 0, data.Length);
-					response = Encoding.ASCII.GetString(data, 0, tamanio);
-				}
-				catch (IOException)
-				{
-					response = "ERROR. TIMEOUT";
-				}
-				catch (Exception e)
-				{
-					Debug.Log(e);
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			Debug.Log(e);
-		}
-		return response;
+		this._responses.Add(response);
 	}
 }
