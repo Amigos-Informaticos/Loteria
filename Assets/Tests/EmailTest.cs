@@ -15,7 +15,7 @@ namespace Tests
 			socket.SendCommand();
 			Assert.AreEqual(
 				"OK",
-				socket.GetResponse(true)
+				socket.GetResponse()
 			);
 		}
 	}
