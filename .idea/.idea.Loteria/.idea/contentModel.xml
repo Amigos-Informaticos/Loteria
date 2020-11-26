@@ -42,6 +42,11 @@
           </e>
         </e>
         <e p="Scenes" t="Include">
+          <e p="CreatePattern" t="Include">
+            <e p="CreatePattern_Scripts" t="Include">
+              <e p="CreatePattern.cs" t="Include" />
+            </e>
+          </e>
           <e p="GlobalScore" t="Include">
             <e p="GlobalScore_Scripts" t="Include">
               <e p="GlobalScores.cs" t="Include" />
