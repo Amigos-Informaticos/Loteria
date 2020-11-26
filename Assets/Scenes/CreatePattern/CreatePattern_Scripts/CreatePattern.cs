@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -22,10 +23,14 @@ public class CreatePattern : MonoBehaviour
 		foreach (Toggle toggle in toggles)
 		{
 			Toggle captured = toggle;
-			toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));
+			toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));			
 		}
 	}
-    void Update() { }
+
+    void Update() 
+	{
+		throw new NotImplementedException();
+	}
 	public void OnClick()
     {
 		PrintPattern();

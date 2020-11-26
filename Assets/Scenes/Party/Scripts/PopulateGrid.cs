@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,10 @@ public class PopulateGrid : MonoBehaviour
 		this.Populate(this.LoadSprites());		
 	}
 
-	public void Update() { }	
+	public void Update() 
+	{
+		throw new NotImplementedException();
+	}	
 
     private Sprite[] LoadSprites() 
 	{
