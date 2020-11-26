@@ -1809,8 +1809,8 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 0}
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -1819,7 +1819,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 32
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 32
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -2949,14 +2949,14 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 0}
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 5
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 5
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
@@ -2980,7 +2980,18 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1933633025}
+        m_MethodName: OnValueChangedLastname
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3277,8 +3288,8 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 0}
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -3287,7 +3298,7 @@ MonoBehaviour:
   m_CharacterValidation: 0
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 32
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -3573,7 +3584,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3608,10 +3619,21 @@ MonoBehaviour:
   m_CharacterValidation: 7
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 128
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1933633025}
+        m_MethodName: OnValueChangedEmail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -3820,20 +3842,31 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 0}
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 5
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 5
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 32
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1933633025}
+        m_MethodName: OnValueChangedName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -3851,7 +3884,18 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1933633025}
+        m_MethodName: OnValueChangedName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4745,23 +4789,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5671febca5a67874cb45827251171544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TxtEmail: {fileID: 69423951}
-  TxtNickname: {fileID: 1671491233}
-  TxtPassword: {fileID: 322804874}
-  TxtPasswordConfirm: {fileID: 1191930443}
-  TxtConfirmationCode: {fileID: 79225106}
-  TxtName: {fileID: 2095836940}
-  TxtLastname: {fileID: 219205561}
-  PhEmail: {fileID: 1692658011}
-  PhPassword: {fileID: 641310846}
-  PhRepeatPassword: {fileID: 156823853}
-  PhNickname: {fileID: 795414375}
-  PhNames: {fileID: 1049249543}
-  PhLastname: {fileID: 1218162826}
-  PhCode: {fileID: 206179974}
-  BtnSignUp: {fileID: 2131438277}
-  BtnGoBack: {fileID: 276239722}
-  BtnSendCode: {fileID: 1759833080}
+  imgEmail: {fileID: 1560540945}
+  imgNickname: {fileID: 626400065}
+  imgPassword: {fileID: 1262574703}
+  imgPasswordConfirm: {fileID: 610967256}
+  imgConfirmationCode: {fileID: 610967256}
+  imgName: {fileID: 1621442288}
+  imgLastname: {fileID: 1203640722}
+  imgCode: {fileID: 1044818163}
+  txtEmail: {fileID: 69423951}
+  txtNickname: {fileID: 1671491233}
+  txtPassword: {fileID: 322804874}
+  txtPasswordConfirm: {fileID: 1191930443}
+  txtConfirmationCode: {fileID: 79225106}
+  txtName: {fileID: 2095836940}
+  txtLastname: {fileID: 219205561}
+  phEmail: {fileID: 1692658011}
+  phPassword: {fileID: 641310846}
+  phRepeatPassword: {fileID: 156823853}
+  phNickname: {fileID: 795414375}
+  phNames: {fileID: 1049249543}
+  phLastname: {fileID: 1218162826}
+  phCode: {fileID: 206179974}
+  btnSignUp: {fileID: 2131438277}
+  btnGoBack: {fileID: 276239722}
+  btnSendCode: {fileID: 1759833080}
   feedbackMessage: {fileID: 1635100063}
 --- !u!4 &1933633026
 Transform:

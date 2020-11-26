@@ -8,6 +8,14 @@ using UnityEngine.UI;
 
 public class SignUp : MonoBehaviour
 {
+	public Image imgEmail;
+	public Image imgNickname;
+	public Image imgPassword;
+	public Image imgPasswordConfirm;
+	public Image imgConfirmationCode;
+	public Image imgName;
+	public Image imgLastname;
+	public Image imgCode;
 	public TextMeshProUGUI txtEmail;
 	public TextMeshProUGUI txtNickname;
 	public TextMeshProUGUI txtPassword;
@@ -25,13 +33,13 @@ public class SignUp : MonoBehaviour
 
 	public TextMeshProUGUI btnSignUp;
 	public TextMeshProUGUI btnGoBack;
-	public TextMeshProUGUI btnSendCode;	
+	public TextMeshProUGUI btnSendCode;
 	public Text feedbackMessage;
 
 	public void Start()
 	{
-        try
-        {
+		try
+		{
 			this.phEmail.text = Localization.GetMessage("SignUp", "Email");
 			this.phPassword.text = Localization.GetMessage("SignUp", "Password");
 			this.phRepeatPassword.text = Localization.GetMessage("SignUp", "RepeatPassword");
@@ -43,12 +51,47 @@ public class SignUp : MonoBehaviour
 			this.btnGoBack.text = Localization.GetMessage("SignUp", "Back");
 			this.btnSendCode.text = Localization.GetMessage("SignUp", "SendCode");
 		}
-        catch (KeyNotFoundException exception)
-        {
+		catch (KeyNotFoundException exception)
+		{
 			Debug.LogError(exception.StackTrace);
-        }				
+		}
 	}
-	
+	public void OnValueChangedEmail()
+	{
+		if (Player.IsEmail(Regex.Replace(this.txtEmail.text, @"[^\u0000-\u007F]+", string.Empty)))
+		{
+			this.imgEmail.GetComponent<Image>().color = GetHexColor("#6ceb8e");
+		}
+		else
+		{
+			this.imgEmail.GetComponent<Image>().color = GetHexColor("#ffbaba");
+		}
+	}
+
+	public void OnValueChangedName()
+	{
+		if (Player.IsName(Regex.Replace(this.txtName.text, @"[^\u0000-\u007F]+", string.Empty)))
+		{
+			this.imgName.GetComponent<Image>().color = GetHexColor("#6ceb8e");
+		}
+		else
+		{
+			this.imgName.GetComponent<Image>().color = GetHexColor("#ffbaba");
+		}
+	}
+
+	public void OnValueChangedLastname()
+	{
+		if (Player.IsName(Regex.Replace(this.txtLastname.text, @"[^\u0000-\u007F]+", string.Empty)))
+		{
+			this.imgLastname.GetComponent<Image>().color = GetHexColor("#6ceb8e");
+		}
+		else
+		{
+			this.imgLastname.GetComponent<Image>().color = GetHexColor("#ffbaba");
+		}
+	}
+
 	public void SignUpPlayer()
 	{		
 		Player player = InstancePlayer();
@@ -76,7 +119,7 @@ public class SignUp : MonoBehaviour
 	{
 		Player player = InstancePlayer();			
 		string response = player.SendCode();
-		Debug.Log(response);
+		EvaluateResponseSendCode(response);		
 	}
 
 	public void BackToMainMenu()
@@ -94,6 +137,11 @@ public class SignUp : MonoBehaviour
 		player.LastName = Regex.Replace(txtLastname.text, @"[^\u0000-\u007F]+", string.Empty);
 		player.Code = Regex.Replace(txtConfirmationCode.text, @"[^\u0000-\u007F]+", string.Empty);
 		return player;
+    }
+	private Color GetHexColor(string hexadecimal)
+    {		
+		ColorUtility.TryParseHtmlString(hexadecimal, out Color color);
+		return color;
     }
 
 	private void EvaluateResponseSignUp(string response)
