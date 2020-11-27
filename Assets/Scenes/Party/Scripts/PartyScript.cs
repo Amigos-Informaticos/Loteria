@@ -9,7 +9,7 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private Sprite cardChoosed;
     private Player player = new Player();
     
-    // Start is called before the first frame update
+    
     void Start()
     {
         this.generateBoard();
