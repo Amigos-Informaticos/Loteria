@@ -4856,30 +4856,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board:
   - {fileID: 2090851463}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 544708566}
+  - {fileID: 1767696825}
+  - {fileID: 90346001}
+  - {fileID: 165091032}
+  - {fileID: 2062281769}
+  - {fileID: 1800353081}
+  - {fileID: 1295767525}
+  - {fileID: 470055394}
+  - {fileID: 1821942114}
+  - {fileID: 1752314447}
+  - {fileID: 1143362202}
+  - {fileID: 1384276968}
+  - {fileID: 514800149}
+  - {fileID: 1992072085}
+  - {fileID: 1392909867}
+  - {fileID: 409519749}
+  - {fileID: 951678805}
+  - {fileID: 1269224405}
+  - {fileID: 220447322}
+  - {fileID: 923983929}
+  - {fileID: 1164092888}
+  - {fileID: 285360645}
+  - {fileID: 1910831989}
+  - {fileID: 256230332}
+  cardChoosed: {fileID: 0}
 --- !u!4 &867023799
 Transform:
   m_ObjectHideFlags: 0
@@ -11405,7 +11406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
