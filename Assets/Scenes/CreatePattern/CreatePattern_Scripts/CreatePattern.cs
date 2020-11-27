@@ -7,17 +7,15 @@ using UnityEngine.UI;
 
 public class CreatePattern : MonoBehaviour
 {
-	public TextMeshProUGUI showPattern;
-	public TextMeshProUGUI showPatternConverted;
-	public Toggle[] toggles = null;
+	[SerializeField] private TextMeshProUGUI showPattern;
+	[SerializeField] private TextMeshProUGUI showPatternConverted;
+	[SerializeField] private Toggle[] toggles = null;
 	private List<bool> pattern = new List<bool>();
-	public Button btn1;
 	private Board newPattern;
 	void Start()
     {
 		FillEmptyPattern();
 		newPattern = new Board();
-		btn1 = GetComponent<Button>();		  		        
 		foreach (Toggle toggle in toggles)
 		{
 			Toggle captured = toggle;
@@ -29,7 +27,7 @@ public class CreatePattern : MonoBehaviour
 	{
 		
 	}
-	public void OnClick()
+	public void SubmitPattern()
     {
 		newPattern.Pattern = ConvertToArray();
 		PrintPattern();
