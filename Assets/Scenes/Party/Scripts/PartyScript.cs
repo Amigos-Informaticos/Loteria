@@ -7,7 +7,7 @@ public class PartyScript : MonoBehaviour
 {
     [SerializeField] private Image[] board = new Image[25];
     [SerializeField] private Sprite cardChoosed;
-    private Player player;
+    private Player player = new Player();
     
     // Start is called before the first frame update
     void Start()
@@ -33,9 +33,18 @@ public class PartyScript : MonoBehaviour
     
     public void generateBoard()
     {
-        for (int i = 0; i < 25; i++)
+        int idBoardCard = 0;
+        for (int i = 0; i < 5; i++)
         {
-            board[i].GetComponent<Image>().sprite = this.CreateSprite(i + 1);
+            for (int j = 0; j < 5; j++)
+            {
+                Debug.Log(idBoardCard);
+                //Debug.Log(player.Board.Cards[i,j]);
+                board[idBoardCard].GetComponent<Image>().sprite = this.CreateSprite(player.Board.Cards[i,j]);
+                idBoardCard++;
+                
+            }
+            
         }
     }
     
