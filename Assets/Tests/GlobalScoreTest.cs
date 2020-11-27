@@ -1,20 +1,15 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-
-namespace Assets.Tests
+﻿namespace Assets.Tests
 {
-    class GlobalScoreTest
-    {        
-        [Test]
-        public void GetGlobalScore()
-        {
-            Dictionary<int, Dictionary<string, string>> globalScore = Player.GetGlobalScore();            
-            Assert.NotNull(globalScore);
-        }
-    }
+	using System.Collections.Generic;
+	using NUnit.Framework;
+
+	class GlobalScoreTest
+	{
+		[Test]
+		public void GetGlobalScore()
+		{
+			Dictionary<string, Dictionary<string, string>> globalScore = Player.GetGlobalScore();
+			Assert.NotNull(globalScore);
+		}
+	}
 }
