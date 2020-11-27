@@ -8,18 +8,16 @@ using UnityEngine.UI;
 public class CreatePattern : MonoBehaviour
 {
 	public TextMeshProUGUI showPattern;
+	public TextMeshProUGUI showPatternConverted;
 	public Toggle[] toggles = null;
-	public List<int> pattern = null;
+	private List<bool> pattern = new List<bool>();
 	public Button btn1;
+	private Board newPattern;
 	void Start()
     {
-		btn1 = GetComponent<Button>();
-		pattern = new List<int>(25);
-		for (int i = 0; i < 26; i++)
-		{
-			pattern.Insert(i, 0);
-		}
-
+		FillEmptyPattern();
+		newPattern = new Board();
+		btn1 = GetComponent<Button>();		  		        
 		foreach (Toggle toggle in toggles)
 		{
 			Toggle captured = toggle;
@@ -29,26 +27,89 @@ public class CreatePattern : MonoBehaviour
 
     void Update() 
 	{
-		throw new NotImplementedException();
+		
 	}
 	public void OnClick()
     {
+		newPattern.Pattern = ConvertToArray();
 		PrintPattern();
+		PrintArrayBi(newPattern.Pattern);
+    }
+	public void CleanPattern()
+    {
+		foreach(Toggle toggle in toggles)
+        {
+			toggle.GetComponent<Toggle>().isOn = false;
+        }
     }
 	private void ToggleStateChanged(Toggle toggle, bool state)
-	{		
-		Debug.Log(toggle.GetComponent<Toggle>().name + " is " + state.ToString());
+	{
+		this.pattern.RemoveAt((Convert.ToInt32(toggle.GetComponent<Toggle>().name) - 1));
+		this.pattern.Insert((Convert.ToInt32(toggle.GetComponent<Toggle>().name)-1), state);
+	}
+	
+	private void FillEmptyPattern()
+    {
+		int count = 0;
+		while (count < 25)
+		{
+			this.pattern.Add(false);
+			count++;
+		}
 	}
 
 	private void PrintPattern()
-	{		
-		int count2 = 0;
+	{
 		string pattern = null;
-		while (count2 < 26)
+		int count = 0;
+		foreach(bool cell in this.pattern)
+        {
+			pattern += Convert.ToInt32(cell);
+			if(count == 4)
+            {
+				pattern += "\n";
+				count = 0;
+            }
+			else
+            {
+				count++;
+			}			
+        }
+		this.showPattern.text = pattern;
+	}
+
+	private bool[,] ConvertToArray()
+    {
+		int i = 0, j = 0;
+		bool[,] converted = new bool[5, 5];
+		foreach (bool cell in this.pattern)
 		{
-			pattern += "-" + this.	pattern[count2];
-			this.showPattern.text = pattern;
-			count2++;
+			converted[i, j] = cell;
+			if (j == 4)
+			{
+				i++;
+				j = 0;
+			}
+			else
+			{
+				j++;
+			}			
+
 		}
+		return converted;
+    }
+
+	private void PrintArrayBi(bool[,] matrix)
+    {
+		string print = null;
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				print += Convert.ToInt32(matrix[i, j]) + " ";
+			}
+			print += "\n";
+		}
+		this.showPatternConverted.text = print;
 	}
 }
