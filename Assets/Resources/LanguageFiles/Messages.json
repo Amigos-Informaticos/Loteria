@@ -156,5 +156,19 @@
 			"Español": "Salir",
 			"English": "Exit"
 		}
+	},
+	"CreatePattern": {
+		"Submit": {
+			"Español": "Enviar",
+			"English": "Submit"
+		},
+		"Clear": {
+			"Español": "Restablecer",
+			"English": "Clear"
+		},
+		"Cancel": {
+			"Español": "Cancelar",
+			"English": "Cancel"
+		}
 	}
 }

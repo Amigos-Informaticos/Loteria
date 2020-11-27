@@ -1,19 +1,33 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CreatePattern : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI showPattern;
-	[SerializeField] private TextMeshProUGUI showPatternConverted;
-	[SerializeField] private Toggle[] toggles = null;
+	[SerializeField] private readonly TextMeshProUGUI showPattern;
+	[SerializeField] private readonly TextMeshProUGUI showPatternConverted;
+	[SerializeField] private readonly Toggle[] toggles;
+	[SerializeField] private readonly TextMeshProUGUI btnSubmit;
+	[SerializeField] private readonly TextMeshProUGUI btnClear;
+    [SerializeField] private readonly TextMeshProUGUI btnCancel;
 	private List<bool> pattern = new List<bool>();
 	private Board newPattern;
 	void Start()
-    {
+    {		
+        try
+        {
+			this.btnSubmit.text = Localization.GetMessage("CreatePattern","Submit");
+			this.btnClear.text = Localization.GetMessage("CreatePattern", "Clear");
+			this.btnCancel.text = Localization.GetMessage("CreatePattern", "Cancel");
+		}
+        catch (KeyNotFoundException exception)
+        {
+			Debug.LogError(exception);
+        }
 		FillEmptyPattern();
 		newPattern = new Board();
 		foreach (Toggle toggle in toggles)
@@ -22,24 +36,23 @@ public class CreatePattern : MonoBehaviour
 			toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));			
 		}
 	}
-
-    void Update() 
-	{
-		
-	}
-	public void SubmitPattern()
+	public void SavePattern()
     {
 		newPattern.Pattern = ConvertToArray();
 		PrintPattern();
 		PrintArrayBi(newPattern.Pattern);
     }
-	public void CleanPattern()
+	public void ClearPattern()
     {
 		foreach(Toggle toggle in toggles)
         {
 			toggle.GetComponent<Toggle>().isOn = false;
         }
     }
+	public void Cancel()
+    {
+		UnityEngine.SceneManagement.SceneManager.LoadScene("SignUp");
+	}
 	private void ToggleStateChanged(Toggle toggle, bool state)
 	{
 		this.pattern.RemoveAt((Convert.ToInt32(toggle.GetComponent<Toggle>().name) - 1));
@@ -99,15 +112,15 @@ public class CreatePattern : MonoBehaviour
 
 	private void PrintArrayBi(bool[,] matrix)
     {
-		string print = null;
+		StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < 5; i++)
 		{
 			for (int j = 0; j < 5; j++)
 			{
-				print += Convert.ToInt32(matrix[i, j]) + " ";
+				stringBuilder.Append(Convert.ToInt32(matrix[i, j]) + " ");
 			}
-			print += "\n";
+			stringBuilder.Append("\n");
 		}
-		this.showPatternConverted.text = print;
+		this.showPatternConverted.text = stringBuilder.ToString();
 	}
 }
