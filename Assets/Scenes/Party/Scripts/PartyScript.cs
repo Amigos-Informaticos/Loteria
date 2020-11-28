@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,11 +7,21 @@ using UnityEngine.UI;
 public class PartyScript : MonoBehaviour
 {
     [SerializeField] private Image[] board = new Image[25];
+    [SerializeField] private Image cardToShow;
     private readonly Player player = new Player();
+    private int[] cards = new int[54];
+    
     
     void Start()
     {
-        this.generateBoard();
+        this.GenerateBoard();
+        InvokeRepeating();
+        
+    }
+
+    private void Update()
+    {
+        this.RunTheCards();
     }
 
     public Sprite CreateSprite(int idCard)
@@ -20,17 +31,32 @@ public class PartyScript : MonoBehaviour
         return sprite;
     }
 
-    public void generateBoard()
+    public void GenerateBoard()
     {
         int idBoardCard = 0;
         for (int i = 0; i < 5; i++)
         {
             for (int j = 0; j < 5; j++)
             {
-                Debug.Log(idBoardCard);
                 board[idBoardCard].GetComponent<Image>().sprite = this.CreateSprite(player.Board.Cards[i,j]);
                 idBoardCard++;
             }
         }
+    }
+
+    public void RunTheCards()
+    {
+        
+        for (int i = 0; i < 54; i++)
+        {
+            StartCoroutine(ExecuteAfterTime(1f, i + 1));
+        }
+    }
+    
+    IEnumerator ExecuteAfterTime(float time, int index)
+    {
+        yield return new WaitForSeconds(time);
+ 
+        cardToShow.GetComponent<Image>().sprite = this.CreateSprite(index);
     }
 }
