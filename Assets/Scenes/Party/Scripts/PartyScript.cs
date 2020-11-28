@@ -30,9 +30,7 @@ public class PartyScript : MonoBehaviour
                 Debug.Log(idBoardCard);
                 board[idBoardCard].GetComponent<Image>().sprite = this.CreateSprite(player.Board.Cards[i,j]);
                 idBoardCard++;
-                
             }
-            
         }
     }
 }
