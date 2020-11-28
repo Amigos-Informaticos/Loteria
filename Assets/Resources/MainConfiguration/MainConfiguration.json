@@ -1,5 +1,6 @@
 {
 	"UserConfigurationFile": "Assets/Resources/UserConfiguration/UserConfiguration.json",
 	"LanguagesFile": "Assets/Resources/LanguageFiles/Messages.json",
-	"SocketConfigurationFile": "Assets/Resources/SocketConfiguration/SocketConfiguration.json"
+	"SocketConfigurationFile": "Assets/Resources/SocketConfiguration/SocketConfiguration.json",
+	"CardsDirectoryPath": "Images/Cards/"
 }

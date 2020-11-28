@@ -4,11 +4,13 @@ using GitHub.Unity.Json;
 
 public static class UserConfiguration
 {
-	public static Dictionary<string, string> Settings { get; set; } =
+	private static Dictionary<string, string> Settings { get; set; } =
 		new Dictionary<string, string>();
 
 	private static readonly string SETTINGS_PATH =
 		MainConfiguration.GetSetting("UserConfigurationFile");
+
+	public static Player Player { get; set; }
 
 	public static void LoadSettings()
 	{
