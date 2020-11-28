@@ -1067,7 +1067,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 521055847}
-        m_MethodName: ClearPattern
+        m_MethodName: OnClickClearPattern
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2570,7 +2570,7 @@ MonoBehaviour:
   - {fileID: 547034154}
   - {fileID: 191473123}
   - {fileID: 703792569}
-  btnSubmit: {fileID: 213734794}
+  btnSave: {fileID: 213734794}
   btnClear: {fileID: 1125459587}
   btnCancel: {fileID: 605360125}
 --- !u!4 &521055848
@@ -6620,7 +6620,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 521055847}
-        m_MethodName: SavePattern
+        m_MethodName: OnClickSavePattern
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6750,7 +6750,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 521055847}
-        m_MethodName: Cancel
+        m_MethodName: OnClickCancel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

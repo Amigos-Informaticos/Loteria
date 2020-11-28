@@ -8,19 +8,19 @@ using UnityEngine.UI;
 
 public class CreatePattern : MonoBehaviour
 {
-	[SerializeField] private readonly TextMeshProUGUI showPattern;
-	[SerializeField] private readonly TextMeshProUGUI showPatternConverted;
-	[SerializeField] private readonly Toggle[] toggles;
-	[SerializeField] private readonly TextMeshProUGUI btnSubmit;
-	[SerializeField] private readonly TextMeshProUGUI btnClear;
-    [SerializeField] private readonly TextMeshProUGUI btnCancel;
-	private List<bool> pattern = new List<bool>();
+	[SerializeField] private TextMeshProUGUI showPattern;
+	[SerializeField] private TextMeshProUGUI showPatternConverted;
+	[SerializeField] private Toggle[] toggles;
+	[SerializeField] private TextMeshProUGUI btnSave;
+	[SerializeField] private TextMeshProUGUI btnClear;
+    [SerializeField] private TextMeshProUGUI btnCancel;
+	private readonly List<bool> pattern = new List<bool>();
 	private Board newPattern;
 	void Start()
     {		
         try
         {
-			this.btnSubmit.text = Localization.GetMessage("CreatePattern","Submit");
+			this.btnSave.text = Localization.GetMessage("CreatePattern","Submit");
 			this.btnClear.text = Localization.GetMessage("CreatePattern", "Clear");
 			this.btnCancel.text = Localization.GetMessage("CreatePattern", "Cancel");
 		}
@@ -36,20 +36,20 @@ public class CreatePattern : MonoBehaviour
 			toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));			
 		}
 	}
-	public void SavePattern()
+	public void OnClickSavePattern()
     {
 		newPattern.Pattern = ConvertToArray();
 		PrintPattern();
 		PrintArrayBi(newPattern.Pattern);
     }
-	public void ClearPattern()
+	public void OnClickClearPattern()
     {
 		foreach(Toggle toggle in toggles)
         {
 			toggle.GetComponent<Toggle>().isOn = false;
         }
     }
-	public void Cancel()
+	public void OnClickCancel()
     {
 		UnityEngine.SceneManagement.SceneManager.LoadScene("SignUp");
 	}
@@ -57,8 +57,7 @@ public class CreatePattern : MonoBehaviour
 	{
 		this.pattern.RemoveAt((Convert.ToInt32(toggle.GetComponent<Toggle>().name) - 1));
 		this.pattern.Insert((Convert.ToInt32(toggle.GetComponent<Toggle>().name)-1), state);
-	}
-	
+	}	
 	private void FillEmptyPattern()
     {
 		int count = 0;
@@ -71,14 +70,14 @@ public class CreatePattern : MonoBehaviour
 
 	private void PrintPattern()
 	{
-		string pattern = null;
+		StringBuilder pattern = new StringBuilder();
 		int count = 0;
 		foreach(bool cell in this.pattern)
         {
-			pattern += Convert.ToInt32(cell);
+			pattern.Append(Convert.ToInt32(cell)+" ");
 			if(count == 4)
             {
-				pattern += "\n";
+				pattern.Append("\n");
 				count = 0;
             }
 			else
@@ -86,7 +85,7 @@ public class CreatePattern : MonoBehaviour
 				count++;
 			}			
         }
-		this.showPattern.text = pattern;
+		this.showPattern.text = pattern.ToString();
 	}
 
 	private bool[,] ConvertToArray()
