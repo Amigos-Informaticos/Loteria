@@ -8,7 +8,6 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private Image[] board = new Image[25];
     private Player player = new Player();
     
-    
     void Start()
     {
         this.generateBoard();
@@ -36,6 +35,4 @@ public class PartyScript : MonoBehaviour
             
         }
     }
-    
-    
 }
