@@ -90,7 +90,7 @@ public class Board
 		return position;
 	}
 
-	public int[] GetNumbers()
+	public int[] GetNumbers()	
 	{
 		List<int> numbers = new List<int>();
 		for (int i = 0; i < 5; i++)
