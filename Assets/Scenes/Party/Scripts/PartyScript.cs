@@ -10,16 +10,19 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private Image cardToShow;
     private readonly Player player = new Player();
     private int[] cards = new int[54];
+
+    private int cardOnScreen;
     
-    private int seconds;
-    
-    int card = 1;
 
     private IEnumerator coroutine;
     
     void Start()
     {
-        seconds = 0;
+        cardOnScreen = 0;
+        for (int i = 0; i < 54; i++)
+        {
+            cards[i] = i + 1;
+        }
         this.GenerateBoard();
         coroutine = ChangeCard(0.5f);
         StartCoroutine(coroutine);
@@ -30,10 +33,9 @@ public class PartyScript : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
-            ChangeSpriteOfCard(card);
-            //cardToShow.GetComponent<Image>().sprite = this.CreateSpriteOfACard(card);
-            Debug.Log(card);
-            card ++;
+            ChangeSpriteOfCard(cards[cardOnScreen]);
+            Debug.Log(cardOnScreen);
+            cardOnScreen ++;
         }
     }
 
