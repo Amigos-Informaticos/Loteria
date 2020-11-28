@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PartyScript : MonoBehaviour
 {
     [SerializeField] private Image[] board = new Image[25];
-    private Player player = new Player();
+    private readonly Player player = new Player();
     
     void Start()
     {
