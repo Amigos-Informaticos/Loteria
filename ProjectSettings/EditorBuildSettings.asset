@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GlobalScore/GlobalScore.unity
     guid: e1464ca5b909fe44a80f0a6a4332a3cf
+  - enabled: 1
+    path: Assets/Scenes/CreatePattern/CreatePattern.unity
+    guid: 069b378a02eba314c8ce52f6f8c9460e
   m_configObjects: {}

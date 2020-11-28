@@ -8,33 +8,32 @@ using UnityEngine.UI;
 
 public class SignUp : MonoBehaviour
 {
-	public Image imgEmail;
-	public Image imgNickname;
-	public Image imgPassword;
-	public Image imgPasswordConfirm;
-	public Image imgConfirmationCode;
-	public Image imgName;
-	public Image imgLastname;
-	public Image imgCode;
-	public TextMeshProUGUI txtEmail;
-	public TextMeshProUGUI txtNickname;
-	public TextMeshProUGUI txtPassword;
-	public TextMeshProUGUI txtPasswordConfirm;
-	public TextMeshProUGUI txtConfirmationCode;
-	public TextMeshProUGUI txtName;
-	public TextMeshProUGUI txtLastname;
-	public TextMeshProUGUI phEmail;
-	public TextMeshProUGUI phPassword;
-	public TextMeshProUGUI phRepeatPassword;
-	public TextMeshProUGUI phNickname;
-	public TextMeshProUGUI phNames;
-	public TextMeshProUGUI phLastname;
-	public TextMeshProUGUI phCode;
-
-	public TextMeshProUGUI btnSignUp;
-	public TextMeshProUGUI btnGoBack;
-	public TextMeshProUGUI btnSendCode;
-	public Text feedbackMessage;
+	[SerializeField] private Image imgEmail;
+	[SerializeField] private Image imgNickname;
+	[SerializeField] private Image imgPassword;
+	[SerializeField] private Image imgPasswordConfirm;
+	[SerializeField] private Image imgConfirmationCode;
+	[SerializeField] private Image imgName;
+	[SerializeField] private Image imgLastname;
+	[SerializeField] private Image imgCode;
+	[SerializeField] private TextMeshProUGUI txtEmail;
+	[SerializeField] private TextMeshProUGUI txtNickname;
+	[SerializeField] private TextMeshProUGUI txtPassword;
+	[SerializeField] private TextMeshProUGUI txtPasswordConfirm;
+	[SerializeField] private TextMeshProUGUI txtConfirmationCode;
+	[SerializeField] private TextMeshProUGUI txtName;
+	[SerializeField] private TextMeshProUGUI txtLastname;
+	[SerializeField] private TextMeshProUGUI phEmail;
+	[SerializeField] private TextMeshProUGUI phPassword;
+	[SerializeField] private TextMeshProUGUI phRepeatPassword;
+	[SerializeField] private TextMeshProUGUI phNickname;
+	[SerializeField] private TextMeshProUGUI phNames;
+	[SerializeField] private TextMeshProUGUI phLastname;
+	[SerializeField] private TextMeshProUGUI phCode;
+	[SerializeField] private TextMeshProUGUI btnSignUp;
+	[SerializeField] private TextMeshProUGUI btnGoBack;
+	[SerializeField] private TextMeshProUGUI btnSendCode;
+	[SerializeField] private Text feedbackMessage;
 
 	public void Start()
 	{
@@ -106,6 +105,8 @@ public class SignUp : MonoBehaviour
 			else
 			{
 				feedbackMessage.text = Localization.GetMessage("SignUp", "UnmatchedPassword");
+				this.imgPassword.GetComponent<Image>().color = GetHexColor("#ffbaba");
+				this.imgPasswordConfirm.GetComponent<Image>().color = GetHexColor("#ffbaba");
 			}
 		} 
 		else
@@ -157,10 +158,10 @@ public class SignUp : MonoBehaviour
 			case "Already registered":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "AlreadyRegistered");
 				break;
-			case "Nickname occupied":
+			case "NICKNAME OCCUPIED":
 				feedbackMessage.text = Localization.GetMessage("SignUp","NicknameOccupied");
 				break;
-			case "Error":
+			case "ERROR":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpError");
 				break;
 			default:
