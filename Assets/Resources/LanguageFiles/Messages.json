@@ -118,15 +118,15 @@
 		},
 		"Error": {
 			"Español": "No se pudo establecer la conexión",
-			"English": "An error occurs with the connection",
+			"English": "An error occurs with the connection"
 		},
 		"WrongPassword": {
 			"Español": "Contraseña incorrecta",
-			"English": "Wrong password",
+			"English": "Wrong password"
 		},
 		"EmailNotRegistered": {
 			"Español": "Email no registrado",
-			"English": "Ematil not registered",
+			"English": "Ematil not registered"
 		}
 	},
 	"Settings": {

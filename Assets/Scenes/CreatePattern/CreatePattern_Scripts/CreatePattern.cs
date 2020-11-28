@@ -70,14 +70,14 @@ public class CreatePattern : MonoBehaviour
 
 	private void PrintPattern()
 	{
-		StringBuilder pattern = new StringBuilder();
+		StringBuilder stringPattern = new StringBuilder();
 		int count = 0;
 		foreach(bool cell in this.pattern)
         {
-			pattern.Append(Convert.ToInt32(cell)+" ");
+			stringPattern.Append(Convert.ToInt32(cell)+" ");
 			if(count == 4)
             {
-				pattern.Append("\n");
+				stringPattern.Append("\n");
 				count = 0;
             }
 			else
@@ -85,7 +85,7 @@ public class CreatePattern : MonoBehaviour
 				count++;
 			}			
         }
-		this.showPattern.text = pattern.ToString();
+		this.showPattern.text = stringPattern.ToString();
 	}
 
 	private bool[,] ConvertToArray()
@@ -103,8 +103,7 @@ public class CreatePattern : MonoBehaviour
 			else
 			{
 				j++;
-			}			
-
+			}
 		}
 		return converted;
     }
