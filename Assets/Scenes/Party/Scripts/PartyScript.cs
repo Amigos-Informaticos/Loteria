@@ -11,20 +11,38 @@ public class PartyScript : MonoBehaviour
     private readonly Player player = new Player();
     private int[] cards = new int[54];
     
+    private int seconds;
+    
+    int card = 1;
+
+    private IEnumerator coroutine;
     
     void Start()
     {
+        seconds = 0;
         this.GenerateBoard();
-        InvokeRepeating();
-        
+        coroutine = ChangeCard(0.5f);
+        StartCoroutine(coroutine);
     }
 
-    private void Update()
+    private IEnumerator ChangeCard(float waitTime)
     {
-        this.RunTheCards();
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            ChangeSpriteOfCard(card);
+            //cardToShow.GetComponent<Image>().sprite = this.CreateSpriteOfACard(card);
+            Debug.Log(card);
+            card ++;
+        }
     }
 
-    public Sprite CreateSprite(int idCard)
+    public void ChangeSpriteOfCard(int index)
+    {
+        cardToShow.GetComponent<Image>().sprite = CreateSpriteOfACard(index);
+    }
+
+    public Sprite CreateSpriteOfACard(int idCard)
     {
         Texture2D texture = Resources.Load("Images/Cards/" + idCard) as Texture2D;
         Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
@@ -38,25 +56,9 @@ public class PartyScript : MonoBehaviour
         {
             for (int j = 0; j < 5; j++)
             {
-                board[idBoardCard].GetComponent<Image>().sprite = this.CreateSprite(player.Board.Cards[i,j]);
+                board[idBoardCard].GetComponent<Image>().sprite = this.CreateSpriteOfACard(player.Board.Cards[i,j]);
                 idBoardCard++;
             }
         }
-    }
-
-    public void RunTheCards()
-    {
-        
-        for (int i = 0; i < 54; i++)
-        {
-            StartCoroutine(ExecuteAfterTime(1f, i + 1));
-        }
-    }
-    
-    IEnumerator ExecuteAfterTime(float time, int index)
-    {
-        yield return new WaitForSeconds(time);
- 
-        cardToShow.GetComponent<Image>().sprite = this.CreateSprite(index);
     }
 }
