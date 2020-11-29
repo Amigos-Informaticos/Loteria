@@ -40,6 +40,11 @@
           </e>
         </e>
         <e p="Scenes" t="Include">
+          <e p="CreateParty" t="Include">
+            <e p="CreateParty" t="Include">
+              <e p="CreatePartyScript.cs" t="Include" />
+            </e>
+          </e>
           <e p="CreatePattern" t="Include">
             <e p="CreatePattern_Scripts" t="Include">
               <e p="CreatePattern.cs" t="Include" />

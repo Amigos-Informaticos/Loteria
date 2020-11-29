@@ -22,12 +22,12 @@ public class LetsPlayScript : MonoBehaviour
 
     public void BackToSignedIn()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");
     }
 
     public void GoToCreateParty()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CreateParty");
     }
 
     public void JoinToParty()

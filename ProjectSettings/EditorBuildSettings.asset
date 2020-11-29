@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SignedIn/SignedIn.unity
     guid: 667a079414bb0fd4cb56d592deba7f64
   - enabled: 1
+    path: Assets/Scenes/CreateParty/CreateParty.unity
+    guid: 67cdbcb4a5e4a6347a2f8e6c075d70b1
+  - enabled: 1
     path: Assets/Scenes/Party/Party.unity
     guid: af079b1c03c4a51479e7a67c2e6ce538
   - enabled: 1
