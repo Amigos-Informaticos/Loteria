@@ -64,3 +64,18 @@ public class PartyScript : MonoBehaviour
         }
     }
 }
+
+	public void generateBoard()
+	{
+		int idBoardCard = 0;
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				this.board[idBoardCard].GetComponent<Image>().sprite =
+					this.CreateSprite(this._player.Board.Cards[i, j]);
+				idBoardCard++;
+			}
+		}
+	}
+}

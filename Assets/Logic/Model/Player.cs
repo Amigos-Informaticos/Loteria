@@ -91,7 +91,7 @@ public class Player
 
 	public string SignUp()
 	{
-		string signedUp = "Error";
+		string signedUp = "ERROR";
 		this.command = new Command("sign_up");
 		this.command.AddArgument("email", this.email);
 		this.command.AddArgument("nickname", this.NickName);

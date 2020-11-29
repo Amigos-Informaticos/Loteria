@@ -4,34 +4,37 @@ using UnityEngine;
 
 public class Login : MonoBehaviour
 {
-	public TextMeshProUGUI ingresoEmail;
-	public TextMeshProUGUI ingresoContrasenia;
-	public TextMeshProUGUI emailPlaceHolder;
-	public TextMeshProUGUI passwordPlaceHolder;
-	public TextMeshProUGUI backButton;
-	public TextMeshProUGUI loginButton;
+	[SerializeField] private TextMeshProUGUI txtEmail;
+	[SerializeField] private TextMeshProUGUI txtPassword;
+	[SerializeField] private TextMeshProUGUI phEmail;
+	[SerializeField] private TextMeshProUGUI phPassword;
+	[SerializeField] private TextMeshProUGUI btnBack;
+	[SerializeField] private TextMeshProUGUI btnLogin;
+	[SerializeField] private TextMeshProUGUI txtFeedBackMessage;
 	private Command command;
 	private TCPSocket tcpSocket;
 
 	private void Start()
 	{
-		this.emailPlaceHolder.text = Localization.GetMessage("Login", "Email");
-		this.passwordPlaceHolder.text = Localization.GetMessage("Login", "Password");
-		this.backButton.text = Localization.GetMessage("Login", "Back");
-		this.loginButton.text = Localization.GetMessage("Login", "Login");
+		this.phEmail.text = Localization.GetMessage("Login", "Email");
+		this.phPassword.text = Localization.GetMessage("Login", "Password");
+		this.btnBack.text = Localization.GetMessage("Login", "Back");
+		this.btnLogin.text = Localization.GetMessage("Login", "Login");
 	}
 
 	public void LogIn()
 	{
-		Player player = new Player();
-		player.Email = Regex.Replace(this.ingresoEmail.text, @"[^\u0000-\u007F]+", string.Empty);
-		player.Password =
-			Regex.Replace(this.ingresoContrasenia.text, @"[^\u0000-\u007F]+", string.Empty);
-		string response = player.LogIn();
+        Player player = new Player
+        {
+            Email = Regex.Replace(this.txtEmail.text, @"[^\u0000-\u007F]+", string.Empty),
+            Password = Regex.Replace(this.txtPassword.text, @"[^\u0000-\u007F]+", string.Empty)
+        };
+        string response = player.LogIn();
 		if (response.Equals("OK"))
 		{
 			UnityEngine.SceneManagement.SceneManager.LoadScene(3);
-		} else
+		} 
+		else
 		{
 			Debug.Log(response);
 		}
@@ -40,5 +43,24 @@ public class Login : MonoBehaviour
 	public void BackToMainMenu()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+	}
+
+	private void EvaluateResponseLogIn(string response)
+	{
+		switch (response)
+		{			
+			case "WRONG PASSWORD":
+				txtFeedBackMessage.text = Localization.GetMessage("LogIn", "WrongPassword");
+				break;
+			case "EMAIL NOT REGISTERED":
+				txtFeedBackMessage.text = Localization.GetMessage("LogIn", "EmailNotRegistered");
+				break;
+			case "ERROR":
+				txtFeedBackMessage.text = Localization.GetMessage("LogIn", "Error");
+				break;
+			default:
+				txtFeedBackMessage.text = "";
+				break;
+		}
 	}
 }
