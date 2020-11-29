@@ -10,10 +10,7 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private Image cardToShow;
     private readonly Player player = new Player();
     private int[] cards = new int[54];
-
     private int cardOnScreen;
-    
-
     private IEnumerator coroutine;
     
     void Start()
