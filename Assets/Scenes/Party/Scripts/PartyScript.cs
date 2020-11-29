@@ -8,20 +8,19 @@ public class PartyScript : MonoBehaviour
 {
     [SerializeField] private Image[] board = new Image[25];
     [SerializeField] private Image cardToShow;
-    private readonly Player player = new Player();
-    private int[] cards = new int[54];
-    private int cardOnScreen;
-    private IEnumerator coroutine;
-    
+    private readonly Player _player = new Player();
+    private readonly int[] _cards = new int[54];
+    private int _cardOnScreen;
+
     void Start()
     {
-        cardOnScreen = 0;
+        _cardOnScreen = 0;
         for (int i = 0; i < 54; i++)
         {
-            cards[i] = i + 1;
+            _cards[i] = i + 1;
         }
         this.GenerateBoard();
-        coroutine = ChangeCard(0.5f);
+        IEnumerator coroutine = ChangeCard(0.5f);
         StartCoroutine(coroutine);
     }
 
@@ -30,9 +29,9 @@ public class PartyScript : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(waitTime);
-            ChangeSpriteOfCard(cards[cardOnScreen]);
-            Debug.Log(cardOnScreen);
-            cardOnScreen ++;
+            ChangeSpriteOfCard(_cards[_cardOnScreen]);
+            Debug.Log(_cardOnScreen);
+            _cardOnScreen ++;
         }
     }
 
@@ -55,7 +54,7 @@ public class PartyScript : MonoBehaviour
         {
             for (int j = 0; j < 5; j++)
             {
-                board[idBoardCard].GetComponent<Image>().sprite = this.CreateSpriteOfACard(player.Board.Cards[i,j]);
+                board[idBoardCard].GetComponent<Image>().sprite = this.CreateSpriteOfACard(_player.Board.Cards[i,j]);
                 idBoardCard++;
             }
         }

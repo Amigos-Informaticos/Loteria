@@ -24,7 +24,7 @@ public class LetsPlayScript : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");
     }
 
-    public void GoToCreateParty()
+    public void CreateParty()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("CreateParty");
     }
