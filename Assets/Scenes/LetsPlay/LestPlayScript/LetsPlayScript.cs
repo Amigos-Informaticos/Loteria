@@ -1,18 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LetsPlayScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private TextMeshProUGUI txtJoinGame;
+    [SerializeField] private TextMeshProUGUI btnCreateParty;
+    [SerializeField] private TextMeshProUGUI btnBack;
+    [SerializeField] private TextMeshProUGUI txtCode;
+    [SerializeField] private TextMeshProUGUI phCode;
+    
+    
     void Start()
     {
-        
+        this.txtJoinGame.text = Localization.GetMessage("LetsPlay","Join Game");
+        this.btnCreateParty.text = Localization.GetMessage("LetsPlay","Create Party");
+        this.btnBack.text = Localization.GetMessage("LetsPlay","Back");
+        this.phCode.text = Localization.GetMessage("LetsPlay","Code");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BackToSignedIn()
     {
-        
+        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
     }
+
+    public void GoToCreateParty()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene();
+    }
+
+    public void JoinToParty()
+    {
+        Debug.Log(txtCode.text); 
+    }
+
 }

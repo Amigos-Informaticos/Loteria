@@ -50,6 +50,11 @@
               <e p="GlobalScores.cs" t="Include" />
             </e>
           </e>
+          <e p="LetsPlay" t="Include">
+            <e p="LestPlayScript" t="Include">
+              <e p="LetsPlayScript.cs" t="Include" />
+            </e>
+          </e>
           <e p="Login" t="Include">
             <e p="Login_Scripts" t="Include">
               <e p="Login.cs" t="Include" />

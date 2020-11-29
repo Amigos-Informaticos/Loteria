@@ -182,5 +182,27 @@
 			"Español": "Cancelar",
 			"English": "Cancel"
 		}
+	},
+	"LetsPlay": {
+		"Create Party": {
+			"Español": "Crear Partida",
+			"English": "Create Party"
+		},
+		"Join Game": {
+			"Español": "Unirse a Partida",
+			"English": "Join Game"
+		},
+		"Join": {
+			"Español": "Unirse",
+			"English": "Join"
+		},
+		"Code": {
+			"Español": "Código",
+			"English": "Game Code"
+		},
+		"Back": {
+			"Español": "Atrás",
+			"English": "Back"
+		}
 	}
 }
