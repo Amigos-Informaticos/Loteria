@@ -204,5 +204,31 @@
 			"Español": "Atrás",
 			"English": "Back"
 		}
+	},
+	"CreateParty": {
+		"Players": {
+			"Español": "Jugadores:",
+			"English": "Players:"
+		},
+		"Rounds": {
+			"Español": "Rondas:",
+			"English": "Rounds:"
+		},
+		"GameMode": {
+			"Español": "Modo de Juego:",
+			"English": "Game Mode:"
+		},
+		"Speed": {
+			"Español": "Velocidad:",
+			"English": "Speed:"
+		},
+		"Create": {
+			"Español": "Crear",
+			"English": "Create"
+		},
+		"Back": {
+			"Español": "Atrás",
+			"English": "Back"
+		}
 	}
 }
