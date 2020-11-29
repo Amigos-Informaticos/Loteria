@@ -1,36 +1,62 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PartyScript : MonoBehaviour
 {
-	[SerializeField] private Image[] board = new Image[25];
-	private readonly Player _player = new Player();
+    [SerializeField] private Image[] board = new Image[25];
+    [SerializeField] private Image cardToShow;
+    private readonly Player _player = new Player();
+    private readonly int[] _cards = new int[54];
+    private int _cardOnScreen;
 
-	public void Start()
-	{
-		this.generateBoard();
-	}
+    void Start()
+    {
+        _cardOnScreen = 0;
+        for (int i = 0; i < 54; i++)
+        {
+            _cards[i] = i + 1;
+        }
+        this.GenerateBoard();
+        IEnumerator coroutine = ChangeCard(0.5f);
+        StartCoroutine(coroutine);
+    }
 
-	public Sprite CreateSprite(int idCard)
-	{
-		string path = MainConfiguration.GetSetting("CardsDirectoryPath");
-		Texture2D texture = Resources.Load(path + idCard) as Texture2D;
-		Sprite sprite = Sprite.Create(
-			texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-		return sprite;
-	}
+    private IEnumerator ChangeCard(float waitTime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            ChangeSpriteOfCard(_cards[_cardOnScreen]);
+            Debug.Log(_cardOnScreen);
+            _cardOnScreen ++;
+        }
+    }
 
-	public void generateBoard()
-	{
-		int idBoardCard = 0;
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				this.board[idBoardCard].GetComponent<Image>().sprite =
-					this.CreateSprite(this._player.Board.Cards[i, j]);
-				idBoardCard++;
-			}
-		}
-	}
+    public void ChangeSpriteOfCard(int index)
+    {
+        cardToShow.GetComponent<Image>().sprite = CreateSpriteOfACard(index);
+    }
+
+    public Sprite CreateSpriteOfACard(int idCard)
+    {
+        Texture2D texture = Resources.Load("Images/Cards/" + idCard) as Texture2D;
+        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        return sprite;
+    }
+
+    public void GenerateBoard()
+    {
+        int idBoardCard = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                board[idBoardCard].GetComponent<Image>().sprite = this.CreateSpriteOfACard(_player.Board.Cards[i,j]);
+                idBoardCard++;
+            }
+        }
+    }
 }
