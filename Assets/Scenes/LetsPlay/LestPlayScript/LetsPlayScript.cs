@@ -11,7 +11,6 @@ public class LetsPlayScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtCode;
     [SerializeField] private TextMeshProUGUI phCode;
     
-    
     void Start()
     {
         this.txtJoinGame.text = Localization.GetMessage("LetsPlay","Join Game");
@@ -34,5 +33,4 @@ public class LetsPlayScript : MonoBehaviour
     {
         Debug.Log(txtCode.text); 
     }
-
 }
