@@ -26,4 +26,9 @@ public class CreatePartyScript : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
     }
+
+    public void GoToLobby()
+    {
+        Debug.Log("WIP");
+    }
 }
