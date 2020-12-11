@@ -109,7 +109,7 @@ public class Player
 
 	public string EnterToLobby(string code)
 	{
-		string message = "ERROR";
+		string message;
 		this.command = new Command("enter_room");
 		this.command.AddArgument("room_id", code);
 		this.command.AddArgument("user_email",this.email);

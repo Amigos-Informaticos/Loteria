@@ -32,7 +32,7 @@ public class LetsPlayScript : MonoBehaviour
 
     public void JoinToParty()
     {
-        string response = UserConfiguration.Player.EnterToLobby(txtCode.text);;
+        string response = UserConfiguration.Player.EnterToLobby(txtCode.text);
         
         if (response.Equals("OK"))
         {
