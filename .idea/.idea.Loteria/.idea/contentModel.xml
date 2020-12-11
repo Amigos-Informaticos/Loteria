@@ -60,6 +60,11 @@
               <e p="LetsPlayScript.cs" t="Include" />
             </e>
           </e>
+          <e p="Lobby" t="Include">
+            <e p="Lobby_Scripts" t="Include">
+              <e p="LobbyScript.cs" t="Include" />
+            </e>
+          </e>
           <e p="Login" t="Include">
             <e p="Login_Scripts" t="Include">
               <e p="Login.cs" t="Include" />
