@@ -21,16 +21,16 @@ public class SignedIn : MonoBehaviour
 
     public void GoToScores()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(6);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GlobalScore");
     }
     
     public void GoToSettings()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(5);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Settings");
     }
 
     public void BackToMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }

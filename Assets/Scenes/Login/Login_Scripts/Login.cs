@@ -30,9 +30,10 @@ public class Login : MonoBehaviour
             Password = Regex.Replace(this.txtPassword.text, @"[^\u0000-\u007F]+", string.Empty)
         };
         string response = player.LogIn();
-		if (response.Equals("OK"))
+		/*
+        if (response.Equals("OK"))
 		{
-			if (player.GetPlayerFromServer(txtEmail.text))
+			if (player.GetPlayerFromServer())
 			{
 				UserConfiguration.Player = player;
 				UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");	
@@ -44,8 +45,11 @@ public class Login : MonoBehaviour
 		} 
 		else
 		{
-			Debug.Log(response);
+			txtFeedBackMessage.text = response;
 		}
+		*/
+		Debug.Log(response);
+		
 	}
 
 	public void BackToMainMenu()

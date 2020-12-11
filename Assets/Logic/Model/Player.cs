@@ -79,14 +79,14 @@ public class Player
 	public string LogIn()
 	{
 		string loggedIn;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		this.command = new Command("login");
 		this.command.AddArgument("email", this.email);
 		this.command.AddArgument("password", this.password);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
-		loggedIn = this.tcpSocket.GetResponse();
 		this.tcpSocket.Close();
+		loggedIn = this.tcpSocket.GetResponse(true,5000);
+		
 		return loggedIn;
 	}
 
@@ -102,8 +102,8 @@ public class Player
 		this.command.AddArgument("code", this.Code);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
-		signedUp = this.tcpSocket.GetResponse(true, 5000);
 		this.tcpSocket.Close();
+		signedUp = this.tcpSocket.GetResponse(true, 5000);
 		return signedUp;
 	}
 
@@ -116,19 +116,22 @@ public class Player
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
 		message = this.tcpSocket.GetResponse(true,3000);
+		this.tcpSocket.Close();
 		return message;
 	}
 
-	public bool GetPlayerFromServer(string emailFromLogin)
+	public bool GetPlayerFromServer()
 	{
 		bool recoveredPlayer = true;
 		this.command = new Command("get_user");
-		this.command.AddArgument("user_email", emailFromLogin);
+		this.command.AddArgument("user_email", this.Email);
 		this.tcpSocket.AddCommand(command);
 		this.tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse();
+		this.tcpSocket.Close();
 		if (!response.Equals("ERROR"))
 		{
+			Debug.Log(response);
 			Dictionary<string, string> playerDictionary = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
 			Email = playerDictionary["email"];
 			Names = playerDictionary["name"];
