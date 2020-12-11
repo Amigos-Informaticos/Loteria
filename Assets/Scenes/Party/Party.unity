@@ -4880,7 +4880,7 @@ MonoBehaviour:
   - {fileID: 285360645}
   - {fileID: 1910831989}
   - {fileID: 256230332}
-  cardChoosed: {fileID: 0}
+  cardToShow: {fileID: 1204031647}
 --- !u!4 &867023799
 Transform:
   m_ObjectHideFlags: 0
