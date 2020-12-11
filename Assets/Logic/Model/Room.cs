@@ -5,7 +5,7 @@ public class Room
 	public Player Host { get; set; } = new Player();
     public List<string> Players { get; set; } = new List<string>();
     private Command command;
-    private TCPSocket tcpSocket;
+    private readonly TCPSocket tcpSocket;
     public string IdRoom { get; set; }
     public Room()
     {

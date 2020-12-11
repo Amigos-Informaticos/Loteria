@@ -32,6 +32,5 @@ namespace Assets.Tests
             board.Pattern = boolPattern;
             Assert.AreEqual("OK", new Board().SavePattern());
         }
-
     }
 }

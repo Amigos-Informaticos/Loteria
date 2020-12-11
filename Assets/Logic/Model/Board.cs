@@ -11,7 +11,7 @@ public class Board
 	public bool[,] Marks { get; set; } = new bool[5, 5];
 	public bool[,] Pattern { get; set; } = new bool[5, 5];
 	private Command command;
-	private TCPSocket tcpSocket;
+	private readonly TCPSocket tcpSocket;
 
 	public Board()
 	{
@@ -72,10 +72,10 @@ public class Board
 	public Dictionary<string, string> GetSortedDeck(string idRoom, string email)
     {
 		Dictionary<string, string> sortedDeck = null;
-		Command command = new Command("get_sorted_deck");
-		command.AddArgument("player_email", email);
-		command.AddArgument("room_id", idRoom);
-		this.tcpSocket.AddCommand(command);
+		Command getSortedDeck = new Command("get_sorted_deck");
+		getSortedDeck.AddArgument("player_email", email);
+		getSortedDeck.AddArgument("room_id", idRoom);
+		this.tcpSocket.AddCommand(getSortedDeck);
 		this.tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 1000);
 		if (!response.Equals("ERROR. TIMEOUT"))
@@ -97,10 +97,10 @@ public class Board
 	public string SavePattern()
     {
 		string response = null;
-		Command command = new Command("save_pattern");
-		command.AddArgument("game_mode_name","Custom");
-		command.AddArgument("pattern", this.GetStringPattern());
-		this.tcpSocket.AddCommand(command);
+		Command savePattern = new Command("save_pattern");
+		savePattern.AddArgument("game_mode_name","Custom");
+		savePattern.AddArgument("pattern", this.GetStringPattern());
+		this.tcpSocket.AddCommand(savePattern);
 		response = this.tcpSocket.GetResponse(true, 1000);
 		this.tcpSocket.Close();
 		return response;
