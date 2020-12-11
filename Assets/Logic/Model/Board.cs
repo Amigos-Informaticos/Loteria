@@ -1,14 +1,21 @@
+using GitHub.Unity.Json;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Text;
+using UnityEngine;
 
 public class Board
 {
 	public int[,] Cards { get; set; } = new int[5, 5];
 	public bool[,] Marks { get; set; } = new bool[5, 5];
 	public bool[,] Pattern { get; set; } = new bool[5, 5];
+	private Command command;
+	private readonly TCPSocket tcpSocket;
 
 	public Board()
 	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		for (int i = 0; i < 5; i++)
 		{
 			for (int j = 0; j < 5; j++)
@@ -22,7 +29,7 @@ public class Board
 
 	public void GenerateRandom()
 	{
-		Random random = new Random();
+        System.	Random random = new System.Random();
 		int nextRandom = random.Next(54);
 		for (int i = 0; i < 5; i++)
 		{
@@ -62,7 +69,42 @@ public class Board
 			this.Marks[pos[0], pos[1]] = true;
 		}
 	}
-
+	public Dictionary<string, string> GetSortedDeck(string idRoom, string email)
+    {
+		Dictionary<string, string> sortedDeck = null;
+		Command getSortedDeck = new Command("get_sorted_deck");
+		getSortedDeck.AddArgument("player_email", email);
+		getSortedDeck.AddArgument("room_id", idRoom);
+		this.tcpSocket.AddCommand(getSortedDeck);
+		this.tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse(true, 1000);
+		if (!response.Equals("ERROR. TIMEOUT"))
+		{
+			try
+			{
+				Debug.Log(response);
+				sortedDeck = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
+			}
+			catch (SerializationException)
+			{
+				Debug.Log("Invalid JSON");
+				sortedDeck = null;
+			}
+		}
+		this.tcpSocket.Close();
+		return sortedDeck;
+    }
+	public string SavePattern()
+    {
+		string response = null;
+		Command savePattern = new Command("save_pattern");
+		savePattern.AddArgument("game_mode_name","Custom");
+		savePattern.AddArgument("pattern", this.GetStringPattern());
+		this.tcpSocket.AddCommand(savePattern);
+		response = this.tcpSocket.GetResponse(true, 1000);
+		this.tcpSocket.Close();
+		return response;
+    }
 	public int[] GetPos(int carta)
 	{
 		int[] position = null;
@@ -101,5 +143,17 @@ public class Board
 			}
 		}
 		return numbers.ToArray();
+	}
+	public string GetStringPattern()
+	{
+		StringBuilder stringPattern = new StringBuilder();
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				stringPattern.Append(Convert.ToInt32(this.Pattern[i, j]));
+			}
+		}
+		return stringPattern.ToString();
 	}
 }

@@ -157,7 +157,7 @@ public class Player
 		Dictionary<string, Dictionary<string, string>> scoreDictionary = null;
 		tcpSocket.AddCommand(getTopTen);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true, 2000);
+		string response = tcpSocket.GetResponse(true, 1000);
 		Debug.Log(response);
 		if (!response.Equals("ERROR. TIMEOUT"))
 		{
