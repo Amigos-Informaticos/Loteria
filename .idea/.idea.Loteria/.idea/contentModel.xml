@@ -24,6 +24,7 @@
           <e p="Model" t="Include">
             <e p="Board.cs" t="Include" />
             <e p="Player.cs" t="Include" />
+            <e p="Room.cs" t="Include" />
           </e>
           <e p="Util" t="Include">
             <e p="Util.cs" t="Include" />
@@ -100,10 +101,12 @@
           <e p="SceneManager.cs" t="Include" />
         </e>
         <e p="Tests" t="Include">
+          <e p="BoardTest.cs" t="Include" />
           <e p="EmailTest.cs" t="Include" />
           <e p="GlobalScoreTest.cs" t="Include" />
           <e p="LocalizationTest.cs" t="Include" />
           <e p="PlayerTest.cs" t="Include" />
+          <e p="RoomTests.cs" t="Include" />
           <e p="SettingsTest.cs" t="Include" />
           <e p="Tests.asmdef" t="Include" />
           <e p="UserSettings.cs" t="Include" />

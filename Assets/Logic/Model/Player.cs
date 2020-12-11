@@ -84,9 +84,9 @@ public class Player
 		this.command.AddArgument("password", this.password);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
-		this.tcpSocket.Close();
 		loggedIn = this.tcpSocket.GetResponse(true,5000);
-		
+		this.tcpSocket.Close();
+
 		return loggedIn;
 	}
 
@@ -102,8 +102,8 @@ public class Player
 		this.command.AddArgument("code", this.Code);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
-		this.tcpSocket.Close();
 		signedUp = this.tcpSocket.GetResponse(true, 5000);
+		this.tcpSocket.Close();
 		return signedUp;
 	}
 
@@ -123,6 +123,7 @@ public class Player
 	public bool GetPlayerFromServer()
 	{
 		bool recoveredPlayer = true;
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		this.command = new Command("get_user");
 		this.command.AddArgument("user_email", this.Email);
 		this.tcpSocket.AddCommand(command);

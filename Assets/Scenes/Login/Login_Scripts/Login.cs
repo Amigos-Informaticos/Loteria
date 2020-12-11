@@ -30,7 +30,6 @@ public class Login : MonoBehaviour
             Password = Regex.Replace(this.txtPassword.text, @"[^\u0000-\u007F]+", string.Empty)
         };
         string response = player.LogIn();
-		/*
         if (response.Equals("OK"))
 		{
 			if (player.GetPlayerFromServer())
@@ -47,9 +46,7 @@ public class Login : MonoBehaviour
 		{
 			txtFeedBackMessage.text = response;
 		}
-		*/
-		Debug.Log(response);
-		
+        Debug.Log(response);
 	}
 
 	public void BackToMainMenu()
