@@ -1,3 +1,4 @@
+using System;
 using GitHub.Unity.Json;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -104,6 +105,46 @@ public class Player
 		signedUp = this.tcpSocket.GetResponse(true, 1000);
 		this.tcpSocket.Close();
 		return signedUp;
+	}
+
+	public string EnterToLobby(string code)
+	{
+		string message = "ERROR";
+		this.command = new Command("enter_room");
+		this.command.AddArgument("room_id", code);
+		this.command.AddArgument("user_email",this.email);
+		this.tcpSocket.AddCommand(this.command);
+		this.tcpSocket.SendCommand();
+		message = this.tcpSocket.GetResponse(true,3000);
+		return message;
+	}
+
+	public bool GetPlayerFromServer(string emailFromLogin)
+	{
+		bool recoveredPlayer = true;
+		this.command = new Command("get_user");
+		this.command.AddArgument("user_email", emailFromLogin);
+		this.tcpSocket.AddCommand(command);
+		this.tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse();
+		if (!response.Equals("ERROR"))
+		{
+			Dictionary<string, string> playerDictionary = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
+			Email = playerDictionary["email"];
+			Names = playerDictionary["name"];
+			LastName = playerDictionary["lastname"];
+			NickName = playerDictionary["nickname"];
+			Score = Convert.ToInt32(playerDictionary["score"]);	
+		}
+		else if (response.Equals("WRONG ARGUMENT"))
+		{
+			recoveredPlayer = false;
+		}
+		else
+		{
+			recoveredPlayer = false;
+		}
+		return recoveredPlayer;
 	}
 
 	public static Dictionary<string, Dictionary<string, string>> GetGlobalScore()

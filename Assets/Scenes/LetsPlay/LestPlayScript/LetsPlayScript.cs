@@ -10,6 +10,7 @@ public class LetsPlayScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI btnBack;
     [SerializeField] private TextMeshProUGUI txtCode;
     [SerializeField] private TextMeshProUGUI phCode;
+    [SerializeField] private TextMeshProUGUI feedbackMessage;
     
     void Start()
     {
@@ -31,6 +32,15 @@ public class LetsPlayScript : MonoBehaviour
 
     public void JoinToParty()
     {
-        Debug.Log(txtCode.text); 
+        string response = UserConfiguration.Player.EnterToLobby(txtCode.text);;
+        
+        if (response.Equals("OK"))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+        }
+        else
+        {
+            this.feedbackMessage.text = "Room doesn't exist";
+        }
     }
 }

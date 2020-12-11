@@ -32,7 +32,15 @@ public class Login : MonoBehaviour
         string response = player.LogIn();
 		if (response.Equals("OK"))
 		{
-			UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+			if (player.GetPlayerFromServer(txtEmail.text))
+			{
+				UserConfiguration.Player = player;
+				UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");	
+			}
+			else
+			{
+				txtFeedBackMessage.text = "Player Not Found";
+			}
 		} 
 		else
 		{
@@ -42,7 +50,7 @@ public class Login : MonoBehaviour
 
 	public void BackToMainMenu()
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+		UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
 	}
 
 	private void EvaluateResponseLogIn(string response)
