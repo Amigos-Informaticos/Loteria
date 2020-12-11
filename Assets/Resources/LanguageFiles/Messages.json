@@ -170,9 +170,9 @@
 		}
 	},
 	"CreatePattern": {
-		"Submit": {
-			"Español": "Enviar",
-			"English": "Submit"
+		"Save": {
+			"Español": "Guardar",
+			"English": "Save"
 		},
 		"Clear": {
 			"Español": "Restablecer",

@@ -20,7 +20,7 @@ public class CreatePattern : MonoBehaviour
     {		
         try
         {
-			this.btnSave.text = Localization.GetMessage("CreatePattern","Submit");
+			this.btnSave.text = Localization.GetMessage("CreatePattern","Save");
 			this.btnClear.text = Localization.GetMessage("CreatePattern", "Clear");
 			this.btnCancel.text = Localization.GetMessage("CreatePattern", "Cancel");
 		}
