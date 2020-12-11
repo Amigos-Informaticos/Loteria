@@ -102,7 +102,7 @@ public class Player
 		this.command.AddArgument("code", this.Code);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
-		signedUp = this.tcpSocket.GetResponse(true, 1000);
+		signedUp = this.tcpSocket.GetResponse(true, 5000);
 		this.tcpSocket.Close();
 		return signedUp;
 	}
