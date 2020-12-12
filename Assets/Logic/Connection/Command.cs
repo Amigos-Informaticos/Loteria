@@ -1,36 +1,44 @@
 using System.Collections.Generic;
+using System.Text;
 
-public class Command {
-	public string Method { get; set; }
-	public List<string> Arguments { get; set; }
+public class Command
+{
+	private string Method { get; set; }
+	private List<string> Arguments { get; set; }
 
-	public Command(string method) {
+	public Command(string method)
+	{
 		this.Method = method;
 		this.Arguments = new List<string>();
 	}
 
-	public void AddArgument(string name, string value) {
+	public void AddArgument(string name, string value)
+	{
 		this.Arguments.Add(name);
 		this.Arguments.Add(value);
 	}
 
-	public string GetJSON() {
-		string json = "{\"Method\":\"";
-		json += this.Method;
-		json += "\",\"Arguments\":{";
-		for (int i = 0; i < this.Arguments.Count;) {
-			json += "\"";
-			json += this.Arguments[i];
-			json += "\":\"";
+	public string GetJSON()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.Append("{\"Method\":\"");
+		builder.Append(this.Method);
+		builder.Append("\",\"Arguments\":{");
+		for (int i = 0; i < this.Arguments.Count;)
+		{
+			builder.Append("\"");
+			builder.Append(this.Arguments[i]);
+			builder.Append("\":\"");
 			i++;
-			json += this.Arguments[i];
-			json += "\"";
-			if (i < this.Arguments.Count - 1) {
-				json += ",";
+			builder.Append(this.Arguments[i]);
+			builder.Append("\"");
+			if (i < this.Arguments.Count - 1)
+			{
+				builder.Append(",");
 			}
 			i++;
 		}
-		json += "}}";
-		return json;
+		builder.Append("}}");
+		return builder.ToString();
 	}
 }

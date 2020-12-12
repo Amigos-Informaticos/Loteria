@@ -10,12 +10,14 @@ public class Board
 	public int[,] Cards { get; set; } = new int[5, 5];
 	public bool[,] Marks { get; set; } = new bool[5, 5];
 	public bool[,] Pattern { get; set; } = new bool[5, 5];
+	public string GameMode { get; set; }
 	private Command command;
 	private readonly TCPSocket tcpSocket;
 
 	public Board()
 	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);		
+		GameMode = null;
 		for (int i = 0; i < 5; i++)
 		{
 			for (int j = 0; j < 5; j++)
@@ -71,13 +73,15 @@ public class Board
 	}
 	public Dictionary<string, string> GetSortedDeck(string idRoom, string email)
     {
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Dictionary<string, string> sortedDeck = null;
 		Command getSortedDeck = new Command("get_sorted_deck");
 		getSortedDeck.AddArgument("player_email", email);
 		getSortedDeck.AddArgument("room_id", idRoom);
-		this.tcpSocket.AddCommand(getSortedDeck);
-		this.tcpSocket.SendCommand();
+		tcpSocket.AddCommand(getSortedDeck);
+		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 1000);
+		Debug.Log(response);
 		if (!response.Equals("ERROR. TIMEOUT"))
 		{
 			try
@@ -91,16 +95,18 @@ public class Board
 				sortedDeck = null;
 			}
 		}
-		this.tcpSocket.Close();
+		tcpSocket.Close();
 		return sortedDeck;
     }
-	public string SavePattern()
+	public string SavePattern(string user_email)
     {
 		string response = null;
 		Command savePattern = new Command("save_pattern");
-		savePattern.AddArgument("game_mode_name","Custom");
+		savePattern.AddArgument("user_email", user_email);
+		savePattern.AddArgument("game_mode_name", this.GameMode);
 		savePattern.AddArgument("pattern", this.GetStringPattern());
 		this.tcpSocket.AddCommand(savePattern);
+		this.tcpSocket.SendCommand();
 		response = this.tcpSocket.GetResponse(true, 1000);
 		this.tcpSocket.Close();
 		return response;
