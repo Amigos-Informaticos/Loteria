@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_Loteria.-1579139674.00" t="ExcludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+    <e p="C:\Users\griml\AppData\local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\griml\AppData\local\JetBrains\Rider2020.2\resharper-host\local\Transient\Rider\v202\SolutionCaches\_Loteria.1264826289.00" t="ExcludeRecursive" />
+    <e p="D:\UnityProjects\Loteria\Loteria" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -35,14 +33,19 @@
         <e p="Plugins" t="Include">
           <e p="GitHub" t="Include">
             <e p="Editor" t="Include">
-              <e p="ExtensionLoader.cs" t="Include" />
-              <e p="UnityAPIWrapper.cs" t="Include" />
               <e p="credits.txt" t="Include" />
               <e p="eula.txt" t="Include" />
+              <e p="ExtensionLoader.cs" t="Include" />
+              <e p="UnityAPIWrapper.cs" t="Include" />
             </e>
           </e>
         </e>
         <e p="Scenes" t="Include">
+          <e p="CreateParty" t="Include">
+            <e p="CreateParty" t="Include">
+              <e p="CreatePartyScript.cs" t="Include" />
+            </e>
+          </e>
           <e p="CreatePattern" t="Include">
             <e p="CreatePattern_Scripts" t="Include">
               <e p="CreatePattern.cs" t="Include" />
@@ -51,6 +54,16 @@
           <e p="GlobalScore" t="Include">
             <e p="GlobalScore_Scripts" t="Include">
               <e p="GlobalScores.cs" t="Include" />
+            </e>
+          </e>
+          <e p="LetsPlay" t="Include">
+            <e p="LestPlayScript" t="Include">
+              <e p="LetsPlayScript.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Lobby" t="Include">
+            <e p="Lobby_Scripts" t="Include">
+              <e p="LobbyScript.cs" t="Include" />
             </e>
           </e>
           <e p="Login" t="Include">
@@ -73,14 +86,14 @@
               <e p="Settings.cs" t="Include" />
             </e>
           </e>
-          <e p="SignUp" t="Include">
-            <e p="SignUp_Scripts" t="Include">
-              <e p="SignUp.cs" t="Include" />
-            </e>
-          </e>
           <e p="SignedIn" t="Include">
             <e p="SignedInScripts" t="Include">
               <e p="SignedIn.cs" t="Include" />
+            </e>
+          </e>
+          <e p="SignUp" t="Include">
+            <e p="SignUp_Scripts" t="Include">
+              <e p="SignUp.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -119,6 +132,10 @@
               <e p="ShaderPropAnimator.cs" t="Include" />
               <e p="SimpleScript.cs" t="Include" />
               <e p="SkewTextExample.cs" t="Include" />
+              <e p="TeleType.cs" t="Include" />
+              <e p="TextConsoleSimulator.cs" t="Include" />
+              <e p="TextMeshProFloatingText.cs" t="Include" />
+              <e p="TextMeshSpawner.cs" t="Include" />
               <e p="TMP_DigitValidator.cs" t="Include" />
               <e p="TMP_ExampleScript_01.cs" t="Include" />
               <e p="TMP_FrameRateCounter.cs" t="Include" />
@@ -130,10 +147,6 @@
               <e p="TMP_TextSelector_B.cs" t="Include" />
               <e p="TMP_UiFrameRateCounter.cs" t="Include" />
               <e p="TMPro_InstructionOverlay.cs" t="Include" />
-              <e p="TeleType.cs" t="Include" />
-              <e p="TextConsoleSimulator.cs" t="Include" />
-              <e p="TextMeshProFloatingText.cs" t="Include" />
-              <e p="TextMeshSpawner.cs" t="Include" />
               <e p="VertexColorCycler.cs" t="Include" />
               <e p="VertexJitter.cs" t="Include" />
               <e p="VertexShakeA.cs" t="Include" />
@@ -172,10 +185,10 @@
       </e>
       <e p="LogicAssembly.csproj" t="IncludeRecursive" />
       <e p="Loteria.sln" t="IncludeFlat" />
-      <e p="Temp/bin" t="ExcludeRecursive" />
-      <e p="Tests.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Tests.csproj" t="IncludeRecursive" />
     </e>
   </component>
 </project>
