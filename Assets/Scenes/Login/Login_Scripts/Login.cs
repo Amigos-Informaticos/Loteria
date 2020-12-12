@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -13,13 +14,29 @@ public class Login : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI txtFeedBackMessage;
 	private Command command;
 	private TCPSocket tcpSocket;
+=======
+﻿using System;
+using TMPro;
+using UnityEngine;
+>>>>>>> Stashed changes
 
 	private void Start()
 	{
+<<<<<<< Updated upstream
 		this.phEmail.text = Localization.GetMessage("Login", "Email");
 		this.phPassword.text = Localization.GetMessage("Login", "Password");
 		this.btnBack.text = Localization.GetMessage("Login", "Back");
 		this.btnLogin.text = Localization.GetMessage("Login", "Login");
+=======
+		Debug.Log("Hello");
+		this._command = new Command("login");
+		this._command.AddArgument("email", "edsonmanuelcarballovera@gmail.com");
+		this._command.AddArgument("password", "relojito");
+
+		this._tcpSocket = new TCPSocket("201.105.200.72", 42069);
+		this._tcpSocket.AddCommand(this._command);
+		this._tcpSocket.Prepare();
+>>>>>>> Stashed changes
 	}
 
 	public void LogIn()
