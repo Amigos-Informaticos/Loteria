@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,9 @@ public class CreatePattern : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI btnSave;
 	[SerializeField] private TextMeshProUGUI btnClear;
     [SerializeField] private TextMeshProUGUI btnCancel;
+	[SerializeField] private TextMeshProUGUI lblGameModeName;
+	[SerializeField] private TextMeshProUGUI phGameModeName;
+	[SerializeField] private TextMeshProUGUI txtGameModeName;
 	private readonly List<bool> pattern = new List<bool>();
 	private Board newPattern;
 	void Start()
@@ -23,6 +27,8 @@ public class CreatePattern : MonoBehaviour
 			this.btnSave.text = Localization.GetMessage("CreatePattern","Save");
 			this.btnClear.text = Localization.GetMessage("CreatePattern", "Clear");
 			this.btnCancel.text = Localization.GetMessage("CreatePattern", "Cancel");
+			this.lblGameModeName.text = Localization.GetMessage("CreatePattern", "GameMode");
+			this.phGameModeName.text = Localization.GetMessage("CreatePattern","GameModePlaceHolder");
 		}
         catch (KeyNotFoundException exception)
         {
@@ -38,9 +44,13 @@ public class CreatePattern : MonoBehaviour
 	}
 	public void OnClickSavePattern()
     {
+		Player player = new Player();		
+		player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Board.Pattern = ConvertToArray();
 		newPattern.Pattern = ConvertToArray();
+		player.Board.SavePattern("alexisao@hotmail.com");
 		PrintPattern();
-		PrintArrayBi(newPattern.Pattern);
+		PrintArrayBi(player.Board.Pattern);
     }
 	public void OnClickClearPattern()
     {
@@ -51,7 +61,7 @@ public class CreatePattern : MonoBehaviour
     }
 	public void OnClickCancel()
     {
-		UnityEngine.SceneManagement.SceneManager.LoadScene("SignUp");
+		UnityEngine.SceneManagement.SceneManager.LoadScene("CreateParty");
 	}
 	private void ToggleStateChanged(Toggle toggle, bool state)
 	{

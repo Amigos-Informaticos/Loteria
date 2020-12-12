@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tests
 {
@@ -14,7 +9,11 @@ namespace Tests
         {
             Room roomTest = new Room();
             roomTest.Host.Email = "alexisao@hotmail.com";
-            Assert.NotNull(roomTest.MakeRoom());
+            roomTest.GameMode = "Cutom";
+            roomTest.NumberPlayers = 4;
+            roomTest.Rounds = 1;
+            roomTest.Speed = 2;
+            Assert.AreNotEqual("ERROR",roomTest.MakeRoom());
         }
         [Test]
         public void ExitRoom()

@@ -11,6 +11,7 @@ public class CreatePartyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtSpeed;
     [SerializeField] private TextMeshProUGUI btnCreate;
     [SerializeField] private TextMeshProUGUI btnBack;
+    [SerializeField] private TMP_Dropdown dpGameMode;
     
     void Start()
     {
@@ -20,7 +21,7 @@ public class CreatePartyScript : MonoBehaviour
         this.txtSpeed.text = Localization.GetMessage("CreateParty","Speed");
         this.btnCreate.text = Localization.GetMessage("CreateParty","Create");
         this.btnBack.text = Localization.GetMessage("CreateParty","Back");
-    }
+    }    
 
     public void BackToLetsPlay()
     {
@@ -29,6 +30,11 @@ public class CreatePartyScript : MonoBehaviour
 
     public void GoToLobby()
     {
-        Debug.Log("WIP");
+        if(dpGameMode.value == 3)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("CreatePattern");
+            Debug.Log(dpGameMode.value);
+        }       
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
     }
 }

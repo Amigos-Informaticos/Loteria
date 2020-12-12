@@ -12,25 +12,32 @@ namespace Assets.Tests
     {
         [Test]
         public void GetSortedDeck()
-        {
-            Room room = new Room();
-            room.Host.Email = "alexisao@hotmail.com";
-            Board board = new Board();
-            Dictionary<string, string> sortedDeck = board.GetSortedDeck("alexisao@hotmail.com", room.MakeRoom());
+        {            
+            Room roomTest = new Room();
+            roomTest.Host.Email = "alexisao@hotmail.com";
+            roomTest.GameMode = "Cutom";
+            roomTest.NumberPlayers = 4;
+            roomTest.Rounds = 1;
+            roomTest.Speed = 2;
+            string idRoom = roomTest.MakeRoom();           
+            Dictionary<string, string> sortedDeck = new Board().GetSortedDeck("alexisao@hotmail.com", idRoom);
             Debug.Log(sortedDeck);
             Assert.IsNotNull(sortedDeck);
         }
         [Test]
         public void SavePattern()
         {
-            Board board = new Board();
+            //Mover SavePattern a Player
+            Player player = new Player();
+            player.Board.GameMode = "Hardcore mode";
             bool[,] boolPattern = new bool[,]{{true, true, true, true, true},
                                               {false,false,false,false,false},
                                               {true,false,false,false,false},
                                               {true,false,false,false,false},
                                               {true,false,false,false,false}};
-            board.Pattern = boolPattern;
-            Assert.AreEqual("OK", new Board().SavePattern());
+            player.Board.Pattern = boolPattern;
+            
+            Assert.AreEqual("OK", player.Board.SavePattern("alexisao@hotmail.com"));
         }
     }
 }
