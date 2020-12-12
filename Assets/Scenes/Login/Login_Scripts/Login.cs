@@ -30,19 +30,28 @@ public class Login : MonoBehaviour
             Password = Regex.Replace(this.txtPassword.text, @"[^\u0000-\u007F]+", string.Empty)
         };
         string response = player.LogIn();
-		if (response.Equals("OK"))
+        if (response.Equals("OK"))
 		{
-			UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+			if (player.GetPlayerFromServer())
+			{
+				UserConfiguration.Player = player;
+				UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");	
+			}
+			else
+			{
+				txtFeedBackMessage.text = "Player Not Found";
+			}
 		} 
 		else
 		{
-			Debug.Log(response);
+			txtFeedBackMessage.text = response;
 		}
+        Debug.Log(response);
 	}
 
 	public void BackToMainMenu()
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+		UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
 	}
 
 	private void EvaluateResponseLogIn(string response)
