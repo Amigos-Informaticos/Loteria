@@ -181,6 +181,14 @@
 		"Cancel": {
 			"Español": "Cancelar",
 			"English": "Cancel"
+		},
+		"GameMode": {
+			"Español": "Modo de juego",
+			"English": "Game mode"
+		},
+		"GameModePlaceHolder": {
+			"Español": "Nombre del modo de juego",
+			"English": "Name of the game mode"
 		}
 	},
 	"LetsPlay": {
