@@ -1,3 +1,4 @@
+using System;
 using GitHub.Unity.Json;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -78,14 +79,14 @@ public class Player
 	public string LogIn()
 	{
 		string loggedIn;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		this.command = new Command("login");
 		this.command.AddArgument("email", this.email);
 		this.command.AddArgument("password", this.password);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
-		loggedIn = this.tcpSocket.GetResponse();
+		loggedIn = this.tcpSocket.GetResponse(true,5000);
 		this.tcpSocket.Close();
+
 		return loggedIn;
 	}
 
@@ -101,9 +102,53 @@ public class Player
 		this.command.AddArgument("code", this.Code);
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
-		signedUp = this.tcpSocket.GetResponse(true, 1000);
+		signedUp = this.tcpSocket.GetResponse(true, 5000);
 		this.tcpSocket.Close();
 		return signedUp;
+	}
+
+	public string EnterToLobby(string code)
+	{
+		string message;
+		this.command = new Command("enter_room");
+		this.command.AddArgument("room_id", code);
+		this.command.AddArgument("user_email",this.email);
+		this.tcpSocket.AddCommand(this.command);
+		this.tcpSocket.SendCommand();
+		message = this.tcpSocket.GetResponse(true,3000);
+		this.tcpSocket.Close();
+		return message;
+	}
+
+	public bool GetPlayerFromServer()
+	{
+		bool recoveredPlayer = true;
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
+		this.command = new Command("get_user");
+		this.command.AddArgument("user_email", this.Email);
+		this.tcpSocket.AddCommand(command);
+		this.tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse();
+		this.tcpSocket.Close();
+		if (!response.Equals("ERROR"))
+		{
+			Debug.Log(response);
+			Dictionary<string, string> playerDictionary = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
+			Email = playerDictionary["email"];
+			Names = playerDictionary["name"];
+			LastName = playerDictionary["lastname"];
+			NickName = playerDictionary["nickname"];
+			Score = Convert.ToInt32(playerDictionary["score"]);
+		}
+		else if (response.Equals("WRONG ARGUMENT"))
+		{
+			recoveredPlayer = false;
+		}
+		else
+		{
+			recoveredPlayer = false;
+		}
+		return recoveredPlayer;
 	}
 
 	public static Dictionary<string, Dictionary<string, string>> GetGlobalScore()
