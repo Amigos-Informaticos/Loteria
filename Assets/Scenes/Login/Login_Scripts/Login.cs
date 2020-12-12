@@ -24,29 +24,29 @@ public class Login : MonoBehaviour
 
 	public void LogIn()
 	{
-		Player player = new Player
-		                {
-			                Email = Regex.Replace(this.txtEmail.text, @"[^\u0000-\u007F]+",
-				                string.Empty),
-			                Password = Regex.Replace(this.txtPassword.text, @"[^\u0000-\u007F]+",
-				                string.Empty)
-		                };
-		string response = player.LogIn();
-		if (response.Equals("OK"))
+    Player player = new Player
+    {
+      Email = Regex.Replace(this.txtEmail.text, @"[^\u0000-\u007F]+", string.Empty),
+      Password = Regex.Replace(this.txtPassword.text, @"[^\u0000-\u007F]+", string.Empty)
+    };
+    string response = player.LogIn();
+    if (response.Equals("OK"))
 		{
 			if (player.GetPlayerFromServer())
 			{
 				UserConfiguration.Player = player;
-				UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");
-			} else
-			{
-				this.txtFeedBackMessage.text = "Player Not Found";
+				UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");	
 			}
-		} else
+			else
+			{
+				txtFeedBackMessage.text = "Player Not Found";
+			}
+		} 
+		else
 		{
-			this.txtFeedBackMessage.text = response;
+			txtFeedBackMessage.text = response;
 		}
-		Debug.Log(response);
+        Debug.Log(response);
 	}
 
 	public void BackToMainMenu()

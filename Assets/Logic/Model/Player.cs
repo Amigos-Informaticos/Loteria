@@ -138,7 +138,7 @@ public class Player
 			Names = playerDictionary["name"];
 			LastName = playerDictionary["lastname"];
 			NickName = playerDictionary["nickname"];
-			Score = Convert.ToInt32(playerDictionary["score"]);
+			Score = Convert.ToInt32(playerDictionary["score"]);	
 		}
 		else if (response.Equals("WRONG ARGUMENT"))
 		{
