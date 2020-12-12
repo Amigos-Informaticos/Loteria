@@ -68,5 +68,16 @@ namespace Tests
 		{
 			Assert.IsTrue(Player.IsEmail("grimlicrash@outlook.com"));
 		}
+
+		[Test]
+		public void GetPlayerFromServer()
+		{
+			Player player = new Player
+			{
+				Email = "efrain_escuela@outlook.com"
+			};
+			Assert.IsTrue(player.GetPlayerFromServer());
+			Debug.Log(player.NickName);
+		}
 	}
 }
