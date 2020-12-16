@@ -9,12 +9,12 @@ public class LobbyScript : MonoBehaviour
     [SerializeField] private Image[] imgChecks = new Image[4];
     [SerializeField] private TextMeshProUGUI btnLetsGo;
     [SerializeField] private TextMeshProUGUI btnBack;
-    private Room room;
+    private Room _room;
 
     void Start()
     {
-        room = (Room) Memory.Load("room");
-        txtCode.text = room.IdRoom;
+        _room = (Room) Memory.Load("room");
+        txtCode.text = _room.IdRoom;
         txtPlayers[0].text = Localization.GetMessage("Lobby", "PlayerOne");
         txtPlayers[1].text = Localization.GetMessage("Lobby", "PlayerTwo");
         txtPlayers[2].text = Localization.GetMessage("Lobby", "PlayerThree");
@@ -31,15 +31,15 @@ public class LobbyScript : MonoBehaviour
         Room room = ((Room) Memory.Load("room"));
         for (int i = 0; i < room.Players.Count; i++)
         {
-            txtPlayers[i].text = room.Players[i].nickName;
+            txtPlayers[i].text = room.Players[i].NickName;
         }
     }
 
     void UpdateChecks()
     {
-        for (int i = 0; i < room.Players.Count; i++)
+        for (int i = 0; i < _room.Players.Count; i++)
         {
-            if (room.Players[i].isReady.Equals("T"))
+            if (_room.Players[i].IsReady.Equals("T"))
             {
                 if (!imgChecks[i].enabled)
                 {

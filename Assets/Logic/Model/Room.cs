@@ -15,9 +15,9 @@ public class Room
 
     public struct PlayerStruct
     {
-	    public string nickName;
-	    public string email;
-	    public string isReady;
+	    public string NickName { get; set; }
+	    public string Email { get; set; }
+	    public string IsReady { get; set; }
     }
     
     public Room()
@@ -41,7 +41,7 @@ public class Room
 		{
 			this.IdRoom = response;
 			PlayerStruct host = new PlayerStruct();
-			host.email = Host.Email;
+			host.Email = Host.Email;
             this.Players.Add(host);
 		}
 		tcpSocket.Close();
@@ -71,7 +71,7 @@ public class Room
 	    PlayerStruct player = new PlayerStruct();
 	    for (int i = 0; i < Players.Count; i++)
 	    {
-		    if (Players[i].email.Equals(email))
+		    if (Players[i].Email.Equals(email))
 		    {
 			    player = Players[i];
 		    }
@@ -94,9 +94,9 @@ public class Room
 	    {
 		    string key = i.ToString();
 		    PlayerStruct player = new PlayerStruct();
-		    player.email = playerList[key]["email"];
-		    player.nickName = playerList[key]["nickname"];
-		    player.isReady = playerList[key]["is_ready"];
+		    player.Email = playerList[key]["email"];
+		    player.NickName = playerList[key]["nickname"];
+		    player.IsReady = playerList[key]["is_ready"];
 		    Players.Add(player);
 	    }
     }

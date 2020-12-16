@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace Assets.Tests
 {
-    
     class BoardTest
     {
         [Test]

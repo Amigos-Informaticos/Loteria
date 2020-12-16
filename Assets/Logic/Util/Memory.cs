@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public static class Memory
 {
-    public static Dictionary<string,Object> memory = new Dictionary<string, object>();
+    private static Dictionary<string,Object> memory = new Dictionary<string, object>();
 
     public static void Save(string key, Object objecToSave)
     {
