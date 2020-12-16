@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-	public TextMeshProUGUI loginButton;
-	public TextMeshProUGUI signUpButton;
-	public TextMeshProUGUI exitButton;
+	public TextMeshProUGUI btnLogin;
+	public TextMeshProUGUI btnSignUp;
+	public TextMeshProUGUI btnExit;
 
 	public void Awake()
 	{
-		this.loginButton.text = Localization.GetMessage("MainMenu", "Login");
-		this.signUpButton.text = Localization.GetMessage("MainMenu", "SignUp");
-		this.exitButton.text = Localization.GetMessage("MainMenu", "Exit");
+		this.btnLogin.text = Localization.GetMessage("MainMenu", "Login");
+		this.btnSignUp.text = Localization.GetMessage("MainMenu", "SignUp");
+		this.btnExit.text = Localization.GetMessage("MainMenu", "Exit");
 	}
 
 	public void GoToSignIn()

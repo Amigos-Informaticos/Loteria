@@ -34,7 +34,7 @@ public class Login : MonoBehaviour
 		{
 			if (player.GetPlayerFromServer())
 			{
-				UserConfiguration.Player = player;
+				Memory.Save("player",player);
 				UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");	
 			}
 			else

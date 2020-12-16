@@ -71,14 +71,10 @@ public class Player
 	public int Score { get; set; }
 	public Board Board { get; set; } = new Board();
 
-	public Player()
-	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-	}
-
 	public string LogIn()
 	{
 		string loggedIn;
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		this.command = new Command("login");
 		this.command.AddArgument("email", this.email);
 		this.command.AddArgument("password", this.password);
@@ -93,6 +89,7 @@ public class Player
 	public string SignUp()
 	{
 		string signedUp = "ERROR";
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		this.command = new Command("sign_up");
 		this.command.AddArgument("email", this.email);
 		this.command.AddArgument("nickname", this.NickName);
@@ -110,6 +107,7 @@ public class Player
 	public string EnterToLobby(string code)
 	{
 		string message;
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		this.command = new Command("enter_room");
 		this.command.AddArgument("room_id", code);
 		this.command.AddArgument("user_email",this.email);
@@ -181,6 +179,7 @@ public class Player
 
 	public string SendCode()
 	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		this.command = new Command("send_code_to_email");
 		command.AddArgument("email", this.email);
 		this.tcpSocket.AddCommand(command);
