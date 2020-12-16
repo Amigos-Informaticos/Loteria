@@ -6,6 +6,7 @@ using UnityEngine;
 public class LetsPlayScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI txtJoinGame;
+    [SerializeField] private TextMeshProUGUI btnJoinGame;
     [SerializeField] private TextMeshProUGUI btnCreateParty;
     [SerializeField] private TextMeshProUGUI btnBack;
     [SerializeField] private TextMeshProUGUI txtCode;
@@ -15,6 +16,7 @@ public class LetsPlayScript : MonoBehaviour
     void Start()
     {
         this.txtJoinGame.text = Localization.GetMessage("LetsPlay","Join Game");
+        this.btnJoinGame.text = Localization.GetMessage("LetsPlay", "Join");
         this.btnCreateParty.text = Localization.GetMessage("LetsPlay","Create Party");
         this.btnBack.text = Localization.GetMessage("LetsPlay","Back");
         this.phCode.text = Localization.GetMessage("LetsPlay","Code");
@@ -32,15 +34,30 @@ public class LetsPlayScript : MonoBehaviour
 
     public void JoinToParty()
     {
-        string response = UserConfiguration.Player.EnterToLobby(txtCode.text);
+        string code = txtCode.text;
+        string response = ((Player)Memory.Load("player")).EnterToLobby(code);
         
-        if (response.Equals("OK"))
+        Debug.Log(response);
+
+        if (response.Equals("WRONG ID"))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+            this.feedbackMessage.text = "Room doesn't exist";
+        }
+        else if(response.Equals("WRONG ARGUMENTS"))
+        {
+            this.feedbackMessage.text = "Wrong arguments";
+        }
+        else if (response.Equals("ERROR"))
+        {
+            this.feedbackMessage.text = "ERROR";
         }
         else
         {
-            this.feedbackMessage.text = "Room doesn't exist";
+            Room room = new Room();
+            room.IdRoom = code;
+            room.GetPlayersInRoom();
+            Memory.Save("room",room);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
     }
 }
