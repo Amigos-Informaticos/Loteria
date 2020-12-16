@@ -21,7 +21,7 @@ public class LobbyScript : MonoBehaviour
         txtPlayers[3].text = Localization.GetMessage("Lobby", "PlayerFour");
         this.btnLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
         this.btnBack.text = Localization.GetMessage("Lobby", "Back");
-        
+        ClearChecks();
         SetPlayerList();
         UpdateChecks();
     }
@@ -53,6 +53,14 @@ public class LobbyScript : MonoBehaviour
                     imgChecks[i].enabled = false;    
                 }
             }
+        }
+    }
+
+    void ClearChecks()
+    {
+        for (int i = 0; i < imgChecks.Length; i++)
+        {
+            imgChecks[i].enabled = false;
         }
     }
 }
