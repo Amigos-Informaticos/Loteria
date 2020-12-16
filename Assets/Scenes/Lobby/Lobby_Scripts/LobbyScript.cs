@@ -20,4 +20,9 @@ public class LobbyScript : MonoBehaviour
         this.btnLetsGo.text = Localization.GetMessage("Lobby","LetsGo");
         this.btnBack.text = Localization.GetMessage("Lobby","Back");
     }
+
+    void SetPlayerList()
+    {
+        
+    }
 }

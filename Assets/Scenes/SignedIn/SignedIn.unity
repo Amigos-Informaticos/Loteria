@@ -410,10 +410,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6c910f5c65a644bb184c5972999397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playButton: {fileID: 645959954}
-  scoreButton: {fileID: 344526761}
-  settingsButton: {fileID: 1691135651}
-  exitButton: {fileID: 999692557}
+  btnPlay: {fileID: 645959954}
+  btnScore: {fileID: 344526761}
+  btnSettings: {fileID: 1691135651}
+  btnExit: {fileID: 999692557}
 --- !u!4 &333410109
 Transform:
   m_ObjectHideFlags: 0
@@ -1107,7 +1107,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1437593408}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 333410108}
+        m_MethodName: GoToPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1437593408
 MonoBehaviour:
   m_ObjectHideFlags: 0

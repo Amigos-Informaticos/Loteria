@@ -19,6 +19,11 @@ public class SignedIn : MonoBehaviour
         this.btnExit.text = Localization.GetMessage("SignedIn", "Exit");
     }
 
+    public void GoToPlay()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
+    }
+
     public void GoToScores()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("GlobalScore");

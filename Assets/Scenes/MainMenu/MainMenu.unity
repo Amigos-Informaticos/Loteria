@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 178375761}
   - component: {fileID: 178375760}
   m_Layer: 5
-  m_Name: ButtonRegister
+  m_Name: btnSignUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 718045209}
   - component: {fileID: 718045208}
   m_Layer: 5
-  m_Name: ButtonExit
+  m_Name: btnExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -679,7 +679,7 @@ GameObject:
   - component: {fileID: 1071434335}
   - component: {fileID: 1071434334}
   m_Layer: 5
-  m_Name: ButtonLogin
+  m_Name: btnLogin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1064,9 +1064,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb9a7f86ce5f9145ae110cb9522188b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loginButton: {fileID: 2070525776}
-  signUpButton: {fileID: 1543027354}
-  exitButton: {fileID: 786409857}
+  btnLogin: {fileID: 2070525776}
+  btnSignUp: {fileID: 1543027354}
+  btnExit: {fileID: 786409857}
 --- !u!4 &1799491934
 Transform:
   m_ObjectHideFlags: 0

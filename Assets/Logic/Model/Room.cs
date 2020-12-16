@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GitHub.Unity.Json;
 using UnityEngine;
 public class Room
 {
@@ -11,6 +12,15 @@ public class Room
     private Command command;
     private readonly TCPSocket tcpSocket;
     public string IdRoom { get; set; }
+
+    public struct PlayerStruct
+    {
+	    public string nickName;
+	    public string email;
+	    public string isReady;
+
+    }
+    
     public Room()
     {
         TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
@@ -51,5 +61,25 @@ public class Room
         }
         tcpSocket.Close();
         return response;
+    }
+
+    //TODO Tengo que averiguar cómo deserializar la lista de jugadores
+    public void GetPlayersInRoom()
+    {
+	    
+	    string response = null;
+	    Command getUsersInRoom = new Command("get_users_in_room");
+	    getUsersInRoom.AddArgument("room_id",IdRoom);
+	    this.tcpSocket.AddCommand(getUsersInRoom);
+	    this.tcpSocket.SendCommand();
+	    response = this.tcpSocket.GetResponse(true, 1000);
+	    Debug.Log(response);
+
+	    Dictionary<string,string> playerList = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
+	    for (int i = 0; i < 4; i++)
+	    {
+		    PlayerStruct player = new PlayerStruct();
+	    }
+	    
     }
 }
