@@ -35,7 +35,7 @@ public class LetsPlayScript : MonoBehaviour
     public void JoinToParty()
     {
         string code = txtCode.text;
-        string response = UserConfiguration.Player.EnterToLobby(code);
+        string response = ((Player)Memory.Load("player")).EnterToLobby(code);
         
         Debug.Log(response);
 
@@ -53,7 +53,10 @@ public class LetsPlayScript : MonoBehaviour
         }
         else
         {
-            UserConfiguration.SetSetting("Code",code);
+            Room room = new Room();
+            room.IdRoom = code;
+            room.GetPlayersInRoom();
+            Memory.Save("room",room);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
     }

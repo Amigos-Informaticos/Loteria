@@ -25,6 +25,7 @@ public class Room
     {
         TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
     }
+    
     public string MakeRoom()
     {
 		Command makeRoom = new Command("make_room");
@@ -40,11 +41,15 @@ public class Room
 		if (!response.Equals("ERROR. TIMEOUT"))
 		{
 			this.IdRoom = response;
-            this.Players.Add(this.Host.Email);
+			PlayerStruct host = new PlayerStruct();
+			host.email = Host.Email;
+            this.Players.Add(host);
 		}
 		tcpSocket.Close();
 		return response;
     }
+    
+    
     public string ExitRoom(string userEmail)
     {
         string response = null;
@@ -57,16 +62,30 @@ public class Room
         Debug.Log(response);
         if (response.Equals("OK"))
         {
-            this.Players.Remove(userEmail);
+            this.Players.Remove(FindPlayerInRoom(userEmail));
         }
         tcpSocket.Close();
         return response;
     }
 
+    public PlayerStruct FindPlayerInRoom(string email)
+    {
+	    PlayerStruct player = new PlayerStruct();
+	    for (int i = 0; i < Players.Count; i++)
+	    {
+		    if (Players[i].email.Equals(email))
+		    {
+			    player = Players[i];
+		    }
+	    }
+	    return player;
+    }
+    
+    
+
     //TODO Tengo que averiguar cómo deserializar la lista de jugadores
     public void GetPlayersInRoom()
     {
-	    
 	    string response = null;
 	    Command getUsersInRoom = new Command("get_users_in_room");
 	    getUsersInRoom.AddArgument("room_id",IdRoom);
