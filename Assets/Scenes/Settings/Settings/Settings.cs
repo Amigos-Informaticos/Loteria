@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI MusicVolumeText;
-	[SerializeField] private TextMeshProUGUI SFXVolumeText;
-	[SerializeField] private TextMeshProUGUI LanguageText;
-	[SerializeField] private TextMeshProUGUI SaveButton;
-	[SerializeField] private TextMeshProUGUI BackButton;
+	[SerializeField] private TextMeshProUGUI txtMusicVolume;
+	[SerializeField] private TextMeshProUGUI txtSFXVolume;
+	[SerializeField] private TextMeshProUGUI txtLanguage;
+	[SerializeField] private TextMeshProUGUI btnSave;
+	[SerializeField] private TextMeshProUGUI btnBack;
 
 	[SerializeField] private Transform languageDD;
 
 	void Start()
 	{
-		this.MusicVolumeText.text = Localization.GetMessage("Settings", "Music Volume");
-		this.SFXVolumeText.text = Localization.GetMessage("Settings", "SFX Volume");
-		this.LanguageText.text = Localization.GetMessage("Settings", "Language");
-		this.SaveButton.text = Localization.GetMessage("Settings", "Save");
-		this.BackButton.text = Localization.GetMessage("Settings", "Back");
+		this.txtMusicVolume.text = Localization.GetMessage("Settings", "Music Volume");
+		this.txtSFXVolume.text = Localization.GetMessage("Settings", "SFX Volume");
+		this.txtLanguage.text = Localization.GetMessage("Settings", "Language");
+		this.btnSave.text = Localization.GetMessage("Settings", "Save");
+		this.btnBack.text = Localization.GetMessage("Settings", "Back");
 		languageDD.GetComponent<Dropdown>().value = 1;
 	}
 
