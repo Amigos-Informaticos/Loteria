@@ -18,7 +18,6 @@ public class Room
 	    public string nickName;
 	    public string email;
 	    public string isReady;
-
     }
     
     public Room()
@@ -81,9 +80,6 @@ public class Room
 	    return player;
     }
     
-    
-
-    //TODO Tengo que averiguar cómo deserializar la lista de jugadores
     public void GetPlayersInRoom()
     {
 	    string response = null;

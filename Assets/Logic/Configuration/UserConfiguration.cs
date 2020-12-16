@@ -9,7 +9,6 @@ public static class UserConfiguration
 
 	private static readonly string SETTINGS_PATH =
 		MainConfiguration.GetSetting("UserConfigurationFile");
-	
 
 	public static void LoadSettings()
 	{
