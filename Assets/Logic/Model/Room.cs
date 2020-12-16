@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GitHub.Unity.Json;
 using UnityEngine;
 public class Room
@@ -13,11 +14,32 @@ public class Room
     private readonly TCPSocket tcpSocket;
     public string IdRoom { get; set; }
 
-    public struct PlayerStruct
+    public struct PlayerStruct : IEquatable<PlayerStruct>
     {
 	    public string NickName { get; set; }
 	    public string Email { get; set; }
 	    public string IsReady { get; set; }
+
+	    public bool Equals(PlayerStruct other)
+	    {
+		    return NickName == other.NickName && Email == other.Email && IsReady == other.IsReady;
+	    }
+
+	    public override bool Equals(object obj)
+	    {
+		    return obj is PlayerStruct other && Equals(other);
+	    }
+
+	    public override int GetHashCode()
+	    {
+		    unchecked
+		    {
+			    var hashCode = (NickName != null ? NickName.GetHashCode() : 0);
+			    hashCode = (hashCode * 397) ^ (Email != null ? Email.GetHashCode() : 0);
+			    hashCode = (hashCode * 397) ^ (IsReady != null ? IsReady.GetHashCode() : 0);
+			    return hashCode;
+		    }
+	    }
     }
     
     public Room()
