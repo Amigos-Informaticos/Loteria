@@ -238,5 +238,31 @@
 			"Español": "Atrás",
 			"English": "Back"
 		}
+	},
+	"Lobby": {
+		"PlayerOne": {
+			"Español": "Jugador 1",
+			"English": "Player One"
+		},
+		"PlayerTwo": {
+			"Español": "Jugador 2",
+			"English": "Player Two"
+		},
+		"PlayerThree": {
+			"Español": "Jugador 3",
+			"English": "Player Three"
+		},
+		"PlayerFour": {
+			"Español": "Jugador 4",
+			"English": "Player Four"
+		},
+		"LetsGo": {
+			"Español": "¡Vamos!",
+			"English": "Lets Go"
+		},
+		"Back": {
+			"Español": "Atrás",
+			"English": "Back"
+		}
 	}
 }

@@ -10,8 +10,6 @@ public static class UserConfiguration
 	private static readonly string SETTINGS_PATH =
 		MainConfiguration.GetSetting("UserConfigurationFile");
 
-	public static Player Player { get; set; }
-
 	public static void LoadSettings()
 	{
 		StreamReader streamReader = new StreamReader(SETTINGS_PATH);
