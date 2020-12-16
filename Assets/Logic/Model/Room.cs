@@ -4,7 +4,7 @@ using UnityEngine;
 public class Room
 {
 	public Player Host { get; set; } = new Player();
-    public List<string> Players { get; set; } = new List<string>();
+    public List<PlayerStruct> Players { get; set; } = new List<PlayerStruct>();
     public int Rounds { get; set; }
     public string GameMode { get; set; }
     public int Speed { get; set; }
@@ -75,11 +75,15 @@ public class Room
 	    response = this.tcpSocket.GetResponse(true, 1000);
 	    Debug.Log(response);
 
-	    Dictionary<string,string> playerList = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
-	    for (int i = 0; i < 4; i++)
+	    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+	    for (int i = 0; i < playerList.Count; i++)
 	    {
+		    string key = i.ToString();
 		    PlayerStruct player = new PlayerStruct();
+		    player.email = playerList[key]["email"];
+		    player.nickName = playerList[key]["nickname"];
+		    player.isReady = playerList[key]["is_ready"];
+		    Players.Add(player);
 	    }
-	    
     }
 }
