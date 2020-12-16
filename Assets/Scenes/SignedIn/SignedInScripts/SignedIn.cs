@@ -6,17 +6,17 @@ using UnityEngine;
 
 public class SignedIn : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI playButton;
-    [SerializeField] private TextMeshProUGUI scoreButton;
-    [SerializeField] private TextMeshProUGUI settingsButton;
-    [SerializeField] private TextMeshProUGUI exitButton;
+    [SerializeField] private TextMeshProUGUI btnPlay;
+    [SerializeField] private TextMeshProUGUI btnScore;
+    [SerializeField] private TextMeshProUGUI btnSettings;
+    [SerializeField] private TextMeshProUGUI btnExit;
 
     private void Start()
     {
-        this.playButton.text = Localization.GetMessage("SignedIn", "Play");
-        this.scoreButton.text = Localization.GetMessage("SignedIn", "Score");
-        this.settingsButton.text = Localization.GetMessage("SignedIn", "Settings");
-        this.exitButton.text = Localization.GetMessage("SignedIn", "Exit");
+        this.btnPlay.text = Localization.GetMessage("SignedIn", "Play");
+        this.btnScore.text = Localization.GetMessage("SignedIn", "Score");
+        this.btnSettings.text = Localization.GetMessage("SignedIn", "Settings");
+        this.btnExit.text = Localization.GetMessage("SignedIn", "Exit");
     }
 
     public void GoToScores()
