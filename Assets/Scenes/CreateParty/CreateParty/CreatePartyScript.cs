@@ -16,9 +16,9 @@ public class CreatePartyScript : MonoBehaviour
     [SerializeField] private TMP_Dropdown dpPlayers;
     [SerializeField] private TMP_Dropdown dpRounds;
     [SerializeField] private TMP_Dropdown dpSpeed;
-    private List<TMP_Dropdown.OptionData> gameModeOptions = null;
+    private List<TMP_Dropdown.OptionData> gameModeOptions;
     private readonly Room room = new Room();
-    private int gameModeSelectedIndex = 0;
+    private int gameModeSelectedIndex;
     private int numberPlayers = 2;
     private int numberRounds = 1;
     private int speed = 3;
@@ -30,8 +30,7 @@ public class CreatePartyScript : MonoBehaviour
         this.txtSpeed.text = Localization.GetMessage("CreateParty", "Speed");
         this.btnCreate.text = Localization.GetMessage("CreateParty", "Create");
         this.btnBack.text = Localization.GetMessage("CreateParty", "Back");        
-        this.gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;
-        
+        this.gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;        
     }
     public void OnValueChangedGameMode()
     {
@@ -76,6 +75,5 @@ public class CreatePartyScript : MonoBehaviour
         this.room.Speed = this.speed;
         this.room.NumberPlayers = this.numberPlayers;
         this.room.GameMode = this.gameModeOptions[this.gameModeSelectedIndex].text;
-
     }
 }
