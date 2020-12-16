@@ -21,7 +21,7 @@ public class CreatePattern : MonoBehaviour
 	private readonly List<bool> pattern = new List<bool>();
 	private Board newPattern;
 	void Start()
-    {		
+    {
         try
         {
 			this.btnSave.text = Localization.GetMessage("CreatePattern","Save");

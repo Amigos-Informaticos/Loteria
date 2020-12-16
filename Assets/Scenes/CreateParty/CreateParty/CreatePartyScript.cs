@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CreatePartyScript : MonoBehaviour
 {
@@ -12,29 +13,69 @@ public class CreatePartyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI btnCreate;
     [SerializeField] private TextMeshProUGUI btnBack;
     [SerializeField] private TMP_Dropdown dpGameMode;
-    
+    [SerializeField] private TMP_Dropdown dpPlayers;
+    [SerializeField] private TMP_Dropdown dpRounds;
+    [SerializeField] private TMP_Dropdown dpSpeed;
+    private List<TMP_Dropdown.OptionData> gameModeOptions = null;
+    private readonly Room room = new Room();
+    private int gameModeSelectedIndex = 0;
+    private int numberPlayers = 2;
+    private int numberRounds = 1;
+    private int speed = 3;
     void Start()
     {
-        this.txtPlayers.text = Localization.GetMessage("CreateParty","Players");
-        this.txtRounds.text = Localization.GetMessage("CreateParty","Rounds");
-        this.txtGameMode.text = Localization.GetMessage("CreateParty","GameMode");
-        this.txtSpeed.text = Localization.GetMessage("CreateParty","Speed");
-        this.btnCreate.text = Localization.GetMessage("CreateParty","Create");
-        this.btnBack.text = Localization.GetMessage("CreateParty","Back");
-    }    
-
-    public void BackToLetsPlay()
+        this.txtPlayers.text = Localization.GetMessage("CreateParty", "Players");
+        this.txtRounds.text = Localization.GetMessage("CreateParty", "Rounds");
+        this.txtGameMode.text = Localization.GetMessage("CreateParty", "GameMode");
+        this.txtSpeed.text = Localization.GetMessage("CreateParty", "Speed");
+        this.btnCreate.text = Localization.GetMessage("CreateParty", "Create");
+        this.btnBack.text = Localization.GetMessage("CreateParty", "Back");        
+        this.gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;
+        
+    }
+    public void OnValueChangedGameMode()
+    {
+        this.gameModeSelectedIndex = this.dpGameMode.value;
+        Debug.Log(this.gameModeSelectedIndex);
+        Debug.Log(gameModeOptions[this.gameModeSelectedIndex].text);
+    }
+    public void OnValueChangedPlayers()
+    {
+        this.numberPlayers = this.dpPlayers.value + 2;
+        Debug.Log(this.numberPlayers);
+    }
+    public void OnValueChangedRounds()
+    {
+        this.numberRounds = this.dpRounds.value + 1;
+        Debug.Log(this.numberRounds);
+    }
+    public void OnValueChangedSpeed()
+    {
+        this.speed = this.dpSpeed.value + 3;
+        Debug.Log(this.speed);
+    }
+    public void OnClickBackToLetsPlay()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
-    }
-
-    public void GoToLobby()
-    {
-        if(dpGameMode.value == 3)
+    }    
+    public void OnClickGoToLobby()
+    {        
+        if(this.gameModeSelectedIndex == 3)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("CreatePattern");
-            Debug.Log(dpGameMode.value);
-        }       
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("CreatePattern");            
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+        }
+    }
+    private void InstanceRoom()
+    {
+        this.room.Host = UserConfiguration.Player;
+        this.room.Rounds = this.numberRounds;
+        this.room.Speed = this.speed;
+        this.room.NumberPlayers = this.numberPlayers;
+        this.room.GameMode = this.gameModeOptions[this.gameModeSelectedIndex].text;
+
     }
 }
