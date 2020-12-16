@@ -9,15 +9,12 @@ public class Room
     public int Speed { get; set; }
     public int NumberPlayers { get; set; }
     private Command command;
-    private readonly TCPSocket tcpSocket;
+    private TCPSocket tcpSocket;
     public string IdRoom { get; set; }
-    public Room()
-    {
-        TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-    }
     public string MakeRoom()
     {
-		Command makeRoom = new Command("make_room");
+        TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
+        Command makeRoom = new Command("make_room");
 		makeRoom.AddArgument("creator_email",this.Host.Email);
         makeRoom.AddArgument("rounds", this.Rounds.ToString());
         makeRoom.AddArgument("speed", this.Speed.ToString());
@@ -37,6 +34,7 @@ public class Room
     }
     public string ExitRoom(string userEmail)
     {
+        TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
         string response = null;
         Command exitRoom = new Command("exit_room");
         exitRoom.AddArgument("user_email", userEmail);
