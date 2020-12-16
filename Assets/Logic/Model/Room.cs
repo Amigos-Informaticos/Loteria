@@ -47,8 +47,7 @@ public class Room
 		tcpSocket.Close();
 		return response;
     }
-    
-    
+
     public string ExitRoom(string userEmail)
     {
         string response = null;

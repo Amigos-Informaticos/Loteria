@@ -8,10 +8,9 @@ using UnityEngine;
 
 namespace Assets.Tests
 {
-    /*
+    
     class BoardTest
     {
-        
         [Test]
         public void GetSortedDeck()
         {            
@@ -42,5 +41,4 @@ namespace Assets.Tests
             Assert.AreEqual("OK", player.Board.SavePattern("alexisao@hotmail.com"));
         }
     }
-    */
 }
