@@ -11,7 +11,7 @@ public class LetsPlayScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI btnBack;
     [SerializeField] private TextMeshProUGUI txtCode;
     [SerializeField] private TextMeshProUGUI phCode;
-    [SerializeField] private TextMeshProUGUI feedbackMessage;
+    [SerializeField] private TextMeshProUGUI txtFeedbackMessage;
     
     void Start()
     {
@@ -41,15 +41,15 @@ public class LetsPlayScript : MonoBehaviour
 
         if (response.Equals("WRONG ID"))
         {
-            this.feedbackMessage.text = "Room doesn't exist";
+            this.txtFeedbackMessage.text = "Room doesn't exist";
         }
         else if(response.Equals("WRONG ARGUMENTS"))
         {
-            this.feedbackMessage.text = "Wrong arguments";
+            this.txtFeedbackMessage.text = "Wrong arguments";
         }
         else if (response.Equals("ERROR"))
         {
-            this.feedbackMessage.text = "ERROR";
+            this.txtFeedbackMessage.text = "ERROR";
         }
         else
         {

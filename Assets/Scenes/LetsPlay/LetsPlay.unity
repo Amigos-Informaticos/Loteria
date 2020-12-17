@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 325130442}
   - component: {fileID: 325130441}
   m_Layer: 5
-  m_Name: ButtonJoin
+  m_Name: btnJoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 1038179020}
   - component: {fileID: 1038179019}
   m_Layer: 5
-  m_Name: ButtonBack
+  m_Name: btnBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 1055523914}
   - component: {fileID: 1055523913}
   m_Layer: 5
-  m_Name: ButtonCreateParty
+  m_Name: btnCreateParty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 1192952756}
   - component: {fileID: 1192952755}
   m_Layer: 5
-  m_Name: TextfieldGamecode
+  m_Name: txtfieldGamecode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1335,7 +1335,7 @@ MonoBehaviour:
   btnBack: {fileID: 1948458254}
   txtCode: {fileID: 637801325}
   phCode: {fileID: 2003945537}
-  feedbackMessage: {fileID: 1549732042}
+  txtFeedbackMessage: {fileID: 1549732042}
 --- !u!4 &1445027731
 Transform:
   m_ObjectHideFlags: 0
@@ -1362,7 +1362,7 @@ GameObject:
   - component: {fileID: 1549732043}
   - component: {fileID: 1549732042}
   m_Layer: 5
-  m_Name: FeedbackMessage
+  m_Name: txtFeedbackMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1518,7 +1518,7 @@ GameObject:
   - component: {fileID: 1550248464}
   - component: {fileID: 1550248463}
   m_Layer: 5
-  m_Name: TextJoinGame
+  m_Name: txtJoinGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
