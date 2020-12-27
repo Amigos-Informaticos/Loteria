@@ -237,6 +237,10 @@
 		"Back": {
 			"Español": "Atrás",
 			"English": "Back"
+		},
+		"WrongConnection": {
+			"Español": "Fallo en la conexión",
+			"English": "Wrong connection"
 		}
 	},
 	"Lobby": {
@@ -263,6 +267,24 @@
 		"Back": {
 			"Español": "Atrás",
 			"English": "Back"
+		}
+	},
+	"GlobalScore": {
+		"HighScores" : {
+			"Español" : "Puntajes más altos",
+			"English" : "High scores"
+		},
+		"Place" : {
+			"Español" : "Puesto",
+			"English" : "Place"
+		},
+		"Score" : {
+			"Español": "Puntuación",
+			"English": "Score"
+		},
+		"Player": {
+			"Español": "Jugador",
+			"English": "Player"
 		}
 	}
 }
