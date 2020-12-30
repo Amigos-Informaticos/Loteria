@@ -112,15 +112,11 @@ public class Room
     
     public void GetPlayersInRoom()
     {
-	    string response = null;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-		Command getUsersInRoom = new Command("get_users_in_room");
-	    getUsersInRoom.AddArgument("room_id",this.IdRoom);
-	    tcpSocket.AddCommand(getUsersInRoom);
-	    tcpSocket.SendCommand();
-	    response = tcpSocket.GetResponse(true, 1000);
-	    Debug.Log(response);
+	    string response = GetUsersInRoom();
+
 	    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+
+	    Players = new List<PlayerStruct>();
 	    for (int i = 0; i < playerList.Count; i++)
 	    {
 		    string key = i.ToString();
@@ -130,5 +126,16 @@ public class Room
 		    player.IsReady = playerList[key]["is_ready"];
 		    Players.Add(player);
 	    }
+    }
+    
+    private string GetUsersInRoom()
+    {
+	    string response = null;
+	    Command getUsersInRoom = new Command("get_users_in_room");
+	    getUsersInRoom.AddArgument("room_id", IdRoom);
+	    this.tcpSocket.AddCommand(getUsersInRoom);
+	    this.tcpSocket.SendCommand();
+	    response = this.tcpSocket.GetResponse(true, 1000);
+	    return response;
     }
 }
