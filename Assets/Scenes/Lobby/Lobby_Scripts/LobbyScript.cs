@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +12,12 @@ public class LobbyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI btnLetsGo;
     [SerializeField] private TextMeshProUGUI btnBack;
     private Room _room;
+    TCPSocket _tcpSocket;
+    private readonly bool _keepWaiting = true;
 
     void Start()
     {
+        TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
         _room = (Room) Memory.Load("room");
         txtCode.text = _room.IdRoom;
         txtPlayers[0].text = Localization.GetMessage("Lobby", "PlayerOne");
@@ -24,14 +29,42 @@ public class LobbyScript : MonoBehaviour
         ClearChecks();
         SetPlayerList();
         UpdateChecks();
+        if (PrepareNotifyOnJoinRoom().Equals("OK"))
+        {
+            IEnumerator waitingForPlayers = WaitingForPlayers();
+            StartCoroutine(waitingForPlayers);
+        }
+    }
+
+    private IEnumerator WaitingForPlayers()
+    {
+        string response = _tcpSocket.GetResponse(true,5000);
+        Debug.Log("caca" + response);
+        if (!response.Equals("ERROR")||!response.Equals("WRONG ARGUMENTS")||!response.Equals("ERROR. TIMEOUT"))
+        {
+            _room.GetPlayersInRoom(response);
+            SetPlayerList();
+        }
+        yield return StartCoroutine(WaitingForPlayers());
+    }
+
+    public string PrepareNotifyOnJoinRoom()
+    {
+        Command notifyOnJoinRoom = new Command("notify_on_join_room");
+        notifyOnJoinRoom.AddArgument("user_email",((Player)Memory.Load("player")).Email);
+        notifyOnJoinRoom.AddArgument("room_id",((Room)Memory.Load("room")).IdRoom);
+        _tcpSocket.AddCommand(notifyOnJoinRoom);
+        _tcpSocket.SendCommand();
+        string reponse = _tcpSocket.GetResponse(true, 5000);
+        Debug.Log("salida de prepare" + reponse);
+        return reponse;
     }
 
     void SetPlayerList()
     {
-        Room room = ((Room) Memory.Load("room"));
-        for (int i = 0; i < room.Players.Count; i++)
+        for (int i = 0; i < _room.Players.Count; i++)
         {
-            txtPlayers[i].text = room.Players[i].NickName;
+            txtPlayers[i].text = _room.Players[i].NickName;
         }
     }
 
