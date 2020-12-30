@@ -27,7 +27,6 @@
             <e p="Room.cs" t="Include" />
           </e>
           <e p="Util" t="Include">
-            <e p="Memory.cs" t="Include" />
             <e p="Util.cs" t="Include" />
           </e>
         </e>

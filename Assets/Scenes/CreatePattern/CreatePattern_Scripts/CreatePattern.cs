@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -12,6 +11,7 @@ public class CreatePattern : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI showPattern;
 	[SerializeField] private TextMeshProUGUI showPatternConverted;
 	[SerializeField] private Toggle[] toggles;
+
 	[SerializeField] private TextMeshProUGUI btnSave;
 	[SerializeField] private TextMeshProUGUI btnClear;
     [SerializeField] private TextMeshProUGUI btnCancel;
@@ -19,9 +19,9 @@ public class CreatePattern : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI phGameModeName;
 	[SerializeField] private TextMeshProUGUI txtGameModeName;
 	private readonly List<bool> pattern = new List<bool>();
-	private Board newPattern;
+	private readonly Board newPattern = new Board();
 	void Start()
-    {		
+    {
         try
         {
 			this.btnSave.text = Localization.GetMessage("CreatePattern","Save");
@@ -35,34 +35,12 @@ public class CreatePattern : MonoBehaviour
 			Debug.LogError(exception);
         }
 		FillEmptyPattern();
-		newPattern = new Board();
 		foreach (Toggle toggle in toggles)
 		{
 			Toggle captured = toggle;
 			toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));			
 		}
-	}
-	public void OnClickSavePattern()
-    {
-		Player player = new Player();		
-		player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
-		player.Board.Pattern = ConvertToArray();
-		newPattern.Pattern = ConvertToArray();
-		player.Board.SavePattern("alexisao@hotmail.com");
-		PrintPattern();
-		PrintArrayBi(player.Board.Pattern);
-    }
-	public void OnClickClearPattern()
-    {
-		foreach(Toggle toggle in toggles)
-        {
-			toggle.GetComponent<Toggle>().isOn = false;
-        }
-    }
-	public void OnClickCancel()
-    {
-		UnityEngine.SceneManagement.SceneManager.LoadScene("CreateParty");
-	}
+	}	
 	private void ToggleStateChanged(Toggle toggle, bool state)
 	{
 		this.pattern.RemoveAt((Convert.ToInt32(toggle.GetComponent<Toggle>().name) - 1));
@@ -130,5 +108,27 @@ public class CreatePattern : MonoBehaviour
 			stringBuilder.Append("\n");
 		}
 		this.showPatternConverted.text = stringBuilder.ToString();
+	}
+
+	public void OnClickSavePattern()
+	{
+		Player player = new Player();
+		player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Board.Pattern = ConvertToArray();
+		newPattern.Pattern = ConvertToArray();
+		player.Board.SavePattern(((Player)Memory.Load("player")).Email);
+		PrintPattern();
+		PrintArrayBi(player.Board.Pattern);
+	}
+	public void OnClickClearPattern()
+	{
+		foreach (Toggle toggle in toggles)
+		{
+			toggle.GetComponent<Toggle>().isOn = false;
+		}
+	}
+	public void OnClickCancel()
+	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene("CreateParty");
 	}
 }
