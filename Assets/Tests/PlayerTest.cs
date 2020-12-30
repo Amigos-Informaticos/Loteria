@@ -79,16 +79,5 @@ namespace Tests
 			Assert.IsTrue(player.GetPlayerFromServer());
 			Debug.Log(player.NickName);
 		}
-
-		[Test]
-		public void GetGlobalScoreWithoutServer()
-		{
-			Dictionary<string, Dictionary<string, string>> dictionary = new Dictionary<string, Dictionary<string, string>>();
-
-			dictionary = Player.GetGlobalScoreWithoutServer();
-			Debug.Log(dictionary["0"]["name"] + " - " + dictionary["0"]["points"]);
-			Debug.Log(dictionary["1"]["name"] + " - " + dictionary["1"]["points"]);
-			//Debug.Log(Player.GetGlobalScoreWithoutServer());
-        }
 	}
 }

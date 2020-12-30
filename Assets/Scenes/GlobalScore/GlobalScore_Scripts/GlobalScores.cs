@@ -17,21 +17,24 @@ public class GlobalScores : MonoBehaviour
         this.txtPlace.text = Localization.GetMessage("GlobalScore", "Place");
         this.txtScore.text = Localization.GetMessage("GlobalScore", "Score");
         this.txtPlayer.text = Localization.GetMessage("GlobalScore", "Player");
+        this.FillGlobalScore();
     }
-    private void Awake()
+
+    private void FillGlobalScore()
     {
-        Dictionary<string, Dictionary<string, string>> globalScore = Player.GetGlobalScoreWithoutServer();
+        Dictionary<string, Dictionary<string, string>> globalScore = Player.GetGlobalScore();
         entryTemplate.gameObject.SetActive(false);
         float templateHeight = 40f;
         for (int i = 0; i < globalScore.Count; i++)
         {
             GameObject entryTransform = Instantiate(entryTemplate, entryContainer.transform, true);
             RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-            entryRectTransform.anchoredPosition = new Vector2(0,-templateHeight * i);
+            entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * i);
             entryTransform.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = (i + 1).ToString();
-            entryTransform.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = globalScore[i.ToString()]["name"];
-            entryTransform.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = globalScore[i.ToString()]["points"];
+            entryTransform.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = globalScore[i.ToString()]["points"];
+            entryTransform.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = globalScore[i.ToString()]["name"];
             entryTransform.gameObject.SetActive(true);
         }
     }
 }
+
