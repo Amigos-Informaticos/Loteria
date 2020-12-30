@@ -110,10 +110,8 @@ public class Room
 	    return player;
     }
     
-    public void GetPlayersInRoom()
+    public void GetPlayersInRoom(string response)
     {
-	    string response = GetUsersInRoom();
-
 	    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
 
 	    Players = new List<PlayerStruct>();
@@ -127,7 +125,25 @@ public class Room
 		    Players.Add(player);
 	    }
     }
-    
+
+    public void GetPlayersInRoom()
+    {
+	    string response = GetUsersInRoom();
+	    
+	    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+
+	    Players = new List<PlayerStruct>();
+	    for (int i = 0; i < playerList.Count; i++)
+	    {
+		    string key = i.ToString();
+		    PlayerStruct player = new PlayerStruct();
+		    player.Email = playerList[key]["email"];
+		    player.NickName = playerList[key]["nickname"];
+		    player.IsReady = playerList[key]["is_ready"];
+		    Players.Add(player);
+	    }
+    }
+
     private string GetUsersInRoom()
     {
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
