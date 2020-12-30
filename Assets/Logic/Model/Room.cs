@@ -10,7 +10,6 @@ public class Room
     public string GameMode { get; set; }
     public int Speed { get; set; }
     public int NumberPlayers { get; set; }
-    private Command command;
     private TCPSocket tcpSocket;
     public string IdRoom { get; set; }
 
@@ -41,12 +40,6 @@ public class Room
 		    }
 	    }
     }
-    
-    public Room()
-    {
-        TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-    }
-    
     public string MakeRoom()
     {
         TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
@@ -58,7 +51,7 @@ public class Room
         makeRoom.AddArgument("game_mode", this.GameMode);
 		this.tcpSocket.AddCommand(makeRoom);
 		this.tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true, 1000);
+		string response = this.tcpSocket.GetResponse(true, 1000);
         Debug.Log(response);
 		if (!response.Equals("ERROR. TIMEOUT"))
 		{
@@ -67,7 +60,7 @@ public class Room
 			host.Email = Host.Email;
             this.Players.Add(host);
 		}
-		tcpSocket.Close();
+		this.tcpSocket.Close();
 		return response;
     }
 
@@ -86,8 +79,23 @@ public class Room
         {
             this.Players.Remove(FindPlayerInRoom(userEmail));
         }
-        tcpSocket.Close();
+        this.tcpSocket.Close();
         return response;
+    }
+	//WIP add Deserialization
+	public List<string> GetGameModes()
+	{
+        TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
+		List<string> gameModes = null;
+		string response = "ERROR";
+		Command getGameModes = new Command("get_game_modes_by_user");
+		getGameModes.AddArgument("user_email", this.Host.Email);
+		this.tcpSocket.AddCommand(getGameModes);
+		this.tcpSocket.SendCommand();
+		response = this.tcpSocket.GetResponse(true, 1000);
+		Debug.Log(response);
+		this.tcpSocket.Close();
+		return gameModes;
     }
 
     public PlayerStruct FindPlayerInRoom(string email)
@@ -106,13 +114,13 @@ public class Room
     public void GetPlayersInRoom()
     {
 	    string response = null;
-	    Command getUsersInRoom = new Command("get_users_in_room");
-	    getUsersInRoom.AddArgument("room_id",IdRoom);
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
+		Command getUsersInRoom = new Command("get_users_in_room");
+	    getUsersInRoom.AddArgument("room_id",this.IdRoom);
 	    this.tcpSocket.AddCommand(getUsersInRoom);
 	    this.tcpSocket.SendCommand();
 	    response = this.tcpSocket.GetResponse(true, 1000);
 	    Debug.Log(response);
-
 	    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
 	    for (int i = 0; i < playerList.Count; i++)
 	    {
