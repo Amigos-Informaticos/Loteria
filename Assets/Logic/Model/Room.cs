@@ -130,12 +130,13 @@ public class Room
     
     private string GetUsersInRoom()
     {
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 	    string response = null;
 	    Command getUsersInRoom = new Command("get_users_in_room");
 	    getUsersInRoom.AddArgument("room_id", IdRoom);
-	    this.tcpSocket.AddCommand(getUsersInRoom);
-	    this.tcpSocket.SendCommand();
-	    response = this.tcpSocket.GetResponse(true, 1000);
+	    tcpSocket.AddCommand(getUsersInRoom);
+	    tcpSocket.SendCommand();
+	    response = tcpSocket.GetResponse(true, 1000);
 	    return response;
     }
 }
