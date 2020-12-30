@@ -2,7 +2,6 @@
 using TMPro;
 using UnityEngine;
 
-
 public class GlobalScores : MonoBehaviour
 {
     [SerializeField] private GameObject entryContainer;
@@ -37,4 +36,3 @@ public class GlobalScores : MonoBehaviour
         }
     }
 }
-

@@ -148,8 +148,6 @@ public class Player
 		}
 		return recoveredPlayer;
 	}
-
-
 	public static Dictionary<string, Dictionary<string, string>> GetGlobalScore()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
