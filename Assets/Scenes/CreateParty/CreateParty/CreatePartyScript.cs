@@ -111,7 +111,10 @@ public class CreatePartyScript : MonoBehaviour
             case "ERROR. TIMEOUT":
                 isMaked = false;
                 this.txtFeedBackMessage.text = Localization.GetMessage("CreateParty", "WrongConnection");
-                break;           
+                break;
+            default:
+                isMaked = false;
+                break;
         }
         return isMaked;
     }

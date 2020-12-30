@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,7 +19,7 @@ public class CreatePattern : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI phGameModeName;
 	[SerializeField] private TextMeshProUGUI txtGameModeName;
 	private readonly List<bool> pattern = new List<bool>();
-	private Board newPattern = new Board();
+	private readonly Board newPattern = new Board();
 	void Start()
     {
         try
