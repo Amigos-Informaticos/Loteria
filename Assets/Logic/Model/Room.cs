@@ -10,8 +10,6 @@ public class Room
     public string GameMode { get; set; }
     public int Speed { get; set; }
     public int NumberPlayers { get; set; }
-    private Command command;
-    private readonly TCPSocket tcpSocket;
     public string IdRoom { get; set; }
 
     public struct PlayerStruct : IEquatable<PlayerStruct>
@@ -41,22 +39,17 @@ public class Room
 		    }
 	    }
     }
-    
-    public Room()
-    {
-        TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-    }
-    
     public string MakeRoom()
-    {
-		Command makeRoom = new Command("make_room");
+    {		
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+        Command makeRoom = new Command("make_room");
 		makeRoom.AddArgument("creator_email",this.Host.Email);
         makeRoom.AddArgument("rounds", this.Rounds.ToString());
         makeRoom.AddArgument("speed", this.Speed.ToString());
         makeRoom.AddArgument("players", this.NumberPlayers.ToString());
         makeRoom.AddArgument("game_mode", this.GameMode);
-		this.tcpSocket.AddCommand(makeRoom);
-		this.tcpSocket.SendCommand();
+		tcpSocket.AddCommand(makeRoom);
+		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 1000);
         Debug.Log(response);
 		if (!response.Equals("ERROR. TIMEOUT"))
@@ -72,13 +65,14 @@ public class Room
 
     public string ExitRoom(string userEmail)
     {
+        TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
         string response = null;
         Command exitRoom = new Command("exit_room");
         exitRoom.AddArgument("user_email", userEmail);
         exitRoom.AddArgument("room_id", this.IdRoom);
-        this.tcpSocket.AddCommand(exitRoom);
-        this.tcpSocket.SendCommand();
-        response = this.tcpSocket.GetResponse(true, 1000);
+        tcpSocket.AddCommand(exitRoom);
+        tcpSocket.SendCommand();
+        response = tcpSocket.GetResponse(true, 1000);
         Debug.Log(response);
         if (response.Equals("OK"))
         {
@@ -86,6 +80,21 @@ public class Room
         }
         tcpSocket.Close();
         return response;
+    } 
+	//WIP add Deserialization
+	public List<string> GetGameModes()
+	{
+        TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		List<string> gameModes = null;
+		string response;
+		Command getGameModes = new Command("get_game_modes_by_user");
+		getGameModes.AddArgument("user_email", this.Host.Email);
+		tcpSocket.AddCommand(getGameModes);
+		tcpSocket.SendCommand();
+		response = tcpSocket.GetResponse(true, 1000);
+		Debug.Log(response);
+		tcpSocket.Close();
+		return gameModes;
     }
 
     public PlayerStruct FindPlayerInRoom(string email)
@@ -137,12 +146,13 @@ public class Room
 
     private string GetUsersInRoom()
     {
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 	    string response = null;
 	    Command getUsersInRoom = new Command("get_users_in_room");
 	    getUsersInRoom.AddArgument("room_id", IdRoom);
-	    this.tcpSocket.AddCommand(getUsersInRoom);
-	    this.tcpSocket.SendCommand();
-	    response = this.tcpSocket.GetResponse(true, 1000);
+	    tcpSocket.AddCommand(getUsersInRoom);
+	    tcpSocket.SendCommand();
+	    response = tcpSocket.GetResponse(true, 1000);
 	    return response;
     }
 }

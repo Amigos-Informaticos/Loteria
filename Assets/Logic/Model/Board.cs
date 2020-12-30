@@ -16,7 +16,7 @@ public class Board
 
 	public Board()
 	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);		
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
 		GameMode = null;
 		for (int i = 0; i < 5; i++)
 		{

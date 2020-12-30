@@ -148,7 +148,6 @@ public class Player
 		}
 		return recoveredPlayer;
 	}
-
 	public static Dictionary<string, Dictionary<string, string>> GetGlobalScore()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
@@ -176,7 +175,6 @@ public class Player
 		tcpSocket.Close();
 		return scoreDictionary;
 	}
-
 	public string SendCode()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
