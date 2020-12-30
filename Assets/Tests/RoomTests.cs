@@ -8,8 +8,8 @@ namespace Tests
         public void MakeRoom()
         {
             Room roomTest = new Room();
-            roomTest.Host.Email = "alexisao@hotmail.com";
-            roomTest.GameMode = "Cutom";
+            roomTest.Host.Email = "efrain_escuela@outlook.com";
+            roomTest.GameMode = "Classic";
             roomTest.NumberPlayers = 4;
             roomTest.Rounds = 1;
             roomTest.Speed = 2;
@@ -20,8 +20,8 @@ namespace Tests
         {
             Room roomTest = new Room();
             roomTest.Host.Email = "alexisao@hotmail.com";
-            roomTest.MakeRoom();
-            string response = roomTest.ExitRoom("alexisao@hotmail.com");
+            roomTest.IdRoom = "4792d";
+            string response = roomTest.ExitRoom("efrain_escuela@outlook.com");
             Assert.AreEqual("OK",response);
         }
     }
