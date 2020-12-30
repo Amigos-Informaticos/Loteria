@@ -13,7 +13,7 @@ public class LobbyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI btnBack;
     private Room _room;
     TCPSocket _tcpSocket;
-    private bool _keepWaiting = true;
+    private readonly bool _keepWaiting = true;
 
     void Start()
     {

@@ -101,17 +101,12 @@ public class Room
 	    return player;
     }
     
-    public void GetPlayersInRoom(string response = null)
+    public void GetPlayersInRoom()
     {
-	    if (response == null)
-	    {
-		    response = GetUsersInRoom();
-
-	    }
+	    string response = GetUsersInRoom();
 
 	    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
-	    
-	    
+
 	    Players = new List<PlayerStruct>();
 	    for (int i = 0; i < playerList.Count; i++)
 	    {
@@ -123,7 +118,7 @@ public class Room
 		    Players.Add(player);
 	    }
     }
-
+    
     private string GetUsersInRoom()
     {
 	    string response = null;
