@@ -106,8 +106,7 @@ public class Room
 		try
 		{
 			Debug.Log(response);
-			gameMode = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
-			
+			gameMode = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);			
 		}
 		catch (SerializationException)
 		{
