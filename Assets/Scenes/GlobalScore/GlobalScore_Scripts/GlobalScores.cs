@@ -35,4 +35,9 @@ public class GlobalScores : MonoBehaviour
             entryTransform.gameObject.SetActive(true);
         }
     }
+
+    public void BackToMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");
+    }
 }
