@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using GitHub.Unity.Json;
 using UnityEngine;
 public class Room
@@ -40,26 +41,35 @@ public class Room
 	    }
     }
     public string MakeRoom()
-    {		
-		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-        Command makeRoom = new Command("make_room");
-		makeRoom.AddArgument("creator_email",this.Host.Email);
-        makeRoom.AddArgument("rounds", this.Rounds.ToString());
-        makeRoom.AddArgument("speed", this.Speed.ToString());
-        makeRoom.AddArgument("players", this.NumberPlayers.ToString());
-        makeRoom.AddArgument("game_mode", this.GameMode);
-		tcpSocket.AddCommand(makeRoom);
-		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true, 1000);
-        Debug.Log(response);
-		if (!response.Equals("ERROR. TIMEOUT"))
-		{
+    {
+        string response;
+        if (this.IsComplete())
+        {
+			TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+			Command makeRoom = new Command("make_room");
+			makeRoom.AddArgument("creator_email", this.Host.Email);
+			makeRoom.AddArgument("rounds", this.Rounds.ToString());
+			makeRoom.AddArgument("speed", this.Speed.ToString());
+			makeRoom.AddArgument("players", this.NumberPlayers.ToString());
+			makeRoom.AddArgument("game_mode", this.GameMode);
+			tcpSocket.AddCommand(makeRoom);
+			tcpSocket.SendCommand();
+			response = tcpSocket.GetResponse(true, 1000);
+			Debug.Log(response);
+			if (!response.Equals("ERROR. TIMEOUT"))
+			{
+				this.IdRoom = response;
+				PlayerStruct host = new PlayerStruct();
+				host.Email = Host.Email;
+				this.Players.Add(host);
+			}
+			tcpSocket.Close();
+		} 
+		else
+        {
+			response = "ERROR";
 			this.IdRoom = response;
-			PlayerStruct host = new PlayerStruct();
-			host.Email = Host.Email;
-            this.Players.Add(host);
-		}
-		tcpSocket.Close();
+        }		
 		return response;
     }
 
@@ -85,14 +95,30 @@ public class Room
 	public List<string> GetGameModes()
 	{
         TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-		List<string> gameModes = null;
+		Dictionary<string, string> gameMode;
+		List<string> gameModes = new List<string>();
 		string response;
 		Command getGameModes = new Command("get_game_modes_by_user");
 		getGameModes.AddArgument("user_email", this.Host.Email);
 		tcpSocket.AddCommand(getGameModes);
 		tcpSocket.SendCommand();
 		response = tcpSocket.GetResponse(true, 1000);
-		Debug.Log(response);
+		try
+		{
+			Debug.Log(response);
+			gameMode = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
+			
+		}
+		catch (SerializationException)
+		{
+			Debug.Log("Invalid JSON");
+			gameMode = null;
+		}
+
+        for (int i = 0; i < gameMode.Count; i++)
+        {
+			gameModes.Add(gameMode[i.ToString()]);
+        }
 		tcpSocket.Close();
 		return gameModes;
     }
@@ -154,5 +180,10 @@ public class Room
 	    tcpSocket.SendCommand();
 	    response = tcpSocket.GetResponse(true, 1000);
 	    return response;
+    }
+	private bool IsComplete()
+    {
+		return this.Host != null && this.IdRoom != null && this.NumberPlayers != 0 && this.GameMode != null
+			&& this.Rounds != 0 && this.Speed != 0;
     }
 }

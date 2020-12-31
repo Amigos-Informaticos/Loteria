@@ -241,6 +241,10 @@
 		"WrongConnection": {
 			"Español": "Fallo en la conexión",
 			"English": "Wrong connection"
+		},
+		"RoomAlreadyExist": {
+			"Español": "La sala ya existe",
+			"English": "Room already exist"
 		}
 	},
 	"Lobby": {

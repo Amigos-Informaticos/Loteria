@@ -32,19 +32,27 @@ public class CreatePartyScript : MonoBehaviour
         this.btnCreate.text = Localization.GetMessage("CreateParty", "Create");
         this.btnBack.text = Localization.GetMessage("CreateParty", "Back");
         this.gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;
-        FillGameModes();
+        InstanceRoom();
+        FillGameModes();        
     }
 
     private void FillGameModes()
     {
-        List<string> gameModes = this.room.GetGameModes();
-        if(gameModes != null)
+        try
         {
-            foreach (string gameMode in gameModes)
+            List<string> gameModes = this.room.GetGameModes();
+            if (gameModes != null)
             {
-                this.gameModeOptions.Add(new TMP_Dropdown.OptionData(gameMode));
+                foreach (string gameMode in gameModes)
+                {
+                    this.gameModeOptions.Add(new TMP_Dropdown.OptionData(gameMode));
+                }
             }
         }
+        catch (NullReferenceException)
+        {
+            Debug.Log("Sin modos de juego");
+        }        
     }
 
     public void OnValueChangedGameMode()
@@ -74,21 +82,18 @@ public class CreatePartyScript : MonoBehaviour
     }    
     public void OnClickGoToLobby()
     {        
-        if(this.gameModeSelectedIndex == 3)
+        InstanceRoom();
+        this.room.MakeRoom();
+        if (EvaluateResponseMakeRoom())
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("CreatePattern");            
+            this.room.GetPlayersInRoom();
+            Memory.Save("room", this.room);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
-        else
-        {
-            InstanceRoom();
-            this.room.MakeRoom();
-            if (EvaluateResponseMakeRoom())
-            {
-                this.room.GetPlayersInRoom();
-                Memory.Save("room", this.room);
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
-            }
-        }
+    }
+    public void OnClickNewGameMode()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CreatePattern");
     }
     private void InstanceRoom()
     {
@@ -113,7 +118,7 @@ public class CreatePartyScript : MonoBehaviour
                 this.txtFeedBackMessage.text = Localization.GetMessage("CreateParty", "WrongConnection");
                 break;
             default:
-                isMaked = false;
+                this.txtFeedBackMessage.text = "ERROR";
                 break;
         }
         return isMaked;
