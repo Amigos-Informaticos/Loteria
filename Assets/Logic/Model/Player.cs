@@ -114,6 +114,7 @@ public class Player
 		this.tcpSocket.AddCommand(this.command);
 		this.tcpSocket.SendCommand();
 		message = this.tcpSocket.GetResponse(true,3000);
+		Debug.Log(message);
 		this.tcpSocket.Close();
 		return message;
 	}

@@ -22,8 +22,8 @@ namespace Tests
         {
             Room roomTest = new Room();
             roomTest.Host.Email = "alexisao@hotmail.com";
-            roomTest.IdRoom = "4792d";
-            string response = roomTest.ExitRoom("efrain_escuela@outlook.com");
+            roomTest.IdRoom = "a911e";
+            string response = roomTest.ExitRoom("alexis@hotmail.com");
             Assert.AreEqual("OK", response);
         }
         [Test]
