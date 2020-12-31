@@ -35,19 +35,10 @@ public class LetsPlayScript : MonoBehaviour
         string code = txtCode.text;
         string response = ((Player)Memory.Load("player")).EnterToLobby(code);
         
-        Debug.Log(response);
-
-        if (response.Equals("WRONG ID"))
+        Debug.Log(response); 
+        if (response.Equals("WRONG ID") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR"))
         {
-            this.txtFeedbackMessage.text = "Room doesn't exist";
-        }
-        else if(response.Equals("WRONG ARGUMENTS"))
-        {
-            this.txtFeedbackMessage.text = "Wrong arguments";
-        }
-        else if (response.Equals("ERROR"))
-        {
-            this.txtFeedbackMessage.text = "ERROR";
+            this.txtFeedbackMessage.text = Localization.GetMessage("LetsPlay", response);
         }
         else
         {
