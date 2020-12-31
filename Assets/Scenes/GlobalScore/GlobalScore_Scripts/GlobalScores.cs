@@ -38,4 +38,9 @@ public class GlobalScores : MonoBehaviour
             }
         }        
     }
+
+    public void BackToMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");
+    }
 }

@@ -211,6 +211,18 @@
 		"Back": {
 			"Español": "Atrás",
 			"English": "Back"
+		},
+		"WRONG ID": {
+			"Español": "No se encontró la sala",
+			"English": "Room not found"
+		},
+		"WRONG ARGUMENTS": {
+			"Español": "Entarada inválida",
+			"English": "Wrong arguments"
+		},
+		"ERROR": {
+			"Español": "Ocurrió un error en el servidor",
+			"English": "An error occurred on the server"
 		}
 	},
 	"CreateParty": {
