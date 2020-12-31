@@ -29,11 +29,13 @@ public class LobbyScript : MonoBehaviour
         ClearChecks();
         SetPlayerList();
         UpdateChecks();
+        
         if (PrepareNotifyOnJoinRoom().Equals("OK"))
         {
             IEnumerator waitingForPlayers = WaitingForPlayers();
             StartCoroutine(waitingForPlayers);
         }
+        
     }
 
     private IEnumerator WaitingForPlayers()
@@ -45,7 +47,7 @@ public class LobbyScript : MonoBehaviour
             _room.GetPlayersInRoom(response);
             SetPlayerList();
         }
-        yield return StartCoroutine(WaitingForPlayers());
+        yield return new WaitForSeconds(.3f);
     }
 
     public string PrepareNotifyOnJoinRoom()
