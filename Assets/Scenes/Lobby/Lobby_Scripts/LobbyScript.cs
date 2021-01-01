@@ -46,8 +46,21 @@ public class LobbyScript : MonoBehaviour
         {
             _room.GetPlayersInRoom(response);
             SetPlayerList();
+            yield break;
         }
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(0.1f);
+    }
+
+    private IEnumerator WaitingForPlayresTwo()
+    {
+        string response = _tcpSocket.GetResponse(true, 5000);
+        while (response.Equals("ERROR") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR. TIMEOUT"))
+        {
+            response = _tcpSocket.GetResponse(true, 5000);
+            yield return new WaitForSeconds(0.1f);
+        }
+        _room.GetPlayersInRoom(response);
+        SetPlayerList();
     }
 
     public string PrepareNotifyOnJoinRoom()
