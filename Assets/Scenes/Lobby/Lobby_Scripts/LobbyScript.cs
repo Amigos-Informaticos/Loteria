@@ -20,13 +20,10 @@ public class LobbyScript : MonoBehaviour
         TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
         _room = (Room) Memory.Load("room");
         txtCode.text = _room.IdRoom;
-        txtPlayers[0].text = Localization.GetMessage("Lobby", "PlayerOne");
-        txtPlayers[1].text = Localization.GetMessage("Lobby", "PlayerTwo");
-        txtPlayers[2].text = Localization.GetMessage("Lobby", "PlayerThree");
-        txtPlayers[3].text = Localization.GetMessage("Lobby", "PlayerFour");
         this.btnLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
         this.btnBack.text = Localization.GetMessage("Lobby", "Back");
         ClearChecks();
+        StartPlayerList();
         SetPlayerList();
         UpdateChecks();
         
@@ -36,7 +33,15 @@ public class LobbyScript : MonoBehaviour
             StartCoroutine(waitingForPlayers);
         }
     }
-    
+
+    public void StartPlayerList()
+    {
+        txtPlayers[0].text = Localization.GetMessage("Lobby", "PlayerOne");
+        txtPlayers[1].text = Localization.GetMessage("Lobby", "PlayerTwo");
+        txtPlayers[2].text = Localization.GetMessage("Lobby", "PlayerThree");
+        txtPlayers[3].text = Localization.GetMessage("Lobby", "PlayerFour");
+    }
+
     private IEnumerator WaitingForPlayers()
     {
         string response = _tcpSocket.GetResponse(true, 5000);
@@ -46,6 +51,7 @@ public class LobbyScript : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         _room.GetPlayersInRoom(response);
+        StartPlayerList();
         SetPlayerList();
     }
 
