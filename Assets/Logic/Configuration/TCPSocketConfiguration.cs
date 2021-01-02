@@ -51,8 +51,7 @@ public static class TCPSocketConfiguration
 	{
 		socket = new TCPSocket();
 		try
-        {
-			
+        {			
 			WebClient client = new WebClient();
 			string address = client.DownloadString(GetSetting("AddressServiceAddress"));
 			int port = Convert.ToInt32(GetSetting("NumberServicePort"));

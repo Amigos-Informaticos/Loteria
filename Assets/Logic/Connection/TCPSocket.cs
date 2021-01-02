@@ -156,8 +156,7 @@ public class TCPSocket
 			else
             {
 				response = "ERROR. TIMEOUT";
-            }
-			
+            }			
 		}
 		catch (IOException)
 		{
