@@ -137,17 +137,28 @@ public class Room
     
     public void GetPlayersInRoom(string response)
     {
-	    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
-
-	    Players = new List<PlayerStruct>();
-	    for (int i = 0; i < playerList.Count; i++)
+	    if (!response.Equals("ERROR") && !response.Equals("WRONG ARGUMENTS") && !response.Equals("ERROR. TIMEOUT"))
 	    {
-		    string key = i.ToString();
-		    PlayerStruct player = new PlayerStruct();
-		    player.Email = playerList[key]["email"];
-		    player.NickName = playerList[key]["nickname"];
-		    player.IsReady = playerList[key]["is_ready"];
-		    Players.Add(player);
+		    try
+		    {
+			    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+			    List<PlayerStruct> playersInRoom = new List<PlayerStruct>();
+			    for (int i = 0; i < playerList.Count; i++)
+			    {
+				    string key = i.ToString();
+				    PlayerStruct player = new PlayerStruct();
+				    player.Email = playerList[key]["email"];
+				    player.NickName = playerList[key]["nickname"];
+				    player.IsReady = playerList[key]["is_ready"];
+				    playersInRoom.Add(player);
+
+				    Players = playersInRoom;
+			    }
+		    }
+		    catch (Exception e)
+		    {
+			    Debug.Log(e);
+		    }
 	    }
     }
 
@@ -155,17 +166,28 @@ public class Room
     {
 	    string response = GetUsersInRoom();
 	    
-	    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
-		Debug.Log(response);
-	    Players = new List<PlayerStruct>();
-	    for (int i = 0; i < playerList.Count; i++)
+	    if (!response.Equals("ERROR") && !response.Equals("WRONG ARGUMENTS") && !response.Equals("ERROR. TIMEOUT"))
 	    {
-		    string key = i.ToString();
-		    PlayerStruct player = new PlayerStruct();
-		    player.Email = playerList[key]["email"];
-		    player.NickName = playerList[key]["nickname"];
-		    player.IsReady = playerList[key]["is_ready"];
-		    Players.Add(player);
+		    try
+		    {
+			    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+			    List<PlayerStruct> playersInRoom = new List<PlayerStruct>();
+			    for (int i = 0; i < playerList.Count; i++)
+			    {
+				    string key = i.ToString();
+				    PlayerStruct player = new PlayerStruct();
+				    player.Email = playerList[key]["email"];
+				    player.NickName = playerList[key]["nickname"];
+				    player.IsReady = playerList[key]["is_ready"];
+				    playersInRoom.Add(player);
+
+				    Players = playersInRoom;
+			    }
+		    }
+		    catch (Exception e)
+		    {
+			    Debug.Log(e);
+		    }
 	    }
     }
 
@@ -178,6 +200,7 @@ public class Room
 	    tcpSocket.AddCommand(getUsersInRoom);
 	    tcpSocket.SendCommand();
 	    response = tcpSocket.GetResponse(true, 1000);
+	    tcpSocket.Close();
 	    return response;
     }
 	private bool IsComplete()

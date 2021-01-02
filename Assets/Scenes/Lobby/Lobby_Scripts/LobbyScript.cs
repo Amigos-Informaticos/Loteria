@@ -12,12 +12,11 @@ public class LobbyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI btnLetsGo;
     [SerializeField] private TextMeshProUGUI btnBack;
     private Room _room;
-    TCPSocket _tcpSocket;
+    private TCPSocket _tcpSocket;
     private readonly bool _keepWaiting = true;
 
     void Start()
     {
-        TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
         _room = (Room) Memory.Load("room");
         txtCode.text = _room.IdRoom;
         this.btnLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
@@ -27,7 +26,7 @@ public class LobbyScript : MonoBehaviour
         SetPlayerList();
         UpdateChecks();
         
-        if (PrepareNotifyOnJoinRoom().Equals("OK"))
+        if (PrepareNotifyOnJoinRoom())
         {
             IEnumerator waitingForPlayers = WaitingForPlayers();
             StartCoroutine(waitingForPlayers);
@@ -48,23 +47,36 @@ public class LobbyScript : MonoBehaviour
         while (response.Equals("ERROR") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR. TIMEOUT"))
         {
             response = _tcpSocket.GetResponse(true, 5000);
-            yield return new WaitForSeconds(0.1f);
+            Debug.Log(response);
+            yield return new WaitForSeconds(0.5f);
         }
+        Debug.Log(response);
         _room.GetPlayersInRoom(response);
         StartPlayerList();
         SetPlayerList();
     }
 
-    public string PrepareNotifyOnJoinRoom()
+    public bool PrepareNotifyOnJoinRoom()
     {
-        Command notifyOnJoinRoom = new Command("notify_on_join_room");
+        TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
+        Command notifyOnJoinRoom = new Command("notify_me");
+        notifyOnJoinRoom.AddArgument("event","join_room_notification");
         notifyOnJoinRoom.AddArgument("user_email",((Player)Memory.Load("player")).Email);
-        notifyOnJoinRoom.AddArgument("room_id",((Room)Memory.Load("room")).IdRoom);
+        notifyOnJoinRoom.AddArgument("extra",((Room)Memory.Load("room")).IdRoom);
         _tcpSocket.AddCommand(notifyOnJoinRoom);
         _tcpSocket.SendCommand();
-        string reponse = _tcpSocket.GetResponse(true, 5000);
-        Debug.Log("salida de prepare" + reponse);
-        return reponse;
+        string response1 = _tcpSocket.GetResponse();
+        Debug.Log("response 2: " + response1);
+        Command notifyOnExitRoom = new Command("notify_me");
+        notifyOnExitRoom.AddArgument("event","exit_room_notification");
+        notifyOnExitRoom.AddArgument("user_email",((Player)Memory.Load("player")).Email);
+        notifyOnExitRoom.AddArgument("extra",((Room)Memory.Load("room")).IdRoom);
+        _tcpSocket.AddCommand(notifyOnExitRoom);
+        _tcpSocket.SendCommand();
+        string response2 = _tcpSocket.GetResponse(true, 5000);
+        Debug.Log("response 2: " + response2);
+        
+        return (response1.Equals(response2));
     }
 
     void SetPlayerList()
