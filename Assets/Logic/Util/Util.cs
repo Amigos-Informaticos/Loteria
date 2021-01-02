@@ -16,7 +16,7 @@ public class Util
         StringBuilder stringBuilder = new StringBuilder();
         foreach (byte b in GetHash(inputString))
         {
-            if (stringBuilder.ToString().Length < 33)
+            if (stringBuilder.ToString().Length <= 30)
                 stringBuilder.Append(b.ToString("X2"));
         }
         return stringBuilder.ToString();
