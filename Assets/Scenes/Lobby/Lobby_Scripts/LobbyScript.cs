@@ -29,23 +29,24 @@ public class LobbyScript : MonoBehaviour
         ClearChecks();
         SetPlayerList();
         UpdateChecks();
+        
         if (PrepareNotifyOnJoinRoom().Equals("OK"))
         {
             IEnumerator waitingForPlayers = WaitingForPlayers();
             StartCoroutine(waitingForPlayers);
         }
     }
-
+    
     private IEnumerator WaitingForPlayers()
     {
-        string response = _tcpSocket.GetResponse(true,5000);
-        Debug.Log("caca" + response);
-        if (!response.Equals("ERROR")||!response.Equals("WRONG ARGUMENTS")||!response.Equals("ERROR. TIMEOUT"))
+        string response = _tcpSocket.GetResponse(true, 5000);
+        while (response.Equals("ERROR") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR. TIMEOUT"))
         {
-            _room.GetPlayersInRoom(response);
-            SetPlayerList();
+            response = _tcpSocket.GetResponse(true, 5000);
+            yield return new WaitForSeconds(0.1f);
         }
-        yield return StartCoroutine(WaitingForPlayers());
+        _room.GetPlayersInRoom(response);
+        SetPlayerList();
     }
 
     public string PrepareNotifyOnJoinRoom()
