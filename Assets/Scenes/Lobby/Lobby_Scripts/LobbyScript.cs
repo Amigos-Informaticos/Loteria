@@ -37,20 +37,7 @@ public class LobbyScript : MonoBehaviour
         }
         
     }
-
-    private IEnumerator WaitingForPlayersTwo()
-    {
-        string response = _tcpSocket.GetResponse(true,5000);
-        Debug.Log("caca" + response);
-        if (!response.Equals("ERROR")||!response.Equals("WRONG ARGUMENTS")||!response.Equals("ERROR. TIMEOUT"))
-        {
-            _room.GetPlayersInRoom(response);
-            SetPlayerList();
-            yield break;
-        }
-        yield return new WaitForSeconds(0.1f);
-    }
-
+    
     private IEnumerator WaitingForPlayers()
     {
         string response = _tcpSocket.GetResponse(true, 5000);
