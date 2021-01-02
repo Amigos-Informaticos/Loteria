@@ -35,8 +35,8 @@ public class LetsPlayScript : MonoBehaviour
         string code = txtCode.text;
         string response = ((Player)Memory.Load("player")).EnterToLobby(code);
         
-        Debug.Log(response); 
-        if (response.Equals("WRONG ID") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR"))
+        if (response.Equals("WRONG ID") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR") || response.Equals("ROOM FULL")
+            || response.Equals("ALREADY JOINED"))
         {
             this.txtFeedbackMessage.text = Localization.GetMessage("LetsPlay", response);
         }

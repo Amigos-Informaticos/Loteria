@@ -223,6 +223,14 @@
 		"ERROR": {
 			"Español": "Ocurrió un error en el servidor",
 			"English": "An error occurred on the server"
+		},
+		"ROOM FULL": {
+			"Español": "Sala llena",
+			"English": "Room full"
+		},
+		"ALREADY JOINED": {
+			"Español": "Ya se encuentra en la sala",
+			"English": "Already joined"
 		}
 	},
 	"CreateParty": {
@@ -253,6 +261,10 @@
 		"WrongConnection": {
 			"Español": "Fallo en la conexión",
 			"English": "Wrong connection"
+		},
+		"RoomAlreadyExist": {
+			"Español": "La sala ya existe",
+			"English": "Room already exist"
 		}
 	},
 	"Lobby": {
