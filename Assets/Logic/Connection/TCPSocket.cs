@@ -16,6 +16,12 @@ public class TCPSocket
 	private static readonly int MAXTIMEOUT = 500;
 	private readonly List<string> _responses = new List<string>();
 
+	public TCPSocket()
+    {
+		this.Server = null;
+		this.Messages = new List<Command>();
+    }
+
 	public TCPSocket(string server, int port)
 	{
 		this.Server = server;
@@ -26,50 +32,34 @@ public class TCPSocket
 	private bool IsPrepared()
 	{
 		bool prepared = false;
-		if (this._client == null || !this._client.Connected)
+		if(this.Server != null)
 		{
-			this._client = new TcpClient();
-			try
+			if (this._client == null || !this._client.Connected)
+            {
+				this._client = new TcpClient();
+				try
+				{
+					this._client.Connect(this.Server, this.Port);					
+				}
+				catch (ArgumentNullException exception)
+				{
+					Debug.Log("ArgumentNullException: " + exception);
+				}
+				catch (SocketException exception)
+				{
+					Debug.Log("SocketException: " + exception + "With code: " + exception.ErrorCode);
+				}
+				catch (ObjectDisposedException exception)
+				{
+					Debug.Log("ObjectDisposedException: " + exception);
+				}
+			}
+			if (this._client.Connected)
 			{
-				this._client.Connect(this.Server, this.Port);
+				this._stream = this._client.GetStream();
 				prepared = true;
 			}
-			catch (ArgumentNullException exception)
-			{
-				Debug.Log("ArgumentNullException: " + exception);
-			}
-			catch (SocketException exception)
-			{
-				Debug.Log("SocketException: " + exception + "With code: " + exception.ErrorCode);
-			}
-			catch (ObjectDisposedException exception)
-			{
-				Debug.Log("ObjectDisposedException: " + exception);
-			}
-		}
-		if (!this._client.Connected)
-		{
-			try
-			{
-				this._client.Connect(this.Server, this.Port);
-			}
-			catch (ArgumentNullException exception)
-			{
-				Debug.Log("ArgumentNullException: " + exception);
-			}
-			catch (SocketException exception)
-			{
-				Debug.Log("SocketException: " + exception + "With code: " + exception.ErrorCode);
-			}
-			catch (ObjectDisposedException exception)
-			{
-				Debug.Log("ObjectDisposedException: " + exception);
-			}
-		}
-		if (this._stream == null)
-		{
-			this._stream = this._client.GetStream();
-		}
+		}		
 		return prepared;
 	}
 
@@ -80,8 +70,14 @@ public class TCPSocket
 			this.AddCommand(new Command("close"));
 			this.SendCommand();
 		}
-		this._stream.Close();
-		this._client.Close();
+		if(this._stream != null)
+        {
+			this._stream.Close();
+		}
+		if(this._client != null)
+        {
+			this._client.Close();
+		}			
 	}
 
 	public void AddCommand(Command command) => this.Messages.Add(command);
@@ -96,19 +92,21 @@ public class TCPSocket
 		}
 		try
 		{
-			this.IsPrepared();
-			string message = Regex.Replace(this.Messages[0].GetJSON(), @"[^\u0000-\u007F]+",
+            if (this.IsPrepared())
+            {
+				string message = Regex.Replace(this.Messages[0].GetJSON(), @"[^\u0000-\u007F]+",
 				string.Empty);
-			byte[] data = Encoding.ASCII.GetBytes(message);
-			try
-			{
-				this._stream.Write(data, 0, data.Length);
-				this.Messages.RemoveAt(0);
-			}
-			catch (Exception e)
-			{
-				Console.Error.Write(e.Message);
-			}
+				byte[] data = Encoding.ASCII.GetBytes(message);
+				try
+				{
+					this._stream.Write(data, 0, data.Length);
+					this.Messages.RemoveAt(0);
+				}
+				catch (Exception e)
+				{
+					Console.Error.Write(e.Message);
+				}
+			}			
 		}
 		catch (Exception e)
 		{
@@ -147,10 +145,18 @@ public class TCPSocket
 		string response = "NO RESPONSE";
 		try
 		{
-			this.IsPrepared();
-			this._stream.ReadTimeout = wait ? timeOut : MAXTIMEOUT;
-			int size = this._stream.Read(received, 0, received.Length);
-			response = Encoding.ASCII.GetString(received, 0, size);
+			bool prepared = this.IsPrepared();
+			Debug.Log(prepared.ToString());
+            if (prepared)
+            {
+				this._stream.ReadTimeout = wait ? timeOut : MAXTIMEOUT;
+				int size = this._stream.Read(received, 0, received.Length);
+				response = Encoding.ASCII.GetString(received, 0, size);
+			}
+			else
+            {
+				response = "ERROR. TIMEOUT";
+            }			
 		}
 		catch (IOException)
 		{

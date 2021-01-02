@@ -29,6 +29,7 @@ public class Login : MonoBehaviour
       Email = Regex.Replace(this.txtEmail.text, @"[^\u0000-\u007F]+", string.Empty),
       Password = Regex.Replace(this.txtPassword.text, @"[^\u0000-\u007F]+", string.Empty)
     };
+	Debug.Log(player.Password);
     string response = player.LogIn();
     if (response.Equals("OK"))
 		{

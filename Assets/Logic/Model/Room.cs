@@ -208,4 +208,9 @@ public class Room
 		return this.Host != null && this.IdRoom != null && this.NumberPlayers != 0 && this.GameMode != null
 			&& this.Rounds != 0 && this.Speed != 0;
     }
+
+    public override string ToString()
+    {
+        return "["+this.IdRoom+" - "+ this.NumberPlayers+" - "+ this.Rounds+" - "+this.Speed+" - "+this.GameMode+"]";
+    }
 }
