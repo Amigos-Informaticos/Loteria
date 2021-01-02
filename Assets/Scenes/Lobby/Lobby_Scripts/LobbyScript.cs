@@ -35,7 +35,6 @@ public class LobbyScript : MonoBehaviour
             IEnumerator waitingForPlayers = WaitingForPlayers();
             StartCoroutine(waitingForPlayers);
         }
-        
     }
     
     private IEnumerator WaitingForPlayers()
