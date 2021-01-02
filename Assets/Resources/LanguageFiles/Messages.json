@@ -97,6 +97,10 @@
 		"WrongEmail": {
 			"Español": "Correo electronico incorrecto",
 			"English": "Wrong email"
+		},
+		"WrongConnection": {
+			"Español": "No se pudo establecer la conexión",
+			"English": "Wrong connection"
 		}
 	},
 	"Login": {

@@ -99,6 +99,7 @@ public class SignUp : MonoBehaviour
         {
 			if (String.Equals(this.txtPassword.text, this.txtPasswordConfirm.text))
 			{
+				Debug.Log(player.Password);
 				response = player.SignUp();
 				EvaluateResponseSignUp(response);
 			}
@@ -164,6 +165,9 @@ public class SignUp : MonoBehaviour
 			case "ERROR":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "SignUpError");
 				break;
+			case "ERROR. TIMEOUT":
+					feedbackMessage.text = Localization.GetMessage("SignUp", "WrongConnection");
+				break;
 			default:
 				feedbackMessage.text = "";
 			break;
@@ -186,6 +190,9 @@ public class SignUp : MonoBehaviour
 				break;			
 			case "WRONG EMAIL":
 				feedbackMessage.text = Localization.GetMessage("SignUp", "WrongEmail");
+				break;
+			case "ERROR. TIMEOUT":
+				feedbackMessage.text = Localization.GetMessage("SignUp", "WrongConnection");
 				break;
 			default:
 				feedbackMessage.text = "";

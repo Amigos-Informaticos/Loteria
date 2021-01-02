@@ -83,6 +83,7 @@ public class CreatePartyScript : MonoBehaviour
     public void OnClickGoToLobby()
     {        
         InstanceRoom();
+        Debug.Log(this.room.ToString());
         this.room.MakeRoom();
         if (EvaluateResponseMakeRoom())
         {

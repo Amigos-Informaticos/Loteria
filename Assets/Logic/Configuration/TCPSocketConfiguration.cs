@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using GitHub.Unity.Json;
+using UnityEngine;
 
 public static class TCPSocketConfiguration
 {
@@ -48,11 +49,18 @@ public static class TCPSocketConfiguration
 
 	public static void BuildDefaultConfiguration(out TCPSocket socket)
 	{
-		socket = null;
-		WebClient client = new WebClient();
-		string address = client.DownloadString(GetSetting("AddressServiceAddress"));
-		int port = Convert.ToInt32(GetSetting("NumberServicePort"));
-		socket = new TCPSocket(address, port);
-		SetSetting("Address", address);
+		socket = new TCPSocket();
+		try
+        {			
+			WebClient client = new WebClient();
+			string address = client.DownloadString(GetSetting("AddressServiceAddress"));
+			int port = Convert.ToInt32(GetSetting("NumberServicePort"));
+			socket = new TCPSocket(address, port);
+			SetSetting("Address", address);
+		}
+        catch (WebException e)
+        {
+			Debug.Log(e);
+        }		
 	}
 }

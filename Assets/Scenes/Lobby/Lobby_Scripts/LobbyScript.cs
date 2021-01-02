@@ -34,7 +34,7 @@ public class LobbyScript : MonoBehaviour
         {
             IEnumerator waitingForPlayers = WaitingForPlayers();
             StartCoroutine(waitingForPlayers);
-        }
+        }*/
     }
     
     private IEnumerator WaitingForPlayers()
@@ -96,5 +96,10 @@ public class LobbyScript : MonoBehaviour
         {
             imgChecks[i].enabled = false;
         }
+    }
+    public void OnClickBackToLetsPlay()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
+        ((Room)Memory.Load("room")).ExitRoom(((Player)Memory.Load("player")).Email);
     }
 }
