@@ -14,6 +14,7 @@ public class LobbyScript : MonoBehaviour
     private Room _room;
     private TCPSocket _tcpSocket;
     private readonly bool _keepWaiting = true;
+    private int count = 0;
 
     void Start()
     {
@@ -44,7 +45,7 @@ public class LobbyScript : MonoBehaviour
     private IEnumerator WaitingForPlayers()
     {
         string response = _tcpSocket.GetResponse(true, 5000);
-        while (response.Equals("ERROR") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR. TIMEOUT"))
+        while ((response.Equals("ERROR") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR. TIMEOUT") ||response.Equals("UP TO DATE")) && count < 4)
         {
             response = _tcpSocket.GetResponse(true, 5000);
             Debug.Log(response);
@@ -54,6 +55,8 @@ public class LobbyScript : MonoBehaviour
         _room.GetPlayersInRoom(response);
         StartPlayerList();
         SetPlayerList();
+        response = "UP TO DATE";
+        count++;
     }
 
     public bool PrepareNotifyOnJoinRoom()
