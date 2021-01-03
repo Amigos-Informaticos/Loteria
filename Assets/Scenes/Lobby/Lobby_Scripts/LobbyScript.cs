@@ -26,9 +26,9 @@ public class LobbyScript : MonoBehaviour
         SetPlayerList();
         UpdateChecks();
         
-        if (PrepareNotifyOnJoinRoom())
+        if (PrepareNotifyOnJoinRoom().Equals("OK"))
         {
-            IEnumerator waitingForPlayers = WaitingForPlayersThree();
+            IEnumerator waitingForPlayers = WaitingForPlayers();
             StartCoroutine(waitingForPlayers);
         }
     }
@@ -55,33 +55,8 @@ public class LobbyScript : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
     }
-    
-    public bool PrepareNotifyOnJoinRoom()
-    {
-        
-        Command notifyOnJoinRoom = new Command("notify_me");
-        notifyOnJoinRoom.AddArgument("event","join_room_notification");
-        notifyOnJoinRoom.AddArgument("user_email",((Player)Memory.Load("player")).Email);
-        notifyOnJoinRoom.AddArgument("extra",((Room)Memory.Load("room")).IdRoom);
-        _tcpSocket.AddCommand(notifyOnJoinRoom);
-        _tcpSocket.SendCommand();
-        string response1 = _tcpSocket.GetResponse(true, 5000);
-        Debug.Log("response 1: " + response1);
-        
-        Command notifyOnExitRoom = new Command("notify_me");
-        notifyOnExitRoom.AddArgument("event","exit_room_notification");
-        notifyOnExitRoom.AddArgument("user_email",((Player)Memory.Load("player")).Email);
-        notifyOnExitRoom.AddArgument("extra",((Room)Memory.Load("room")).IdRoom);
-        _tcpSocket.AddCommand(notifyOnExitRoom);
-        _tcpSocket.SendCommand();
-        string response2 = _tcpSocket.GetResponse(true, 5000);
-        Debug.Log("response 2: " + response2);
 
-        return (response1.Equals("OK"));
-    }
-    
-
-	private IEnumerator WaitingForPlayers()
+    private IEnumerator WaitingForPlayers()
 	{
 		while (true)
 		{
@@ -97,7 +72,7 @@ public class LobbyScript : MonoBehaviour
 		}
 	}
 
-	public string PrepareNotifyOnJoinRoom()
+	private string PrepareNotifyOnJoinRoom()
 	{
 		Command notifyOnJoinRoom = new Command("notify_me");
 		notifyOnJoinRoom.AddArgument("event", "join_room_notification");
