@@ -146,8 +146,7 @@ public class TCPSocket
 		try
 		{
 			bool prepared = this.IsPrepared();
-			Debug.Log(prepared.ToString());
-            if (prepared)
+			if (prepared)
             {
 				this._stream.ReadTimeout = wait ? timeOut : MAXTIMEOUT;
 				int size = this._stream.Read(received, 0, received.Length);

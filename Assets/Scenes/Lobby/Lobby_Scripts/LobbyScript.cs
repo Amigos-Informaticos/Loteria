@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class LobbyScript : MonoBehaviour
 {
+    
     [SerializeField] private TextMeshProUGUI txtCode;
     [SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
     [SerializeField] private Image[] imgChecks = new Image[4];
@@ -13,11 +14,13 @@ public class LobbyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI btnBack;
     private Room _room;
     private TCPSocket _tcpSocket;
-    private readonly bool _keepWaiting = true;
+    private bool _keepWaiting = true;
     private int count = 0;
+    private string coroutineResponse;
 
     void Start()
     {
+        TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
         _room = (Room) Memory.Load("room");
         txtCode.text = _room.IdRoom;
         this.btnLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
@@ -29,9 +32,9 @@ public class LobbyScript : MonoBehaviour
         
         if (PrepareNotifyOnJoinRoom())
         {
-            IEnumerator waitingForPlayers = WaitingForPlayers();
+            IEnumerator waitingForPlayers = WaitingForPlayersThree();
             StartCoroutine(waitingForPlayers);
-        }*/
+        }
     }
 
     public void StartPlayerList()
@@ -41,35 +44,34 @@ public class LobbyScript : MonoBehaviour
         txtPlayers[2].text = Localization.GetMessage("Lobby", "PlayerThree");
         txtPlayers[3].text = Localization.GetMessage("Lobby", "PlayerFour");
     }
-
-    private IEnumerator WaitingForPlayers()
+    public IEnumerator WaitingForPlayersThree()
     {
-        string response = _tcpSocket.GetResponse(true, 5000);
-        while ((response.Equals("ERROR") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR. TIMEOUT") ||response.Equals("UP TO DATE")) && count < 4)
+        while (true)
         {
-            response = _tcpSocket.GetResponse(true, 5000);
+            string response = _tcpSocket.GetResponse(true, 1000);
             Debug.Log(response);
-            yield return new WaitForSeconds(0.5f);
+            if (!response.Equals("ERROR") && !response.Equals("WRONG ARGUMENTS") &&
+                !response.Equals("ERROR. TIMEOUT"))
+            {
+                _room.GetPlayersInRoom(response);
+                SetPlayerList();
+            }
+            yield return new WaitForSeconds(1.0f);
         }
-        Debug.Log(response);
-        _room.GetPlayersInRoom(response);
-        StartPlayerList();
-        SetPlayerList();
-        response = "UP TO DATE";
-        count++;
     }
-
+    
     public bool PrepareNotifyOnJoinRoom()
     {
-        TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
+        
         Command notifyOnJoinRoom = new Command("notify_me");
         notifyOnJoinRoom.AddArgument("event","join_room_notification");
         notifyOnJoinRoom.AddArgument("user_email",((Player)Memory.Load("player")).Email);
         notifyOnJoinRoom.AddArgument("extra",((Room)Memory.Load("room")).IdRoom);
         _tcpSocket.AddCommand(notifyOnJoinRoom);
         _tcpSocket.SendCommand();
-        string response1 = _tcpSocket.GetResponse();
-        Debug.Log("response 2: " + response1);
+        string response1 = _tcpSocket.GetResponse(true, 5000);
+        Debug.Log("response 1: " + response1);
+        
         Command notifyOnExitRoom = new Command("notify_me");
         notifyOnExitRoom.AddArgument("event","exit_room_notification");
         notifyOnExitRoom.AddArgument("user_email",((Player)Memory.Load("player")).Email);
@@ -78,9 +80,10 @@ public class LobbyScript : MonoBehaviour
         _tcpSocket.SendCommand();
         string response2 = _tcpSocket.GetResponse(true, 5000);
         Debug.Log("response 2: " + response2);
-        
-        return (response1.Equals(response2));
+
+        return (response1.Equals("OK"));
     }
+    
 
     void SetPlayerList()
     {
