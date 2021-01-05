@@ -9,6 +9,7 @@ public class Room
 	public Player Host { get; set; } = new Player();
 	public List<PlayerStruct> Players { get; set; } = new List<PlayerStruct>();
 	public int Rounds { get; set; }
+	public int IdGameMode { get; set; }
 	public string GameMode { get; set; }
 	public int Speed { get; set; }
 	public int NumberPlayers { get; set; }
@@ -180,11 +181,12 @@ public class Room
 	public void SetRoomConfigByJson(string json)
 	{
 		Dictionary<string, string> roomConfig = SimpleJson.DeserializeObject<Dictionary<string, string>>(json);
-		Debug.Log(json);
 		Speed = Convert.ToInt32(roomConfig["speed"]);
 		Rounds = Convert.ToInt32(roomConfig["rounds"]);
+		IdGameMode = Convert.ToInt32(roomConfig["id_game_mode"]);
 		GameMode = roomConfig["game_mode"];
 		NumberPlayers = Convert.ToInt32(roomConfig["max_players"]);
+		Debug.Log("Speed " + Speed + "Rounds " + Rounds + "IdGameMode " + IdGameMode + "GameMode " + GameMode + "NumberPlayers " + NumberPlayers);
 	}
 
 	private string GetUsersInRoom()
