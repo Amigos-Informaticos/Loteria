@@ -90,19 +90,17 @@ public class Room
         }
         tcpSocket.Close();
         return response;
-    } 
-	//WIP add Deserialization
-	public List<string> GetGameModes()
+    }
+    public List<string> GetGameModes()
 	{
         TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Dictionary<string, string> gameMode;
 		List<string> gameModes = new List<string>();
-		string response;
 		Command getGameModes = new Command("get_game_modes_by_user");
 		getGameModes.AddArgument("user_email", this.Host.Email);
 		tcpSocket.AddCommand(getGameModes);
 		tcpSocket.SendCommand();
-		response = tcpSocket.GetResponse(true, 1000);
+		string response = tcpSocket.GetResponse(true, 1000);
 		try
 		{
 			Debug.Log(response);
@@ -114,10 +112,13 @@ public class Room
 			gameMode = null;
 		}
 
-        for (int i = 0; i < gameMode.Count; i++)
-        {
-			gameModes.Add(gameMode[i.ToString()]);
-        }
+		if (gameMode != null)
+		{
+			for (int i = 0; i < gameMode.Count; i++)
+			{
+				gameModes.Add(gameMode[i.ToString()]);
+			}
+		}
 		tcpSocket.Close();
 		return gameModes;
     }
@@ -137,18 +138,24 @@ public class Room
     
     public void GetPlayersInRoom(string response)
     {
-	    Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
-
-	    Players = new List<PlayerStruct>();
-	    for (int i = 0; i < playerList.Count; i++)
-	    {
-		    string key = i.ToString();
-		    PlayerStruct player = new PlayerStruct();
-		    player.Email = playerList[key]["email"];
-		    player.NickName = playerList[key]["nickname"];
-		    player.IsReady = playerList[key]["is_ready"];
-		    Players.Add(player);
-	    }
+        try
+        {
+			Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+			Players = new List<PlayerStruct>();
+			for (int i = 0; i < playerList.Count; i++)
+			{
+				string key = i.ToString();
+				PlayerStruct player = new PlayerStruct();
+				player.Email = playerList[key]["email"];
+				player.NickName = playerList[key]["nickname"];
+				player.IsReady = playerList[key]["is_ready"];
+				Players.Add(player);
+			}
+		}
+        catch (SerializationException e)
+        {
+			Debug.Log(e);
+		}	    	    
     }
 
     public void GetPlayersInRoom()
@@ -182,7 +189,7 @@ public class Room
     }
 	private bool IsComplete()
     {
-		return this.Host != null && this.IdRoom != null && this.NumberPlayers != 0 && this.GameMode != null
+		return this.Host != null && this.NumberPlayers != 0 && this.GameMode != null
 			&& this.Rounds != 0 && this.Speed != 0;
     }
 
