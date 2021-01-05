@@ -114,7 +114,8 @@ public class CreatePartyScript : MonoBehaviour
                 isMaked = false;
                 this.txtFeedBackMessage.text = Localization.GetMessage("CreateParty", "WrongConnection");
                 break;
-            default:                
+            default:  
+                //Without actions
                 break;
         }
         return isMaked;

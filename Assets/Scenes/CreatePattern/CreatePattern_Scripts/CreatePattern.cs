@@ -21,8 +21,6 @@ public class CreatePattern : MonoBehaviour
 	[SerializeField] private Image imgGameMode;
 	private readonly List<bool> pattern = new List<bool>();
 	private readonly Board newPattern = new Board();
-	
-
 	void Start()
     {
         try
