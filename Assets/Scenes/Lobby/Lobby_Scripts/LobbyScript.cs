@@ -57,7 +57,6 @@ public class LobbyScript : MonoBehaviour
         }
     }
 
-
     void SetPlayerList()
 	{
 		for (int i = 0; i < _room.Players.Count; i++)
