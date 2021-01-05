@@ -9,7 +9,7 @@ public class Login : MonoBehaviour
     [SerializeField] private Image imgEmail;
     [SerializeField] private Image imgPassword;
     [SerializeField] private TextMeshProUGUI txtEmail;
-    [SerializeField] private TextMeshProUGUI txtPassword;
+    [SerializeField] private TMP_InputField txtPassword;
     [SerializeField] private TextMeshProUGUI phEmail;
     [SerializeField] private TextMeshProUGUI phPassword;
     [SerializeField] private TextMeshProUGUI btnBack;
@@ -31,10 +31,10 @@ public class Login : MonoBehaviour
         Player player = new Player
         {
             Email = Regex.Replace(this.txtEmail.text, @"[^\u0000-\u007F]+", string.Empty),
-            Password = Regex.Replace(this.txtPassword.text, @"[^\u0000-\u007F]+", string.Empty)
+            Password = this.txtPassword.text 
         };
         string response = player.LogIn();
-        Debug.Log(response);
+        Debug.Log("LogIn response: " + response);
         if (EvaluateResponseLogIn(response))
         {
             if (player.GetPlayerFromServer())
@@ -55,6 +55,7 @@ public class Login : MonoBehaviour
         bool isLoggedIn = false;
         try
         {
+            //TODO Verificar el porque lanza KeyNotFoundException
             switch (response)
             {
                 case "WRONG PASSWORD":
