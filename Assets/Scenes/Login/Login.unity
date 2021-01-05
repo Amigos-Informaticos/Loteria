@@ -325,8 +325,7 @@ MonoBehaviour:
   imgEmail: {fileID: 634927104}
   imgPassword: {fileID: 11742068}
   txtEmail: {fileID: 1487877646}
-  txtPassword: {fileID: 1978985186}
-  txtPassword2: {fileID: 11742067}
+  txtPassword: {fileID: 11742067}
   phEmail: {fileID: 1459066641}
   phPassword: {fileID: 1459066641}
   btnBack: {fileID: 941296504}
