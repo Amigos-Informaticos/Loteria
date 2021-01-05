@@ -145,8 +145,7 @@ public class TCPSocket
 		string response = "NO RESPONSE";
 		try
 		{
-			bool prepared = this.IsPrepared();
-			Debug.Log(prepared.ToString());
+			bool prepared = this.IsPrepared();			
             if (prepared)
             {
 				this._stream.ReadTimeout = wait ? timeOut : MAXTIMEOUT;
