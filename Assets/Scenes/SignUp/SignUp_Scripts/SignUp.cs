@@ -17,8 +17,8 @@ public class SignUp : MonoBehaviour
     [SerializeField] private Image imgCode;
     [SerializeField] private TextMeshProUGUI txtEmail;
     [SerializeField] private TextMeshProUGUI txtNickname;
-    [SerializeField] private TextMeshProUGUI txtPassword;
-    [SerializeField] private TextMeshProUGUI txtPasswordConfirm;
+    [SerializeField] private TMP_InputField txtPassword;
+    [SerializeField] private TMP_InputField txtPasswordConfirm;
     [SerializeField] private TextMeshProUGUI txtConfirmationCode;
     [SerializeField] private TextMeshProUGUI txtName;
     [SerializeField] private TextMeshProUGUI txtLastname;
@@ -131,7 +131,7 @@ public class SignUp : MonoBehaviour
         Player player = new Player();
         player.Email = Regex.Replace(txtEmail.text, @"[^\u0000-\u007F]+", string.Empty);
         player.NickName = Regex.Replace(txtNickname.text, @"[^\u0000-\u007F]+", string.Empty);
-        player.Password = Regex.Replace(txtPassword.text, @"[^\u0000-\u007F]+", string.Empty);
+        player.Password = txtPassword.text;
         player.Names = Regex.Replace(txtName.text, @"[^\u0000-\u007F]+", string.Empty);
         player.LastName = Regex.Replace(txtLastname.text, @"[^\u0000-\u007F]+", string.Empty);
         player.Code = Regex.Replace(txtConfirmationCode.text, @"[^\u0000-\u007F]+", string.Empty);
