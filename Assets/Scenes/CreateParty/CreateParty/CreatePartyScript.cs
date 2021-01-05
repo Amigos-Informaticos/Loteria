@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CreatePartyScript : MonoBehaviour
 {
@@ -64,17 +63,14 @@ public class CreatePartyScript : MonoBehaviour
     public void OnValueChangedPlayers()
     {
         this.numberPlayers = this.dpPlayers.value + 2;
-        Debug.Log(this.numberPlayers);
     }
     public void OnValueChangedRounds()
     {
         this.numberRounds = this.dpRounds.value + 1;
-        Debug.Log(this.numberRounds);
     }
     public void OnValueChangedSpeed()
     {
         this.speed = this.dpSpeed.value + 3;
-        Debug.Log(this.speed);
     }
     public void OnClickBackToLetsPlay()
     {
@@ -98,7 +94,7 @@ public class CreatePartyScript : MonoBehaviour
     }
     private void InstanceRoom()
     {
-        this.room.Host = (Player) Memory.Load("player");
+        this.room.Host = (Player) Memory.Load("player");       
         this.room.Rounds = this.numberRounds;
         this.room.Speed = this.speed;
         this.room.NumberPlayers = this.numberPlayers;
@@ -118,8 +114,7 @@ public class CreatePartyScript : MonoBehaviour
                 isMaked = false;
                 this.txtFeedBackMessage.text = Localization.GetMessage("CreateParty", "WrongConnection");
                 break;
-            default:
-                this.txtFeedBackMessage.text = "ERROR";
+            default:                
                 break;
         }
         return isMaked;
