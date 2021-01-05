@@ -160,6 +160,18 @@ public class Room
 		}	    	    
     }
 
+    public string GetUsersInRoom()
+    {
+	    TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+	    string response = null;
+	    Command getUsersInRoom = new Command("get_users_in_room");
+	    getUsersInRoom.AddArgument("room_id", IdRoom);
+	    tcpSocket.AddCommand(getUsersInRoom);
+	    tcpSocket.SendCommand();
+	    response = tcpSocket.GetResponse(true, 1000);
+	    return response;
+    }
+
 	public void GetPlayersInRoom()
 	{
 		string response = GetUsersInRoom();
@@ -188,18 +200,6 @@ public class Room
 		GameMode = roomConfig["game_mode"];
 		NumberPlayers = Convert.ToInt32(roomConfig["max_players"]);
 		Debug.Log("Speed " + Speed + "Rounds " + Rounds + "IdGameMode " + IdGameMode + "GameMode " + GameMode + "NumberPlayers " + NumberPlayers);
-	}
-
-	private string GetUsersInRoom()
-	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-		string response = null;
-		Command getUsersInRoom = new Command("get_users_in_room");
-		getUsersInRoom.AddArgument("room_id", IdRoom);
-		tcpSocket.AddCommand(getUsersInRoom);
-		tcpSocket.SendCommand();
-		response = tcpSocket.GetResponse(true, 1000);
-		return response;
 	}
 
 	private bool IsComplete()
