@@ -120,10 +120,6 @@
 			"Español": "Entrar",
 			"English": "Login"
 		},
-		"Error": {
-			"Español": "No se pudo establecer la conexión",
-			"English": "An error occurs with the connection"
-		},
 		"WrongPassword": {
 			"Español": "Contraseña incorrecta",
 			"English": "Wrong password"
@@ -131,6 +127,10 @@
 		"EmailNotRegistered": {
 			"Español": "Email no registrado",
 			"English": "Ematil not registered"
+		},
+		"Error": {
+			"Español": "No se pudo establecer la conexión",
+			"English": "An error occurs with the connection"
 		}
 	},
 	"Settings": {
@@ -171,6 +171,10 @@
 		"Exit": {
 			"Español": "Salir",
 			"English": "Exit"
+		},
+		"WrongPassword": {
+			"Español": "Contraseña incorrecta",
+			"English": "Wrong password"
 		}
 	},
 	"CreatePattern": {

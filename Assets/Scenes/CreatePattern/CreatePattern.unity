@@ -996,7 +996,7 @@ GameObject:
   - component: {fileID: 170784496}
   - component: {fileID: 170784495}
   m_Layer: 5
-  m_Name: lblGameMode
+  m_Name: txtGameMode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2732,6 +2732,7 @@ MonoBehaviour:
   lblGameModeName: {fileID: 170784495}
   phGameModeName: {fileID: 523167452}
   txtGameModeName: {fileID: 1511119109}
+  imgGameMode: {fileID: 912640285}
 --- !u!4 &521055848
 Transform:
   m_ObjectHideFlags: 0

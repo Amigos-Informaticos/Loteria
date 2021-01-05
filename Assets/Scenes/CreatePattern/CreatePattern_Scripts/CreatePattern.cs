@@ -18,6 +18,7 @@ public class CreatePattern : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI lblGameModeName;
 	[SerializeField] private TextMeshProUGUI phGameModeName;
 	[SerializeField] private TextMeshProUGUI txtGameModeName;
+	[SerializeField] private Image imgGameMode;
 	private readonly List<bool> pattern = new List<bool>();
 	private readonly Board newPattern = new Board();
 	void Start()
@@ -116,7 +117,14 @@ public class CreatePattern : MonoBehaviour
 		player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
 		player.Board.Pattern = ConvertToArray();
 		newPattern.Pattern = ConvertToArray();
-		player.Board.SavePattern(((Player)Memory.Load("player")).Email);
+		if(!string.IsNullOrEmpty(this.txtGameModeName.text))
+        {
+			player.Board.SavePattern(((Player)Memory.Load("player")).Email);
+		}
+		else
+		{
+			this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffbaba");
+		}
 		PrintPattern();
 		PrintArrayBi(player.Board.Pattern);
 	}

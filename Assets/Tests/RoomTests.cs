@@ -22,7 +22,7 @@ namespace Tests
         {
             Room roomTest = new Room();
             roomTest.Host.Email = "alexis@hotmail.com";
-            roomTest.IdRoom = "a911e";
+            roomTest.IdRoom = "c1c0f";
             string response = roomTest.ExitRoom("alexis@hotmail.com");
             Assert.AreEqual("OK", response);
         }
