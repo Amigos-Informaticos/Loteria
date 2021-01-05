@@ -26,73 +26,39 @@ public class LobbyScript : MonoBehaviour
         SetPlayerList();
         UpdateChecks();
         
-        if (PrepareNotifyOnJoinRoom().Equals("OK"))
-        {
-            IEnumerator waitingForPlayers = WaitingForPlayers();
-            StartCoroutine(waitingForPlayers);
-        }
+	    IEnumerator waitingForPlayers = WaitingForPlayers();
+	    StartCoroutine(waitingForPlayers);
     }
 
+    public void StartPlayerListTwo()
+    {
+	    txtPlayers[0].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
+	    txtPlayers[1].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
+	    txtPlayers[2].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
+	    txtPlayers[3].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
+    }
+    
     public void StartPlayerList()
     {
-        txtPlayers[0].text = Localization.GetMessage("Lobby", "PlayerOne");
-        txtPlayers[1].text = Localization.GetMessage("Lobby", "PlayerTwo");
-        txtPlayers[2].text = Localization.GetMessage("Lobby", "PlayerThree");
-        txtPlayers[3].text = Localization.GetMessage("Lobby", "PlayerFour");
+	    for (int i = 0; i < _room.NumberPlayers; i++)
+	    {
+		    txtPlayers[i].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
+	    }
     }
-    public IEnumerator WaitingForPlayersThree()
+    
+    public IEnumerator WaitingForPlayers()
     {
         while (true)
         {
-            string response = _tcpSocket.GetResponse(true, 1000);
-            Debug.Log(response);
-            if (!response.Equals("ERROR") && !response.Equals("WRONG ARGUMENTS") &&
-                !response.Equals("ERROR. TIMEOUT"))
-            {
-                _room.GetPlayersInRoom(response);
-                SetPlayerList();
-            }
-            yield return new WaitForSeconds(1.0f);
+	        yield return new WaitForSeconds(2.0f);
+	        _room.GetPlayersInRoom();
+	        StartPlayerList();
+	        SetPlayerList();
         }
     }
 
-    private IEnumerator WaitingForPlayers()
-	{
-		while (true)
-		{
-			string response = _tcpSocket.GetResponse(true, 1000);
-			Debug.Log(response);
-			if (!response.Equals("ERROR") && !response.Equals("WRONG ARGUMENTS") &&
-			    !response.Equals("ERROR. TIMEOUT"))
-			{
-				_room.GetPlayersInRoom(response);
-				SetPlayerList();
-			}
-			yield return new WaitForSeconds(1.0f);
-		}
-	}
 
-	private string PrepareNotifyOnJoinRoom()
-	{
-		Command notifyOnJoinRoom = new Command("notify_me");
-		notifyOnJoinRoom.AddArgument("event", "join_room_notification");
-		notifyOnJoinRoom.AddArgument("user_email", ((Player) Memory.Load("player")).Email);
-		notifyOnJoinRoom.AddArgument("extra", ((Room) Memory.Load("room")).IdRoom);
-		_tcpSocket.AddCommand(notifyOnJoinRoom);
-		_tcpSocket.SendCommand();
-		string reponse = _tcpSocket.GetResponse(true, 5000);
-		Debug.Log("salida de prepare" + reponse);
-		notifyOnJoinRoom = new Command("notify_me");
-		notifyOnJoinRoom.AddArgument("event", "exit_room_notification");
-		notifyOnJoinRoom.AddArgument("user_email", ((Player) Memory.Load("player")).Email);
-		notifyOnJoinRoom.AddArgument("extra", ((Room) Memory.Load("room")).IdRoom);
-		this._tcpSocket.AddCommand(notifyOnJoinRoom);
-		this._tcpSocket.SendCommand();
-		reponse = _tcpSocket.GetResponse(true, 5000);
-		return reponse;
-	}
-
-	void SetPlayerList()
+    void SetPlayerList()
 	{
 		for (int i = 0; i < _room.Players.Count; i++)
 		{

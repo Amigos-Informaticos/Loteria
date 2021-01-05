@@ -157,9 +157,10 @@ public class TCPSocket
 				response = "ERROR. TIMEOUT";
             }			
 		}
-		catch (IOException)
+		catch (IOException ioe)
 		{
 			response = "ERROR. TIMEOUT";
+			Debug.Log("Excepcion IO" + ioe);
 		}
 		catch (Exception e)
 		{

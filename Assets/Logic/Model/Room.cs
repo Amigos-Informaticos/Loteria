@@ -177,6 +177,16 @@ public class Room
 		}
 	}
 
+	public void SetRoomConfigByJson(string json)
+	{
+		Dictionary<string, string> roomConfig = SimpleJson.DeserializeObject<Dictionary<string, string>>(json);
+		Debug.Log(json);
+		Speed = Convert.ToInt32(roomConfig["speed"]);
+		Rounds = Convert.ToInt32(roomConfig["rounds"]);
+		GameMode = roomConfig["game_mode"];
+		NumberPlayers = Convert.ToInt32(roomConfig["max_players"]);
+	}
+
 	private string GetUsersInRoom()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
