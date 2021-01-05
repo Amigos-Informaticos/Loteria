@@ -169,6 +169,7 @@ public class Room
 	    tcpSocket.AddCommand(getUsersInRoom);
 	    tcpSocket.SendCommand();
 	    response = tcpSocket.GetResponse(true, 1000);
+	    tcpSocket.Close();
 	    return response;
     }
 
@@ -196,7 +197,7 @@ public class Room
 		Dictionary<string, string> roomConfig = SimpleJson.DeserializeObject<Dictionary<string, string>>(json);
 		Speed = Convert.ToInt32(roomConfig["speed"]);
 		Rounds = Convert.ToInt32(roomConfig["rounds"]);
-		IdGameMode = Convert.ToInt32(roomConfig["id_game_mode"]);
+		IdGameMode = Convert.ToInt32(roomConfig["game_mode_id"]);
 		GameMode = roomConfig["game_mode"];
 		NumberPlayers = Convert.ToInt32(roomConfig["max_players"]);
 		Debug.Log("Speed " + Speed + "Rounds " + Rounds + "IdGameMode " + IdGameMode + "GameMode " + GameMode + "NumberPlayers " + NumberPlayers);
