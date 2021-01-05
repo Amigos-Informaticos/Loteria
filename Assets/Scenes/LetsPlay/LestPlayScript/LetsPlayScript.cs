@@ -44,6 +44,7 @@ public class LetsPlayScript : MonoBehaviour
         {
             Room room = new Room();
             room.IdRoom = code;
+            room.SetRoomConfigByJson(response);
             room.GetPlayersInRoom();
             Memory.Save("room",room);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
