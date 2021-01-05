@@ -21,12 +21,10 @@ public class LobbyScript : MonoBehaviour
         txtCode.text = _room.IdRoom;
         this.btnLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
         this.btnBack.text = Localization.GetMessage("Lobby", "Back");
-        ClearChecks();
         StartPlayerList();
         SetPlayerList();
-        UpdateChecks();
-        
-	    IEnumerator waitingForPlayers = WaitingForPlayers();
+
+        IEnumerator waitingForPlayers = WaitingForPlayers();
 	    StartCoroutine(waitingForPlayers);
     }
 
@@ -65,35 +63,7 @@ public class LobbyScript : MonoBehaviour
 		}
 	}
 
-	void UpdateChecks()
-	{
-		for (int i = 0; i < _room.Players.Count; i++)
-		{
-			if (_room.Players[i].IsReady.Equals("T"))
-			{
-				if (!imgChecks[i].enabled)
-				{
-					imgChecks[i].enabled = true;
-				}
-			} else
-			{
-				if (imgChecks[i].enabled)
-				{
-					imgChecks[i].enabled = false;
-				}
-			}
-		}
-	}
-
-	void ClearChecks()
-	{
-		for (int i = 0; i < imgChecks.Length; i++)
-		{
-			imgChecks[i].enabled = false;
-		}
-	}
-
-	public void OnClickBackToLetsPlay()
+    public void OnClickBackToLetsPlay()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
 		((Room) Memory.Load("room")).ExitRoom(((Player) Memory.Load("player")).Email);
