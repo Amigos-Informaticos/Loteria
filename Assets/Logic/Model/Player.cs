@@ -15,7 +15,7 @@ public class Player
 	private Command _command;
 	private TCPSocket _tcpSocket;
 
-	public bool IsHost { get; set; };
+	public bool IsHost { get; set; }
 
 	public string Names
 	{
