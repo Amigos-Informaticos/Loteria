@@ -51,31 +51,26 @@ namespace Tests
         {
             Player player = new Player
             {
-                Email = "efrain_escuela@outlook.com",
-                NickName = "EfrainCami"
+                Email = "alexis@hotmail.com",
+                NickName = "VeggieFoka"
             };
             Room room = new Room
             {
                 IdRoom = "c1c0f"
             };
-            Assert.AreEqual("OK", room.SendMessage("Hola, soy Efrain fucker", player));
+            Assert.AreEqual("OK", room.SendMessage("Hola, soy GTWALOM", player));
         }
 
         [Test]
         public void GetMessages()
         {
-            Player player = new Player
-            {
-                Email = "alexis@hotmail.com",
-            };
             Room room = new Room
             {
                 IdRoom = "c1c0f"
             };
             string response = room.GetMessages("edsonmanuelcarballovera@gmail.com");
             Debug.Log(room.Messages[0].Key + ": " + room.Messages[0].Value);
-            Debug.Log(room.Messages[1].Key + ": " + room.Messages[1].Value);
-            
+
             Assert.AreEqual("OK", response);
         }
     }
