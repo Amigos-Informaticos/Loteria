@@ -9,7 +9,7 @@ public class Room
 {
 	public Player Host { get; set; } = new Player();
     public List<PlayerStruct> Players { get; set; } = new List<PlayerStruct>();
-    public List<KeyValuePair<string, string>> Messages {get; set;} = new List<KeyValuePair<string, string>>();
+    public List<KeyValuePair<string, string>> Messages { get; } = new List<KeyValuePair<string, string>>();
     public int Rounds { get; set; }
     public string GameMode { get; set; }
     public int Speed { get; set; }
