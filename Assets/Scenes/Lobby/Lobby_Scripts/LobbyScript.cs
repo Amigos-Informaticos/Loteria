@@ -7,25 +7,39 @@ public class LobbyScript : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI txtCode;
 	[SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
-	[SerializeField] private Image[] imgChecks = new Image[4];
-	[SerializeField] private TextMeshProUGUI btnLetsGo;
+	[SerializeField] private TextMeshProUGUI txtLetsGo;
+	[SerializeField] private GameObject btnLetsGo;
+	[SerializeField] private GameObject[] btnKick = new GameObject[4];
 	[SerializeField] private TextMeshProUGUI btnBack;
 	private Room _room;
-	TCPSocket _tcpSocket;
 	private readonly bool _keepWaiting = true;
 
-    void Start()
+	void Start()
     {
-        TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
+	    TCPSocket tcpSocket;
+        TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
         _room = (Room) Memory.Load("room");
         txtCode.text = _room.IdRoom;
-        this.btnLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
+        this.txtLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
         this.btnBack.text = Localization.GetMessage("Lobby", "Back");
+        ConfigureWindow();
         StartPlayerList();
         SetPlayerList();
 
         IEnumerator waitingForPlayers = WaitingForPlayers();
 	    StartCoroutine(waitingForPlayers);
+    }
+
+    public void ConfigureWindow()
+    {
+	    Player player = (Player) Memory.Load("player");
+	    if (!player.IsHost)
+	    {
+		    for (int i = 0; i < 4; i++)
+		    {
+			    this.btnKick[i].SetActive(false);    
+		    }
+	    }
     }
 
     public void StartPlayerListTwo()
@@ -68,4 +82,9 @@ public class LobbyScript : MonoBehaviour
 		UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
 		((Room) Memory.Load("room")).ExitRoom(((Player) Memory.Load("player")).Email);
 	}
+
+    public void OnClickLetsGo()
+    {
+	    UnityEngine.SceneManagement.SceneManager.LoadScene("Party");
+    }
 }
