@@ -187,7 +187,6 @@ public class Room
 			PlayerStruct player = new PlayerStruct();
 			player.Email = playerList[key]["email"];
 			player.NickName = playerList[key]["nickname"];
-			player.IsReady = playerList[key]["is_ready"];
 			Players.Add(player);
 		}
 	}
