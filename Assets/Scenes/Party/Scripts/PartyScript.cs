@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,10 @@ public class PartyScript : MonoBehaviour
 {
     [SerializeField] private Image[] board = new Image[25];
     [SerializeField] private Image cardToShow;
-    private readonly Player _player = new Player();
+    [SerializeField] private TextMeshProUGUI taChat;
+    [SerializeField] private TextMeshProUGUI txtChat;
+    private Player _player;
+    private Room _room;
     private readonly int[] _cards = new int[54];
     private int _cardOnScreen;
 
@@ -21,7 +25,12 @@ public class PartyScript : MonoBehaviour
         }
         this.GenerateBoard();
         IEnumerator coroutine = ChangeCard(0.5f);
+        IEnumerator chatCoroutine = UpdateChat();
         StartCoroutine(coroutine);
+        StartCoroutine(chatCoroutine);
+        
+        _room = (Room) Memory.Load("room");
+        _player = (Player) Memory.Load("player");
     }
 
     private IEnumerator ChangeCard(float waitTime)
@@ -32,6 +41,22 @@ public class PartyScript : MonoBehaviour
             ChangeSpriteOfCard(_cards[_cardOnScreen]);
             Debug.Log(_cardOnScreen);
             _cardOnScreen ++;
+        }
+    }
+    
+    private IEnumerator UpdateChat()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3.0f);
+            _room.GetMessages(_player.Email);
+            int counter = 0;
+            while (counter < _room.Messages.Count)
+            {
+                this.taChat.GetComponent<TextMeshProUGUI>().text = this.taChat.text + "\n" + _room.Messages[counter].Key +
+                                                                   ">>" + _room.Messages[counter].Value;
+                counter++;
+            }
         }
     }
 
@@ -58,5 +83,11 @@ public class PartyScript : MonoBehaviour
                 idBoardCard++;
             }
         }
+    }
+
+    public void OnClickSendMessage()
+    {
+        Room room = (Room) Memory.Load("room");
+        room.SendMessage(this.txtChat.text, (Player) Memory.Load("player"));
     }
 }
