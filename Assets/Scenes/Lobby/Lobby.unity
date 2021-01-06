@@ -939,7 +939,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000012398, y: -142}
+  m_AnchoredPosition: {x: 0.000034332, y: -156.6}
   m_SizeDelta: {x: 269.10712, y: 60.686348}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1099829505
@@ -2274,13 +2274,13 @@ MonoBehaviour:
   - {fileID: 1580859978}
   - {fileID: 1237378696}
   - {fileID: 398532986}
-  imgChecks:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   txtLetsGo: {fileID: 1590902723}
   btnLetsGo: {fileID: 1099829503}
+  btnKick:
+  - {fileID: 1215830022}
+  - {fileID: 1546840774}
+  - {fileID: 1616119119}
+  - {fileID: 1915395596}
   btnBack: {fileID: 1806635916}
 --- !u!1 &1806635914
 GameObject:

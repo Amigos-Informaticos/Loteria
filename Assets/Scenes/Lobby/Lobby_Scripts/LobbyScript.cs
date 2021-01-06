@@ -9,6 +9,7 @@ public class LobbyScript : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
 	[SerializeField] private TextMeshProUGUI txtLetsGo;
 	[SerializeField] private GameObject btnLetsGo;
+	[SerializeField] private GameObject[] btnKick = new GameObject[4];
 	[SerializeField] private TextMeshProUGUI btnBack;
 	private Room _room;
 	TCPSocket _tcpSocket;
@@ -34,6 +35,10 @@ public class LobbyScript : MonoBehaviour
 	    Player player = (Player) Memory.Load("player");
 	    if (!player.IsHost)
 	    {
+		    for (int i = 0; i < 4; i++)
+		    {
+			    this.btnKick[i].SetActive(false);    
+		    }
 		    this.btnLetsGo.SetActive(false);
 	    }
     }
