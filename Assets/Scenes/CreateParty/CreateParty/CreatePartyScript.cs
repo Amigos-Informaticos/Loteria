@@ -85,7 +85,7 @@ public class CreatePartyScript : MonoBehaviour
         {
             this.room.GetPlayersInRoom();
             Memory.Save("room", this.room);
-            Player player = player = (Player) Memory.Load("player");
+            Player player = (Player) Memory.Load("player");
             player.IsHost = true;
             Memory.Save("player",player);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
