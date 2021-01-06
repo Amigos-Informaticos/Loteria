@@ -243,7 +243,6 @@ public class Room
 
 	public void SetRoomConfigByJson(string json)
 	{
-<<<<<<< HEAD
 		try
 		{
 			Dictionary<string, string> roomConfig = SimpleJson.DeserializeObject<Dictionary<string, string>>(json);
@@ -252,22 +251,13 @@ public class Room
 			IdGameMode = Convert.ToInt32(roomConfig["game_mode_id"]);
 			GameMode = roomConfig["game_mode"];
 			NumberPlayers = Convert.ToInt32(roomConfig["max_players"]);
-			Debug.Log("Speed " + Speed + "Rounds " + Rounds + "IdGameMode " + IdGameMode + "GameMode " + GameMode + "NumberPlayers " + NumberPlayers);
+			Debug.Log("Speed " + Speed + "Rounds " + Rounds + "IdGameMode " + IdGameMode + "GameMode " + GameMode +
+			          "NumberPlayers " + NumberPlayers);
 		}
 		catch (Exception e)
 		{
 			Debug.Log(e);
 		}
-=======
-		Dictionary<string, string> roomConfig = SimpleJson.DeserializeObject<Dictionary<string, string>>(json);
-		Speed = Convert.ToInt32(roomConfig["speed"]);
-		Rounds = Convert.ToInt32(roomConfig["rounds"]);
-		IdGameMode = Convert.ToInt32(roomConfig["game_mode_id"]);
-		GameMode = roomConfig["game_mode"];
-		NumberPlayers = Convert.ToInt32(roomConfig["max_players"]);
-		Debug.Log("Speed " + Speed + "Rounds " + Rounds + "IdGameMode " + IdGameMode + "GameMode " + GameMode +
-		          "NumberPlayers " + NumberPlayers);
->>>>>>> main
 	}
 
 	private bool IsComplete()

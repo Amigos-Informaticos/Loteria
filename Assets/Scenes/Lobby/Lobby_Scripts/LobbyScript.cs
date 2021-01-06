@@ -12,15 +12,13 @@ public class LobbyScript : MonoBehaviour
 	[SerializeField] private GameObject[] btnKick = new GameObject[4];
 	[SerializeField] private TextMeshProUGUI btnBack;
 	private Room _room;
-	TCPSocket _tcpSocket;
 	private readonly bool _keepWaiting = true;
-	private Player _player;
 
-    void Start()
+	void Start()
     {
-        TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
+	    TCPSocket tcpSocket;
+        TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
         _room = (Room) Memory.Load("room");
-        _player = (Player) Memory.Load("player");
         txtCode.text = _room.IdRoom;
         this.txtLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
         this.btnBack.text = Localization.GetMessage("Lobby", "Back");
