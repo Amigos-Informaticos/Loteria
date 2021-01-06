@@ -14,11 +14,13 @@ public class LobbyScript : MonoBehaviour
 	private Room _room;
 	TCPSocket _tcpSocket;
 	private readonly bool _keepWaiting = true;
+	private Player _player;
 
     void Start()
     {
         TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
         _room = (Room) Memory.Load("room");
+        _player = (Player) Memory.Load("player");
         txtCode.text = _room.IdRoom;
         this.txtLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
         this.btnBack.text = Localization.GetMessage("Lobby", "Back");
@@ -39,7 +41,6 @@ public class LobbyScript : MonoBehaviour
 		    {
 			    this.btnKick[i].SetActive(false);    
 		    }
-		    this.btnLetsGo.SetActive(false);
 	    }
     }
 
@@ -83,4 +84,9 @@ public class LobbyScript : MonoBehaviour
 		UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
 		((Room) Memory.Load("room")).ExitRoom(((Player) Memory.Load("player")).Email);
 	}
+
+    public void OnClickLetsGo()
+    {
+	    UnityEngine.SceneManagement.SceneManager.LoadScene("Party");
+    }
 }
