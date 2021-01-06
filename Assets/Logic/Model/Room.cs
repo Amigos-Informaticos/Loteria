@@ -13,6 +13,7 @@ public class Room
     public int Rounds { get; set; }
     public string GameMode { get; set; }
     public int Speed { get; set; }
+    public int IdGameMode { get; set; }
     public int NumberPlayers { get; set; }
     public string IdRoom { get; set; }
 
@@ -194,7 +195,8 @@ public class Room
     {
         try
         {
-			Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+			Dictionary<string, Dictionary<string, string>> playerList =
+				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
 			Players = new List<PlayerStruct>();
 			for (int i = 0; i < playerList.Count; i++)
 			{
@@ -251,7 +253,8 @@ public class Room
 		IdGameMode = Convert.ToInt32(roomConfig["game_mode_id"]);
 		GameMode = roomConfig["game_mode"];
 		NumberPlayers = Convert.ToInt32(roomConfig["max_players"]);
-		Debug.Log("Speed " + Speed + "Rounds " + Rounds + "IdGameMode " + IdGameMode + "GameMode " + GameMode + "NumberPlayers " + NumberPlayers);
+		Debug.Log("Speed " + Speed + "Rounds " + Rounds + "IdGameMode " + IdGameMode + "GameMode " + GameMode +
+		          "NumberPlayers " + NumberPlayers);
 	}
 
 	private bool IsComplete()
