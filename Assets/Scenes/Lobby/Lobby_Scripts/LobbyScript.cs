@@ -7,8 +7,8 @@ public class LobbyScript : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI txtCode;
 	[SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
-	[SerializeField] private Image[] imgChecks = new Image[4];
-	[SerializeField] private TextMeshProUGUI btnLetsGo;
+	[SerializeField] private TextMeshProUGUI txtLetsGo;
+	[SerializeField] private GameObject btnLetsGo;
 	[SerializeField] private TextMeshProUGUI btnBack;
 	private Room _room;
 	TCPSocket _tcpSocket;
@@ -19,13 +19,23 @@ public class LobbyScript : MonoBehaviour
         TCPSocketConfiguration.BuildDefaultConfiguration(out _tcpSocket);
         _room = (Room) Memory.Load("room");
         txtCode.text = _room.IdRoom;
-        this.btnLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
+        this.txtLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
         this.btnBack.text = Localization.GetMessage("Lobby", "Back");
+        ConfigureWindow();
         StartPlayerList();
         SetPlayerList();
 
         IEnumerator waitingForPlayers = WaitingForPlayers();
 	    StartCoroutine(waitingForPlayers);
+    }
+
+    public void ConfigureWindow()
+    {
+	    Player player = (Player) Memory.Load("player");
+	    if (!player.IsHost)
+	    {
+		    this.btnLetsGo.SetActive(false);
+	    }
     }
 
     public void StartPlayerListTwo()

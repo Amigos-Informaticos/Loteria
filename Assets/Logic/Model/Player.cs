@@ -1,45 +1,48 @@
 using System;
 using GitHub.Unity.Json;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Player
 {
-	private string names;
-	private string lastName;
-	private string email;
-	private string password;
-	private Command command;
-	private TCPSocket tcpSocket;
+	private string _names;
+	private string _lastName;
+	private string _email;
+	private string _password;
+	private Command _command;
+	private TCPSocket _tcpSocket;
+
+	public bool IsHost { get; set; } = false;
 
 	public string Names
 	{
-		get => this.names;
+		get => this._names;
 		set
 		{
 			if (IsName(value))
 			{
-				this.names = value;
+				this._names = value;
 			} else
 			{
-				this.names = null;
+				this._names = null;
 			}
 		}
 	}
 
 	public string LastName
 	{
-		get => this.lastName;
+		get => this._lastName;
 		set
 		{
 			if (IsName(value))
 			{
-				this.lastName = value;
+				this._lastName = value;
 			} else
 			{
-				this.lastName = null;
+				this._lastName = null;
 			}
 		}
 	}
@@ -48,23 +51,23 @@ public class Player
 
 	public string Email
 	{
-		get => this.email;
+		get => this._email;
 		set
 		{
 			if (IsEmail(value))
 			{
-				this.email = value;
+				this._email = value;
 			} else
 			{
-				this.email = null;
+				this._email = null;
 			}
 		}
 	}
 
 	public string Password
 	{
-		get => this.password;
-		set { this.password = Util.GetHashString(value); }
+		get => this._password;
+		set { this._password = Util.GetHashString(value); }
 	}
 
 	public string Code { get; set; }
@@ -74,14 +77,14 @@ public class Player
 	public string LogIn()
 	{
 		string loggedIn;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-		this.command = new Command("login");
-		this.command.AddArgument("email", this.email);
-		this.command.AddArgument("password", this.password);
-		this.tcpSocket.AddCommand(this.command);
-		this.tcpSocket.SendCommand();
-		loggedIn = this.tcpSocket.GetResponse(true,5000);
-		this.tcpSocket.Close();
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this._tcpSocket);
+		this._command = new Command("login");
+		this._command.AddArgument("email", this._email);
+		this._command.AddArgument("password", this._password);
+		this._tcpSocket.AddCommand(this._command);
+		this._tcpSocket.SendCommand();
+		loggedIn = this._tcpSocket.GetResponse(true,5000);
+		this._tcpSocket.Close();
 
 		return loggedIn;
 	}
@@ -89,46 +92,46 @@ public class Player
 	public string SignUp()
 	{
 		string signedUp = "ERROR";
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-		this.command = new Command("sign_up");
-		this.command.AddArgument("email", this.email);
-		this.command.AddArgument("nickname", this.NickName);
-		this.command.AddArgument("password", this.password);
-		this.command.AddArgument("name", this.names);
-		this.command.AddArgument("lastname", this.lastName);
-		this.command.AddArgument("code", this.Code);
-		this.tcpSocket.AddCommand(this.command);
-		this.tcpSocket.SendCommand();
-		signedUp = this.tcpSocket.GetResponse(true, 5000);
-		this.tcpSocket.Close();
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this._tcpSocket);
+		this._command = new Command("sign_up");
+		this._command.AddArgument("email", this._email);
+		this._command.AddArgument("nickname", this.NickName);
+		this._command.AddArgument("password", this._password);
+		this._command.AddArgument("name", this._names);
+		this._command.AddArgument("lastname", this._lastName);
+		this._command.AddArgument("code", this.Code);
+		this._tcpSocket.AddCommand(this._command);
+		this._tcpSocket.SendCommand();
+		signedUp = this._tcpSocket.GetResponse(true, 5000);
+		this._tcpSocket.Close();
 		return signedUp;
 	}
 
 	public string EnterToLobby(string code)
 	{
 		string message;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-		this.command = new Command("enter_room");
-		this.command.AddArgument("room_id", code);
-		this.command.AddArgument("user_email",this.email);
-		this.tcpSocket.AddCommand(this.command);
-		this.tcpSocket.SendCommand();
-		message = this.tcpSocket.GetResponse(true,3000);
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this._tcpSocket);
+		this._command = new Command("enter_room");
+		this._command.AddArgument("room_id", code);
+		this._command.AddArgument("user_email",this._email);
+		this._tcpSocket.AddCommand(this._command);
+		this._tcpSocket.SendCommand();
+		message = this._tcpSocket.GetResponse(true,3000);
 		Debug.Log(message);
-		this.tcpSocket.Close();
+		this._tcpSocket.Close();
 		return message;
 	}
 
 	public bool GetPlayerFromServer()
 	{
 		bool recoveredPlayer = true;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-		this.command = new Command("get_user");
-		this.command.AddArgument("user_email", this.Email);
-		this.tcpSocket.AddCommand(command);
-		this.tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse();
-		this.tcpSocket.Close();
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this._tcpSocket);
+		this._command = new Command("get_user");
+		this._command.AddArgument("user_email", this.Email);
+		this._tcpSocket.AddCommand(_command);
+		this._tcpSocket.SendCommand();
+		string response = _tcpSocket.GetResponse();
+		this._tcpSocket.Close();
 		if (!response.Equals("ERROR"))
 		{
 			Debug.Log(response);
@@ -178,13 +181,13 @@ public class Player
 	}
 	public string SendCode()
 	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-		this.command = new Command("send_code_to_email");
-		command.AddArgument("email", this.email);
-		this.tcpSocket.AddCommand(command);
-		this.tcpSocket.SendCommand();
-		string response = this.tcpSocket.GetResponse(true, 2000);
-		this.tcpSocket.Close();
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this._tcpSocket);
+		this._command = new Command("send_code_to_email");
+		_command.AddArgument("email", this._email);
+		this._tcpSocket.AddCommand(_command);
+		this._tcpSocket.SendCommand();
+		string response = this._tcpSocket.GetResponse(true, 2000);
+		this._tcpSocket.Close();
 		return response;
 	}
 

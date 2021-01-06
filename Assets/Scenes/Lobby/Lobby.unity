@@ -2279,7 +2279,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  btnLetsGo: {fileID: 1590902723}
+  txtLetsGo: {fileID: 1590902723}
+  btnLetsGo: {fileID: 1099829503}
   btnBack: {fileID: 1806635916}
 --- !u!1 &1806635914
 GameObject:
