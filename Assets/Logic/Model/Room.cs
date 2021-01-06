@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using GitHub.Unity.Json;
 using UnityEngine;
@@ -7,24 +8,25 @@ using UnityEngine;
 public class Room
 {
 	public Player Host { get; set; } = new Player();
-	public List<PlayerStruct> Players { get; set; } = new List<PlayerStruct>();
-	public int Rounds { get; set; }
-	public int IdGameMode { get; set; }
-	public string GameMode { get; set; }
-	public int Speed { get; set; }
-	public int NumberPlayers { get; set; }
-	public string IdRoom { get; set; }
+    public List<PlayerStruct> Players { get; set; } = new List<PlayerStruct>();
+    public List<KeyValuePair<string, string>> Messages { get; } = new List<KeyValuePair<string, string>>();
+    public int Rounds { get; set; }
+    public string GameMode { get; set; }
+    public int Speed { get; set; }
+    public int IdGameMode { get; set; }
+    public int NumberPlayers { get; set; }
+    public string IdRoom { get; set; }
 
-	public struct PlayerStruct : IEquatable<PlayerStruct>
-	{
-		public string NickName { get; set; }
-		public string Email { get; set; }
-		public string IsReady { get; set; }
-
-		public bool Equals(PlayerStruct other)
-		{
-			return NickName == other.NickName && Email == other.Email && IsReady == other.IsReady;
-		}
+    public struct PlayerStruct : IEquatable<PlayerStruct>
+    {
+	    public string NickName { get; set; }
+	    public string Email { get; set; }
+	    public string IsReady { get; set; }
+	    
+	    public bool Equals(PlayerStruct other)
+	    {
+		    return NickName == other.NickName && Email == other.Email && IsReady == other.IsReady;
+	    }
 
 		public override bool Equals(object obj)
 		{
@@ -93,6 +95,53 @@ public class Room
         tcpSocket.Close();
         return response;
     }
+
+    public string SendMessage(string message, Player player)
+    {
+	    TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+	    Command sendMessage = new Command("send_message_to_room");
+	    sendMessage.AddArgument("message", message);
+	    sendMessage.AddArgument("nickname",  player.NickName);
+	    sendMessage.AddArgument("user_email", player.Email);
+	    sendMessage.AddArgument("room_id", this.IdRoom);
+	    tcpSocket.AddCommand(sendMessage);
+	    tcpSocket.SendCommand();
+	    string response = tcpSocket.GetResponse(true, 1000);
+	    tcpSocket.Close();
+	    return response;
+    }
+    public string GetMessages(string email)
+    {
+	    TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+	    Command getMessages = new Command("get_messages");
+	    Dictionary<string, Dictionary<string, string>> obtainedMessages = null;
+	    getMessages.AddArgument("user_email", email);
+	    getMessages.AddArgument("room_id", this.IdRoom);
+	    tcpSocket.AddCommand(getMessages);
+	    tcpSocket.SendCommand();
+	    string response = tcpSocket.GetResponse(true, 1000);
+	    Debug.Log(response);
+	    try
+	    {
+		    obtainedMessages = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+	    }
+	    catch (SerializationException serializationException)
+	    {
+		    Debug.Log(serializationException);
+	    }
+
+	    if (obtainedMessages != null)
+	    {
+		    for (int i = 0; i < obtainedMessages.Count; i++)
+		    {
+			    this.Messages.Add(new KeyValuePair<string, string>(obtainedMessages[i.ToString()]["nickname"],
+				    obtainedMessages[i.ToString()]["message"]));
+		    }
+	    }
+	    
+	    tcpSocket.Close();
+	    return response;
+    }
     public List<string> GetGameModes()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
@@ -142,7 +191,8 @@ public class Room
     {
         try
         {
-			Dictionary<string, Dictionary<string, string>> playerList = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+			Dictionary<string, Dictionary<string, string>> playerList =
+				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
 			Players = new List<PlayerStruct>();
 			for (int i = 0; i < playerList.Count; i++)
 			{
@@ -193,6 +243,7 @@ public class Room
 
 	public void SetRoomConfigByJson(string json)
 	{
+<<<<<<< HEAD
 		try
 		{
 			Dictionary<string, string> roomConfig = SimpleJson.DeserializeObject<Dictionary<string, string>>(json);
@@ -207,6 +258,16 @@ public class Room
 		{
 			Debug.Log(e);
 		}
+=======
+		Dictionary<string, string> roomConfig = SimpleJson.DeserializeObject<Dictionary<string, string>>(json);
+		Speed = Convert.ToInt32(roomConfig["speed"]);
+		Rounds = Convert.ToInt32(roomConfig["rounds"]);
+		IdGameMode = Convert.ToInt32(roomConfig["game_mode_id"]);
+		GameMode = roomConfig["game_mode"];
+		NumberPlayers = Convert.ToInt32(roomConfig["max_players"]);
+		Debug.Log("Speed " + Speed + "Rounds " + Rounds + "IdGameMode " + IdGameMode + "GameMode " + GameMode +
+		          "NumberPlayers " + NumberPlayers);
+>>>>>>> main
 	}
 
 	private bool IsComplete()
