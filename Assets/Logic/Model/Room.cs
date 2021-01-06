@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using GitHub.Unity.Json;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class Room
 {
 	public Player Host { get; set; } = new Player();
     public List<PlayerStruct> Players { get; set; } = new List<PlayerStruct>();
+    public List<KeyValuePair<string, string>> Messages = new List<KeyValuePair<string, string>>();
     public int Rounds { get; set; }
     public string GameMode { get; set; }
     public int Speed { get; set; }
@@ -18,7 +20,7 @@ public class Room
 	    public string NickName { get; set; }
 	    public string Email { get; set; }
 	    public string IsReady { get; set; }
-
+	    
 	    public bool Equals(PlayerStruct other)
 	    {
 		    return NickName == other.NickName && Email == other.Email && IsReady == other.IsReady;
@@ -90,6 +92,57 @@ public class Room
         }
         tcpSocket.Close();
         return response;
+    }
+
+    public string SendMessage(string message, Player player)
+    {
+	    TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+	    Command sendMessage = new Command("send_message_to_room");
+	    sendMessage.AddArgument("message", message);
+	    sendMessage.AddArgument("nickname",  player.NickName);
+	    sendMessage.AddArgument("user_email", player.Email);
+	    sendMessage.AddArgument("room_id", this.IdRoom);
+	    tcpSocket.AddCommand(sendMessage);
+	    tcpSocket.SendCommand();
+	    string response = tcpSocket.GetResponse(true, 1000);
+	    if (response.Equals("OK"))
+	    {
+		    
+	    }
+	    tcpSocket.Close();
+	    return response;
+    }
+    public string GetMessages(string email)
+    {
+	    TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+	    Command getMessages = new Command("get_messages");
+	    Dictionary<string, Dictionary<string, string>> Messages = null;
+	    getMessages.AddArgument("user_email", email);
+	    getMessages.AddArgument("room_id", this.IdRoom);
+	    tcpSocket.AddCommand(getMessages);
+	    tcpSocket.SendCommand();
+	    string response = tcpSocket.GetResponse(true, 1000);
+	    Debug.Log(response);
+	    try
+	    {
+		    Messages = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+	    }
+	    catch (SerializationException serializationException)
+	    {
+		    Debug.Log(serializationException);
+	    }
+
+	    if (Messages != null)
+	    {
+		    for (int i = 0; i < Messages.Count; i++)
+		    {
+			    this.Messages.Add(new KeyValuePair<string, string>(Messages[i.ToString()]["nickname"],
+				    Messages[i.ToString()]["message"]));
+		    }
+	    }
+	    
+	    tcpSocket.Close();
+	    return response;
     }
     public List<string> GetGameModes()
 	{
