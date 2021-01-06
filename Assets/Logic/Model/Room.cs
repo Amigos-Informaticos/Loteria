@@ -107,6 +107,10 @@ public class Room
 	    tcpSocket.AddCommand(sendMessage);
 	    tcpSocket.SendCommand();
 	    string response = tcpSocket.GetResponse(true, 1000);
+	    if(response.Equals("OK"))
+	    {
+		    this.Messages.Add(new KeyValuePair<string, string>(player.NickName, message));
+	    }
 	    tcpSocket.Close();
 	    return response;
     }
