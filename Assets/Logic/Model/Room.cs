@@ -114,7 +114,7 @@ public class Room
     {
 	    TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 	    Command getMessages = new Command("get_messages");
-	    Dictionary<string, Dictionary<string, string>> Messages = null;
+	    Dictionary<string, Dictionary<string, string>> obtainedMessages = null;
 	    getMessages.AddArgument("user_email", email);
 	    getMessages.AddArgument("room_id", this.IdRoom);
 	    tcpSocket.AddCommand(getMessages);
@@ -123,19 +123,19 @@ public class Room
 	    Debug.Log(response);
 	    try
 	    {
-		    Messages = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+		    obtainedMessages = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
 	    }
 	    catch (SerializationException serializationException)
 	    {
 		    Debug.Log(serializationException);
 	    }
 
-	    if (Messages != null)
+	    if (obtainedMessages != null)
 	    {
-		    for (int i = 0; i < Messages.Count; i++)
+		    for (int i = 0; i < obtainedMessages.Count; i++)
 		    {
-			    this.Messages.Add(new KeyValuePair<string, string>(Messages[i.ToString()]["nickname"],
-				    Messages[i.ToString()]["message"]));
+			    this.Messages.Add(new KeyValuePair<string, string>(obtainedMessages[i.ToString()]["nickname"],
+				    obtainedMessages[i.ToString()]["message"]));
 		    }
 	    }
 	    
