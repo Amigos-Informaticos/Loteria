@@ -278,8 +278,7 @@ public class Room
 
 	public string StartTheParty(string hostEmail)
 	{
-		TCPSocket tcpSocket = new TCPSocket();
-		TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Command startParty = new Command("start_party");
 		startParty.AddArgument("user_email",hostEmail);
 		startParty.AddArgument("room_id",IdRoom);
@@ -292,8 +291,7 @@ public class Room
 
 	public string CheckPartyOn(string userEmail)
 	{
-		TCPSocket tcpSocket = new TCPSocket();
-		TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Command isPartyOn = new Command("is_party_on");
 		isPartyOn.AddArgument("user_email",userEmail);
 		isPartyOn.AddArgument("room_id",IdRoom);
