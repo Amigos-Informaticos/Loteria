@@ -23,14 +23,13 @@ public class PartyScript : MonoBehaviour
         {
             _cards[i] = i + 1;
         }
+        _room = (Room) Memory.Load("room");
+        _player = (Player) Memory.Load("player");
         this.GenerateBoard();
         IEnumerator coroutine = ChangeCard(0.5f);
         IEnumerator chatCoroutine = UpdateChat();
         StartCoroutine(coroutine);
         StartCoroutine(chatCoroutine);
-        
-        _room = (Room) Memory.Load("room");
-        _player = (Player) Memory.Load("player");
     }
 
     private IEnumerator ChangeCard(float waitTime)
@@ -46,11 +45,11 @@ public class PartyScript : MonoBehaviour
     
     private IEnumerator UpdateChat()
     {
+        int counter = 0;
         while (true)
         {
             yield return new WaitForSeconds(3.0f);
             _room.GetMessages(_player.Email);
-            int counter = 0;
             while (counter < _room.Messages.Count)
             {
                 this.taChat.GetComponent<TextMeshProUGUI>().text = this.taChat.text + "\n" + _room.Messages[counter].Key +

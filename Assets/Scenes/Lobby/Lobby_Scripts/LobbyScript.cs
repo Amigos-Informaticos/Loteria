@@ -8,10 +8,12 @@ public class LobbyScript : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI txtCode;
 	[SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
 	[SerializeField] private TextMeshProUGUI txtLetsGo;
+	[SerializeField] private TextMeshProUGUI feedbackMessage;
 	[SerializeField] private GameObject btnLetsGo;
 	[SerializeField] private GameObject[] btnKick = new GameObject[4];
 	[SerializeField] private TextMeshProUGUI btnBack;
 	private Room _room;
+	private Player _player;
 	private readonly bool _keepWaiting = true;
 
 	void Start()
@@ -19,6 +21,7 @@ public class LobbyScript : MonoBehaviour
 	    TCPSocket tcpSocket;
         TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
         _room = (Room) Memory.Load("room");
+        _player = (Player) Memory.Load("player");
         txtCode.text = _room.IdRoom;
         this.txtLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
         this.btnBack.text = Localization.GetMessage("Lobby", "Back");
@@ -32,12 +35,11 @@ public class LobbyScript : MonoBehaviour
 
     public void ConfigureWindow()
     {
-	    Player player = (Player) Memory.Load("player");
-	    if (!player.IsHost)
+	    if (!_player.IsHost)
 	    {
 		    for (int i = 0; i < 4; i++)
 		    {
-			    this.btnKick[i].SetActive(false);    
+			    btnKick[i].SetActive(false);    
 		    }
 	    }
     }
@@ -69,6 +71,18 @@ public class LobbyScript : MonoBehaviour
         }
     }
 
+    public IEnumerator WaitingForStart()
+    {
+	    while (true)
+	    {
+		    yield return new WaitForSeconds(2.0f);
+		    if (_room.CheckPartyOn(_player.Email).Equals("OK"))
+		    {
+			    UnityEngine.SceneManagement.SceneManager.LoadScene("Party");
+		    }
+	    }
+    }
+
     void SetPlayerList()
 	{
 		for (int i = 0; i < _room.Players.Count; i++)
@@ -85,6 +99,7 @@ public class LobbyScript : MonoBehaviour
 
     public void OnClickLetsGo()
     {
-	    UnityEngine.SceneManagement.SceneManager.LoadScene("Party");
+	    string response = _room.StartTheParty(_player.Email);
+	    feedbackMessage.text = response;
     }
 }
