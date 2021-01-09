@@ -148,45 +148,70 @@ public class Board
 		int i = 0, j = 0;
 		if (patternDictionary != null)
 		{
-			if (patternDictionary.Count > 1)
+			foreach (var cell3 in patternDictionary["0"]["pattern"])
 			{
-				foreach( var cell in patternDictionary )	
+				converted[i, j] = cell3 == '1';
+				if (j == 4)
 				{
-					foreach (var cell2 in cell.Value)
-					{
-						foreach (var cell3 in cell2.Value)
-						{
-							converted[i, j] = cell3 == '1';
-							if (j == 4)
-							{
-								i++;
-								j = 0;
-							}
-							else
-							{
-								j++;
-							}
-						}
-					}
+					i++;
+					j = 0;
+				}
+				else
+				{
+					j++;
 				}
 			}
-			else
+		}
+		return converted;
+	}
+	
+	public List<bool[,]> GetPatternsByGameMode()
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command getPattern = new Command("get_patterns");
+		getPattern.AddArgument("game_mode_name", this.GameMode);
+		tcpSocket.AddCommand(getPattern);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse(true, 1000);
+		tcpSocket.Close();
+		Dictionary<string, Dictionary<string, string>> patternDictionary = null;
+		try
+		{
+			Debug.Log("GePattern response:"+response);
+			patternDictionary =
+				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
+					response);
+		}
+		catch (SerializationException serializationException)
+		{
+			Debug.Log(serializationException);
+		}
+		List<bool[,]> patterns = new List<bool[,]>();
+		int i = 0, j = 0;
+		if (patternDictionary != null)
+		{
+			foreach (var cell in patternDictionary)
 			{
-				foreach (var cell3 in patternDictionary["0"]["pattern"])
+				foreach (var cell2 in cell.Value)
 				{
-					converted[i, j] = cell3 == '1';
-					if (j == 4)
-					{
-						i++;
-						j = 0;
-					}
-					else
-					{
-						j++;
-					}
+					patterns.Add(ToArrayBi(cell2.Value));
 				}
 			}
-			
+		}
+		return patterns;
+	}
+
+	private bool[,] ToArrayBi(string pattern)
+	{
+		int index = 0;
+		bool[,] converted = new bool[5,5]; 
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				converted[i, j] = pattern[index] == '1';
+				index++;
+			}
 		}
 		return converted;
 	}
