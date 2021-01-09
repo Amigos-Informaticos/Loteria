@@ -19,7 +19,7 @@ public class CreatePattern : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI phGameModeName;
 	[SerializeField] private TextMeshProUGUI txtGameModeName;
 	[SerializeField] private Image imgGameMode;
-	private readonly List<bool> pattern = new List<bool>();
+	private readonly List<bool> _pattern = new List<bool>();
 	private readonly Board newPattern = new Board();
 	void Start()
     {
@@ -44,15 +44,15 @@ public class CreatePattern : MonoBehaviour
 	}	
 	private void ToggleStateChanged(Toggle toggle, bool state)
 	{
-		this.pattern.RemoveAt((Convert.ToInt32(toggle.GetComponent<Toggle>().name) - 1));
-		this.pattern.Insert((Convert.ToInt32(toggle.GetComponent<Toggle>().name)-1), state);
+		this._pattern.RemoveAt((Convert.ToInt32(toggle.GetComponent<Toggle>().name) - 1));
+		this._pattern.Insert((Convert.ToInt32(toggle.GetComponent<Toggle>().name)-1), state);
 	}	
 	private void FillEmptyPattern()
     {
 		int count = 0;
 		while (count < 25)
 		{
-			this.pattern.Add(false);
+			this._pattern.Add(false);
 			count++;
 		}
 	}
@@ -61,7 +61,7 @@ public class CreatePattern : MonoBehaviour
 	{
 		StringBuilder stringPattern = new StringBuilder();
 		int count = 0;
-		foreach(bool cell in this.pattern)
+		foreach(bool cell in this._pattern)
         {
 			stringPattern.Append(Convert.ToInt32(cell)+" ");
 			if(count == 4)
@@ -81,7 +81,7 @@ public class CreatePattern : MonoBehaviour
     {
 		int i = 0, j = 0;
 		bool[,] converted = new bool[5, 5];
-		foreach (bool cell in this.pattern)
+		foreach (bool cell in this._pattern)
 		{
 			converted[i, j] = cell;
 			if (j == 4)
@@ -113,7 +113,7 @@ public class CreatePattern : MonoBehaviour
 
 	public void OnClickSavePattern()
 	{
-		Player player = new Player();
+		Player player = (Player) Memory.Load("player");
 		player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
 		player.Board.Pattern = ConvertToArray();
 		newPattern.Pattern = ConvertToArray();
