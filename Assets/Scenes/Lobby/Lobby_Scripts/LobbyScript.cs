@@ -70,7 +70,9 @@ public class LobbyScript : MonoBehaviour
 	    while (true)
 	    {
 		    yield return new WaitForSeconds(2.0f);
-		    if (_room.CheckPartyOn(_player.Email).Equals("OK"))
+		    string response = _room.CheckPartyOn(_player.Email);
+		    Debug.Log("Waiting for players: " + response);
+		    if (response.Equals("ON"))
 		    {
 			    UnityEngine.SceneManagement.SceneManager.LoadScene("Party");
 		    }
