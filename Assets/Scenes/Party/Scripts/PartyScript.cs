@@ -59,7 +59,7 @@ public class PartyScript : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2.0f);
-            if (!_player.IAmInRoom(_room.IdRoom).Equals("Ok"))
+            if (!_player.IAmInRoom(_room.IdRoom).Equals("OK"))
             {
                 ExitParty();
             }
