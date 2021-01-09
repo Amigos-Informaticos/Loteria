@@ -25,6 +25,8 @@ public class PartyScript : MonoBehaviour
         {
             _cards[i] = i + 1;
         }
+        _room = (Room) Memory.Load("room");
+        _player = (Player) Memory.Load("player");
         this.GenerateBoard();
         IEnumerator coroutine = ChangeCard(0.5f);
         IEnumerator chatCoroutine = UpdateChat();
