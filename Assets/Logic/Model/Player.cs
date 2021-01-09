@@ -94,9 +94,7 @@ public class Player
 
 	public string SignUp()
 	{
-		string signedUp = "ERROR";
-		TCPSocket tcpSocket;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		this._command = new Command("sign_up");
 		this._command.AddArgument("email", this._email);
 		this._command.AddArgument("nickname", this.NickName);
@@ -106,7 +104,7 @@ public class Player
 		this._command.AddArgument("code", this.Code);
 		tcpSocket.AddCommand(this._command);
 		tcpSocket.SendCommand();
-		signedUp = tcpSocket.GetResponse(true, 5000);
+		string signedUp = tcpSocket.GetResponse(true, 5000);
 		tcpSocket.Close();
 		return signedUp;
 	}
@@ -114,8 +112,7 @@ public class Player
 	public string EnterToLobby(string code)
 	{
 		string message;
-		TCPSocket tcpSocket;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		this._command = new Command("enter_room");
 		this._command.AddArgument("room_id", code);
 		this._command.AddArgument("user_email", this._email);
@@ -129,31 +126,32 @@ public class Player
 
 	public bool GetPlayerFromServer()
 	{
-		bool recoveredPlayer = true;
-		TCPSocket tcpSocket;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
+		bool recoveredPlayer = false;
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		_command = new Command("get_user");
 		_command.AddArgument("user_email", this.Email);
 		tcpSocket.AddCommand(_command);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse();
+		string response = tcpSocket.GetResponse(true, 1000);
 		tcpSocket.Close();
-		if (!response.Equals("ERROR"))
+		Debug.Log("GetPlayerFromServer() "+response);
+		if (!response.Equals("ERROR. TIMEOUT"))
 		{
-			Debug.Log(response);
-			Dictionary<string, string> playerDictionary =
-				SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
-			Email = playerDictionary["email"];
-			Names = playerDictionary["name"];
-			LastName = playerDictionary["lastname"];
-			NickName = playerDictionary["nickname"];
-			Score = Convert.ToInt32(playerDictionary["score"]);
-		} else if (response.Equals("WRONG ARGUMENT"))
-		{
-			recoveredPlayer = false;
-		} else
-		{
-			recoveredPlayer = false;
+			try
+			{
+				Dictionary<string, string> playerDictionary = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
+				Email = playerDictionary["email"];
+				Names = playerDictionary["name"];
+				LastName = playerDictionary["lastname"];
+				NickName = playerDictionary["nickname"];
+				Score = Convert.ToInt32(playerDictionary["score"]);
+				recoveredPlayer = true;
+			}
+			catch (SerializationException serializationException)
+			{
+				Debug.Log(serializationException);
+				recoveredPlayer = false;
+			}
 		}
 		return recoveredPlayer;
 	}
@@ -188,8 +186,7 @@ public class Player
 
 	public string SendCode()
 	{
-		TCPSocket tcpSocket;
-		TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		this._command = new Command("send_code_to_email");
 		_command.AddArgument("email", this._email);
 		tcpSocket.AddCommand(_command);

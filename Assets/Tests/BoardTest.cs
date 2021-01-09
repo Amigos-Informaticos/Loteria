@@ -19,10 +19,13 @@ namespace Assets.Tests
             roomTest.NumberPlayers = 4;
             roomTest.Rounds = 1;
             roomTest.Speed = 2;
-            string idRoom = roomTest.MakeRoom();           
-            Dictionary<string, string> sortedDeck = new Board().GetSortedDeck("alexisao@hotmail.com", idRoom);
-            Debug.Log(sortedDeck);
-            Assert.IsNotNull(sortedDeck);
+            string idRoom = "c1c0f";           
+            int[] sortedDeck = Board.GetSortedDeck(idRoom, "alexis@hotmail.com");
+            
+            Debug.Log(sortedDeck[0] + "-" + sortedDeck[1] + "-" + sortedDeck[2] + "-" + sortedDeck[3] + "-" +
+                      sortedDeck[4] + "-" + sortedDeck[5]);
+            
+            Assert.IsTrue(sortedDeck.Length > 0);
         }
         [Test]
         public void SavePattern()
