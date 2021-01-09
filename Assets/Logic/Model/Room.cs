@@ -107,6 +107,10 @@ public class Room
 	    tcpSocket.AddCommand(sendMessage);
 	    tcpSocket.SendCommand();
 	    string response = tcpSocket.GetResponse(true, 1000);
+	    if(response.Equals("OK"))
+	    {
+		    this.Messages.Add(new KeyValuePair<string, string>(player.NickName, message));
+	    }
 	    tcpSocket.Close();
 	    return response;
     }
@@ -270,5 +274,30 @@ public class Room
 	{
 		return "[" + this.IdRoom + " - " + this.NumberPlayers + " - " + this.Rounds + " - " +
 		       this.Speed + " - " + this.GameMode + "]";
+	}
+
+	public string StartTheParty(string hostEmail)
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command startParty = new Command("start_party");
+		startParty.AddArgument("user_email",hostEmail);
+		startParty.AddArgument("room_id",IdRoom);
+		tcpSocket.AddCommand(startParty);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse(true, 1000);
+		tcpSocket.Close();
+		return response;
+	}
+
+	public string CheckPartyOn(string userEmail)
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command isPartyOn = new Command("is_party_on");
+		isPartyOn.AddArgument("user_email",userEmail);
+		isPartyOn.AddArgument("room_id",IdRoom);
+		tcpSocket.AddCommand(isPartyOn);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse();
+		return response;
 	}
 }
