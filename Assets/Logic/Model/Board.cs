@@ -15,7 +15,6 @@ public class Board
 	private Command _command;
 	private readonly TCPSocket _tcpSocket;
 
-
 	public Board()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out this._tcpSocket);

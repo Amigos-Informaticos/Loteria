@@ -72,7 +72,6 @@ public class Player
 	public int Score { get; set; }
 	public Board Board { get; set; } = new Board();
 
-
 	public struct Patterns
 	{
 		public List<bool[,]> Objective;
