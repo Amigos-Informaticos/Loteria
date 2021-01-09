@@ -1,23 +1,23 @@
-using GitHub.Unity.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using GitHub.Unity.Json;
 using UnityEngine;
+using Random = System.Random;
 
 public class Board
 {
 	public int[,] Cards { get; set; } = new int[5, 5];
 	public bool[,] Marks { get; set; } = new bool[5, 5];
 	public bool[,] Pattern { get; set; } = new bool[5, 5];
-	public string GameMode { get; set; }
-	private Command command;
-	private readonly TCPSocket tcpSocket;
+	public string GameMode { get; set; } = null;
+	private Command _command;
+	private readonly TCPSocket _tcpSocket;
 
 	public Board()
 	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this.tcpSocket);
-		GameMode = null;
+		TCPSocketConfiguration.BuildDefaultConfiguration(out this._tcpSocket);
 		for (int i = 0; i < 5; i++)
 		{
 			for (int j = 0; j < 5; j++)
@@ -29,9 +29,9 @@ public class Board
 		this.GenerateRandom();
 	}
 
-	public void GenerateRandom()
+	private void GenerateRandom()
 	{
-        System.	Random random = new System.Random();
+		Random random = new Random();
 		int nextRandom = random.Next(54);
 		for (int i = 0; i < 5; i++)
 		{
@@ -71,8 +71,9 @@ public class Board
 			this.Marks[pos[0], pos[1]] = true;
 		}
 	}
+
 	public Dictionary<string, string> GetSortedDeck(string idRoom, string email)
-    {
+	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Dictionary<string, string> sortedDeck = null;
 		Command getSortedDeck = new Command("get_sorted_deck");
@@ -97,24 +98,26 @@ public class Board
 		}
 		tcpSocket.Close();
 		return sortedDeck;
-    }
-	public string SavePattern(string user_email)
-    {
+	}
+
+	public string SavePattern(string userEmail)
+	{
 		string response = null;
 		Command savePattern = new Command("save_pattern");
-		savePattern.AddArgument("user_email", user_email);
+		savePattern.AddArgument("user_email", userEmail);
 		savePattern.AddArgument("game_mode_name", this.GameMode);
 		savePattern.AddArgument("pattern", this.GetStringPattern());
-		this.tcpSocket.AddCommand(savePattern);
-		this.tcpSocket.SendCommand();
-		response = this.tcpSocket.GetResponse(true, 1000);
-		this.tcpSocket.Close();
+		this._tcpSocket.AddCommand(savePattern);
+		this._tcpSocket.SendCommand();
+		response = this._tcpSocket.GetResponse(true, 1000);
+		this._tcpSocket.Close();
 		return response;
-    }
-	public int[] GetPos(int carta)
+	}
+
+	public int[] GetPos(int card)
 	{
 		int[] position = null;
-		if (this.Contains(carta))
+		if (this.Contains(card))
 		{
 			int i = 0, j = 0;
 			bool found = false;
@@ -122,7 +125,7 @@ public class Board
 			{
 				while (j < 5 && !found)
 				{
-					if (this.Cards[i, j] == carta)
+					if (this.Cards[i, j] == card)
 					{
 						position = new int[2];
 						position[0] = i;
@@ -138,7 +141,7 @@ public class Board
 		return position;
 	}
 
-	public int[] GetNumbers()	
+	public int[] GetNumbers()
 	{
 		List<int> numbers = new List<int>();
 		for (int i = 0; i < 5; i++)
@@ -150,6 +153,7 @@ public class Board
 		}
 		return numbers.ToArray();
 	}
+
 	public string GetStringPattern()
 	{
 		StringBuilder stringPattern = new StringBuilder();
