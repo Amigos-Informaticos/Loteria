@@ -13,7 +13,7 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtChat;
     private Player _player;
     private Room _room;
-    private readonly int[] _cards = new int[54];
+    private int[] _cards = new int[54];
     private int _cardOnScreen;
 
     void Start()
@@ -21,14 +21,9 @@ public class PartyScript : MonoBehaviour
         _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
         _cardOnScreen = 0;
-        for (int i = 0; i < 54; i++)
-        {
-            _cards[i] = i + 1;
-        }
-        _room = (Room) Memory.Load("room");
-        _player = (Player) Memory.Load("player");
+        _cards = Board.GetSortedDeck(_room.IdRoom,_player.Email);
         this.GenerateBoard();
-        IEnumerator coroutine = ChangeCard(0.5f);
+        IEnumerator coroutine = ChangeCard(_room.Speed);
         IEnumerator chatCoroutine = UpdateChat();
         StartCoroutine(coroutine);
         StartCoroutine(chatCoroutine);
@@ -50,7 +45,7 @@ public class PartyScript : MonoBehaviour
         int counter = 0;
         while (true)
         {
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(1.0f);
             _room.GetMessages(_player.Email);
             while (counter < _room.Messages.Count)
             {
