@@ -1,9 +1,10 @@
-using GitHub.Unity.Json;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using GitHub.Unity.Json;
 using UnityEngine;
+using Random = System.Random;
 
 public class Board
 {
@@ -31,7 +32,7 @@ public class Board
 
 	public void GenerateRandom()
 	{
-        System.	Random random = new System.Random();
+		Random random = new Random();
 		int nextRandom = random.Next(54);
 		for (int i = 0; i < 5; i++)
 		{
@@ -71,8 +72,9 @@ public class Board
 			this.Marks[pos[0], pos[1]] = true;
 		}
 	}
+
 	public Dictionary<string, string> GetSortedDeck(string idRoom, string email)
-    {
+	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Dictionary<string, string> sortedDeck = null;
 		Command getSortedDeck = new Command("get_sorted_deck");
@@ -97,9 +99,10 @@ public class Board
 		}
 		tcpSocket.Close();
 		return sortedDeck;
-    }
+	}
+
 	public string SavePattern(string user_email)
-    {
+	{
 		string response = null;
 		Command savePattern = new Command("save_pattern");
 		savePattern.AddArgument("user_email", user_email);
@@ -110,7 +113,8 @@ public class Board
 		response = this.tcpSocket.GetResponse(true, 1000);
 		this.tcpSocket.Close();
 		return response;
-    }
+	}
+
 	public int[] GetPos(int carta)
 	{
 		int[] position = null;
@@ -138,7 +142,7 @@ public class Board
 		return position;
 	}
 
-	public int[] GetNumbers()	
+	public int[] GetNumbers()
 	{
 		List<int> numbers = new List<int>();
 		for (int i = 0; i < 5; i++)
@@ -150,6 +154,7 @@ public class Board
 		}
 		return numbers.ToArray();
 	}
+
 	public string GetStringPattern()
 	{
 		StringBuilder stringPattern = new StringBuilder();

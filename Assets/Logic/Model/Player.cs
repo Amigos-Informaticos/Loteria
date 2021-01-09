@@ -1,9 +1,8 @@
 using System;
-using GitHub.Unity.Json;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
+using GitHub.Unity.Json;
 using UnityEngine;
 
 public class Player
@@ -83,7 +82,7 @@ public class Player
 		this._command.AddArgument("password", this._password);
 		tcpSocket.AddCommand(this._command);
 		tcpSocket.SendCommand();
-		loggedIn = tcpSocket.GetResponse(true,5000);
+		loggedIn = tcpSocket.GetResponse(true, 5000);
 		tcpSocket.Close();
 		return loggedIn;
 	}
@@ -114,10 +113,10 @@ public class Player
 		TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
 		this._command = new Command("enter_room");
 		this._command.AddArgument("room_id", code);
-		this._command.AddArgument("user_email",this._email);
+		this._command.AddArgument("user_email", this._email);
 		tcpSocket.AddCommand(this._command);
 		tcpSocket.SendCommand();
-		message = tcpSocket.GetResponse(true,3000);
+		message = tcpSocket.GetResponse(true, 3000);
 		Debug.Log(message);
 		tcpSocket.Close();
 		return message;
@@ -137,23 +136,23 @@ public class Player
 		if (!response.Equals("ERROR"))
 		{
 			Debug.Log(response);
-			Dictionary<string, string> playerDictionary = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
+			Dictionary<string, string> playerDictionary =
+				SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
 			Email = playerDictionary["email"];
 			Names = playerDictionary["name"];
 			LastName = playerDictionary["lastname"];
 			NickName = playerDictionary["nickname"];
-			Score = Convert.ToInt32(playerDictionary["score"]);	
-		}
-		else if (response.Equals("WRONG ARGUMENT"))
+			Score = Convert.ToInt32(playerDictionary["score"]);
+		} else if (response.Equals("WRONG ARGUMENT"))
 		{
 			recoveredPlayer = false;
-		}
-		else
+		} else
 		{
 			recoveredPlayer = false;
 		}
 		return recoveredPlayer;
 	}
+
 	public static Dictionary<string, Dictionary<string, string>> GetGlobalScore()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
@@ -181,6 +180,7 @@ public class Player
 		tcpSocket.Close();
 		return scoreDictionary;
 	}
+
 	public string SendCode()
 	{
 		TCPSocket tcpSocket;
@@ -243,6 +243,37 @@ public class Player
 			{
 				break;
 			}
+		}
+		return won;
+	}
+
+	public bool HaveWon(bool[,,] patterns)
+	{
+		bool won = false;
+		int matchCounter = 0;
+		int a = 0;
+		while (a < patterns.Length && !won)
+		{
+			int i = 0;
+			while (i < 5 && !won)
+			{
+				int j = 0;
+				while (j < 5 && !won)
+				{
+					if (this.Board.Marks[i, j] == patterns[a, i, j] && this.Board.Marks[i, j])
+					{
+						matchCounter++;
+					}
+					if (matchCounter == 5)
+					{
+						won = true;
+					}
+					j++;
+				}
+				i++;
+			}
+			a++;
+			matchCounter = 0;
 		}
 		return won;
 	}
