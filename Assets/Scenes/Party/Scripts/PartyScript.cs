@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,7 +49,7 @@ public class PartyScript : MonoBehaviour
         int counter = 0;
         while (true)
         {
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(1.0f);
             _room.GetMessages(_player.Email);
             while (counter < _room.Messages.Count)
             {
@@ -86,7 +87,12 @@ public class PartyScript : MonoBehaviour
 
     public void OnClickSendMessage()
     {
-        Room room = (Room) Memory.Load("room");
-        room.SendMessage(this.txtChat.text, (Player) Memory.Load("player"));
+        _room.SendMessage(txtChat.text, _player);
+    }
+
+    public void OnClickBack()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
+        _room.ExitRoom(_player.Email);
     }
 }
