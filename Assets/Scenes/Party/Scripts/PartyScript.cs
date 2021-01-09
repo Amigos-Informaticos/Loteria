@@ -94,6 +94,5 @@ public class PartyScript : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
         _room.ExitRoom(_player.Email);
-        
     }
 }
