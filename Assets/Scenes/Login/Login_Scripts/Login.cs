@@ -42,6 +42,10 @@ public class Login : MonoBehaviour
                 Memory.Save("player", player);
                 UnityEngine.SceneManagement.SceneManager.LoadScene("SignedIn");
             }
+            else
+            {
+                this.txtFeedBackMessage.text = Localization.GetMessage("SignUp", "WrongConnection");   
+            }
         }
     }
 
