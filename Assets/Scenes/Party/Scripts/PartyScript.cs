@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -91,5 +92,11 @@ public class PartyScript : MonoBehaviour
                                                                ": " + this.txtChat.text + "<color = #ff0000ff> ERROR </color>";
         }
         this.txtChat.text = "";
+    }
+
+    public void OnClickBack()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
+        _room.ExitRoom(_player.Email);
     }
 }
