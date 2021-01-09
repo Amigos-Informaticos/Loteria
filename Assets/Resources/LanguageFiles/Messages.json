@@ -310,5 +310,11 @@
 			"Español": "Jugador",
 			"English": "Player"
 		}
+	},
+	"Party": {
+		"NoPlayer": {
+			"Español": "Sin jugador",
+			"English": "No Player"
+		}
 	}
 }

@@ -280,4 +280,31 @@ public class Player
 		}
 		return won;
 	}
+
+	public string KickAPlayer(string playerToKick, string roomId)
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command kickPlayer = new Command("kick_player");
+		kickPlayer.AddArgument("user_email",Email);
+		kickPlayer.AddArgument("room_id",roomId);
+		kickPlayer.AddArgument("kicked_nickname",playerToKick);
+		tcpSocket.AddCommand(kickPlayer);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse();
+		Debug.Log("Kick response: " + response);
+		return response;
+	}
+
+	public string IAmInRoom(string roomId)
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command inRoom = new Command("in_room");
+		inRoom.AddArgument("user_email",Email);
+		inRoom.AddArgument("room_id",roomId);
+		tcpSocket.AddCommand(inRoom);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse();
+		Debug.Log(response);
+		return response;
+	}
 }
