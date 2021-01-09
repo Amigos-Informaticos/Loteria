@@ -255,31 +255,30 @@ public class Player
 	public bool HaveWon(Patterns patterns)
 	{
 		bool won = false;
-		int matchCounter = 0;
+		int differenceCounter = 0;
 		int a = 0;
 		while (a < patterns.Objective.Count && !won)
 		{
 			int i = 0;
-			while (i < 5 && !won)
+			while (i < 5 && differenceCounter == 0)
 			{
 				int j = 0;
-				while (j < 5 && !won)
+				while (j < 5 && differenceCounter == 0)
 				{
-					if (this.Board.Marks[i, j] == patterns.Objective[a][i, j] &&
-					    this.Board.Marks[i, j])
+					if (this.Board.Marks[i, j] != patterns.Objective[a][i, j])
 					{
-						matchCounter++;
-					}
-					if (matchCounter == 5)
-					{
-						won = true;
+						differenceCounter++;
 					}
 					j++;
 				}
 				i++;
 			}
+			if (differenceCounter == 0)
+			{
+				won = true;
+			}
 			a++;
-			matchCounter = 0;
+			differenceCounter = 0;
 		}
 		return won;
 	}
