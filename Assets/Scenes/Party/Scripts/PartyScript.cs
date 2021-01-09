@@ -14,20 +14,17 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtChat;
     private Player _player;
     private Room _room;
-    private readonly int[] _cards = new int[54];
+    private int[] _cards = new int[54];
     private int _cardOnScreen;
 
     void Start()
     {
-        _cardOnScreen = 0;
-        for (int i = 0; i < 54; i++)
-        {
-            _cards[i] = i + 1;
-        }
         _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
+        _cardOnScreen = 0;
+        _cards = Board.GetSortedDeck(_room.IdRoom,_player.Email);
         this.GenerateBoard();
-        IEnumerator coroutine = ChangeCard(0.5f);
+        IEnumerator coroutine = ChangeCard(_room.Speed);
         IEnumerator chatCoroutine = UpdateChat();
         StartCoroutine(coroutine);
         StartCoroutine(chatCoroutine);
@@ -54,7 +51,7 @@ public class PartyScript : MonoBehaviour
             while (counter < _room.Messages.Count)
             {
                 this.taChat.GetComponent<TextMeshProUGUI>().text = this.taChat.text + "\n" + _room.Messages[counter].Key +
-                                                                   ">>" + _room.Messages[counter].Value;
+                                                                   ": " + _room.Messages[counter].Value;
                 counter++;
             }
         }
@@ -87,7 +84,14 @@ public class PartyScript : MonoBehaviour
 
     public void OnClickSendMessage()
     {
-        _room.SendMessage(txtChat.text, _player);
+        Room room = (Room) Memory.Load("room");
+        string response = room.SendMessage(this.txtChat.text, (Player) Memory.Load("player"));
+        if (response.Equals("ERROR") || response.Equals("ERROR. TIMEOUT"))
+        {
+            this.taChat.GetComponent<TextMeshProUGUI>().text = this.taChat.text + "\n" + _player.NickName +
+                                                               ": " + this.txtChat.text + "<color = #ff0000ff> ERROR </color>";
+        }
+        this.txtChat.text = "";
     }
 
     public void OnClickBack()
