@@ -30,7 +30,6 @@ namespace Assets.Tests
         [Test]
         public void SavePattern()
         {
-            //Mover SavePattern a Player
             Player player = new Player();
             player.Board.GameMode = "Hardcore mode";
             bool[,] boolPattern = new bool[,]{{true, true, true, true, true},
@@ -41,6 +40,18 @@ namespace Assets.Tests
             player.Board.Pattern = boolPattern;
             
             Assert.AreEqual("OK", player.Board.SavePattern("alexisao@hotmail.com"));
+        }
+
+        [Test]
+        public void GetPatternByGameMode()
+        {
+            Player player = new Player();
+            player.Board.GameMode = "Classic";
+            player.Board.Pattern = player.Board.GetPatternByGameMode();
+            Debug.Log(player.Board.Pattern[0, 0] + "-" + player.Board.Pattern[0, 1] + "-" + player.Board.Pattern[0, 2] +
+                      "-" + player.Board.Pattern[0, 3] + "-" + player.Board.Pattern[0, 4]);
+            Debug.Log(player.Board.Pattern[1, 0] + "-" + player.Board.Pattern[1, 1] + "-" + player.Board.Pattern[1, 2] +
+                      "-" + player.Board.Pattern[1, 3] + "-" + player.Board.Pattern[1, 4]);
         }
     }
 }
