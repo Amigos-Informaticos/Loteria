@@ -109,7 +109,7 @@ public class Board
 		}
 		return converted;
     }
-	public string SavePattern(string user_email)
+	public string SavePattern(string userEmail)
     {
 		string response = null;
 		Command savePattern = new Command("save_pattern");
