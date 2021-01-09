@@ -1,6 +1,7 @@
 using GitHub.Unity.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using UnityEngine;
@@ -71,7 +72,7 @@ public class Board
 			this.Marks[pos[0], pos[1]] = true;
 		}
 	}
-	public Dictionary<string, string> GetSortedDeck(string idRoom, string email)
+	public static int[] GetSortedDeck(string idRoom, string email)
     {
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Dictionary<string, string> sortedDeck = null;
@@ -81,7 +82,8 @@ public class Board
 		tcpSocket.AddCommand(getSortedDeck);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 1000);
-		Debug.Log(response);
+		tcpSocket.Close();
+		Debug.Log("GetSortedDeck response:"+response);
 		if (!response.Equals("ERROR. TIMEOUT"))
 		{
 			try
@@ -95,8 +97,17 @@ public class Board
 				sortedDeck = null;
 			}
 		}
-		tcpSocket.Close();
-		return sortedDeck;
+		int[] converted = new int[54];
+		if (sortedDeck != null)
+		{
+			int i = 0;
+			while (i < 54)
+			{
+				converted[i] = Convert.ToInt32(sortedDeck[i.ToString()]);
+				i++;
+			}
+		}
+		return converted;
     }
 	public string SavePattern(string user_email)
     {
