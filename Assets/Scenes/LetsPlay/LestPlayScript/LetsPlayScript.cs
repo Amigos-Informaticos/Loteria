@@ -1,4 +1,4 @@
-﻿using TMPro;
+using TMPro;
 using UnityEngine;
 
 public class LetsPlayScript : MonoBehaviour
@@ -47,6 +47,10 @@ public class LetsPlayScript : MonoBehaviour
             room.SetRoomConfigByJson(response);
             room.GetPlayersInRoom();
             Memory.Save("room",room);
+            Player player = (Player) Memory.Load("player");
+            player.Board.GameMode = room.GameMode;
+            player.Board.Pattern = player.Board.GetPatternByGameMode();
+            Memory.Save("player",player);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
     }
