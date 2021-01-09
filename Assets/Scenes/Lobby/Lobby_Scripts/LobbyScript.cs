@@ -90,7 +90,7 @@ public class LobbyScript : MonoBehaviour
     public void OnClickBackToLetsPlay()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
-		((Room) Memory.Load("room")).ExitRoom(((Player) Memory.Load("player")).Email);
+		_room.ExitRoom(_player.Email);
 	}
 
     public void OnClickLetsGo()
