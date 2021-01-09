@@ -36,7 +36,7 @@ public class LetsPlayScript : MonoBehaviour
         string response = ((Player)Memory.Load("player")).EnterToLobby(code);
         
         if (response.Equals("WRONG ID") || response.Equals("WRONG ARGUMENTS") || response.Equals("ERROR") || response.Equals("ROOM FULL")
-            || response.Equals("ALREADY JOINED"))
+            || response.Equals("ALREADY JOINED") || response.Equals("ERROR. TIMEOUT"))
         {
             this.txtFeedbackMessage.text = Localization.GetMessage("LetsPlay", response);
         }
