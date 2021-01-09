@@ -41,7 +41,8 @@ public class LobbyScript : MonoBehaviour
 	    {
 		    for (int i = 0; i < 4; i++)
 		    {
-			    btnKick[i].SetActive(false);    
+			    btnKick[i].SetActive(false);
+			    btnLetsGo.SetActive(false);
 		    }
 	    }
     }
