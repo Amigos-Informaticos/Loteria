@@ -239,6 +239,10 @@
 		"ALREADY JOINED": {
 			"Español": "Ya se encuentra en la sala",
 			"English": "Already joined"
+		},
+		"ERROR. TIMEOUT": {
+			"Español": "El servidor no responde",
+			"English": "Sever does not response"
 		}
 	},
 	"CreateParty": {
