@@ -18,6 +18,8 @@ public class PartyScript : MonoBehaviour
 
     void Start()
     {
+        _room = (Room) Memory.Load("room");
+        _player = (Player) Memory.Load("player");
         _cardOnScreen = 0;
         for (int i = 0; i < 54; i++)
         {
@@ -28,9 +30,6 @@ public class PartyScript : MonoBehaviour
         IEnumerator chatCoroutine = UpdateChat();
         StartCoroutine(coroutine);
         StartCoroutine(chatCoroutine);
-        
-        _room = (Room) Memory.Load("room");
-        _player = (Player) Memory.Load("player");
     }
 
     private IEnumerator ChangeCard(float waitTime)
@@ -46,15 +45,15 @@ public class PartyScript : MonoBehaviour
     
     private IEnumerator UpdateChat()
     {
+        int counter = 0;
         while (true)
         {
             yield return new WaitForSeconds(3.0f);
             _room.GetMessages(_player.Email);
-            int counter = 0;
             while (counter < _room.Messages.Count)
             {
                 this.taChat.GetComponent<TextMeshProUGUI>().text = this.taChat.text + "\n" + _room.Messages[counter].Key +
-                                                                   ">>" + _room.Messages[counter].Value;
+                                                                   ": " + _room.Messages[counter].Value;
                 counter++;
             }
         }
@@ -88,6 +87,12 @@ public class PartyScript : MonoBehaviour
     public void OnClickSendMessage()
     {
         Room room = (Room) Memory.Load("room");
-        room.SendMessage(this.txtChat.text, (Player) Memory.Load("player"));
+        string response = room.SendMessage(this.txtChat.text, (Player) Memory.Load("player"));
+        if (response.Equals("ERROR") || response.Equals("ERROR. TIMEOUT"))
+        {
+            this.taChat.GetComponent<TextMeshProUGUI>().text = this.taChat.text + "\n" + _player.NickName +
+                                                               ": " + this.txtChat.text + "<color = #ff0000ff> ERROR </color>";
+        }
+        this.txtChat.text = "";
     }
 }
