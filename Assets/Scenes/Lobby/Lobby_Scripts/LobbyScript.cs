@@ -23,14 +23,16 @@ public class LobbyScript : MonoBehaviour
         _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
         txtCode.text = _room.IdRoom;
-        this.txtLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
-        this.btnBack.text = Localization.GetMessage("Lobby", "Back");
+        txtLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
+        btnBack.text = Localization.GetMessage("Lobby", "Back");
         ConfigureWindow();
         StartPlayerList();
         SetPlayerList();
 
         IEnumerator waitingForPlayers = WaitingForPlayers();
 	    StartCoroutine(waitingForPlayers);
+	    IEnumerator waitingForStart = WaitingForStart();
+	    StartCoroutine(waitingForStart);
     }
 
     public void ConfigureWindow()
@@ -44,14 +46,6 @@ public class LobbyScript : MonoBehaviour
 	    }
     }
 
-    public void StartPlayerListTwo()
-    {
-	    txtPlayers[0].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
-	    txtPlayers[1].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
-	    txtPlayers[2].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
-	    txtPlayers[3].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
-    }
-    
     public void StartPlayerList()
     {
 	    for (int i = 0; i < _room.NumberPlayers; i++)
