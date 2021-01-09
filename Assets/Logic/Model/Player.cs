@@ -72,6 +72,12 @@ public class Player
 	public int Score { get; set; }
 	public Board Board { get; set; } = new Board();
 
+
+	public struct Patterns
+	{
+		public List<bool[,]> Objective;
+	}
+
 	public string LogIn()
 	{
 		string loggedIn;
@@ -247,12 +253,12 @@ public class Player
 		return won;
 	}
 
-	public bool HaveWon(bool[,,] patterns)
+	public bool HaveWon(Patterns patterns)
 	{
 		bool won = false;
 		int matchCounter = 0;
 		int a = 0;
-		while (a < patterns.Length && !won)
+		while (a < patterns.Objective.Count && !won)
 		{
 			int i = 0;
 			while (i < 5 && !won)
@@ -260,7 +266,8 @@ public class Player
 				int j = 0;
 				while (j < 5 && !won)
 				{
-					if (this.Board.Marks[i, j] == patterns[a, i, j] && this.Board.Marks[i, j])
+					if (this.Board.Marks[i, j] == patterns.Objective[a][i, j] &&
+					    this.Board.Marks[i, j])
 					{
 						matchCounter++;
 					}
