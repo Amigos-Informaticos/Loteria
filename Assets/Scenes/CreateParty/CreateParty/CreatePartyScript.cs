@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -92,6 +92,7 @@ public class CreatePartyScript : MonoBehaviour
             player.IsHost = true;
             player.Board.GameMode = this.room.GameMode;
             player.Board.GetPatternByGameMode();
+            player.Board.Pattern = player.Board.GetPatternByGameMode();
             Memory.Save("player",player);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
