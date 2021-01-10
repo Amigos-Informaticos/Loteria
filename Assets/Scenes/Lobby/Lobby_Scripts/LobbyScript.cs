@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,9 +20,7 @@ public class LobbyScript : MonoBehaviour
 
 	void Start()
     {
-	    TCPSocket tcpSocket;
-        TCPSocketConfiguration.BuildDefaultConfiguration(out tcpSocket);
-        _room = (Room) Memory.Load("room");
+	    _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
         txtCode.text = _room.IdRoom;
         txtLetsGo.text = Localization.GetMessage("Lobby", "LetsGo");
@@ -34,7 +34,7 @@ public class LobbyScript : MonoBehaviour
 	    IEnumerator waitingForStart = WaitingForStart();
 	    StartCoroutine(waitingForStart);
     }
-
+	
     public void ConfigureWindow()
     {
 	    if (!_player.IsHost)

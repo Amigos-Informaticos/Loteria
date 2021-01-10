@@ -30,7 +30,6 @@ namespace Assets.Tests
         [Test]
         public void SavePattern()
         {
-            //Mover SavePattern a Player
             Player player = new Player();
             player.Board.GameMode = "Hardcore mode";
             bool[,] boolPattern = new bool[,]{{true, true, true, true, true},
@@ -41,6 +40,37 @@ namespace Assets.Tests
             player.Board.Pattern = boolPattern;
             
             Assert.AreEqual("OK", player.Board.SavePattern("alexisao@hotmail.com"));
+        }
+
+        [Test]
+        public void GetPatternByGameMode()
+        {
+            Player player = new Player();
+            player.Board.GameMode = "Pool";
+            player.Board.Pattern = player.Board.GetPatternByGameMode();
+            Debug.Log(player.Board.Pattern[0, 0] + "-" + player.Board.Pattern[0, 1] + "-" + player.Board.Pattern[0, 2] +
+                      "-" + player.Board.Pattern[0, 3] + "-" + player.Board.Pattern[0, 4]);
+            Debug.Log(player.Board.Pattern[1, 0] + "-" + player.Board.Pattern[1, 1] + "-" + player.Board.Pattern[1, 2] +
+                      "-" + player.Board.Pattern[1, 3] + "-" + player.Board.Pattern[1, 4]);
+        }
+
+        [Test]
+        public void GetPatternsByGameMode()
+        {
+            Player player = new Player();
+            player.Board.GameMode = "Classic";
+            List<bool[,]> patterns = player.Board.GetPatternsByGameMode();
+            Debug.Log(patterns[0][0, 0]+"-"+patterns[0][0, 1]+"-"+patterns[0][0, 2]+"-"+patterns[0][0, 3]+"-"+patterns[0][0, 4]);
+            Debug.Log(patterns[0][1, 0]+"-"+patterns[0][1, 1]+"-"+patterns[0][1, 2]+"-"+patterns[0][1, 3]+"-"+patterns[0][1, 4]);
+            Debug.Log(patterns[0][2, 0]+"-"+patterns[0][2, 1]+"-"+patterns[0][2, 2]+"-"+patterns[0][2, 3]+"-"+patterns[0][2, 4]);
+            Debug.Log(patterns[0][3, 0]+"-"+patterns[0][3, 1]+"-"+patterns[0][3, 2]+"-"+patterns[0][3, 3]+"-"+patterns[0][3, 4]);
+            Debug.Log(patterns[0][4, 0]+"-"+patterns[0][4, 1]+"-"+patterns[0][4, 2]+"-"+patterns[0][4, 3]+"-"+patterns[0][4, 4]);
+            Debug.Log("");
+            Debug.Log(patterns[1][0, 0]+"-"+patterns[1][0, 1]+"-"+patterns[1][0, 2]+"-"+patterns[1][0, 3]+"-"+patterns[1][0, 4]);
+            Debug.Log(patterns[1][1, 0]+"-"+patterns[1][1, 1]+"-"+patterns[1][1, 2]+"-"+patterns[1][1, 3]+"-"+patterns[1][1, 4]);
+            Debug.Log(patterns[1][2, 0]+"-"+patterns[1][2, 1]+"-"+patterns[1][2, 2]+"-"+patterns[1][2, 3]+"-"+patterns[1][2, 4]);
+            Debug.Log(patterns[1][3, 0]+"-"+patterns[1][3, 1]+"-"+patterns[1][3, 2]+"-"+patterns[1][3, 3]+"-"+patterns[1][3, 4]);
+            Debug.Log(patterns[1][4, 0]+"-"+patterns[1][4, 1]+"-"+patterns[1][4, 2]+"-"+patterns[1][4, 3]+"-"+patterns[1][4, 4]);
         }
     }
 }

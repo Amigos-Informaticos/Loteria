@@ -14,11 +14,9 @@ public class Board
 	public bool[,] Pattern { get; set; } = new bool[5, 5];
 	public string GameMode { get; set; } = null;
 	private Command _command;
-	private readonly TCPSocket _tcpSocket;
 
 	public Board()
 	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out this._tcpSocket);
 		for (int i = 0; i < 5; i++)
 		{
 			for (int j = 0; j < 5; j++)
@@ -109,18 +107,112 @@ public class Board
 		}
 		return converted;
     }
+
 	public string SavePattern(string userEmail)
-    {
-		string response = null;
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		string response;
 		Command savePattern = new Command("save_pattern");
 		savePattern.AddArgument("user_email", userEmail);
 		savePattern.AddArgument("game_mode_name", this.GameMode);
 		savePattern.AddArgument("pattern", this.GetStringPattern());
-		this._tcpSocket.AddCommand(savePattern);
-		this._tcpSocket.SendCommand();
-		response = this._tcpSocket.GetResponse(true, 1000);
-		this._tcpSocket.Close();
+		tcpSocket.AddCommand(savePattern);
+		tcpSocket.SendCommand();
+		response = tcpSocket.GetResponse(true, 1000);
+		tcpSocket.Close();
 		return response;
+	}
+
+	public bool[,] GetPatternByGameMode()
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command getPattern = new Command("get_patterns");
+		getPattern.AddArgument("game_mode_name", this.GameMode);
+		tcpSocket.AddCommand(getPattern);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse(true, 1000);
+		tcpSocket.Close();
+		Dictionary<string, Dictionary<string, string>> patternDictionary = null;
+		try
+		{
+			Debug.Log("GePattern response:"+response);
+			patternDictionary =
+				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
+					response);
+		}
+		catch (SerializationException serializationException)
+		{
+			Debug.Log(serializationException);
+		}
+		bool[,] converted = new bool[5,5];
+		int i = 0, j = 0;
+		if (patternDictionary != null)
+		{
+			foreach (var cell3 in patternDictionary["0"]["pattern"])
+			{
+				converted[i, j] = cell3 == '1';
+				if (j == 4)
+				{
+					i++;
+					j = 0;
+				}
+				else
+				{
+					j++;
+				}
+			}
+		}
+		return converted;
+	}
+	
+	public List<bool[,]> GetPatternsByGameMode()
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command getPattern = new Command("get_patterns");
+		getPattern.AddArgument("game_mode_name", this.GameMode);
+		tcpSocket.AddCommand(getPattern);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse(true, 1000);
+		tcpSocket.Close();
+		Dictionary<string, Dictionary<string, string>> patternDictionary = null;
+		try
+		{
+			Debug.Log("GePattern response:"+response);
+			patternDictionary =
+				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
+					response);
+		}
+		catch (SerializationException serializationException)
+		{
+			Debug.Log(serializationException);
+		}
+		List<bool[,]> patterns = new List<bool[,]>();
+		if (patternDictionary != null)
+		{
+			foreach (var cell in patternDictionary)
+			{
+				foreach (var cell2 in cell.Value)
+				{
+					patterns.Add(ToArrayBi(cell2.Value));
+				}
+			}
+		}
+		return patterns;
+	}
+
+	private bool[,] ToArrayBi(string pattern)
+	{
+		int index = 0;
+		bool[,] converted = new bool[5,5]; 
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				converted[i, j] = pattern[index] == '1';
+				index++;
+			}
+		}
+		return converted;
 	}
 
 	public int[] GetPos(int card)
@@ -149,7 +241,7 @@ public class Board
 		}
 		return position;
 	}
-
+	
 	public int[] GetNumbers()
 	{
 		List<int> numbers = new List<int>();

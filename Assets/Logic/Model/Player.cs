@@ -74,7 +74,7 @@ public class Player
 
 	public struct Patterns
 	{
-		public List<bool[,]> Objective;
+		public List<bool[,]> Objective { get; set; }
 	}
 
 	public string LogIn()
