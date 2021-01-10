@@ -123,7 +123,7 @@ public class Board
 		return response;
 	}
 
-	public bool[,] GetPatternByGameMode()
+	public List<bool[,]> GetPattern()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Command getPattern = new Command("get_patterns");
@@ -135,7 +135,7 @@ public class Board
 		Dictionary<string, Dictionary<string, string>> patternDictionary = null;
 		try
 		{
-			Debug.Log("GePattern response:"+response);
+			Debug.Log("GetPattern response:"+response);
 			patternDictionary =
 				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
 					response);
@@ -144,13 +144,31 @@ public class Board
 		{
 			Debug.Log(serializationException);
 		}
-		bool[,] converted = new bool[5,5];
-		int i = 0, j = 0;
+
+		List<bool[,]> patternList = new List<bool[,]>();
 		if (patternDictionary != null)
 		{
-			foreach (var cell3 in patternDictionary["0"]["pattern"])
+			if (patternDictionary.Count > 1)
 			{
-				converted[i, j] = cell3 == '1';
+				patternList = this.GetPatternByGameMode(patternDictionary);
+			}
+			else
+			{
+				patternList.Add(this.GetPatternByGameMode(patternDictionary["0"]["pattern"]));
+			}
+		}
+		return patternList;
+	}
+
+	private bool[,] GetPatternByGameMode(string pattern)
+	{
+		bool[,] converted = new bool[5,5];
+		int i = 0, j = 0;
+		if (pattern != null)
+		{
+			foreach (char character in pattern)
+			{
+				converted[i, j] = character == '1';
 				if (j == 4)
 				{
 					i++;
@@ -165,27 +183,8 @@ public class Board
 		return converted;
 	}
 	
-	public List<bool[,]> GetPatternsByGameMode()
+	private List<bool[,]> GetPatternByGameMode(Dictionary<string,Dictionary<string,string>>patternDictionary)
 	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-		Command getPattern = new Command("get_patterns");
-		getPattern.AddArgument("game_mode_name", this.GameMode);
-		tcpSocket.AddCommand(getPattern);
-		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true, 1000);
-		tcpSocket.Close();
-		Dictionary<string, Dictionary<string, string>> patternDictionary = null;
-		try
-		{
-			Debug.Log("GePattern response:"+response);
-			patternDictionary =
-				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
-					response);
-		}
-		catch (SerializationException serializationException)
-		{
-			Debug.Log(serializationException);
-		}
 		List<bool[,]> patterns = new List<bool[,]>();
 		if (patternDictionary != null)
 		{
