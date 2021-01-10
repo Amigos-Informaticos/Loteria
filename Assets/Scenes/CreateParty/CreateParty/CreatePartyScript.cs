@@ -92,7 +92,19 @@ public class CreatePartyScript : MonoBehaviour
             player.IsHost = true;
             player.Board.GameMode = this.room.GameMode;
             player.Board.GetPatternByGameMode();
-            player.Board.Pattern = player.Board.GetPatternByGameMode();
+            
+            List<bool[,]> listPatterns = player.Board.GetPattern();
+            if (listPatterns.Count > 1)
+            {
+                Player.Patterns patterns= new Player.Patterns();
+                patterns.Objective = listPatterns;
+
+            }
+            else
+            {
+                player.Board.Pattern = listPatterns[0];
+            }
+            
             Memory.Save("player",player);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
