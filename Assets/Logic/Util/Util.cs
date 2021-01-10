@@ -1,9 +1,23 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 
 public class Util
 {
+	public static string PrintArrayBi(bool[,] matrix)
+	{
+		StringBuilder stringBuilder = new StringBuilder();
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				stringBuilder.Append(Convert.ToInt32(matrix[i, j]) + " ");
+			}
+			stringBuilder.Append("\n");
+		}
+		return stringBuilder.ToString();
+	}
 	public static byte[] GetHash(string inputString)
 	{
 		using (HashAlgorithm algorithm = SHA256.Create())
