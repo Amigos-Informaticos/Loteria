@@ -5116,6 +5116,7 @@ MonoBehaviour:
   - {fileID: 576053196}
   - {fileID: 1840561461}
   txtFeedBackMessage: {fileID: 2115969888}
+  txtScore: {fileID: 458152773}
 --- !u!4 &867023799
 Transform:
   m_ObjectHideFlags: 0
@@ -12157,7 +12158,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 575717560}
   m_HandleRect: {fileID: 575717558}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 5
   m_OnValueChanged:
