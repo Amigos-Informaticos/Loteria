@@ -51,9 +51,15 @@ public class PartyScript : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2.0f);
-            _room.GetPlayersInRoom();
-            StartPlayerList();
-            SetPlayerList();
+            if (_room.GetPlayersInRoom())
+            {
+                StartPlayerList();
+                SetPlayerList();    
+            }
+            else
+            {
+                ExitParty();
+            }
         }
     }
 
@@ -110,7 +116,8 @@ public class PartyScript : MonoBehaviour
     public Sprite CreateSpriteOfACard(int idCard)
     {
         Texture2D texture = Resources.Load("Images/Cards/" + idCard) as Texture2D;
-        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), 
+            new Vector2(0.5f, 0.5f));
         return sprite;
     }
 
@@ -137,7 +144,6 @@ public class PartyScript : MonoBehaviour
                                                                ": " + this.txtChat.text +
                                                                "<color = #ff0000ff> ERROR </color>";
         }
-
         this.txtChat.text = "";
     }
 

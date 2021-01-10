@@ -227,22 +227,30 @@ public class Room
 	    return response;
     }
 
-	public void GetPlayersInRoom()
+	public bool GetPlayersInRoom()
 	{
+		bool done = true;
 		string response = GetUsersInRoom();
-
-		Dictionary<string, Dictionary<string, string>> playerList =
-			SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
-		Debug.Log(response);
-		Players = new List<PlayerStruct>();
-		for (int i = 0; i < playerList.Count; i++)
+		if (response.Equals("ERROR")||response.Equals("ROOM NOT FOUND")||response.Equals("ERROR. TIMEOUT"))
 		{
-			string key = i.ToString();
-			PlayerStruct player = new PlayerStruct();
-			player.Email = playerList[key]["email"];
-			player.NickName = playerList[key]["nickname"];
-			Players.Add(player);
+			done = false;
 		}
+		else 
+		{
+			Dictionary<string, Dictionary<string, string>> playerList =
+				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
+			Debug.Log(response);
+			Players = new List<PlayerStruct>();
+			for (int i = 0; i < playerList.Count; i++)
+			{
+				string key = i.ToString();
+				PlayerStruct player = new PlayerStruct();
+				player.Email = playerList[key]["email"];
+				player.NickName = playerList[key]["nickname"];
+				Players.Add(player);
+			}	
+		}
+		return done;
 	}
 
 	public void SetRoomConfigByJson(string json)
