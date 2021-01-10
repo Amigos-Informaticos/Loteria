@@ -61,7 +61,7 @@ public class PartyScript : MonoBehaviour
                 if (_player.HaveWon(patterns))
                 {
                     Debug.Log("YA GANASTE!!!!");
-                    if (_player.NotifyWon(_room.IdRoom))
+                    if (_player.NotifyWon(_room.IdRoom,_score))
                     {
                         _score *= 3;
                     }
@@ -72,7 +72,7 @@ public class PartyScript : MonoBehaviour
                 if (_player.HaveWon())
                 {
                     Debug.Log("YA GANASTE!!!!");
-                    if (_player.NotifyWon(_room.IdRoom))
+                    if (_player.NotifyWon(_room.IdRoom,_score))
                     {
                         _score *= 3;
                     }

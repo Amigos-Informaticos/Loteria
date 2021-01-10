@@ -304,13 +304,14 @@ public class Player
 		return response;
 	}
 
-	public bool NotifyWon(string roomId)
+	public bool NotifyWon(string roomId, int score)
 	{
 		bool won = false;
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Command wonRound = new Command("won_round");
 		wonRound.AddArgument("user_email",Email);
 		wonRound.AddArgument("room_id",roomId);
+		wonRound.AddArgument("score",score.ToString());
 		tcpSocket.AddCommand(wonRound);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse();
