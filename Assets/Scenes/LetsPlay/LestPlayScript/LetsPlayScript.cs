@@ -66,6 +66,7 @@ public class LetsPlayScript : MonoBehaviour
         {
             Player.Patterns patterns= new Player.Patterns();
             patterns.Objective = listPatterns;
+            Memory.Save("patterns", patterns);
         }
         else
         {

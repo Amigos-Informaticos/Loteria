@@ -306,4 +306,22 @@ public class Player
 		Debug.Log(response);
 		return response;
 	}
+
+	public bool NotifyWon(string roomId)
+	{
+		bool won = false;
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command wonRound = new Command("won_round");
+		wonRound.AddArgument("user_email",Email);
+		wonRound.AddArgument("room_id",roomId);
+		tcpSocket.AddCommand(wonRound);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse();
+		Debug.Log("Notify Won: " + response);
+		if (response.Equals("OK"))
+		{
+			won = true;
+		}
+		return won;
+	}
 }

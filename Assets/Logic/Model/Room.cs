@@ -231,7 +231,7 @@ public class Room
 	{
 		bool done = true;
 		string response = GetUsersInRoom();
-		if (response.Equals("ERROR")||response.Equals("ROOM NOT FOUND")||response.Equals("ERROR. TIMEOUT"))
+		if (response.Equals("ERROR")||response.Equals("ROOM NOT FOUND"))
 		{
 			done = false;
 		}
@@ -306,6 +306,19 @@ public class Room
 		tcpSocket.AddCommand(isPartyOn);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse();
+		return response;
+	}
+
+	public string ThereIsAWinner()
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command thereIsAWinner = new Command("there_is_a_winner");
+		thereIsAWinner.AddArgument("room_id",IdRoom);
+		tcpSocket.AddCommand(thereIsAWinner);
+		tcpSocket.SendCommand();
+		
+		string response = tcpSocket.GetResponse();
+		Debug.Log("There is a winner: " + response);
 		return response;
 	}
 }

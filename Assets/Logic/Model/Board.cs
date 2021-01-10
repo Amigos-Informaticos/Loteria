@@ -123,6 +123,23 @@ public class Board
 		return response;
 	}
 
+	public bool IsEmpty()
+	{
+		bool isEmpty = true;
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				if (Pattern[i,j] == true)
+				{
+					isEmpty = false;
+					break;
+				}
+			}
+		}
+		return isEmpty;
+	}
+
 	public List<bool[,]> GetPattern()
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
