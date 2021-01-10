@@ -27,7 +27,7 @@ public class PartyScript : MonoBehaviour
         _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
         _cardOnScreen = 0;
-        //_cards = new int[25]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25};
+        _cards = new int[25]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25};
         _cards = Board.GetSortedDeck(_room.IdRoom, _player.Email);
         GenerateBoard();
         this.txtFeedBackMessage.text = Util.PrintArrayBi(_player.Board.Pattern);
@@ -43,9 +43,9 @@ public class PartyScript : MonoBehaviour
         IEnumerator waitingForPlayers = WaitingForPlayers();
         IEnumerator chekIfKicked = CheckIfKicked();
         StartCoroutine(coroutine);
-        //StartCoroutine(chatCoroutine);
-        //StartCoroutine(waitingForPlayers);
-        //StartCoroutine(chekIfKicked);
+        StartCoroutine(chatCoroutine);
+        StartCoroutine(waitingForPlayers);
+        StartCoroutine(chekIfKicked);
     }
     private void ToggleStateChanged(Toggle toggle, bool state)
     {
