@@ -13,11 +13,14 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtChat;
     [SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
     [SerializeField] private TextMeshProUGUI txtFeedBackMessage;
+    [SerializeField] private TextMeshProUGUI txtScore;
     private Player _player;
     private Room _room;
     private int[] _cards = new int[54];
     private int _cardOnScreen;
     private int _currentCard;
+    private bool _won;
+    private int _score;
 
     void Start()
     {
@@ -31,7 +34,7 @@ public class PartyScript : MonoBehaviour
         foreach (Toggle toggle in toggles)
         {
             Toggle captured = toggle;
-            toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));			
+            toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));
         }
         
         IEnumerator coroutine = ChangeCard(_room.Speed);
@@ -48,6 +51,33 @@ public class PartyScript : MonoBehaviour
         if(Convert.ToInt32(toggle.GetComponentInChildren<Image>().name) == _currentCard)
         {
             toggle.isOn = true;
+            _player.Board.Mark(_currentCard);
+            _score += 10;
+            txtScore.text = _score.ToString();
+
+            if (_player.Board.IsEmpty())
+            {
+                Player.Patterns patterns = (Player.Patterns) Memory.Load("patterns");    
+                if (_player.HaveWon(patterns))
+                {
+                    Debug.Log("YA GANASTE!!!!");
+                    if (_player.NotifyWon(_room.IdRoom))
+                    {
+                        _score *= 3;
+                    }
+                }
+            }
+            else
+            {
+                if (_player.HaveWon())
+                {
+                    Debug.Log("YA GANASTE!!!!");
+                    if (_player.NotifyWon(_room.IdRoom))
+                    {
+                        _score *= 3;
+                    }
+                }
+            }
         }
         else
         {
@@ -78,6 +108,18 @@ public class PartyScript : MonoBehaviour
             else
             {
                 ExitParty();
+            }
+        }
+    }
+
+    public IEnumerator CheckIfWinner()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2.0f);
+            if (!_room.ThereIsAWinner().Equals("NO WINNER"))
+            {
+                Debug.Log("Hola, mundo");
             }
         }
     }
