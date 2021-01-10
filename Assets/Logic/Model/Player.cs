@@ -233,51 +233,48 @@ public class Player
 	public bool HaveWon()
 	{
 		bool won = true;
-		for (int i = 0; i < 5; i++)
+		int i = 0;
+		while (i < 5 && won)
 		{
-			for (int j = 0; j < 5; j++)
+			int j = 0;
+			while (j < 5 && won)
 			{
-				if (this.Board.Pattern[i, j] == this.Board.Marks[i, j]) continue;
-				won = false;
-				break;
+				if (this.Board.Pattern[i, j] && !this.Board.Marks[i, j])
+				{
+					won = false;
+				}
+				j++;
 			}
-			if (!won)
-			{
-				break;
-			}
+			i++;
 		}
 		return won;
 	}
 
 	public bool HaveWon(Patterns patterns)
 	{
-		bool won = false;
-		int differenceCounter = 0;
 		int a = 0;
-		while (a < patterns.Objective.Count && !won)
+		int differenceCounter = 0;
+		while (a < patterns.Objective.Count)
 		{
+			bool isDifferent = false;
 			int i = 0;
-			while (i < 5 && differenceCounter == 0)
+			while (i < 5 && !isDifferent)
 			{
 				int j = 0;
-				while (j < 5 && differenceCounter == 0)
+				while (j < 5 && !isDifferent)
 				{
-					if (this.Board.Marks[i, j] != patterns.Objective[a][i, j])
+					if (this.Board.Marks[i, j] && !patterns.Objective[a][i, j])
 					{
 						differenceCounter++;
+						isDifferent = true;
 					}
 					j++;
 				}
 				i++;
 			}
-			if (differenceCounter == 0)
-			{
-				won = true;
-			}
 			a++;
-			differenceCounter = 0;
 		}
-		return won;
+		return differenceCounter < patterns.Objective.Count;
 	}
 
 	public string KickAPlayer(string playerToKick, string roomId)
