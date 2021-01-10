@@ -1,3 +1,4 @@
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -42,16 +43,34 @@ public class LetsPlayScript : MonoBehaviour
         }
         else
         {
-            Room room = new Room();
-            room.IdRoom = code;
-            room.SetRoomConfigByJson(response);
-            room.GetPlayersInRoom();
-            Memory.Save("room",room);
-            Player player = (Player) Memory.Load("player");
-            player.Board.GameMode = room.GameMode;
-            player.Board.Pattern = player.Board.GetPatternByGameMode();
-            Memory.Save("player",player);
+            SaveInMemory(code, response);
+            SaveInMemory((Player)Memory.Load("player"));
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
+    }
+
+    private void SaveInMemory(string code, string json)
+    {
+        Room room = new Room();
+        room.IdRoom = code;
+        room.SetRoomConfigByJson(json);
+        room.GetPlayersInRoom();
+        Memory.Save("room",room);
+    }
+
+    private void SaveInMemory(Player player)
+    {
+        player.Board.GameMode = ((Room) Memory.Load("room")).GameMode;
+        List<bool[,]> listPatterns = player.Board.GetPattern();
+        if (listPatterns.Count > 1)
+        {
+            Player.Patterns patterns= new Player.Patterns();
+            patterns.Objective = listPatterns;
+        }
+        else
+        {
+            player.Board.Pattern = listPatterns[0];
+        }
+        Memory.Save("player",player);
     }
 }
