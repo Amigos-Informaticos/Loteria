@@ -71,7 +71,6 @@ namespace Assets.Tests
             Debug.Log(patterns[1][2, 0]+"-"+patterns[1][2, 1]+"-"+patterns[1][2, 2]+"-"+patterns[1][2, 3]+"-"+patterns[1][2, 4]);
             Debug.Log(patterns[1][3, 0]+"-"+patterns[1][3, 1]+"-"+patterns[1][3, 2]+"-"+patterns[1][3, 3]+"-"+patterns[1][3, 4]);
             Debug.Log(patterns[1][4, 0]+"-"+patterns[1][4, 1]+"-"+patterns[1][4, 2]+"-"+patterns[1][4, 3]+"-"+patterns[1][4, 4]);
-            
         }
     }
 }

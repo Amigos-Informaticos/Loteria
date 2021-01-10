@@ -25,7 +25,7 @@ public class PartyScript : MonoBehaviour
         _cardOnScreen = 0;
         _cards = Board.GetSortedDeck(_room.IdRoom, _player.Email);
         GenerateBoard();
-        PrintArrayBi(_player.Board.Pattern);
+        this.txtFeedBackMessage.text = Util.PrintArrayBi(_player.Board.Pattern);
         IEnumerator coroutine = ChangeCard(_room.Speed);
         IEnumerator chatCoroutine = UpdateChat();
         IEnumerator waitingForPlayers = WaitingForPlayers();
@@ -34,19 +34,6 @@ public class PartyScript : MonoBehaviour
         StartCoroutine(chatCoroutine);
         StartCoroutine(waitingForPlayers);
         StartCoroutine(chekIfKicked);
-    }
-    private void PrintArrayBi(bool[,] matrix)
-    {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < 5; i++)
-        {
-            for (int j = 0; j < 5; j++)
-            {
-                stringBuilder.Append(Convert.ToInt32(matrix[i, j]) + " ");
-            }
-            stringBuilder.Append("\n");
-        }
-        this.txtFeedBackMessage.text = stringBuilder.ToString();
     }
     private IEnumerator ChangeCard(float waitTime)
     {

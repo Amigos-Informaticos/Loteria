@@ -126,7 +126,7 @@ public class CreatePattern : MonoBehaviour
 			this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffbaba");
 		}
 		PrintPattern();
-		PrintArrayBi(player.Board.Pattern);
+		this.showPatternConverted.text = Util.PrintArrayBi(player.Board.Pattern);
 	}
 	public void OnClickClearPattern()
 	{
