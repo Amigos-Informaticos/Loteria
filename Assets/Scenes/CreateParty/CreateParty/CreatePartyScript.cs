@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -91,20 +91,18 @@ public class CreatePartyScript : MonoBehaviour
             Player player = (Player) Memory.Load("player");
             player.IsHost = true;
             player.Board.GameMode = this.room.GameMode;
-            player.Board.GetPatternByGameMode();
+            //TODO refactorizar
             
             List<bool[,]> listPatterns = player.Board.GetPattern();
             if (listPatterns.Count > 1)
             {
                 Player.Patterns patterns= new Player.Patterns();
                 patterns.Objective = listPatterns;
-
             }
             else
             {
                 player.Board.Pattern = listPatterns[0];
             }
-            
             Memory.Save("player",player);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }

@@ -47,7 +47,6 @@ public class LetsPlayScript : MonoBehaviour
             SaveInMemory((Player)Memory.Load("player"));
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
-        
     }
 
     private void SaveInMemory(string code, string json)
@@ -61,14 +60,12 @@ public class LetsPlayScript : MonoBehaviour
 
     private void SaveInMemory(Player player)
     {
-        player = (Player) Memory.Load("player");
         player.Board.GameMode = ((Room) Memory.Load("room")).GameMode;
         List<bool[,]> listPatterns = player.Board.GetPattern();
         if (listPatterns.Count > 1)
         {
             Player.Patterns patterns= new Player.Patterns();
             patterns.Objective = listPatterns;
-
         }
         else
         {
