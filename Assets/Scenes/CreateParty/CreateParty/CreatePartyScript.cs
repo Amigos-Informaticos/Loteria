@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -22,6 +22,7 @@ public class CreatePartyScript : MonoBehaviour
     private int numberPlayers = 2;
     private int numberRounds = 1;
     private int speed = 3;
+    private Player _player;
     void Start()
     {
         this.txtPlayers.text = Localization.GetMessage("CreateParty", "Players");
@@ -31,6 +32,8 @@ public class CreatePartyScript : MonoBehaviour
         this.btnCreate.text = Localization.GetMessage("CreateParty", "Create");
         this.btnBack.text = Localization.GetMessage("CreateParty", "Back");
         this.gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;
+        _player = (Player) Memory.Load("player");
+        
         InstanceRoom();
         FillGameModes();        
     }
@@ -87,6 +90,9 @@ public class CreatePartyScript : MonoBehaviour
             Memory.Save("room", this.room);
             Player player = (Player) Memory.Load("player");
             player.IsHost = true;
+            player.Board.GameMode = this.room.GameMode;
+            player.Board.GetPatternByGameMode();
+            player.Board.Pattern = player.Board.GetPatternByGameMode();
             Memory.Save("player",player);
             UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
@@ -97,7 +103,7 @@ public class CreatePartyScript : MonoBehaviour
     }
     private void InstanceRoom()
     {
-        this.room.Host = (Player) Memory.Load("player");       
+        this.room.Host = this._player;       
         this.room.Rounds = this.numberRounds;
         this.room.Speed = this.speed;
         this.room.NumberPlayers = this.numberPlayers;

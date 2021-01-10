@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +12,7 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI taChat;
     [SerializeField] private TextMeshProUGUI txtChat;
     [SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
+    [SerializeField] private TextMeshProUGUI txtFeedBackMessage;
     private Player _player;
     private Room _room;
     private int[] _cards = new int[54];
@@ -22,6 +25,7 @@ public class PartyScript : MonoBehaviour
         _cardOnScreen = 0;
         _cards = Board.GetSortedDeck(_room.IdRoom, _player.Email);
         GenerateBoard();
+        this.txtFeedBackMessage.text = Util.PrintArrayBi(_player.Board.Pattern);
         IEnumerator coroutine = ChangeCard(_room.Speed);
         IEnumerator chatCoroutine = UpdateChat();
         IEnumerator waitingForPlayers = WaitingForPlayers();
@@ -31,7 +35,6 @@ public class PartyScript : MonoBehaviour
         StartCoroutine(waitingForPlayers);
         StartCoroutine(chekIfKicked);
     }
-
     private IEnumerator ChangeCard(float waitTime)
     {
         while (true)
@@ -48,9 +51,15 @@ public class PartyScript : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2.0f);
-            _room.GetPlayersInRoom();
-            StartPlayerList();
-            SetPlayerList();
+            if (_room.GetPlayersInRoom())
+            {
+                StartPlayerList();
+                SetPlayerList();    
+            }
+            else
+            {
+                ExitParty();
+            }
         }
     }
 
@@ -107,7 +116,8 @@ public class PartyScript : MonoBehaviour
     public Sprite CreateSpriteOfACard(int idCard)
     {
         Texture2D texture = Resources.Load("Images/Cards/" + idCard) as Texture2D;
-        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+        Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), 
+            new Vector2(0.5f, 0.5f));
         return sprite;
     }
 
@@ -134,7 +144,6 @@ public class PartyScript : MonoBehaviour
                                                                ": " + this.txtChat.text +
                                                                "<color = #ff0000ff> ERROR </color>";
         }
-
         this.txtChat.text = "";
     }
 
