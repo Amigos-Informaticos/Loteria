@@ -5081,6 +5081,32 @@ MonoBehaviour:
   - {fileID: 285360645}
   - {fileID: 1910831989}
   - {fileID: 256230332}
+  toggles:
+  - {fileID: 1483562236}
+  - {fileID: 287683911}
+  - {fileID: 896955597}
+  - {fileID: 1519524179}
+  - {fileID: 151971989}
+  - {fileID: 1731310798}
+  - {fileID: 1983113346}
+  - {fileID: 906149586}
+  - {fileID: 726883188}
+  - {fileID: 5731746}
+  - {fileID: 892157184}
+  - {fileID: 90084703}
+  - {fileID: 391375452}
+  - {fileID: 27206664}
+  - {fileID: 685738576}
+  - {fileID: 1821353215}
+  - {fileID: 393965889}
+  - {fileID: 804992587}
+  - {fileID: 1156866994}
+  - {fileID: 1935112931}
+  - {fileID: 2119098135}
+  - {fileID: 384101712}
+  - {fileID: 1950441292}
+  - {fileID: 7457365}
+  - {fileID: 440110953}
   cardToShow: {fileID: 1204031647}
   taChat: {fileID: 522405449}
   txtChat: {fileID: 1546980339}

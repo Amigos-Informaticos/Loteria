@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +7,7 @@ using UnityEngine.UI;
 public class PartyScript : MonoBehaviour
 {
     [SerializeField] private Image[] board = new Image[25];
+    [SerializeField] private Toggle[] toggles = new Toggle[25];
     [SerializeField] private Image cardToShow;
     [SerializeField] private TextMeshProUGUI taChat;
     [SerializeField] private TextMeshProUGUI txtChat;
@@ -17,6 +17,7 @@ public class PartyScript : MonoBehaviour
     private Room _room;
     private int[] _cards = new int[54];
     private int _cardOnScreen;
+    private int _currentCard;
 
     void Start()
     {
@@ -26,6 +27,13 @@ public class PartyScript : MonoBehaviour
         _cards = Board.GetSortedDeck(_room.IdRoom, _player.Email);
         GenerateBoard();
         this.txtFeedBackMessage.text = Util.PrintArrayBi(_player.Board.Pattern);
+        
+        foreach (Toggle toggle in toggles)
+        {
+            Toggle captured = toggle;
+            toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));			
+        }
+        
         IEnumerator coroutine = ChangeCard(_room.Speed);
         IEnumerator chatCoroutine = UpdateChat();
         IEnumerator waitingForPlayers = WaitingForPlayers();
@@ -34,6 +42,17 @@ public class PartyScript : MonoBehaviour
         StartCoroutine(chatCoroutine);
         StartCoroutine(waitingForPlayers);
         StartCoroutine(chekIfKicked);
+    }
+    private void ToggleStateChanged(Toggle toggle, bool state)
+    {
+        if(Convert.ToInt32(toggle.GetComponentInChildren<Image>().name) == _currentCard)
+        {
+            toggle.isOn = true;
+        }
+        else
+        {
+            toggle.isOn = false;
+        }
     }
     private IEnumerator ChangeCard(float waitTime)
     {
@@ -111,6 +130,9 @@ public class PartyScript : MonoBehaviour
     public void ChangeSpriteOfCard(int index)
     {
         cardToShow.GetComponent<Image>().sprite = CreateSpriteOfACard(index);
+        cardToShow.GetComponent<Image>().name = index.ToString();
+        Debug.Log("changedSprite:"+cardToShow.GetComponent<Image>().name);
+        _currentCard = index;
     }
 
     public Sprite CreateSpriteOfACard(int idCard)
@@ -129,6 +151,7 @@ public class PartyScript : MonoBehaviour
             for (int j = 0; j < 5; j++)
             {
                 board[idBoardCard].GetComponent<Image>().sprite = this.CreateSpriteOfACard(_player.Board.Cards[i, j]);
+                board[idBoardCard].GetComponent<Image>().name = _player.Board.Cards[i, j].ToString();
                 idBoardCard++;
             }
         }
