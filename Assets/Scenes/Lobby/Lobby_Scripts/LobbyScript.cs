@@ -60,9 +60,15 @@ public class LobbyScript : MonoBehaviour
         while (true)
         {
 	        yield return new WaitForSeconds(2.0f);
-	        _room.GetPlayersInRoom();
-	        StartPlayerList();
-	        SetPlayerList();
+	        if (_room.GetPlayersInRoom())
+	        {
+		        StartPlayerList();
+		        SetPlayerList();    
+	        }
+	        else
+	        {
+		        OnClickBackToLetsPlay();
+	        }
         }
     }
 
