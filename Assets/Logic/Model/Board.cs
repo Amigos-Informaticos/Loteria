@@ -187,7 +187,6 @@ public class Board
 			Debug.Log(serializationException);
 		}
 		List<bool[,]> patterns = new List<bool[,]>();
-		int i = 0, j = 0;
 		if (patternDictionary != null)
 		{
 			foreach (var cell in patternDictionary)
