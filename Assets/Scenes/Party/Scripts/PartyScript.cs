@@ -141,7 +141,6 @@ public class PartyScript : MonoBehaviour
                                                                ": " + this.txtChat.text +
                                                                "<color = #ff0000ff> ERROR </color>";
         }
-
         this.txtChat.text = "";
     }
 
