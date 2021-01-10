@@ -119,9 +119,8 @@ public class PartyScript : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
             if (!_room.ThereIsAWinner().Equals("NO WINNER"))
             {
-                //Parar las corrutinas y mandar a la otra ventana
+                Debug.Log("Hola, mundo");
             }
-            
         }
     }
 
