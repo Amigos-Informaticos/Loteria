@@ -134,12 +134,13 @@ public class Player
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 1000);
 		tcpSocket.Close();
-		Debug.Log("GetPlayerFromServer() "+response);
+		Debug.Log("GetPlayerFromServer() " + response);
 		if (!response.Equals("ERROR. TIMEOUT"))
 		{
 			try
 			{
-				Dictionary<string, string> playerDictionary = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
+				Dictionary<string, string> playerDictionary =
+					SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
 				Email = playerDictionary["email"];
 				Names = playerDictionary["name"];
 				LastName = playerDictionary["lastname"];
@@ -233,60 +234,57 @@ public class Player
 	public bool HaveWon()
 	{
 		bool won = true;
-		for (int i = 0; i < 5; i++)
+		int i = 0;
+		while (i < 5 && won)
 		{
-			for (int j = 0; j < 5; j++)
+			int j = 0;
+			while (j < 5 && won)
 			{
-				if (this.Board.Pattern[i, j] == this.Board.Marks[i, j]) continue;
-				won = false;
-				break;
+				if (this.Board.Pattern[i, j] && !this.Board.Marks[i, j])
+				{
+					won = false;
+				}
+				j++;
 			}
-			if (!won)
-			{
-				break;
-			}
+			i++;
 		}
 		return won;
 	}
 
 	public bool HaveWon(Patterns patterns)
 	{
-		bool won = false;
-		int differenceCounter = 0;
 		int a = 0;
-		while (a < patterns.Objective.Count && !won)
+		int differenceCounter = 0;
+		while (a < patterns.Objective.Count)
 		{
+			bool isDifferent = false;
 			int i = 0;
-			while (i < 5 && differenceCounter == 0)
+			while (i < 5 && !isDifferent)
 			{
 				int j = 0;
-				while (j < 5 && differenceCounter == 0)
+				while (j < 5 && !isDifferent)
 				{
-					if (this.Board.Marks[i, j] != patterns.Objective[a][i, j])
+					if (this.Board.Marks[i, j] && !patterns.Objective[a][i, j])
 					{
 						differenceCounter++;
+						isDifferent = true;
 					}
 					j++;
 				}
 				i++;
 			}
-			if (differenceCounter == 0)
-			{
-				won = true;
-			}
 			a++;
-			differenceCounter = 0;
 		}
-		return won;
+		return differenceCounter < patterns.Objective.Count;
 	}
 
 	public string KickAPlayer(string playerToKick, string roomId)
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Command kickPlayer = new Command("kick_player");
-		kickPlayer.AddArgument("user_email",Email);
-		kickPlayer.AddArgument("room_id",roomId);
-		kickPlayer.AddArgument("kicked_nickname",playerToKick);
+		kickPlayer.AddArgument("user_email", Email);
+		kickPlayer.AddArgument("room_id", roomId);
+		kickPlayer.AddArgument("kicked_nickname", playerToKick);
 		tcpSocket.AddCommand(kickPlayer);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse();
@@ -298,8 +296,8 @@ public class Player
 	{
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Command inRoom = new Command("in_room");
-		inRoom.AddArgument("user_email",Email);
-		inRoom.AddArgument("room_id",roomId);
+		inRoom.AddArgument("user_email", Email);
+		inRoom.AddArgument("room_id", roomId);
 		tcpSocket.AddCommand(inRoom);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse();
@@ -312,8 +310,8 @@ public class Player
 		bool won = false;
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Command wonRound = new Command("won_round");
-		wonRound.AddArgument("user_email",Email);
-		wonRound.AddArgument("room_id",roomId);
+		wonRound.AddArgument("user_email", Email);
+		wonRound.AddArgument("room_id", roomId);
 		tcpSocket.AddCommand(wonRound);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse();
