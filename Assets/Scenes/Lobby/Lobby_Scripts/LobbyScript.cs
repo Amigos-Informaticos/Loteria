@@ -96,8 +96,15 @@ public class LobbyScript : MonoBehaviour
 
     public void OnClickBackToLetsPlay()
 	{
+		if (_player.IsHost)
+		{
+			_player.IsHost = false;
+			Memory.Save("player",_player);
+		}
 		UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
 		_room.ExitRoom(_player.Email);
+		Room room = new Room();
+		Memory.Save("room", room);
 	}
 
     public void OnClickLetsGo()
