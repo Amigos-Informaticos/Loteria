@@ -29,6 +29,7 @@ public class PartyScript : MonoBehaviour
         _player = (Player) Memory.Load("player");
         _score = 0;
         _cardOnScreen = 0;
+        _won = false;
         _cards = Board.GetSortedDeck(_room.IdRoom, _player.Email);
         GenerateBoard();
         this.txtFeedBackMessage.text = Util.PrintArrayBi(_player.Board.Pattern);
@@ -111,7 +112,7 @@ public class PartyScript : MonoBehaviour
             }
             else
             {
-                PrepareBackToLobby();
+                OnClickBack();
             }
         }
     }
@@ -125,7 +126,7 @@ public class PartyScript : MonoBehaviour
             if (!_winner.Equals("NO WINNER")&&!_winner.Equals("ERROR")&&!_winner.Equals("ERROR. TIMEOUT")&&!_winner.Equals("ROOM NOT FOUND"))
             {
                 StopAllCoroutines();
-                GoEndGame();
+                GoToPodium();
             }
         }
     }
@@ -179,11 +180,7 @@ public class PartyScript : MonoBehaviour
 
     private void GetKicked()
     {
-        _room.ExitRoom(_player.Email);
-        _player.Board = new Board();
-        Memory.Save("player",_player);
-        Room room = new Room();
-        Memory.Save("room",room);
+        ExitRoom();
         UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
     }
 
@@ -230,17 +227,18 @@ public class PartyScript : MonoBehaviour
         this.txtChat.text = "";
     }
 
-    public void PrepareBackToLobby()
+    public void ExitRoom()
     {
         _player.Board = new Board();
         Memory.Save("player",_player);
-        _room.StopParty(_player.Email);
+        _room.ExitRoom(_player.Email);
+        Room room = new Room();
+        Memory.Save("room",room);
     }
 
     public void OnClickBack()
     {
-        
-        PrepareBackToLobby();
+        ExitRoom();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
     }
 
@@ -253,11 +251,11 @@ public class PartyScript : MonoBehaviour
         }
     }
 
-    public void GoEndGame()
+    public void GoToPodium()
     {
         Memory.Save("winner",_winner);
         Memory.Save("score",_score);
-        PrepareBackToLobby();
+        ExitRoom();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Podium");
     }
 }
