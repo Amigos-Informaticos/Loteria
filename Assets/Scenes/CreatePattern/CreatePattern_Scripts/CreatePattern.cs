@@ -114,21 +114,20 @@ public class CreatePattern : MonoBehaviour
 	public void OnClickSavePattern()
 	{
 		string gameModeName = Regex.Replace(txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
-		//Player player = (Player) Memory.Load("player");
-		//player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
-		//player.Board.Pattern = ConvertToArray();
+		Player player = (Player) Memory.Load("player");
+		player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
+		player.Board.Pattern = ConvertToArray();
 		newPattern.Pattern = ConvertToArray();
 		if(!string.IsNullOrEmpty(gameModeName))
         {
 	        this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffffff");
 	        if (!IsEmpty())
 	        {
-		        //player.Board.SavePattern(((Player)Memory.Load("player")).Email);   
+		        player.Board.SavePattern(((Player)Memory.Load("player")).Email);   
 	        }
 	        else
 	        {
-		        //TODO Localizar
-		        this.showPatternConverted.text = "Patron vacio";
+		        this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "EmptyPattern");
 	        }
 		}
 		else

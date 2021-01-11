@@ -197,6 +197,10 @@
 		"GameModePlaceHolder": {
 			"Español": "Nombre del modo de juego",
 			"English": "Name of the game mode"
+		},
+		"EmptyPattern": {
+			"Español": "El patrón se encuentra vacio",
+			"English": "Empty pattern"
 		}
 	},
 	"LetsPlay": {
