@@ -29,6 +29,7 @@ public class PartyScript : MonoBehaviour
         _player = (Player) Memory.Load("player");
         _score = 0;
         _cardOnScreen = 0;
+        _won = false;
         _cards = Board.GetSortedDeck(_room.IdRoom, _player.Email);
         GenerateBoard();
         this.txtFeedBackMessage.text = Util.PrintArrayBi(_player.Board.Pattern);
@@ -103,7 +104,7 @@ public class PartyScript : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(8.0f);
             if (_room.GetPlayersInRoom())
             {
                 StartPlayerList();
@@ -111,7 +112,7 @@ public class PartyScript : MonoBehaviour
             }
             else
             {
-                ExitParty();
+                OnClickBack();
             }
         }
     }
@@ -125,7 +126,7 @@ public class PartyScript : MonoBehaviour
             if (!_winner.Equals("NO WINNER")&&!_winner.Equals("ERROR")&&!_winner.Equals("ERROR. TIMEOUT")&&!_winner.Equals("ROOM NOT FOUND"))
             {
                 StopAllCoroutines();
-                GoEndGame();
+                GoToPodium();
             }
         }
     }
@@ -137,11 +138,11 @@ public class PartyScript : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
             if (!_player.IAmInRoom(_room.IdRoom).Equals("OK"))
             {
-                OnClickBack();
+                GetKicked();               
             }
         }
     }
-
+    
     public void StartPlayerList()
     {
         for (int i = 0; i < _room.NumberPlayers; i++)
@@ -173,6 +174,12 @@ public class PartyScript : MonoBehaviour
                 counter++;
             }
         }
+    }
+
+    private void GetKicked()
+    {
+        ExitRoom();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
     }
 
     public void ChangeSpriteOfCard(int index)
@@ -218,22 +225,19 @@ public class PartyScript : MonoBehaviour
         this.txtChat.text = "";
     }
 
-    public void ExitParty()
+    public void ExitRoom()
     {
-        if (_player.IsHost)
-        {
-            _player.IsHost = false;
-            Memory.Save("player",_player);
-        }
+        _player.Board = new Board();
+        Memory.Save("player",_player);
         _room.ExitRoom(_player.Email);
         Room room = new Room();
-        Memory.Save("room", room);
+        Memory.Save("room",room);
     }
 
     public void OnClickBack()
     {
-        ExitParty();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
+        ExitRoom();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
     }
 
     public void OnClickKickPlayer(int index)
@@ -245,11 +249,11 @@ public class PartyScript : MonoBehaviour
         }
     }
 
-    public void GoEndGame()
+    public void GoToPodium()
     {
         Memory.Save("winner",_winner);
         Memory.Save("score",_score);
-        ExitParty();
+        ExitRoom();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Podium");
     }
 }
