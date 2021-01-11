@@ -66,10 +66,8 @@ public class CreatePattern : MonoBehaviour
 			isEmpty = !this._pattern[count];
 			count++;
 		}
-
 		return isEmpty;
 	}
-	
 
 	private void PrintPattern()
 	{
@@ -135,7 +133,6 @@ public class CreatePattern : MonoBehaviour
 			this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffbaba");
 		}
 		PrintPattern();
-		//this.showPatternConverted.text = Util.PrintArrayBi(player.Board.Pattern);
 	}
 	public void OnClickClearPattern()
 	{

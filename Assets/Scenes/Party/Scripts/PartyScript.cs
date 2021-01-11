@@ -87,7 +87,6 @@ public class PartyScript : MonoBehaviour
         {
             toggle.isOn = false;
         }
-        
     }
     private IEnumerator ChangeCard(float waitTime)
     {
@@ -108,7 +107,7 @@ public class PartyScript : MonoBehaviour
             if (_room.GetPlayersInRoom())
             {
                 StartPlayerList();
-                SetPlayerList();    
+                SetPlayerList();
             }
             else
             {
@@ -197,7 +196,6 @@ public class PartyScript : MonoBehaviour
             new Vector2(0.5f, 0.5f));
         return sprite;
     }
-
     public void GenerateBoard()
     {
         int idBoardCard = 0;
@@ -211,7 +209,6 @@ public class PartyScript : MonoBehaviour
             }
         }
     }
-
     public void OnClickSendMessage()
     {
         Room room = (Room) Memory.Load("room");
