@@ -84,6 +84,11 @@
               <e p="PartyScript.cs" t="Include" />
             </e>
           </e>
+          <e p="Podium" t="Include">
+            <e p="PodiumScript" t="Include">
+              <e p="PodiumScript.cs" t="Include" />
+            </e>
+          </e>
           <e p="Settings" t="Include">
             <e p="Settings" t="Include">
               <e p="Settings.cs" t="Include" />

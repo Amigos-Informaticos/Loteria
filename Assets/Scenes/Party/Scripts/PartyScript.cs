@@ -21,11 +21,13 @@ public class PartyScript : MonoBehaviour
     private int _currentCard;
     private bool _won;
     private int _score;
+    private string _winner;
 
     void Start()
     {
         _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
+        _score = 0;
         _cardOnScreen = 0;
         _cards = Board.GetSortedDeck(_room.IdRoom, _player.Email);
         GenerateBoard();
@@ -40,11 +42,13 @@ public class PartyScript : MonoBehaviour
         IEnumerator coroutine = ChangeCard(_room.Speed);
         IEnumerator chatCoroutine = UpdateChat();
         IEnumerator waitingForPlayers = WaitingForPlayers();
-        IEnumerator chekIfKicked = CheckIfKicked();
+        IEnumerator checkIfKicked = CheckIfKicked();
+        IEnumerator checkIfWinner = CheckIfWinner();
         StartCoroutine(coroutine);
         StartCoroutine(chatCoroutine);
         StartCoroutine(waitingForPlayers);
-        StartCoroutine(chekIfKicked);
+        StartCoroutine(checkIfKicked);
+        StartCoroutine(checkIfWinner);
     }
     private void ToggleStateChanged(Toggle toggle, bool state)
     {
@@ -61,7 +65,7 @@ public class PartyScript : MonoBehaviour
                 if (_player.HaveWon(patterns))
                 {
                     Debug.Log("YA GANASTE!!!!");
-                    if (_player.NotifyWon(_room.IdRoom))
+                    if (_player.NotifyWon(_room.IdRoom,_score))
                     {
                         _score *= 3;
                     }
@@ -72,7 +76,7 @@ public class PartyScript : MonoBehaviour
                 if (_player.HaveWon())
                 {
                     Debug.Log("YA GANASTE!!!!");
-                    if (_player.NotifyWon(_room.IdRoom))
+                    if (_player.NotifyWon(_room.IdRoom,_score))
                     {
                         _score *= 3;
                     }
@@ -117,9 +121,11 @@ public class PartyScript : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(2.0f);
-            if (!_room.ThereIsAWinner().Equals("NO WINNER"))
+            _winner = _room.ThereIsAWinner();
+            if (!_winner.Equals("NO WINNER")&&!_winner.Equals("ERROR")&&!_winner.Equals("ERROR. TIMEOUT")&&!_winner.Equals("ROOM NOT FOUND"))
             {
-                Debug.Log("Hola, mundo");
+                StopAllCoroutines();
+                GoEndGame();
             }
         }
     }
@@ -131,7 +137,7 @@ public class PartyScript : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
             if (!_player.IAmInRoom(_room.IdRoom).Equals("OK"))
             {
-                ExitParty();
+                OnClickBack();
             }
         }
     }
@@ -219,10 +225,15 @@ public class PartyScript : MonoBehaviour
             _player.IsHost = false;
             Memory.Save("player",_player);
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
         _room.ExitRoom(_player.Email);
         Room room = new Room();
         Memory.Save("room", room);
+    }
+
+    public void OnClickBack()
+    {
+        ExitParty();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
     }
 
     public void OnClickKickPlayer(int index)
@@ -232,5 +243,13 @@ public class PartyScript : MonoBehaviour
         {
             _player.KickAPlayer(playerToKick, _room.IdRoom);
         }
+    }
+
+    public void GoEndGame()
+    {
+        Memory.Save("winner",_winner);
+        Memory.Save("score",_score);
+        ExitParty();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Podium");
     }
 }
