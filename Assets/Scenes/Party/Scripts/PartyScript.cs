@@ -48,7 +48,7 @@ public class PartyScript : MonoBehaviour
     }
     private void ToggleStateChanged(Toggle toggle, bool state)
     {
-        if(Convert.ToInt32(toggle.GetComponentInChildren<Image>().name) == _currentCard)
+        if (Convert.ToInt32(toggle.GetComponentInChildren<Image>().name) == _currentCard)
         {
             toggle.isOn = true;
             _player.Board.Mark(_currentCard);
@@ -57,11 +57,11 @@ public class PartyScript : MonoBehaviour
 
             if (_player.Board.IsEmpty())
             {
-                Player.Patterns patterns = (Player.Patterns) Memory.Load("patterns");    
+                Player.Patterns patterns = (Player.Patterns) Memory.Load("patterns");
                 if (_player.HaveWon(patterns))
                 {
                     Debug.Log("YA GANASTE!!!!");
-                    if (_player.NotifyWon(_room.IdRoom,_score))
+                    if (_player.NotifyWon(_room.IdRoom, _score))
                     {
                         _score *= 3;
                     }
@@ -72,7 +72,7 @@ public class PartyScript : MonoBehaviour
                 if (_player.HaveWon())
                 {
                     Debug.Log("YA GANASTE!!!!");
-                    if (_player.NotifyWon(_room.IdRoom,_score))
+                    if (_player.NotifyWon(_room.IdRoom, _score))
                     {
                         _score *= 3;
                     }
@@ -83,6 +83,7 @@ public class PartyScript : MonoBehaviour
         {
             toggle.isOn = false;
         }
+        
     }
     private IEnumerator ChangeCard(float waitTime)
     {

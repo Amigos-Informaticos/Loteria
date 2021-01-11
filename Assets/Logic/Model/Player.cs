@@ -286,7 +286,7 @@ public class Player
 		kickPlayer.AddArgument("kicked_nickname",playerToKick);
 		tcpSocket.AddCommand(kickPlayer);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse();
+		string response = tcpSocket.GetResponse(true, 1000);
 		Debug.Log("Kick response: " + response);
 		return response;
 	}
@@ -299,7 +299,7 @@ public class Player
 		inRoom.AddArgument("room_id",roomId);
 		tcpSocket.AddCommand(inRoom);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse();
+		string response = tcpSocket.GetResponse(true, 1000);
 		Debug.Log(response);
 		return response;
 	}
