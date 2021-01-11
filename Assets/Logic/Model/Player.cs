@@ -249,7 +249,7 @@ public class Player
 		}
 		return won;
 	}
-
+	
 	public bool HaveWon(Patterns patterns)
 	{
 		int a = 0;
@@ -263,7 +263,7 @@ public class Player
 				int j = 0;
 				while (j < 5 && !isDifferent)
 				{
-					if (this.Board.Marks[i, j] && !patterns.Objective[a][i, j])
+					if (!this.Board.Marks[i, j] && patterns.Objective[a][i, j])
 					{
 						differenceCounter++;
 						isDifferent = true;
