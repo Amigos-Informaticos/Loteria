@@ -118,7 +118,7 @@ public class CreatePattern : MonoBehaviour
 		//player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
 		//player.Board.Pattern = ConvertToArray();
 		newPattern.Pattern = ConvertToArray();
-		if(gameModeName != "")
+		if(!string.IsNullOrEmpty(gameModeName))
         {
 	        this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffffff");
 	        if (!IsEmpty())
