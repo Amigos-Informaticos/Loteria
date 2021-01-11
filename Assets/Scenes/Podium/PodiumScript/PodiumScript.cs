@@ -17,7 +17,6 @@ public class PodiumScript : MonoBehaviour
         _player = (Player) Memory.Load("player");
         _winner = (string) Memory.Load("winner");
         _score = (int) Memory.Load("score");
-        
     }
 
     public void ConfigurePodium()
@@ -31,7 +30,6 @@ public class PodiumScript : MonoBehaviour
         {
             txtLoteria.text = Localization.GetMessage("Podium", "Lose");
             txtWinner.text = Localization.GetMessage("Podium", "The winner is") + _winner;
-            
         }
         txtScore.text = Localization.GetMessage("Podium", "Your score") + _score;
     }
