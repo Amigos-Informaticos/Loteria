@@ -312,6 +312,7 @@ public class Player
 		wonRound.AddArgument("user_email",Email);
 		wonRound.AddArgument("score", score.ToString());
 		wonRound.AddArgument("room_id",roomId);
+		wonRound.AddArgument("score",score.ToString());
 		tcpSocket.AddCommand(wonRound);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse();
