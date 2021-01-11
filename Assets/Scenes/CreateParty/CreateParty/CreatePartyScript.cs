@@ -82,17 +82,15 @@ public class CreatePartyScript : MonoBehaviour
     public void OnClickGoToLobby()
     {        
         InstanceRoom();
-        Debug.Log(this.room.ToString());
         this.room.MakeRoom();
+        Debug.Log(this.room.ToString());
         if (EvaluateResponseMakeRoom())
         {
-            this.room.GetPlayersInRoom();
             Memory.Save("room", this.room);
             Player player = (Player) Memory.Load("player");
             player.IsHost = true;
             player.Board.GameMode = this.room.GameMode;
-            //TODO refactorizar
-            
+
             List<bool[,]> listPatterns = player.Board.GetPattern();
             if (listPatterns.Count > 1)
             {

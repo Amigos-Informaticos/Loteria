@@ -234,7 +234,7 @@ public class PartyScript : MonoBehaviour
     public void OnClickBack()
     {
         ExitRoom();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
     }
 
     public void OnClickKickPlayer(int index)
