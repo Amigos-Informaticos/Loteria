@@ -31,9 +31,9 @@ public class CreatePattern : MonoBehaviour
 			this.lblGameModeName.text = Localization.GetMessage("CreatePattern", "GameMode");
 			this.phGameModeName.text = Localization.GetMessage("CreatePattern","GameModePlaceHolder");
 		}
-        catch (KeyNotFoundException exception)
+        catch (KeyNotFoundException keyNotFoundException)
         {
-			Debug.LogError(exception);
+			Debug.LogError(keyNotFoundException);
         }
 		FillEmptyPattern();
 		foreach (Toggle toggle in toggles)
@@ -55,6 +55,18 @@ public class CreatePattern : MonoBehaviour
 			this._pattern.Add(false);
 			count++;
 		}
+	}
+
+	private bool IsEmpty()
+	{
+		bool isEmpty = true;
+		int count = 0;
+		while (count < 25 && isEmpty)
+		{
+			isEmpty = !this._pattern[count];
+			count++;
+		}
+		return isEmpty;
 	}
 
 	private void PrintPattern()
@@ -97,36 +109,30 @@ public class CreatePattern : MonoBehaviour
 		return converted;
     }
 
-	private void PrintArrayBi(bool[,] matrix)
-    {
-		StringBuilder stringBuilder = new StringBuilder();
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				stringBuilder.Append(Convert.ToInt32(matrix[i, j]) + " ");
-			}
-			stringBuilder.Append("\n");
-		}
-		this.showPatternConverted.text = stringBuilder.ToString();
-	}
-
 	public void OnClickSavePattern()
 	{
+		string gameModeName = Regex.Replace(txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
 		Player player = (Player) Memory.Load("player");
 		player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
 		player.Board.Pattern = ConvertToArray();
 		newPattern.Pattern = ConvertToArray();
-		if(!string.IsNullOrEmpty(this.txtGameModeName.text))
+		if(!string.IsNullOrEmpty(gameModeName))
         {
-			player.Board.SavePattern(((Player)Memory.Load("player")).Email);
+	        this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffffff");
+	        if (!IsEmpty())
+	        {
+		        player.Board.SavePattern(((Player)Memory.Load("player")).Email);   
+	        }
+	        else
+	        {
+		        this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "EmptyPattern");
+	        }
 		}
 		else
 		{
 			this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffbaba");
 		}
 		PrintPattern();
-		this.showPatternConverted.text = Util.PrintArrayBi(player.Board.Pattern);
 	}
 	public void OnClickClearPattern()
 	{
