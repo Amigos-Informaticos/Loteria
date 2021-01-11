@@ -249,7 +249,7 @@ public class Player
 		}
 		return won;
 	}
-
+	
 	public bool HaveWon(Patterns patterns)
 	{
 		int a = 0;
@@ -263,7 +263,7 @@ public class Player
 				int j = 0;
 				while (j < 5 && !isDifferent)
 				{
-					if (this.Board.Marks[i, j] && !patterns.Objective[a][i, j])
+					if (!this.Board.Marks[i, j] && patterns.Objective[a][i, j])
 					{
 						differenceCounter++;
 						isDifferent = true;
@@ -286,7 +286,7 @@ public class Player
 		kickPlayer.AddArgument("kicked_nickname",playerToKick);
 		tcpSocket.AddCommand(kickPlayer);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse();
+		string response = tcpSocket.GetResponse(true, 1000);
 		Debug.Log("Kick response: " + response);
 		return response;
 	}
@@ -299,7 +299,7 @@ public class Player
 		inRoom.AddArgument("room_id",roomId);
 		tcpSocket.AddCommand(inRoom);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse();
+		string response = tcpSocket.GetResponse(true, 1000);
 		Debug.Log(response);
 		return response;
 	}
@@ -310,6 +310,7 @@ public class Player
 		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
 		Command wonRound = new Command("won_round");
 		wonRound.AddArgument("user_email",Email);
+		wonRound.AddArgument("score", score.ToString());
 		wonRound.AddArgument("room_id",roomId);
 		wonRound.AddArgument("score",score.ToString());
 		tcpSocket.AddCommand(wonRound);

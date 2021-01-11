@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -39,7 +39,6 @@ public class PartyScript : MonoBehaviour
             Toggle captured = toggle;
             toggle.onValueChanged.AddListener((value) => ToggleStateChanged(captured, value));
         }
-        
         IEnumerator coroutine = ChangeCard(_room.Speed);
         IEnumerator chatCoroutine = UpdateChat();
         IEnumerator waitingForPlayers = WaitingForPlayers();
@@ -53,7 +52,7 @@ public class PartyScript : MonoBehaviour
     }
     private void ToggleStateChanged(Toggle toggle, bool state)
     {
-        if(Convert.ToInt32(toggle.GetComponentInChildren<Image>().name) == _currentCard)
+        if (Convert.ToInt32(toggle.GetComponentInChildren<Image>().name) == _currentCard)
         {
             toggle.isOn = true;
             _player.Board.Mark(_currentCard);
@@ -62,11 +61,11 @@ public class PartyScript : MonoBehaviour
 
             if (_player.Board.IsEmpty())
             {
-                Player.Patterns patterns = (Player.Patterns) Memory.Load("patterns");    
+                Player.Patterns patterns = (Player.Patterns) Memory.Load("patterns");
                 if (_player.HaveWon(patterns))
                 {
                     Debug.Log("YA GANASTE!!!!");
-                    if (_player.NotifyWon(_room.IdRoom,_score))
+                    if (_player.NotifyWon(_room.IdRoom, _score))
                     {
                         _score *= 3;
                     }
@@ -77,7 +76,7 @@ public class PartyScript : MonoBehaviour
                 if (_player.HaveWon())
                 {
                     Debug.Log("YA GANASTE!!!!");
-                    if (_player.NotifyWon(_room.IdRoom,_score))
+                    if (_player.NotifyWon(_room.IdRoom, _score))
                     {
                         _score *= 3;
                     }
@@ -108,7 +107,7 @@ public class PartyScript : MonoBehaviour
             if (_room.GetPlayersInRoom())
             {
                 StartPlayerList();
-                SetPlayerList();    
+                SetPlayerList();
             }
             else
             {
@@ -197,7 +196,6 @@ public class PartyScript : MonoBehaviour
             new Vector2(0.5f, 0.5f));
         return sprite;
     }
-
     public void GenerateBoard()
     {
         int idBoardCard = 0;
@@ -211,7 +209,6 @@ public class PartyScript : MonoBehaviour
             }
         }
     }
-
     public void OnClickSendMessage()
     {
         Room room = (Room) Memory.Load("room");

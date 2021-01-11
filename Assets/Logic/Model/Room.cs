@@ -317,7 +317,7 @@ public class Room
 		tcpSocket.AddCommand(thereIsAWinner);
 		tcpSocket.SendCommand();
 		
-		string response = tcpSocket.GetResponse();
+		string response = tcpSocket.GetResponse(true, 1000);
 		Debug.Log("There is a winner: " + response);
 		return response;
 	}
