@@ -143,8 +143,6 @@ public class PartyScript : MonoBehaviour
         }
     }
     
-    
-
     public void StartPlayerList()
     {
         for (int i = 0; i < _room.NumberPlayers; i++)
