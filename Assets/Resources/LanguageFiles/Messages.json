@@ -320,5 +320,31 @@
 			"Español": "Sin jugador",
 			"English": "No Player"
 		}
+	},
+	"Podium": {
+		"Win": {
+			"Español": "¡Loteria!",
+			"English": "Loteria!"
+		},
+		"Lose": {
+			"Español": "Perdiste",
+			"English": "You lose"
+		},
+		"You are the winner": {
+			"Español": "¡Eres el ganador!",
+			"English": "You are the winner!"
+		},
+		"The winner is": {
+			"Español": "El ganador es ",
+			"English": "The winner is "
+		},
+		"Your score": {
+			"Español": "Tu puntuacion es ",
+			"English": "Your score is "
+		},
+		"Exit": {
+			"Español": "Salir",
+			"English": "Exit"
+		}
 	}
 }

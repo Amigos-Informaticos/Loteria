@@ -27,6 +27,7 @@ public class PartyScript : MonoBehaviour
     {
         _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
+        _score = 0;
         _cardOnScreen = 0;
         _cards = Board.GetSortedDeck(_room.IdRoom, _player.Email);
         GenerateBoard();
@@ -40,11 +41,13 @@ public class PartyScript : MonoBehaviour
         IEnumerator coroutine = ChangeCard(_room.Speed);
         IEnumerator chatCoroutine = UpdateChat();
         IEnumerator waitingForPlayers = WaitingForPlayers();
-        IEnumerator chekIfKicked = CheckIfKicked();
+        IEnumerator checkIfKicked = CheckIfKicked();
+        IEnumerator checkIfWinner = CheckIfWinner();
         StartCoroutine(coroutine);
         StartCoroutine(chatCoroutine);
         StartCoroutine(waitingForPlayers);
-        StartCoroutine(chekIfKicked);
+        StartCoroutine(checkIfKicked);
+        StartCoroutine(checkIfWinner);
     }
     private void ToggleStateChanged(Toggle toggle, bool state)
     {
@@ -119,7 +122,7 @@ public class PartyScript : MonoBehaviour
         {
             yield return new WaitForSeconds(2.0f);
             _winner = _room.ThereIsAWinner();
-            if (!_winner.Equals("NO WINNER"))
+            if (!_winner.Equals("NO WINNER")&&!_winner.Equals("ERROR")&&!_winner.Equals("ERROR. TIMEOUT")&&!_winner.Equals("ROOM NOT FOUND"))
             {
                 StopAllCoroutines();
                 GoEndGame();

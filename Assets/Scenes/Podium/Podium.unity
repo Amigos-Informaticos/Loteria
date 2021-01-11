@@ -121,6 +121,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &313169600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 313169602}
+  - component: {fileID: 313169601}
+  m_Layer: 0
+  m_Name: PodiumScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &313169601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313169600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fcea6562a120b748b401d4819781593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtLoteria: {fileID: 2034484443}
+  txtWinner: {fileID: 1894680230}
+  txtScore: {fileID: 394741221}
+  btnExit: {fileID: 949096903}
+--- !u!4 &313169602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313169600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 534.87604, y: 283.90744, z: -5918.1875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &394741219
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +180,7 @@ GameObject:
   - component: {fileID: 394741222}
   - component: {fileID: 394741221}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: txtScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -688,7 +735,7 @@ GameObject:
   - component: {fileID: 1894680231}
   - component: {fileID: 1894680230}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: txtWinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -845,7 +892,7 @@ GameObject:
   - component: {fileID: 1908322869}
   - component: {fileID: 1908322868}
   m_Layer: 5
-  m_Name: Button
+  m_Name: btnSalir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -868,7 +915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000005722, y: -175}
+  m_AnchoredPosition: {x: -0, y: -175}
   m_SizeDelta: {x: 442.7835, y: 63.29043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1908322868
@@ -913,7 +960,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1908322869}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 313169601}
+        m_MethodName: OnClickExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1908322869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1047,7 +1105,7 @@ GameObject:
   - component: {fileID: 2034484444}
   - component: {fileID: 2034484443}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtLoteria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
