@@ -10,12 +10,14 @@ public class PodiumScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtScore;
     [SerializeField] private TextMeshProUGUI btnExit;
     private Player _player;
+    private Room _room;
     private int _score;
     private string _winner;
     
     void Start()
     {
         _player = (Player) Memory.Load("player");
+        _room = (Room) Memory.Load("room");
         _winner = (string) Memory.Load("winner");
         _score = (int) Memory.Load("score");
         ConfigurePodium();
@@ -39,6 +41,9 @@ public class PodiumScript : MonoBehaviour
 
     public void OnClickExit()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
+        _player.Board = new Board();
+        Memory.Save("player",_player);
+        _room.StopParty(_player.Email);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
     }
 }

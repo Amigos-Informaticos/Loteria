@@ -103,7 +103,7 @@ public class PartyScript : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(8.0f);
             if (_room.GetPlayersInRoom())
             {
                 StartPlayerList();
@@ -111,7 +111,7 @@ public class PartyScript : MonoBehaviour
             }
             else
             {
-                ExitParty();
+                PrepareBackToLobby();
             }
         }
     }
@@ -137,10 +137,12 @@ public class PartyScript : MonoBehaviour
             yield return new WaitForSeconds(2.0f);
             if (!_player.IAmInRoom(_room.IdRoom).Equals("OK"))
             {
-                OnClickBack();
+                GetKicked();               
             }
         }
     }
+    
+    
 
     public void StartPlayerList()
     {
@@ -173,6 +175,16 @@ public class PartyScript : MonoBehaviour
                 counter++;
             }
         }
+    }
+
+    private void GetKicked()
+    {
+        _room.ExitRoom(_player.Email);
+        _player.Board = new Board();
+        Memory.Save("player",_player);
+        Room room = new Room();
+        Memory.Save("room",room);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
     }
 
     public void ChangeSpriteOfCard(int index)
@@ -218,22 +230,18 @@ public class PartyScript : MonoBehaviour
         this.txtChat.text = "";
     }
 
-    public void ExitParty()
+    public void PrepareBackToLobby()
     {
-        if (_player.IsHost)
-        {
-            _player.IsHost = false;
-            Memory.Save("player",_player);
-        }
-        _room.ExitRoom(_player.Email);
-        Room room = new Room();
-        Memory.Save("room", room);
+        _player.Board = new Board();
+        Memory.Save("player",_player);
+        _room.StopParty(_player.Email);
     }
 
     public void OnClickBack()
     {
-        ExitParty();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
+        
+        PrepareBackToLobby();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
     }
 
     public void OnClickKickPlayer(int index)
@@ -249,7 +257,7 @@ public class PartyScript : MonoBehaviour
     {
         Memory.Save("winner",_winner);
         Memory.Save("score",_score);
-        ExitParty();
+        PrepareBackToLobby();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Podium");
     }
 }

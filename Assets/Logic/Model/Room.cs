@@ -231,6 +231,7 @@ public class Room
 	{
 		bool done = true;
 		string response = GetUsersInRoom();
+		Debug.Log("GetPlayersInRoom: " + response);
 		if (response.Equals("ERROR")||response.Equals("ROOM NOT FOUND"))
 		{
 			done = false;
@@ -239,7 +240,6 @@ public class Room
 		{
 			Dictionary<string, Dictionary<string, string>> playerList =
 				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
-			Debug.Log(response);
 			Players = new List<PlayerStruct>();
 			for (int i = 0; i < playerList.Count; i++)
 			{
@@ -321,4 +321,17 @@ public class Room
 		Debug.Log("There is a winner: " + response);
 		return response;
 	}
+
+	public void StopParty(string playerEmail)
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command stopParty = new Command("stop_party");
+		stopParty.AddArgument("user_email",playerEmail);
+		stopParty.AddArgument("room_id",IdRoom);
+		tcpSocket.AddCommand(stopParty);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse();
+		Debug.Log(response);
+	}	
+	
 }

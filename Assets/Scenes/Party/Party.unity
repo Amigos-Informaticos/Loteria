@@ -5848,7 +5848,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 867023798}
-        m_MethodName: ExitParty
+        m_MethodName: OnClickBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12158,7 +12158,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 575717560}
   m_HandleRect: {fileID: 575717558}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 5
   m_OnValueChanged:
