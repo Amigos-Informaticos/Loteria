@@ -11,7 +11,6 @@ public class LobbyScript : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI txtLetsGo;
 	[SerializeField] private TextMeshProUGUI feedbackMessage;
 	[SerializeField] private GameObject btnLetsGo;
-	[SerializeField] private GameObject[] btnKick = new GameObject[4];
 	[SerializeField] private TextMeshProUGUI btnBack;
 	private Room _room;
 	private Player _player;
@@ -39,17 +38,16 @@ public class LobbyScript : MonoBehaviour
 		StartCoroutine(waitingForStart);
 	}
 
-	public void ConfigureWindow()
-	{
-		if (!_player.IsHost)
-		{
-			for (int i = 0; i < 4; i++)
-			{
-				btnKick[i].SetActive(false);
-				btnLetsGo.SetActive(false);
-			}
-		}
-	}
+    public void ConfigureWindow()
+    {
+	    if (!_player.IsHost)
+	    {
+		    for (int i = 0; i < 4; i++)
+		    {
+			    btnLetsGo.SetActive(false);
+		    }
+	    }
+    }
 
 	public void StartPlayerList()
 	{

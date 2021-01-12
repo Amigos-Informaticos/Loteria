@@ -287,6 +287,7 @@ public class Player
 		tcpSocket.AddCommand(kickPlayer);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 1000);
+		tcpSocket.Close();
 		Debug.Log("Kick response: " + response);
 		return response;
 	}
@@ -299,7 +300,8 @@ public class Player
 		inRoom.AddArgument("room_id",roomId);
 		tcpSocket.AddCommand(inRoom);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true, 1000);
+		string response = tcpSocket.GetResponse(true, 2000);
+		tcpSocket.Close();
 		Debug.Log(response);
 		return response;
 	}
@@ -315,12 +317,27 @@ public class Player
 		wonRound.AddArgument("score",score.ToString());
 		tcpSocket.AddCommand(wonRound);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse();
+		string response = tcpSocket.GetResponse(true,1000);
+		tcpSocket.Close();
 		Debug.Log("Notify Won: " + response);
 		if (response.Equals("OK"))
 		{
 			won = true;
 		}
 		return won;
+	}
+
+	public string SaveScore(int score)
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command saveScore = new Command("save_score");
+		saveScore.AddArgument("user_email",Email);
+		saveScore.AddArgument("score",score.ToString());
+		tcpSocket.AddCommand(saveScore);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse(true,2000f);
+		tcpSocket.Close();
+		Debug.Log("Save score: " + response);
+		return response;
 	}
 }

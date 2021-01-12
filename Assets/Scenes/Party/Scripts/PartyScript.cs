@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +16,9 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
     [SerializeField] private TextMeshProUGUI txtFeedBackMessage;
     [SerializeField] private TextMeshProUGUI txtScore;
+    [SerializeField] private TextMeshProUGUI txtScoreWord;
+    [SerializeField] private TextMeshProUGUI txtBack;
+    [SerializeField] private TextMeshProUGUI txtWriteYourMessage;
     private Player _player;
     private Room _room;
     private int[] _cards = new int[54];
@@ -25,6 +30,17 @@ public class PartyScript : MonoBehaviour
 
     void Start()
     {
+        try
+        {
+            txtScoreWord.text = Localization.GetMessage("Party", "Score");
+            txtBack.text = Localization.GetMessage("Party", "Back");
+            txtWriteYourMessage.text = Localization.GetMessage("Party", "Write your message");
+        }
+        catch (KeyNotFoundException fileNotFoundException)
+        {
+            Debug.Log(fileNotFoundException);
+        }
+        
         _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
         _score = 0;
@@ -90,13 +106,14 @@ public class PartyScript : MonoBehaviour
     }
     private IEnumerator ChangeCard(float waitTime)
     {
-        while (true)
+        while (_cardOnScreen < 54)
         {
             yield return new WaitForSeconds(waitTime);
             ChangeSpriteOfCard(_cards[_cardOnScreen]);
             Debug.Log(_cardOnScreen);
             _cardOnScreen++;
         }
+        GoToPodium();
     }
 
     public IEnumerator WaitingForPlayers()
@@ -234,7 +251,7 @@ public class PartyScript : MonoBehaviour
     public void OnClickBack()
     {
         ExitRoom();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LetsPlay");
     }
 
     public void OnClickKickPlayer(int index)
@@ -248,6 +265,7 @@ public class PartyScript : MonoBehaviour
 
     public void GoToPodium()
     {
+        _player.SaveScore(_score);
         Memory.Save("winner",_winner);
         Memory.Save("score",_score);
         ExitRoom();
