@@ -13,7 +13,6 @@ namespace Tests
             roomTest.Host.Email = "efrain_escuela@outlook.com";
             roomTest.GameMode = "Classic";
             roomTest.NumberPlayers = 4;
-            roomTest.Rounds = 1;
             roomTest.Speed = 2;
             Assert.AreNotEqual("ERROR", roomTest.MakeRoom());
         }
