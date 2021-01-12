@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -18,7 +19,14 @@ public class PodiumScript : MonoBehaviour
         _player = (Player) Memory.Load("player");
         _winner = (string) Memory.Load("winner");
         _score = (int) Memory.Load("score");
-        ConfigurePodium();
+        try
+        {
+            ConfigurePodium();
+        }
+        catch (KeyNotFoundException fileNotFoundException)
+        {
+            Debug.Log(fileNotFoundException);
+        }
     }
 
     public void ConfigurePodium()

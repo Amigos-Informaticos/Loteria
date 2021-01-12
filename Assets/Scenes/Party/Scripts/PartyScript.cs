@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
@@ -29,9 +30,17 @@ public class PartyScript : MonoBehaviour
 
     void Start()
     {
-        txtScoreWord.text = Localization.GetMessage("Party", "Score");
-        txtBack.text = Localization.GetMessage("Party", "Back");
-        txtWriteYourMessage.text = Localization.GetMessage("Party", "Write your message");
+        try
+        {
+            txtScoreWord.text = Localization.GetMessage("Party", "Score");
+            txtBack.text = Localization.GetMessage("Party", "Back");
+            txtWriteYourMessage.text = Localization.GetMessage("Party", "Write your message");
+        }
+        catch (KeyNotFoundException fileNotFoundException)
+        {
+            Debug.Log(fileNotFoundException);
+        }
+        
         _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
         _score = 0;
