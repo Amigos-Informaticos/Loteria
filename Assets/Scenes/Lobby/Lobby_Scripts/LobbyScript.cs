@@ -65,7 +65,7 @@ public class LobbyScript : MonoBehaviour
 	        }
 	        else
 	        {
-		        OnClickBackToLetsPlay();
+		        feedbackMessage.text = Localization.GetMessage("Lobby", "Net error");
 	        }
         }
     }

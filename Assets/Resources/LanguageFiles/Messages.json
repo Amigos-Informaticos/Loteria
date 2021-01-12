@@ -295,6 +295,10 @@
 		"Back": {
 			"Español": "Atrás",
 			"English": "Back"
+		},
+		"Net error": {
+			"Español": "Fallo en la conexión",
+			"English": "Connection error"
 		}
 	},
 	"GlobalScore": {
