@@ -8,9 +8,9 @@ using UnityEngine.UI;
 
 public class PartyScript : MonoBehaviour
 {
-    [SerializeField] private Image[] board = new Image[25];
+    [SerializeField] private Image[] imgBoard = new Image[25];
     [SerializeField] private Toggle[] toggles = new Toggle[25];
-    [SerializeField] private Image cardToShow;
+    [SerializeField] private Image imgCardToShow;
     [SerializeField] private TextMeshProUGUI taChat;
     [SerializeField] private TextMeshProUGUI txtChat;
     [SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
@@ -200,9 +200,9 @@ public class PartyScript : MonoBehaviour
 
     public void ChangeSpriteOfCard(int index)
     {
-        cardToShow.GetComponent<Image>().sprite = CreateSpriteOfACard(index);
-        cardToShow.GetComponent<Image>().name = index.ToString();
-        Debug.Log("changedSprite:"+cardToShow.GetComponent<Image>().name);
+        imgCardToShow.GetComponent<Image>().sprite = CreateSpriteOfACard(index);
+        imgCardToShow.GetComponent<Image>().name = index.ToString();
+        Debug.Log("changedSprite:"+imgCardToShow.GetComponent<Image>().name);
         _currentCard = index;
     }
 
@@ -220,8 +220,8 @@ public class PartyScript : MonoBehaviour
         {
             for (int j = 0; j < 5; j++)
             {
-                board[idBoardCard].GetComponent<Image>().sprite = this.CreateSpriteOfACard(_player.Board.Cards[i, j]);
-                board[idBoardCard].GetComponent<Image>().name = _player.Board.Cards[i, j].ToString();
+                imgBoard[idBoardCard].GetComponent<Image>().sprite = this.CreateSpriteOfACard(_player.Board.Cards[i, j]);
+                imgBoard[idBoardCard].GetComponent<Image>().name = _player.Board.Cards[i, j].ToString();
                 idBoardCard++;
             }
         }

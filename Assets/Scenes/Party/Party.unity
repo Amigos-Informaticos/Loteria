@@ -4897,7 +4897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9cf72126b786d478bfed4e02359ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  board:
+  imgBoard:
   - {fileID: 2090851463}
   - {fileID: 544708566}
   - {fileID: 1767696825}
@@ -4949,7 +4949,7 @@ MonoBehaviour:
   - {fileID: 1950441292}
   - {fileID: 7457365}
   - {fileID: 440110953}
-  cardToShow: {fileID: 1204031647}
+  imgCardToShow: {fileID: 1204031647}
   taChat: {fileID: 522405449}
   txtChat: {fileID: 1546980339}
   txtPlayers:

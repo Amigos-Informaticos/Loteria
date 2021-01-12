@@ -229,7 +229,7 @@ public class Room
 		bool done = true;
 		string response = GetUsersInRoom();
 		Debug.Log("GetPlayersInRoom: " + response);
-		if (response.Equals("ERROR")||response.Equals("ROOM NOT FOUND"))
+		if (response.Equals("ERROR")||response.Equals("ROOM NOT FOUND")||response.Equals("ERROR. TIMEOUT"))
 		{
 			done = false;
 		}
