@@ -335,7 +335,7 @@ public class Player
 		saveScore.AddArgument("score",score.ToString());
 		tcpSocket.AddCommand(saveScore);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true,2000f);
+		string response = tcpSocket.GetResponse(true,2000);
 		tcpSocket.Close();
 		Debug.Log("Save score: " + response);
 		return response;
