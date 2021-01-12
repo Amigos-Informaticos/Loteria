@@ -248,6 +248,7 @@ public class PartyScript : MonoBehaviour
 
     public void GoToPodium()
     {
+        _player.SaveScore(_score);
         Memory.Save("winner",_winner);
         Memory.Save("score",_score);
         ExitRoom();
