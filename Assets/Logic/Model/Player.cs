@@ -300,7 +300,7 @@ public class Player
 		inRoom.AddArgument("room_id",roomId);
 		tcpSocket.AddCommand(inRoom);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true, 1000);
+		string response = tcpSocket.GetResponse(true, 2000);
 		tcpSocket.Close();
 		Debug.Log(response);
 		return response;
@@ -317,7 +317,7 @@ public class Player
 		wonRound.AddArgument("score",score.ToString());
 		tcpSocket.AddCommand(wonRound);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse();
+		string response = tcpSocket.GetResponse(true,1000);
 		tcpSocket.Close();
 		Debug.Log("Notify Won: " + response);
 		if (response.Equals("OK"))
@@ -335,7 +335,7 @@ public class Player
 		saveScore.AddArgument("score",score.ToString());
 		tcpSocket.AddCommand(saveScore);
 		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse();
+		string response = tcpSocket.GetResponse(true,2000f);
 		tcpSocket.Close();
 		Debug.Log("Save score: " + response);
 		return response;
