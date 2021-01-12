@@ -316,6 +316,18 @@
 		}
 	},
 	"Party": {
+		"Score": {
+			"Español": "Puntuacion",
+			"English": "Score"
+		},
+		"Back": {
+			"Español": "Atras",
+			"English": "Back"
+		},
+		"Write your message": {
+			"Español": "Escribe tu mensaje aqui",
+			"English": "Write your message here"
+		},
 		"NoPlayer": {
 			"Español": "Sin jugador",
 			"English": "No Player"
@@ -337,6 +349,10 @@
 		"The winner is": {
 			"Español": "El ganador es ",
 			"English": "The winner is "
+		},
+		"No winner": {
+			"Español": "Nadie gano",
+			"English": "Nobody won"
 		},
 		"Your score": {
 			"Español": "Tu puntuacion es ",

@@ -28,6 +28,11 @@ public class PodiumScript : MonoBehaviour
             txtLoteria.text = Localization.GetMessage("Podium", "Win");
             txtWinner.text = Localization.GetMessage("Podium", "You are the winner");
         }
+        else if (_winner.Equals("NO WINNER"))
+        {
+            txtLoteria.text = Localization.GetMessage("Podium", "Lose");
+            txtLoteria.text = Localization.GetMessage("Podium", "No winner");
+        }
         else
         {
             txtLoteria.text = Localization.GetMessage("Podium", "Lose");

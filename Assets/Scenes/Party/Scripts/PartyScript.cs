@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,9 @@ public class PartyScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] txtPlayers = new TextMeshProUGUI[4];
     [SerializeField] private TextMeshProUGUI txtFeedBackMessage;
     [SerializeField] private TextMeshProUGUI txtScore;
+    [SerializeField] private TextMeshProUGUI txtScoreWord;
+    [SerializeField] private TextMeshProUGUI txtBack;
+    [SerializeField] private TextMeshProUGUI txtWriteYourMessage;
     private Player _player;
     private Room _room;
     private int[] _cards = new int[54];
@@ -25,6 +29,9 @@ public class PartyScript : MonoBehaviour
 
     void Start()
     {
+        txtScoreWord.text = Localization.GetMessage("Party", "Score");
+        txtBack.text = Localization.GetMessage("Party", "Back");
+        txtWriteYourMessage.text = Localization.GetMessage("Party", "Write your message");
         _room = (Room) Memory.Load("room");
         _player = (Player) Memory.Load("player");
         _score = 0;
