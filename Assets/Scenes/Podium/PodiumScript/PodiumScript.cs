@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -18,7 +19,14 @@ public class PodiumScript : MonoBehaviour
         _player = (Player) Memory.Load("player");
         _winner = (string) Memory.Load("winner");
         _score = (int) Memory.Load("score");
-        ConfigurePodium();
+        try
+        {
+            ConfigurePodium();
+        }
+        catch (KeyNotFoundException fileNotFoundException)
+        {
+            Debug.Log(fileNotFoundException);
+        }
     }
 
     public void ConfigurePodium()
@@ -27,6 +35,11 @@ public class PodiumScript : MonoBehaviour
         {
             txtLoteria.text = Localization.GetMessage("Podium", "Win");
             txtWinner.text = Localization.GetMessage("Podium", "You are the winner");
+        }
+        else if (_winner.Equals("NO WINNER"))
+        {
+            txtLoteria.text = Localization.GetMessage("Podium", "Lose");
+            txtLoteria.text = Localization.GetMessage("Podium", "No winner");
         }
         else
         {

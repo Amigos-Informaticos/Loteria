@@ -79,5 +79,17 @@ namespace Tests
 			Assert.IsTrue(player.GetPlayerFromServer());
 			Debug.Log(player.NickName);
 		}
+
+		[Test]
+		public void WriteScore()
+		{
+			Player playerForTest = new Player
+			{
+				Email = "efrain_escuela@outlook.com"
+			};
+			int score = 1000;
+			string response = playerForTest.SaveScore(score);
+			Assert.IsTrue(response.Equals("OK"));
+		}
 	}
 }
