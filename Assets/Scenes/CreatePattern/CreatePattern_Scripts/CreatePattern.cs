@@ -20,7 +20,7 @@ public class CreatePattern : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtGameModeName;
     [SerializeField] private Image imgGameMode;
     private readonly List<bool> _pattern = new List<bool>();
-    private readonly Board newPattern = new Board();
+    private readonly Board _newPattern = new Board();
 
     void Start()
     {
@@ -122,7 +122,7 @@ public class CreatePattern : MonoBehaviour
         Player player = (Player) Memory.Load("player");
         player.Board.GameMode = Regex.Replace(this.txtGameModeName.text, @"[^\u0000-\u007F]+", string.Empty);
         player.Board.Pattern = ConvertToArray();
-        newPattern.Pattern = ConvertToArray();
+        _newPattern.Pattern = ConvertToArray();
         if (!string.IsNullOrEmpty(gameModeName))
         {
             this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffffff");
