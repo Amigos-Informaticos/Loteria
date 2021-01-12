@@ -17,7 +17,6 @@ namespace Assets.Tests
             roomTest.Host.Email = "alexisao@hotmail.com";
             roomTest.GameMode = "Cutom";
             roomTest.NumberPlayers = 4;
-            roomTest.Rounds = 1;
             roomTest.Speed = 2;
             string idRoom = "c1c0f";           
             int[] sortedDeck = Board.GetSortedDeck(idRoom, "alexis@hotmail.com");
