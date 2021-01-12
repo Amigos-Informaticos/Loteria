@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
@@ -7,11 +9,19 @@ public class MainMenuScript : MonoBehaviour
 	public TextMeshProUGUI btnSignUp;
 	public TextMeshProUGUI btnExit;
 
-	public void Awake()
+	public void Start()
 	{
-		this.btnLogin.text = Localization.GetMessage("MainMenu", "Login");
-		this.btnSignUp.text = Localization.GetMessage("MainMenu", "SignUp");
-		this.btnExit.text = Localization.GetMessage("MainMenu", "Exit");
+		try
+		{
+			this.btnLogin.text = Localization.GetMessage("MainMenu", "Login");
+			this.btnSignUp.text = Localization.GetMessage("MainMenu", "SignUp");
+			this.btnExit.text = Localization.GetMessage("MainMenu", "Exit");
+		}
+		catch (KeyNotFoundException keyNotFoundException)
+		{
+			Debug.Log(keyNotFoundException);
+		}
+		
 	}
 
 	public void GoToSignIn()

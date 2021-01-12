@@ -13,10 +13,18 @@ public class SignedIn : MonoBehaviour
 
     private void Start()
     {
-        this.btnPlay.text = Localization.GetMessage("SignedIn", "Play");
-        this.btnScore.text = Localization.GetMessage("SignedIn", "Score");
-        this.btnSettings.text = Localization.GetMessage("SignedIn", "Settings");
-        this.btnExit.text = Localization.GetMessage("SignedIn", "Exit");
+        try
+        {
+            this.btnPlay.text = Localization.GetMessage("SignedIn", "Play");
+            this.btnScore.text = Localization.GetMessage("SignedIn", "Score");
+            this.btnSettings.text = Localization.GetMessage("SignedIn", "Settings");
+            this.btnExit.text = Localization.GetMessage("SignedIn", "Exit");
+        }
+        catch (KeyNotFoundException keyNotFoundException)
+        {
+            Console.WriteLine(keyNotFoundException);
+        }
+        
     }
 
     public void GoToPlay()

@@ -15,18 +15,25 @@ public class CreatePartyScript : MonoBehaviour
     [SerializeField] private TMP_Dropdown dpSpeed;
     [SerializeField] private TextMeshProUGUI txtFeedBackMessage;
     private List<TMP_Dropdown.OptionData> gameModeOptions;
-    private readonly Room room = new Room();   
-    private int gameModeSelectedIndex;
-    private int numberPlayers = 2;
-    private int speed = 3;
+    private readonly Room _room = new Room();   
+    private int _gameModeSelectedIndex;
+    private int _numberPlayers = 2;
+    private int _speed = 3;
     private Player _player;
     void Start()
     {
-        this.txtPlayers.text = Localization.GetMessage("CreateParty", "Players");
-        this.txtGameMode.text = Localization.GetMessage("CreateParty", "GameMode");
-        this.txtSpeed.text = Localization.GetMessage("CreateParty", "Speed");
-        this.btnCreate.text = Localization.GetMessage("CreateParty", "Create");
-        this.btnBack.text = Localization.GetMessage("CreateParty", "Back");
+        try
+        {
+            this.txtPlayers.text = Localization.GetMessage("CreateParty", "Players");
+            this.txtGameMode.text = Localization.GetMessage("CreateParty", "GameMode");
+            this.txtSpeed.text = Localization.GetMessage("CreateParty", "Speed");
+            this.btnCreate.text = Localization.GetMessage("CreateParty", "Create");
+            this.btnBack.text = Localization.GetMessage("CreateParty", "Back");
+        }
+        catch (KeyNotFoundException fileNotFoundException)
+        {
+            Debug.Log(fileNotFoundException);
+        }
         this.gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;
         _player = (Player) Memory.Load("player");
         InstanceRoom();
@@ -37,7 +44,7 @@ public class CreatePartyScript : MonoBehaviour
     {
         try
         {
-            List<string> gameModes = this.room.GetGameModes();
+            List<string> gameModes = this._room.GetGameModes();
             if (gameModes != null)
             {
                 foreach (string gameMode in gameModes)
@@ -54,17 +61,17 @@ public class CreatePartyScript : MonoBehaviour
 
     public void OnValueChangedGameMode()
     {
-        this.gameModeSelectedIndex = this.dpGameMode.value;
-        Debug.Log(this.gameModeSelectedIndex);
-        Debug.Log(gameModeOptions[this.gameModeSelectedIndex].text);
+        this._gameModeSelectedIndex = this.dpGameMode.value;
+        Debug.Log(this._gameModeSelectedIndex);
+        Debug.Log(gameModeOptions[this._gameModeSelectedIndex].text);
     }
     public void OnValueChangedPlayers()
     {
-        this.numberPlayers = this.dpPlayers.value + 2;
+        this._numberPlayers = this.dpPlayers.value + 2;
     }
     public void OnValueChangedSpeed()
     {
-        this.speed = this.dpSpeed.value + 3;
+        this._speed = this.dpSpeed.value + 3;
     }
     public void OnClickBackToLetsPlay()
     {
@@ -73,14 +80,14 @@ public class CreatePartyScript : MonoBehaviour
     public void OnClickGoToLobby()
     {        
         InstanceRoom();
-        this.room.MakeRoom();
-        Debug.Log(this.room.ToString());
+        this._room.MakeRoom();
+        Debug.Log(this._room.ToString());
         if (EvaluateResponseMakeRoom())
         {
-            Memory.Save("room", this.room);
+            Memory.Save("room", this._room);
             Player player = (Player) Memory.Load("player");
             player.IsHost = true;
-            player.Board.GameMode = this.room.GameMode;
+            player.Board.GameMode = this._room.GameMode;
             List<bool[,]> listPatterns = player.Board.GetPattern();
             if (listPatterns.Count > 1)
             {
@@ -102,15 +109,15 @@ public class CreatePartyScript : MonoBehaviour
     }
     private void InstanceRoom()
     {
-        this.room.Host = this._player;
-        this.room.Speed = this.speed;
-        this.room.NumberPlayers = this.numberPlayers;
-        this.room.GameMode = this.gameModeOptions[this.gameModeSelectedIndex].text;
+        this._room.Host = this._player;
+        this._room.Speed = this._speed;
+        this._room.NumberPlayers = this._numberPlayers;
+        this._room.GameMode = this.gameModeOptions[this._gameModeSelectedIndex].text;
     }
     private bool EvaluateResponseMakeRoom()
     {
         bool isMaked = true;
-        switch (this.room.IdRoom)
+        switch (this._room.IdRoom)
         {
             case "ROOM ALREADY EXISTS":
                 isMaked = false;
