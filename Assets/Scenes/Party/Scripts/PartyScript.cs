@@ -90,13 +90,14 @@ public class PartyScript : MonoBehaviour
     }
     private IEnumerator ChangeCard(float waitTime)
     {
-        while (true)
+        while (_cardOnScreen < 54)
         {
             yield return new WaitForSeconds(waitTime);
             ChangeSpriteOfCard(_cards[_cardOnScreen]);
             Debug.Log(_cardOnScreen);
             _cardOnScreen++;
         }
+        GoToPodium();
     }
 
     public IEnumerator WaitingForPlayers()
