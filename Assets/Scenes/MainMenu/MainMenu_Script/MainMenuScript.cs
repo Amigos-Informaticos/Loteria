@@ -21,7 +21,6 @@ public class MainMenuScript : MonoBehaviour
 		{
 			Debug.Log(keyNotFoundException);
 		}
-		
 	}
 
 	public void GoToSignIn()

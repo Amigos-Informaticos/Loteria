@@ -22,9 +22,8 @@ public class SignedIn : MonoBehaviour
         }
         catch (KeyNotFoundException keyNotFoundException)
         {
-            Console.WriteLine(keyNotFoundException);
+            Debug.Log(keyNotFoundException);
         }
-        
     }
 
     public void GoToPlay()
