@@ -6,36 +6,31 @@ using UnityEngine;
 public class CreatePartyScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI txtPlayers;
-    [SerializeField] private TextMeshProUGUI txtRounds;
     [SerializeField] private TextMeshProUGUI txtGameMode;
     [SerializeField] private TextMeshProUGUI txtSpeed;
     [SerializeField] private TextMeshProUGUI btnCreate;
     [SerializeField] private TextMeshProUGUI btnBack;
     [SerializeField] private TMP_Dropdown dpGameMode;
     [SerializeField] private TMP_Dropdown dpPlayers;
-    [SerializeField] private TMP_Dropdown dpRounds;
     [SerializeField] private TMP_Dropdown dpSpeed;
     [SerializeField] private TextMeshProUGUI txtFeedBackMessage;
     private List<TMP_Dropdown.OptionData> gameModeOptions;
     private readonly Room room = new Room();   
     private int gameModeSelectedIndex;
     private int numberPlayers = 2;
-    private int numberRounds = 1;
     private int speed = 3;
     private Player _player;
     void Start()
     {
         this.txtPlayers.text = Localization.GetMessage("CreateParty", "Players");
-        this.txtRounds.text = Localization.GetMessage("CreateParty", "Rounds");
         this.txtGameMode.text = Localization.GetMessage("CreateParty", "GameMode");
         this.txtSpeed.text = Localization.GetMessage("CreateParty", "Speed");
         this.btnCreate.text = Localization.GetMessage("CreateParty", "Create");
         this.btnBack.text = Localization.GetMessage("CreateParty", "Back");
         this.gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;
         _player = (Player) Memory.Load("player");
-        
         InstanceRoom();
-        FillGameModes();        
+        FillGameModes();
     }
 
     private void FillGameModes()
@@ -51,9 +46,9 @@ public class CreatePartyScript : MonoBehaviour
                 }
             }
         }
-        catch (NullReferenceException)
+        catch (NullReferenceException nullReferenceException)
         {
-            Debug.Log("Sin modos de juego");
+            Debug.Log("FillGameModes:"+nullReferenceException);
         }        
     }
 
@@ -66,10 +61,6 @@ public class CreatePartyScript : MonoBehaviour
     public void OnValueChangedPlayers()
     {
         this.numberPlayers = this.dpPlayers.value + 2;
-    }
-    public void OnValueChangedRounds()
-    {
-        this.numberRounds = this.dpRounds.value + 1;
     }
     public void OnValueChangedSpeed()
     {
@@ -91,8 +82,6 @@ public class CreatePartyScript : MonoBehaviour
             Player player = (Player) Memory.Load("player");
             player.IsHost = true;
             player.Board.GameMode = this.room.GameMode;
-            //TODO refactorizar
-            
             List<bool[,]> listPatterns = player.Board.GetPattern();
             if (listPatterns.Count > 1)
             {
@@ -114,8 +103,7 @@ public class CreatePartyScript : MonoBehaviour
     }
     private void InstanceRoom()
     {
-        this.room.Host = this._player;       
-        this.room.Rounds = this.numberRounds;
+        this.room.Host = this._player;
         this.room.Speed = this.speed;
         this.room.NumberPlayers = this.numberPlayers;
         this.room.GameMode = this.gameModeOptions[this.gameModeSelectedIndex].text;
