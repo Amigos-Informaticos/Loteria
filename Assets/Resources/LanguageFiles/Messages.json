@@ -201,6 +201,22 @@
 		"EmptyPattern": {
 			"Español": "El patrón se encuentra vacio",
 			"English": "Empty pattern"
+		},
+		"EmptyGameMode": {
+			"Español": "El nombre del modo de juego se encuentra vacio",
+			"English": "Empty game mode name"
+		},
+		"PatternCreated":{
+			"Español": "Modo de juego creado exitosamente",
+			"English": "Game mode successful craeted"
+		},
+		"AlreadyCreated":{
+			"Español": "El modo de juego ya se encuentra creado",
+			"English": "The game mode is already created"
+		},
+		"WrongConnection":{
+			"Español": "Fallo en la conexión",
+			"English": "Wrong connection"
 		}
 	},
 	"LetsPlay": {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -121,11 +122,19 @@ public class CreatePattern : MonoBehaviour
 	        this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffffff");
 	        if (!IsEmpty())
 	        {
-		        player.Board.SavePattern(((Player)Memory.Load("player")).Email);   
+		        EvaluateResponseSavePattern(player.Board.SavePattern(((Player) Memory.Load("player")).Email));
 	        }
 	        else
 	        {
-		        this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "EmptyPattern");
+		        try
+		        {
+			        this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "EmptyPattern");
+			        this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "EmptyGameMode");
+		        }
+		        catch (KeyNotFoundException keyNotFoundException)
+		        {
+			        Debug.Log(keyNotFoundException);
+		        }
 	        }
 		}
 		else
@@ -144,5 +153,32 @@ public class CreatePattern : MonoBehaviour
 	public void OnClickCancel()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene("CreateParty");
+	}
+
+	private bool EvaluateResponseSavePattern(string response)
+	{
+		bool saved = false;
+		try
+		{
+			switch (response)
+			{
+				case "OK":
+					this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "PatternCreated");
+					saved = true;
+					break;
+				case "ALREADY REGISTERED":
+					this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "AlreadyCreated");
+					break;
+				default:
+					this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "WrongConnection");
+					break;
+			}
+		}
+		catch (SerializationException serializationException)
+		{
+			Debug.Log("EvaluateResponseSavePattern:"+serializationException);
+
+		}
+		return saved;
 	}
 }
