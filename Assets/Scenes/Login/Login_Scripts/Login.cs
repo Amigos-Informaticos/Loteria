@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TMPro;
@@ -20,10 +21,17 @@ public class Login : MonoBehaviour
 
     private void Start()
     {
-        this.phEmail.text = Localization.GetMessage("Login", "Email");
-        this.phPassword.text = Localization.GetMessage("Login", "Password");
-        this.btnBack.text = Localization.GetMessage("Login", "Back");
-        this.btnLogin.text = Localization.GetMessage("Login", "Login");
+        try
+        {
+            this.phEmail.text = Localization.GetMessage("Login", "Email");
+            this.phPassword.text = Localization.GetMessage("Login", "Password");
+            this.btnBack.text = Localization.GetMessage("Login", "Back");
+            this.btnLogin.text = Localization.GetMessage("Login", "Login");
+        }
+        catch (KeyNotFoundException keyNotFoundException)
+        {
+            Debug.Log(keyNotFoundException);
+        }
     }
 
     public void LogIn()

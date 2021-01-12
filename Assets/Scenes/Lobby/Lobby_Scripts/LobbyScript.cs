@@ -49,13 +49,30 @@ public class LobbyScript : MonoBehaviour
 	    }
     }
 
-	public void StartPlayerList()
-	{
-		for (int i = 0; i < _room.NumberPlayers; i++)
-		{
-			txtPlayers[i].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
-		}
-	}
+    public void StartPlayerList()
+    {
+	    for (int i = 0; i < _room.NumberPlayers; i++)
+	    {
+		    txtPlayers[i].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
+	    }
+    }
+    
+    public IEnumerator WaitingForPlayers()
+    {
+        while (true)
+        {
+	        yield return new WaitForSeconds(2.0f);
+	        if (_room.GetPlayersInRoom())
+	        {
+		        StartPlayerList();
+		        SetPlayerList();    
+	        }
+	        else
+	        {
+		        feedbackMessage.text = Localization.GetMessage("Lobby", "Net error");
+	        }
+        }
+    }
 
 	public IEnumerator WaitingForPlayers()
 	{
