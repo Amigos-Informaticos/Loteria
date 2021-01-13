@@ -6,27 +6,23 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI txtMusicVolume;
-	[SerializeField] private TextMeshProUGUI txtSfxVolume;
 	[SerializeField] private TextMeshProUGUI txtLanguage;
 	[SerializeField] private TextMeshProUGUI btnSave;
 	[SerializeField] private TextMeshProUGUI btnBack;
-
 	[SerializeField] private Transform languageDd;
+	[SerializeField] private TextMeshProUGUI txtFeedbackMessage;
 
 	void Start()
 	{
 		try
 		{
-			this.txtMusicVolume.text = Localization.GetMessage("Settings", "Music Volume");
-			this.txtSfxVolume.text = Localization.GetMessage("Settings", "SFX Volume");
 			this.txtLanguage.text = Localization.GetMessage("Settings", "Language");
 			this.btnSave.text = Localization.GetMessage("Settings", "Save");
 			this.btnBack.text = Localization.GetMessage("Settings", "Back");
 		}
 		catch (KeyNotFoundException keyNotFoundException)
 		{
-			Debug.Log(keyNotFoundException);
+			this.txtFeedbackMessage.text = "Translate Error;";
 		}
 		languageDd.GetComponent<Dropdown>().value = 1;
 	}

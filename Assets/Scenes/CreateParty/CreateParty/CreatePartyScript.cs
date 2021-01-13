@@ -30,9 +30,9 @@ public class CreatePartyScript : MonoBehaviour
             this.btnCreate.text = Localization.GetMessage("CreateParty", "Create");
             this.btnBack.text = Localization.GetMessage("CreateParty", "Back");
         }
-        catch (KeyNotFoundException fileNotFoundException)
+        catch (KeyNotFoundException)
         {
-            Debug.Log(fileNotFoundException);
+            txtFeedBackMessage.text = "Translate Error";
         }
         this.gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;
         _player = (Player) Memory.Load("player");
