@@ -523,6 +523,7 @@ MonoBehaviour:
   txtPlace: {fileID: 974170367}
   txtScore: {fileID: 629330559}
   txtPlayer: {fileID: 1289780506}
+  txtBack: {fileID: 558875925}
 --- !u!4 &559937313
 Transform:
   m_ObjectHideFlags: 0
@@ -1122,7 +1123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101.054, y: 187.00002}
+  m_AnchoredPosition: {x: 213, y: 187}
   m_SizeDelta: {x: 141.25423, y: 36.665863}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1289780506

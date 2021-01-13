@@ -103,9 +103,6 @@
             </e>
           </e>
         </e>
-        <e p="Scripts" t="Include">
-          <e p="SceneManager.cs" t="Include" />
-        </e>
         <e p="Tests" t="Include">
           <e p="BoardTest.cs" t="Include" />
           <e p="EmailTest.cs" t="Include" />

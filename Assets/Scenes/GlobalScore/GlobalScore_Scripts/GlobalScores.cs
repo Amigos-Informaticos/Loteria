@@ -11,6 +11,7 @@ public class GlobalScores : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI txtPlace;
 	[SerializeField] private TextMeshProUGUI txtScore;
 	[SerializeField] private TextMeshProUGUI txtPlayer;
+	[SerializeField] private TextMeshProUGUI txtBack;
 
 	void Start()
 	{
@@ -20,6 +21,7 @@ public class GlobalScores : MonoBehaviour
 			this.txtPlace.text = Localization.GetMessage("GlobalScore", "Place");
 			this.txtScore.text = Localization.GetMessage("GlobalScore", "Score");
 			this.txtPlayer.text = Localization.GetMessage("GlobalScore", "Player");
+			this.txtBack.text = Localization.GetMessage("GlobalScore", "Back");
 		}
 		catch (SerializationException)
 		{
