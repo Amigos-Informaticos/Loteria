@@ -13,6 +13,7 @@ public class SignUp : MonoBehaviour
 	[SerializeField] private Image imgPasswordConfirm;
 	[SerializeField] private Image imgName;
 	[SerializeField] private Image imgLastname;
+	[SerializeField] private Image imgConfirmationCode;
 	[SerializeField] private TextMeshProUGUI txtEmail;
 	[SerializeField] private TextMeshProUGUI txtNickname;
 	[SerializeField] private TMP_InputField txtPassword;
@@ -105,7 +106,7 @@ public class SignUp : MonoBehaviour
 				{
 					feedbackMessage.text = Localization.GetMessage("SignUp", "UnmatchedPassword");
 				}
-				catch (SerializationException serializationException)
+				catch (SerializationException)
 				{
 					this.feedbackMessage.text = "Translate error";
 				}
@@ -120,7 +121,7 @@ public class SignUp : MonoBehaviour
 			{
 				feedbackMessage.text = Localization.GetMessage("SignUp", "IncompleteFields");
 			}
-			catch (SerializationException serializationException)
+			catch (SerializationException)
 			{
 				this.feedbackMessage.text = "Translate error";
 			}
@@ -129,9 +130,17 @@ public class SignUp : MonoBehaviour
 
 	public void SendCodeToEmail()
 	{
+		string code = Regex.Replace(txtConfirmationCode.text, @"[^\u0000-\u007F]+", string.Empty);
 		Player player = InstancePlayer();
-		string response = player.SendCode();
-		EvaluateResponseSendCode(response);
+		if (!code.Equals(""))
+		{
+			string response = player.SendCode();
+			EvaluateResponseSendCode(response);	
+		}
+		else
+		{
+			this.imgConfirmationCode.GetComponent<Image>().color = Util.GetHexColor("#ffbaba");
+		}
 	}
 
 	public void BackToMainMenu()

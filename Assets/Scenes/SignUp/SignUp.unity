@@ -4794,6 +4794,7 @@ MonoBehaviour:
   imgPasswordConfirm: {fileID: 610967256}
   imgName: {fileID: 1621442288}
   imgLastname: {fileID: 1203640722}
+  imgConfirmationCode: {fileID: 1044818163}
   txtEmail: {fileID: 69423951}
   txtNickname: {fileID: 1671491233}
   txtPassword: {fileID: 1262574702}
