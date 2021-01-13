@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using GitHub.Unity.Json;
@@ -161,8 +160,7 @@ public class Board
 		{
 			Debug.Log(serializationException);
 		}
-
-		List<bool[,]> patternList = new List<bool[,]>();
+		List<bool[,]> patternList = null;
 		if (patternDictionary != null)
 		{
 			if (patternDictionary.Count > 1)
@@ -171,7 +169,10 @@ public class Board
 			}
 			else
 			{
-				patternList.Add(this.GetPatternByGameMode(patternDictionary["0"]["pattern"]));
+				patternList = new List<bool[,]>
+				{
+					this.GetPatternByGameMode(patternDictionary["0"]["pattern"])
+				};
 			}
 		}
 		return patternList;
