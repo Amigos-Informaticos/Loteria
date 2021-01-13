@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using GitHub.Unity.Json;
@@ -114,6 +113,44 @@ public class Board
 
         return converted;
     }
+	public List<bool[,]> GetPattern()
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command getPattern = new Command("get_patterns");
+		getPattern.AddArgument("game_mode_name", this.GameMode);
+		tcpSocket.AddCommand(getPattern);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse(true, 1000);
+		tcpSocket.Close();
+		Dictionary<string, Dictionary<string, string>> patternDictionary = null;
+		try
+		{
+			Debug.Log("GetPattern response:"+response);
+			patternDictionary =
+				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
+					response);
+		}
+		catch (SerializationException serializationException)
+		{
+			Debug.Log(serializationException);
+		}
+		List<bool[,]> patternList = null;
+		if (patternDictionary != null)
+		{
+			if (patternDictionary.Count > 1)
+			{
+				patternList = this.GetPatternByGameMode(patternDictionary);
+			}
+			else
+			{
+				patternList = new List<bool[,]>
+				{
+					this.GetPatternByGameMode(patternDictionary["0"]["pattern"])
+				};
+			}
+		}
+		return patternList;
+	}
 
     public string SavePattern(string userEmail)
     {

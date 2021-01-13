@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using GitHub.Unity.Json;
+using UnityEngine;
 
 public abstract class Localization
 {
@@ -12,13 +13,20 @@ public abstract class Localization
 		if (Messages.Count == 0)
 		{
 			string messagesPath = MainConfiguration.GetSetting("LanguagesFile");
-			using (StreamReader reader = new StreamReader(messagesPath))
+			try
 			{
-				string contents = reader.ReadToEnd();
-				Messages = SimpleJson
-					.DeserializeObject<
-						Dictionary<string, Dictionary<string, Dictionary<string, string>>>>(
-						contents);
+				using (StreamReader reader = new StreamReader(messagesPath))
+				{
+					string contents = reader.ReadToEnd();
+					Messages = SimpleJson
+						.DeserializeObject<
+							Dictionary<string, Dictionary<string, Dictionary<string, string>>>>(
+							contents);
+				}
+			}
+			catch (FileNotFoundException fileNotFoundException)
+			{
+				Debug.Log("LoadMessages"+fileNotFoundException);
 			}
 		}
 	}

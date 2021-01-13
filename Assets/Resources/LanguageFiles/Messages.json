@@ -103,7 +103,7 @@
 			"English": "Wrong connection"
 		}
 	},
-	"Login": {
+	"Login": {		
 		"Email": {
 			"Español": "Correo Electrónico",
 			"English": "Email"
@@ -233,6 +233,22 @@
 		"EmptyPattern": {
 			"Español": "El patrón se encuentra vacio",
 			"English": "Empty pattern"
+		},
+		"EmptyGameMode": {
+			"Español": "El nombre del modo de juego se encuentra vacio",
+			"English": "Empty game mode name"
+		},
+		"PatternCreated":{
+			"Español": "Modo de juego creado exitosamente",
+			"English": "Game mode successful craeted"
+		},
+		"AlreadyCreated":{
+			"Español": "El modo de juego ya se encuentra creado",
+			"English": "The game mode is already created"
+		},
+		"WrongConnection":{
+			"Español": "Fallo en la conexión",
+			"English": "Wrong connection"
 		}
 	},
 	"LetsPlay": {
@@ -335,6 +351,18 @@
 		"Net error": {
 			"Español": "Fallo en la conexión",
 			"English": "Connection error"
+		},
+		"NOT ENOUGH PLAYERS": {
+			"Español": "No hay suficientes jugadores",
+			"English": "Not enough players"
+		},
+		"OK":{
+			"Español": "Empezando partida...",
+			"English": "Starting party..."
+		},
+		"ERROR. TIMEOUT":{
+			"Español": "Fallo en la conexión",
+			"English": "Connection failure"
 		}
 	},
 	"GlobalScore": {
@@ -371,6 +399,10 @@
 		"NoPlayer": {
 			"Español": "Sin jugador",
 			"English": "No Player"
+		},
+		"ClassicMode": {
+			"Español": "Conecta 5 frijoles para ganar",
+			"English": "Match 5 beans to win"
 		}
 	},
 	"Podium": {
