@@ -340,4 +340,18 @@ public class Player
 		Debug.Log("Save score: " + response);
 		return response;
 	}
+
+	public string ChangePassword(string oldPassword,string newPassword)
+	{
+		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+		Command changePassword = new Command("change_password");
+		changePassword.AddArgument("user_email",Email);
+		changePassword.AddArgument("old_password",oldPassword);
+		changePassword.AddArgument("new_password",newPassword);
+		tcpSocket.AddCommand(changePassword);
+		tcpSocket.SendCommand();
+		string response = tcpSocket.GetResponse();
+		tcpSocket.Close();
+		return response;
+	}
 }

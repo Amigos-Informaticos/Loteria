@@ -150,9 +150,29 @@
 			"Español": "Atrás",
 			"English": "Back"
 		},
-		"Save": {
-			"Español": "Guardar",
-			"English": "Save"
+		"CurrentPassword": {
+			"Español": "Contrasena actual",
+			"English": "Current Password"
+		},
+		"NewPassword": {
+			"Español": "Nueva Contrasena",
+			"English": "New Password"
+		},
+		"NewPasswordAgain": {
+			"Español": "Repetir nueva Contraseña",
+			"English": "New Password Again"
+		},
+		"PLAYER NOT FOUND": {
+			"Español": "Jugador no encontrado",
+			"English": "Player not found"
+		},
+		"WRONG OLD PASSWORD": {
+			"Español": "La contraseña antigua no es correcta",
+			"English": "Current password is wrong"
+		},
+		"OK": {
+			"Español": "Contraseña actualizada",
+			"English": "Password updated"
 		}
 	},
 	"SignedIn": {
