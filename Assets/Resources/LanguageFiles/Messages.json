@@ -134,14 +134,6 @@
 		}
 	},
 	"Settings": {
-		"Music Volume":{
-			"Español": "Volumen de musica:",
-			"English": "Music Volume:"
-		},
-		"SFX Volume": {
-			"Español": "Volumen de efectos:",
-			"English": "SFX Volume:"
-		},
 		"Language": {
 			"Español": "Lenguaje",
 			"English": "Language"
@@ -150,9 +142,49 @@
 			"Español": "Atrás",
 			"English": "Back"
 		},
+		"CurrentPassword": {
+			"Español": "Contrasena actual",
+			"English": "Current Password"
+		},
+		"NewPassword": {
+			"Español": "Nueva Contrasena",
+			"English": "New Password"
+		},
+		"NewPasswordAgain": {
+			"Español": "Repetir nueva Contraseña",
+			"English": "New Password Again"
+		},
+		"PLAYER NOT FOUND": {
+			"Español": "Jugador no encontrado",
+			"English": "Player not found"
+		},
+		"WRONG OLD PASSWORD": {
+			"Español": "La contraseña antigua no es correcta",
+			"English": "Current password is wrong"
+		},
+		"OK": {
+			"Español": "Contraseña actualizada",
+			"English": "Password updated"
+		},
+		"ERROR. TIMEOUT": {
+			"Español": "El servidor no responde",
+			"English": "Server does not response"
+		},
 		"Save": {
 			"Español": "Guardar",
 			"English": "Save"
+		},
+		"Change password": {
+			"Español": "Cambiar contraseña",
+			"English": "Change password"
+		},
+		"Change": {
+			"Español": "Cambiar",
+			"English": "Change"
+		},
+		"PasswordDontMartch": {
+			"Español": "La nueva contraseña no coincide",
+			"English": "Password Dont Martch"
 		}
 	},
 	"SignedIn": {
@@ -297,6 +329,10 @@
 		"RoomAlreadyExist": {
 			"Español": "La sala ya existe",
 			"English": "Room already exist"
+		},
+		"ErrorOnCreate": {
+			"Español": "Error al configurar la partida",
+			"English": "Error configurating party"
 		}
 	},
 	"Lobby": {

@@ -89,18 +89,25 @@ public class CreatePartyScript : MonoBehaviour
             player.IsHost = true;
             player.Board.GameMode = this._room.GameMode;
             List<bool[,]> listPatterns = player.Board.GetPattern();
-            if (listPatterns.Count > 1)
+            if (listPatterns != null)
             {
-                Player.Patterns patterns= new Player.Patterns();
-                patterns.Objective = listPatterns;
-                Memory.Save("patterns",patterns);
+                if (listPatterns.Count > 1)
+                {
+                    Player.Patterns patterns= new Player.Patterns();
+                    patterns.Objective = listPatterns;
+                    Memory.Save("patterns",patterns);
+                }
+                else
+                {
+                    player.Board.Pattern = listPatterns[0];
+                }
+                Memory.Save("player",player);
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
             }
             else
             {
-                player.Board.Pattern = listPatterns[0];
+                txtFeedBackMessage.text = Localization.GetMessage("CreateParty", "ErrorOnCreate");
             }
-            Memory.Save("player",player);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
         }
     }
     public void OnClickNewGameMode()
