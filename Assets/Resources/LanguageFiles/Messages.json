@@ -381,6 +381,10 @@
 		"Player": {
 			"Español": "Jugador",
 			"English": "Player"
+		},
+		"Back": {
+			"Español": "Atras",
+			"English": "Back"
 		}
 	},
 	"Party": {

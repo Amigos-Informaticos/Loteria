@@ -523,6 +523,7 @@ MonoBehaviour:
   txtPlace: {fileID: 974170367}
   txtScore: {fileID: 629330559}
   txtPlayer: {fileID: 1289780506}
+  txtBack: {fileID: 558875925}
 --- !u!4 &559937313
 Transform:
   m_ObjectHideFlags: 0

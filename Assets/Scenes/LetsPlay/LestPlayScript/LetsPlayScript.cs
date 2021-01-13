@@ -72,7 +72,7 @@ public class LetsPlayScript : MonoBehaviour
 
 	private bool SaveRoomInMemory(string code, string json)
 	{
-		bool saved;
+		bool saved = false;
 		Room room = new Room();
 		room.IdRoom = code;
 		if (room.SetRoomConfigByJson(json))
