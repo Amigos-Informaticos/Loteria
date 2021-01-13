@@ -130,7 +130,7 @@ public class SignUp : MonoBehaviour
 
 	public void SendCodeToEmail()
 	{
-		string code = Regex.Replace(txtConfirmationCode.text, @"[^\u0000-\u007F]+", string.Empty);
+		string code = Regex.Replace(txtEmail.text, @"[^\u0000-\u007F]+", string.Empty);
 		Player player = InstancePlayer();
 		if (!code.Equals(""))
 		{
