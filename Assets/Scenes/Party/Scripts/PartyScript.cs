@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,6 +49,18 @@ public class PartyScript : MonoBehaviour
         _won = false;
         _cards = Board.GetSortedDeck(_room.IdRoom, _player.Email);
         GenerateBoard();
+        if (_room.GameMode.Equals("Classic"))
+        {
+            try
+            {
+                Localization.GetMessage("Party", "ClassicMode");
+                
+            }
+            catch (SerializationException serializationException)
+            {
+                Debug.Log(serializationException);
+            }
+        }
         this.txtFeedBackMessage.text = Util.PrintArrayBi(_player.Board.Pattern);
         
         foreach (Toggle toggle in toggles)

@@ -351,6 +351,10 @@
 		"NoPlayer": {
 			"Español": "Sin jugador",
 			"English": "No Player"
+		},
+		"ClassicMode": {
+			"Español": "Conecta 5 frijoles para ganar",
+			"English": "Match 5 beans to win"
 		}
 	},
 	"Podium": {
