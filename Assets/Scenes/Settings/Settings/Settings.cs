@@ -59,13 +59,13 @@ public class Settings : MonoBehaviour
 
 	public void ChangePassword()
 	{
-		string newPassword = Regex.Replace(txtNewPassword.text, @"[^\u0000-\u007F]+", string.Empty);;
-		string newPasswordAgain = Regex.Replace(txtNewPasswordAgain.text, @"[^\u0000-\u007F]+", string.Empty);;
-		string oldPassword = Regex.Replace(txtCurrentPassword.text, @"[^\u0000-\u007F]+", string.Empty);;
+		string newPassword = Regex.Replace(txtNewPassword.text, @"[^\u0000-\u007F]+", string.Empty);
+		string newPasswordAgain = Regex.Replace(txtNewPasswordAgain.text, @"[^\u0000-\u007F]+", string.Empty);
+		string oldPassword = Regex.Replace(txtCurrentPassword.text, @"[^\u0000-\u007F]+", string.Empty);
 		Debug.Log("Done");
 		if (newPassword.Equals(newPasswordAgain))
 		{
-			Player playerToHash = new Player() {Password = oldPassword};
+			Player playerToHash = new Player {Password = oldPassword};
 			if (playerToHash.Password.Equals(_player.Password))
 			{
 				string response = _player.ChangePassword(newPassword);
