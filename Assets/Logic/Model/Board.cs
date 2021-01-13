@@ -113,44 +113,6 @@ public class Board
 
         return converted;
     }
-	public List<bool[,]> GetPattern()
-	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-		Command getPattern = new Command("get_patterns");
-		getPattern.AddArgument("game_mode_name", this.GameMode);
-		tcpSocket.AddCommand(getPattern);
-		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true, 1000);
-		tcpSocket.Close();
-		Dictionary<string, Dictionary<string, string>> patternDictionary = null;
-		try
-		{
-			Debug.Log("GetPattern response:"+response);
-			patternDictionary =
-				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
-					response);
-		}
-		catch (SerializationException serializationException)
-		{
-			Debug.Log(serializationException);
-		}
-		List<bool[,]> patternList = null;
-		if (patternDictionary != null)
-		{
-			if (patternDictionary.Count > 1)
-			{
-				patternList = this.GetPatternByGameMode(patternDictionary);
-			}
-			else
-			{
-				patternList = new List<bool[,]>
-				{
-					this.GetPatternByGameMode(patternDictionary["0"]["pattern"])
-				};
-			}
-		}
-		return patternList;
-	}
 
     public string SavePattern(string userEmail)
     {
@@ -197,6 +159,7 @@ public class Board
         Dictionary<string, Dictionary<string, string>> patternDictionary = null;
         try
         {
+            Debug.Log("GetPattern response:"+response);
             patternDictionary =
                 SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
                     response);
@@ -205,8 +168,7 @@ public class Board
         {
             Debug.Log(serializationException);
         }
-
-        List<bool[,]> patternList = new List<bool[,]>();
+        List<bool[,]> patternList = null;
         if (patternDictionary != null)
         {
             if (patternDictionary.Count > 1)
@@ -215,12 +177,15 @@ public class Board
             }
             else
             {
-                patternList.Add(this.GetPatternByGameMode(patternDictionary["0"]["pattern"]));
+                patternList = new List<bool[,]>
+                {
+                    this.GetPatternByGameMode(patternDictionary["0"]["pattern"])
+                };
             }
         }
-
         return patternList;
     }
+
 
     private bool[,] GetPatternByGameMode(string pattern)
     {
@@ -334,7 +299,6 @@ public class Board
                 stringPattern.Append(Convert.ToInt32(this.Pattern[i, j]));
             }
         }
-
         return stringPattern.ToString();
     }
 }

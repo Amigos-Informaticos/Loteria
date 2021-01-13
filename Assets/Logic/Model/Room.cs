@@ -75,7 +75,6 @@ public class Room
             response = "ERROR";
             this.IdRoom = response;
         }
-
         return response;
     }
 
@@ -93,7 +92,6 @@ public class Room
         {
             this.Players.Remove(FindPlayerInRoom(userEmail));
         }
-
         tcpSocket.Close();
         return response;
     }
@@ -113,7 +111,6 @@ public class Room
         {
             this.Messages.Add(new KeyValuePair<string, string>(player.NickName, message));
         }
-
         tcpSocket.Close();
         return response;
     }
@@ -147,7 +144,6 @@ public class Room
                     obtainedMessages[i.ToString()]["message"]));
             }
         }
-
         tcpSocket.Close();
         return response;
     }
@@ -178,7 +174,6 @@ public class Room
                 gameModes.Add(gameMode[i.ToString()]);
             }
         }
-
         tcpSocket.Close();
         return gameModes;
     }
@@ -193,7 +188,6 @@ public class Room
                 player = Players[i];
             }
         }
-
         return player;
     }
 
@@ -234,12 +228,12 @@ public class Room
                 Players.Add(player);
             }
         }
-
         return done;
     }
 
-    public void SetRoomConfigByJson(string json)
+    public bool SetRoomConfigByJson(string json)
     {
+        bool configured = true;
         try
         {
             Dictionary<string, string> roomConfig =
@@ -251,8 +245,9 @@ public class Room
         }
         catch (SerializationException)
         {
-            //TODO: Mostrar un mensaje de error de esto en LetsPlay
+            configured = false;
         }
+        return configured;
     }
 
     private bool IsComplete()

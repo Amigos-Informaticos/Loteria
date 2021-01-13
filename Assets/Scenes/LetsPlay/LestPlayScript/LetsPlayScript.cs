@@ -58,22 +58,33 @@ public class LetsPlayScript : MonoBehaviour
 		}
 		else
 		{
-			SaveInMemory(code, response);
-			SaveInMemory((Player) Memory.Load("player"));
-			UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+			if (SaveRoomInMemory(code, response))
+			{
+				SavePlayerInMemory((Player) Memory.Load("player"));
+				UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+			}
+			else
+			{
+				txtFeedbackMessage.text = Localization.GetMessage("LetsPlay", "ERROR");
+			}
 		}
 	}
 
-	private void SaveInMemory(string code, string json)
+	private bool SaveRoomInMemory(string code, string json)
 	{
+		bool saved;
 		Room room = new Room();
 		room.IdRoom = code;
-		room.SetRoomConfigByJson(json);
-		room.GetPlayersInRoom();
-		Memory.Save("room", room);
+		if (room.SetRoomConfigByJson(json))
+		{
+			room.GetPlayersInRoom();
+			Memory.Save("room", room);
+			saved = true;
+		}
+		return saved;
 	}
 
-	private void SaveInMemory(Player player)
+	private void SavePlayerInMemory(Player player)
 	{
 		player.Board.GameMode = ((Room) Memory.Load("room")).GameMode;
 		List<bool[,]> listPatterns = player.Board.GetPattern();
@@ -87,7 +98,6 @@ public class LetsPlayScript : MonoBehaviour
 		{
 			player.Board.Pattern = listPatterns[0];
 		}
-
 		Memory.Save("player", player);
 	}
 }
