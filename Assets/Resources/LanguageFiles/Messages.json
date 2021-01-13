@@ -166,6 +166,10 @@
 			"Español": "Contraseña actualizada",
 			"English": "Password updated"
 		},
+		"ERROR. TIMEOUT": {
+			"Español": "El servidor no responde",
+			"English": "Server does not response"
+		},
 		"Save": {
 			"Español": "Guardar",
 			"English": "Save"
@@ -177,6 +181,10 @@
 		"Change": {
 			"Español": "Cambiar",
 			"English": "Change"
+		},
+		"PasswordDontMartch": {
+			"Español": "La nueva contraseña no coincide",
+			"English": "Password Dont Martch"
 		}
 	},
 	"SignedIn": {
@@ -305,6 +313,10 @@
 		"RoomAlreadyExist": {
 			"Español": "La sala ya existe",
 			"English": "Room already exist"
+		},
+		"ErrorOnCreate": {
+			"Español": "Error al configurar la partida",
+			"English": "Error configurating party"
 		}
 	},
 	"Lobby": {

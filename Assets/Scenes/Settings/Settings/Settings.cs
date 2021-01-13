@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,9 +15,9 @@ public class Settings : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI phCurrentPassword;
 	[SerializeField] private TextMeshProUGUI phNewPassword;
 	[SerializeField] private TextMeshProUGUI phNewPasswordAgain;
-	[SerializeField] private TextMeshProUGUI txtCurrentPassword;
-	[SerializeField] private TextMeshProUGUI txtNewPassword;
-	[SerializeField] private TextMeshProUGUI txtNewPasswordAgain;
+	[SerializeField] private TMP_InputField txtCurrentPassword;
+	[SerializeField] private TMP_InputField txtNewPassword;
+	[SerializeField] private TMP_InputField txtNewPasswordAgain;
 	[SerializeField] private TextMeshProUGUI btnChangePassword;
 	[SerializeField] private TextMeshProUGUI txtChangePassword;
 	private Player _player;
@@ -58,19 +59,28 @@ public class Settings : MonoBehaviour
 
 	public void ChangePassword()
 	{
-		string newPassword = txtNewPassword.text;
-		string newPasswordAgain = txtNewPasswordAgain.text;
-		string oldPassword = txtCurrentPassword.text;
+		string newPassword = Regex.Replace(txtNewPassword.text, @"[^\u0000-\u007F]+", string.Empty);;
+		string newPasswordAgain = Regex.Replace(txtNewPasswordAgain.text, @"[^\u0000-\u007F]+", string.Empty);;
+		string oldPassword = Regex.Replace(txtCurrentPassword.text, @"[^\u0000-\u007F]+", string.Empty);;
+		Debug.Log("Done");
 		if (newPassword.Equals(newPasswordAgain))
 		{
-			string response = _player.ChangePassword(oldPassword,newPassword);
-			txtFeedbackMessage.text = Localization.GetMessage("Settings", response);
+			Player playerToHash = new Player() {Password = oldPassword};
+			if (playerToHash.Password.Equals(_player.Password))
+			{
+				string response = _player.ChangePassword(newPassword);
+				Debug.Log(response);
+				txtFeedbackMessage.text = Localization.GetMessage("Settings", response);	
+			}
+			else
+			{
+				txtFeedbackMessage.text = Localization.GetMessage("Settings", "WRONG OLD PASSWORD");
+			}
 		}
 		else
 		{
 			txtFeedbackMessage.text = Localization.GetMessage("Settings", "PasswordDontMartch");
 		}
-		
 	}
 
 	public void SaveChanges()
