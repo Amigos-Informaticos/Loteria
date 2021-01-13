@@ -119,7 +119,6 @@ public class Player
 		tcpSocket.AddCommand(this._command);
 		tcpSocket.SendCommand();
 		message = tcpSocket.GetResponse(true, 3000);
-		Debug.Log(message);
 		tcpSocket.Close();
 		return message;
 	}
@@ -134,7 +133,6 @@ public class Player
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 1000);
 		tcpSocket.Close();
-		Debug.Log("GetPlayerFromServer() "+response);
 		if (!response.Equals("ERROR. TIMEOUT"))
 		{
 			try
@@ -147,9 +145,8 @@ public class Player
 				Score = Convert.ToInt32(playerDictionary["score"]);
 				recoveredPlayer = true;
 			}
-			catch (SerializationException serializationException)
+			catch (SerializationException)
 			{
-				Debug.Log(serializationException);
 				recoveredPlayer = false;
 			}
 		}
@@ -164,19 +161,16 @@ public class Player
 		tcpSocket.AddCommand(getTopTen);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 1000);
-		Debug.Log(response);
 		if (!response.Equals("ERROR. TIMEOUT"))
 		{
 			try
 			{
-				Debug.Log(response);
 				scoreDictionary =
 					SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
 						response);
 			}
 			catch (SerializationException)
 			{
-				Debug.Log("Invalid JSON");
 				scoreDictionary = null;
 			}
 		}
@@ -288,7 +282,6 @@ public class Player
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 1000);
 		tcpSocket.Close();
-		Debug.Log("Kick response: " + response);
 		return response;
 	}
 
@@ -302,7 +295,6 @@ public class Player
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true, 2000);
 		tcpSocket.Close();
-		Debug.Log(response);
 		return response;
 	}
 
@@ -319,7 +311,6 @@ public class Player
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true,1000);
 		tcpSocket.Close();
-		Debug.Log("Notify Won: " + response);
 		if (response.Equals("OK"))
 		{
 			won = true;
@@ -337,7 +328,6 @@ public class Player
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true,2000);
 		tcpSocket.Close();
-		Debug.Log("Save score: " + response);
 		return response;
 	}
 
@@ -352,7 +342,6 @@ public class Player
 		Password = newPassword;
 		changePassword.AddArgument("new_password",Password);
 		tcpSocket.AddCommand(changePassword);
-		Debug.Log("old: "+ oldPassword+"new: "+Password);
 		tcpSocket.SendCommand();
 		string response = tcpSocket.GetResponse(true,1000);
 		tcpSocket.Close();

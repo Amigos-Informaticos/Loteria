@@ -57,7 +57,6 @@ public class Room
 			tcpSocket.AddCommand(makeRoom);
 			tcpSocket.SendCommand();
 			response = tcpSocket.GetResponse(true, 1000);
-			Debug.Log(response);
 			if (!response.Equals("ERROR. TIMEOUT"))
 			{
 				this.IdRoom = response;
@@ -84,7 +83,6 @@ public class Room
         tcpSocket.AddCommand(exitRoom);
         tcpSocket.SendCommand();
         response = tcpSocket.GetResponse(true, 1000);
-        Debug.Log(response);
         if (response.Equals("OK"))
         {
             this.Players.Remove(FindPlayerInRoom(userEmail));
@@ -121,14 +119,13 @@ public class Room
 	    tcpSocket.AddCommand(getMessages);
 	    tcpSocket.SendCommand();
 	    string response = tcpSocket.GetResponse(true, 1000);
-	    Debug.Log(response);
 	    try
 	    {
 		    obtainedMessages = SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
 	    }
-	    catch (SerializationException serializationException)
+	    catch (SerializationException)
 	    {
-		    Debug.Log(serializationException);
+		    obtainedMessages = null;
 	    }
 
 	    if (obtainedMessages != null)
@@ -155,12 +152,10 @@ public class Room
 		string response = tcpSocket.GetResponse(true, 1000);
 		try
 		{
-			Debug.Log(response);
 			gameMode = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
 		}
 		catch (SerializationException)
 		{
-			Debug.Log("Invalid JSON");
 			gameMode = null;
 		}
 
@@ -187,29 +182,6 @@ public class Room
 	    }
 	    return player;
     }
-    
-    public void GetPlayersInRoom(string response)
-    {
-        try
-        {
-			Dictionary<string, Dictionary<string, string>> playerList =
-				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(response);
-			Players = new List<PlayerStruct>();
-			for (int i = 0; i < playerList.Count; i++)
-			{
-				string key = i.ToString();
-				PlayerStruct player = new PlayerStruct();
-				player.Email = playerList[key]["email"];
-				player.NickName = playerList[key]["nickname"];
-				player.IsReady = playerList[key]["is_ready"];
-				Players.Add(player);
-			}
-		}
-        catch (SerializationException e)
-        {
-			Debug.Log(e);
-		}	    	    
-    }
 
     public string GetUsersInRoom()
     {
@@ -228,7 +200,6 @@ public class Room
 	{
 		bool done = true;
 		string response = GetUsersInRoom();
-		Debug.Log("GetPlayersInRoom: " + response);
 		if (response.Equals("ERROR")||response.Equals("ROOM NOT FOUND")||response.Equals("ERROR. TIMEOUT"))
 		{
 			done = false;
@@ -259,12 +230,10 @@ public class Room
 			IdGameMode = Convert.ToInt32(roomConfig["game_mode_id"]);
 			GameMode = roomConfig["game_mode"];
 			NumberPlayers = Convert.ToInt32(roomConfig["max_players"]);
-			Debug.Log("Speed " + Speed + "IdGameMode " + IdGameMode + "GameMode " + GameMode +
-			          "NumberPlayers " + NumberPlayers);
 		}
-		catch (Exception e)
+		catch (SerializationException)
 		{
-			Debug.Log(e);
+			//TODO: Mostrar un mensaje de error de esto en LetsPlay
 		}
 	}
 
@@ -313,7 +282,6 @@ public class Room
 		tcpSocket.SendCommand();
 		
 		string response = tcpSocket.GetResponse(true, 1000);
-		Debug.Log("There is a winner: " + response);
 		return response;
 	}
 }

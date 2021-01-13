@@ -152,7 +152,6 @@ public class Board
 		Dictionary<string, Dictionary<string, string>> patternDictionary = null;
 		try
 		{
-			Debug.Log("GetPattern response:"+response);
 			patternDictionary =
 				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
 					response);
