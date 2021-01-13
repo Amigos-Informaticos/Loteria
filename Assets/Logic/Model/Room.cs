@@ -214,12 +214,12 @@ public class Room
     public string GetUsersInRoom()
     {
 	    TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-	    string response = null;
+	    string response;
 	    Command getUsersInRoom = new Command("get_users_in_room");
 	    getUsersInRoom.AddArgument("room_id", IdRoom);
 	    tcpSocket.AddCommand(getUsersInRoom);
 	    tcpSocket.SendCommand();
-	    response = tcpSocket.GetResponse(true, 1000);
+	    response = tcpSocket.GetResponse(true, 8000);
 	    tcpSocket.Close();
 	    return response;
     }
