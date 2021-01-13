@@ -18,6 +18,7 @@ public class Settings : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI txtNewPassword;
 	[SerializeField] private TextMeshProUGUI txtNewPasswordAgain;
 	[SerializeField] private TextMeshProUGUI btnChangePassword;
+	[SerializeField] private TextMeshProUGUI txtChangePassword;
 	private Player _player;
 
 	void Start()
@@ -29,11 +30,14 @@ public class Settings : MonoBehaviour
 			this.phNewPassword.text = Localization.GetMessage("Settings","NewPassword");
 			this.phNewPasswordAgain.text = Localization.GetMessage("Settings","NewPasswordAgain");
 			this.txtLanguage.text = Localization.GetMessage("Settings", "Language");
+			this.txtChangePassword.text = Localization.GetMessage("Settings","Change password");
+			this.btnChangePassword.text = Localization.GetMessage("Settings","Change");
 			this.btnSave.text = Localization.GetMessage("Settings", "Save");
 			this.btnBack.text = Localization.GetMessage("Settings", "Back");
 		}
-		catch (KeyNotFoundException)
+		catch (KeyNotFoundException keyNotFoundException)
 		{
+			Debug.Log(keyNotFoundException);
 			this.txtFeedbackMessage.text = "Translate Error";
 		}
 		languageDd.GetComponent<Dropdown>().value = 1;

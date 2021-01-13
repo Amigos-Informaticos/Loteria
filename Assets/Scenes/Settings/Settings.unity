@@ -204,7 +204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 431324405}
-        m_MethodName: SaveChanges
+        m_MethodName: ChangePassword
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -669,7 +669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Change Password
+  m_text: Change
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -738,10 +738,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 206356143}
-    characterCount: 15
+    characterCount: 6
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -929,6 +929,7 @@ MonoBehaviour:
   txtNewPassword: {fileID: 2033260889}
   txtNewPasswordAgain: {fileID: 1541392128}
   btnChangePassword: {fileID: 206356143}
+  txtChangePassword: {fileID: 1578070493}
 --- !u!4 &431324406
 Transform:
   m_ObjectHideFlags: 0
@@ -3044,7 +3045,7 @@ GameObject:
   - component: {fileID: 1578070494}
   - component: {fileID: 1578070493}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txtChangePassword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

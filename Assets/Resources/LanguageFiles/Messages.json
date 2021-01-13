@@ -134,14 +134,6 @@
 		}
 	},
 	"Settings": {
-		"Music Volume":{
-			"Español": "Volumen de musica:",
-			"English": "Music Volume:"
-		},
-		"SFX Volume": {
-			"Español": "Volumen de efectos:",
-			"English": "SFX Volume:"
-		},
 		"Language": {
 			"Español": "Lenguaje",
 			"English": "Language"
@@ -173,6 +165,18 @@
 		"OK": {
 			"Español": "Contraseña actualizada",
 			"English": "Password updated"
+		},
+		"Save": {
+			"Español": "Guardar",
+			"English": "Save"
+		},
+		"Change password": {
+			"Español": "Cambiar contraseña",
+			"English": "Change password"
+		},
+		"Change": {
+			"Español": "Cambiar",
+			"English": "Change"
 		}
 	},
 	"SignedIn": {

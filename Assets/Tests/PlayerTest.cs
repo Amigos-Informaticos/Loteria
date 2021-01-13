@@ -91,5 +91,18 @@ namespace Tests
 			string response = playerForTest.SaveScore(score);
 			Assert.IsTrue(response.Equals("OK"));
 		}
+		
+		[Test]
+		public void ChangePassword()
+		{
+			Player playerForTest = new Player
+			{
+				Email = "efrain_escuela@outlook.com"
+			};
+			string oldPassword = "beeethoven123";
+			string newPassword = "delorean2015";
+			string response = playerForTest.ChangePassword(oldPassword,newPassword);
+			Assert.IsTrue(response.Equals("OK"));
+		}
 	}
 }
