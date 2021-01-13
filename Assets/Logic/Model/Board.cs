@@ -186,7 +186,6 @@ public class Board
         return patternList;
     }
 
-
     private bool[,] GetPatternByGameMode(string pattern)
     {
         bool[,] converted = new bool[5, 5];
