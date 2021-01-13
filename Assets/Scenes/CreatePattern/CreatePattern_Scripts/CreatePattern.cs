@@ -135,17 +135,17 @@ public class CreatePattern : MonoBehaviour
                 try
                 {
                     this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "EmptyPattern");
-                    this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "EmptyGameMode");
                 }
-                catch (KeyNotFoundException keyNotFoundException)
+                catch (KeyNotFoundException)
                 {
-                    Debug.Log(keyNotFoundException);
+                    this.showPatternConverted.text = "Translate error";
                 }
             }
         }
         else
         {
             this.imgGameMode.GetComponent<Image>().color = Util.GetHexColor("#ffbaba");
+            this.showPatternConverted.text = Localization.GetMessage("CreatePattern", "EmptyGameMode");
         }
 
         PrintPattern();
