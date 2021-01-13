@@ -14,7 +14,7 @@ public class CreatePartyScript : MonoBehaviour
     [SerializeField] private TMP_Dropdown dpPlayers;
     [SerializeField] private TMP_Dropdown dpSpeed;
     [SerializeField] private TextMeshProUGUI txtFeedBackMessage;
-    private List<TMP_Dropdown.OptionData> gameModeOptions;
+    private List<TMP_Dropdown.OptionData> _gameModeOptions;
     private readonly Room _room = new Room();   
     private int _gameModeSelectedIndex;
     private int _numberPlayers = 2;
@@ -34,7 +34,7 @@ public class CreatePartyScript : MonoBehaviour
         {
             Debug.Log(fileNotFoundException);
         }
-        this.gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;
+        this._gameModeOptions = dpGameMode.GetComponent<TMP_Dropdown>().options;
         _player = (Player) Memory.Load("player");
         InstanceRoom();
         FillGameModes();
@@ -63,7 +63,7 @@ public class CreatePartyScript : MonoBehaviour
     {
         this._gameModeSelectedIndex = this.dpGameMode.value;
         Debug.Log(this._gameModeSelectedIndex);
-        Debug.Log(gameModeOptions[this._gameModeSelectedIndex].text);
+        Debug.Log(_gameModeOptions[this._gameModeSelectedIndex].text);
     }
     public void OnValueChangedPlayers()
     {
@@ -112,7 +112,7 @@ public class CreatePartyScript : MonoBehaviour
         this._room.Host = this._player;
         this._room.Speed = this._speed;
         this._room.NumberPlayers = this._numberPlayers;
-        this._room.GameMode = this.gameModeOptions[this._gameModeSelectedIndex].text;
+        this._room.GameMode = this._gameModeOptions[this._gameModeSelectedIndex].text;
     }
     private bool EvaluateResponseMakeRoom()
     {

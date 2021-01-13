@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Runtime.Serialization;
 using TMPro;
@@ -74,24 +74,7 @@ public class LobbyScript : MonoBehaviour
         }
     }
 
-	public IEnumerator WaitingForPlayers()
-	{
-		while (true)
-		{
-			yield return new WaitForSeconds(2.0f);
-			if (_room.GetPlayersInRoom())
-			{
-				StartPlayerList();
-				SetPlayerList();
-			}
-			else
-			{
-				OnClickBackToLetsPlay();
-			}
-		}
-	}
-
-	public IEnumerator WaitingForStart()
+    public IEnumerator WaitingForStart()
 	{
 		while (true)
 		{
