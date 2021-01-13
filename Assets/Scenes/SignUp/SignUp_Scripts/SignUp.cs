@@ -47,9 +47,9 @@ public class SignUp : MonoBehaviour
 			this.btnGoBack.text = Localization.GetMessage("SignUp", "Back");
 			this.btnSendCode.text = Localization.GetMessage("SignUp", "SendCode");
 		}
-		catch (KeyNotFoundException keyNotFoundException)
+		catch (KeyNotFoundException)
 		{
-			Debug.Log(keyNotFoundException);
+			this.feedbackMessage.text = "Translate error";
 		}
 	}
 
@@ -107,7 +107,7 @@ public class SignUp : MonoBehaviour
 				}
 				catch (SerializationException serializationException)
 				{
-					Debug.Log(serializationException);
+					this.feedbackMessage.text = "Translate error";
 				}
 
 				this.imgPassword.GetComponent<Image>().color = Util.GetHexColor("#ffbaba");
@@ -122,7 +122,7 @@ public class SignUp : MonoBehaviour
 			}
 			catch (SerializationException serializationException)
 			{
-				Debug.Log(serializationException);
+				this.feedbackMessage.text = "Translate error";
 			}
 		}
 	}
@@ -176,13 +176,13 @@ public class SignUp : MonoBehaviour
 					feedbackMessage.text = Localization.GetMessage("SignUp", "WrongConnection");
 					break;
 				default:
-					feedbackMessage.text = "";
+					feedbackMessage.text = "ERROR";
 					break;
 			}
 		}
-		catch (KeyNotFoundException keyNotFoundException)
+		catch (KeyNotFoundException)
 		{
-			Debug.Log(keyNotFoundException);
+			this.feedbackMessage.text = "Translate error";
 		}
 	}
 
@@ -213,9 +213,9 @@ public class SignUp : MonoBehaviour
 					break;
 			}
 		}
-		catch (KeyNotFoundException keyNotFoundException)
+		catch (KeyNotFoundException)
 		{
-			Debug.Log(keyNotFoundException);
+			this.feedbackMessage.text = "Translate error";
 		}
 	}
 }
