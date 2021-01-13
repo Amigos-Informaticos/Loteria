@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using UnityEngine;
 
 namespace Tests
@@ -13,7 +8,7 @@ namespace Tests
 		[Test]
 		public void LogIn()
 		{
-			string response = null;
+			string response;
 			Player alexito = new Player
 			                 {
 				                 Email = "alexisao@hotmail.com",

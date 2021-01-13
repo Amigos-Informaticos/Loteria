@@ -67,16 +67,15 @@ public class Login : MonoBehaviour
         bool isLoggedIn = false;
         try
         {
-            //TODO Verificar el porque lanza KeyNotFoundException
             switch (response)
             {
                 case "WRONG PASSWORD":
-                    this.txtFeedBackMessage.text = Localization.GetMessage("SignedIn", "WrongPassword");
+                    this.txtFeedBackMessage.text = Localization.GetMessage("Login", "WrongPassword");
                     this.imgPassword.GetComponent<Image>().color = Util.GetHexColor("#ffbaba");
                     break;
                 case "EMAIL NOT REGISTERED":
                     this.txtFeedBackMessage.text =
-                        Localization.GetMessage("LogIn", "EmailNotRegistered");
+                        Localization.GetMessage("Login", "EmailNotRegistered");
                     this.imgEmail.GetComponent<Image>().color = Util.GetHexColor("#ffbaba");
                     break;
                 case "ERROR":
