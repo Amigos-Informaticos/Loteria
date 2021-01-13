@@ -52,7 +52,7 @@ public class PartyScript : MonoBehaviour
 		{
 			try
 			{
-				Localization.GetMessage("Party", "ClassicMode");
+				this.txtFeedBackMessage.text = Localization.GetMessage("Party", "ClassicMode");
 			}
 			catch (SerializationException)
 			{
@@ -254,12 +254,16 @@ public class PartyScript : MonoBehaviour
 			                                                   _player.NickName + ": " +
 			                                                   this.txtChat.text;
 		}
-
-		this.txtChat.GetComponentInChildren<TMP_InputField>().text = "";
+		this.txtChat.GetComponent<TextMeshProUGUI>().text = "";
 	}
 
-	public void ExitRoom()
+	private void ExitRoom()
 	{
+		if (_player.IsHost)
+		{
+			_player.IsHost = false;
+			Memory.Save("player", _player);
+		}
 		_player.Board = new Board();
 		Memory.Save("player", _player);
 		_room.ExitRoom(_player.Email);
