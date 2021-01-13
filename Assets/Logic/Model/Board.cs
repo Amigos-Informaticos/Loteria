@@ -8,280 +8,296 @@ using Random = System.Random;
 
 public class Board
 {
-	public int[,] Cards { get; set; } = new int[5, 5];
-	public bool[,] Marks { get; set; } = new bool[5, 5];
-	public bool[,] Pattern { get; set; } = new bool[5, 5];
-	public string GameMode { get; set; } = null;
-	private Command _command;
+    public int[,] Cards { get; set; } = new int[5, 5];
+    public bool[,] Marks { get; set; } = new bool[5, 5];
+    public bool[,] Pattern { get; set; } = new bool[5, 5];
+    public string GameMode { get; set; } = null;
+    private Command _command;
 
-	public Board()
-	{
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				this.Marks[i, j] = false;
-				this.Pattern[i, j] = false;
-			}
-		}
-		this.GenerateRandom();
-	}
-
-	private void GenerateRandom()
-	{
-		Random random = new Random();
-		int nextRandom = random.Next(54);
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				while (this.Contains(nextRandom))
-				{
-					nextRandom = random.Next(54);
-				}
-				this.Cards[i, j] = nextRandom;
-			}
-		}
-	}
-
-	public bool Contains(int value)
-	{
-		bool contains = false;
-		int i = 0, j = 0;
-		while (i < 5 && !contains)
-		{
-			while (j < 5 && !contains)
-			{
-				contains = this.Cards[i, j] == value;
-				j++;
-			}
-			j = 0;
-			i++;
-		}
-		return contains;
-	}
-
-	public void Mark(int card)
-	{
-		if (this.Contains(card) && this.GetPos(card) != null)
-		{
-			int[] pos = this.GetPos(card);
-			this.Marks[pos[0], pos[1]] = true;
-		}
-	}
-	public static int[] GetSortedDeck(string idRoom, string email)
+    public Board()
     {
-		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-		Dictionary<string, string> sortedDeck = null;
-		Command getSortedDeck = new Command("get_sorted_deck");
-		getSortedDeck.AddArgument("player_email", email);
-		getSortedDeck.AddArgument("room_id", idRoom);
-		tcpSocket.AddCommand(getSortedDeck);
-		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true, 1000);
-		tcpSocket.Close();
-		Debug.Log("GetSortedDeck response:"+response);
-		if (!response.Equals("ERROR. TIMEOUT"))
-		{
-			try
-			{
-				Debug.Log(response);
-				sortedDeck = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
-			}
-			catch (SerializationException)
-			{
-				Debug.Log("Invalid JSON");
-				sortedDeck = null;
-			}
-		}
-		int[] converted = new int[54];
-		if (sortedDeck != null)
-		{
-			int i = 0;
-			while (i < 54)
-			{
-				converted[i] = Convert.ToInt32(sortedDeck[i.ToString()]);
-				i++;
-			}
-		}
-		return converted;
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                this.Marks[i, j] = false;
+                this.Pattern[i, j] = false;
+            }
+        }
+
+        this.GenerateRandom();
     }
 
-	public string SavePattern(string userEmail)
-	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-		string response;
-		Command savePattern = new Command("save_pattern");
-		savePattern.AddArgument("user_email", userEmail);
-		savePattern.AddArgument("game_mode_name", this.GameMode);
-		savePattern.AddArgument("pattern", this.GetStringPattern());
-		tcpSocket.AddCommand(savePattern);
-		tcpSocket.SendCommand();
-		response = tcpSocket.GetResponse(true, 1000);
-		tcpSocket.Close();
-		return response;
-	}
+    private void GenerateRandom()
+    {
+        Random random = new Random();
+        int nextRandom = random.Next(54);
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                while (this.Contains(nextRandom))
+                {
+                    nextRandom = random.Next(54);
+                }
 
-	public bool IsEmpty()
-	{
-		bool isEmpty = true;
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				if (Pattern[i,j] == true)
-				{
-					isEmpty = false;
-					break;
-				}
-			}
-		}
-		return isEmpty;
-	}
+                this.Cards[i, j] = nextRandom;
+            }
+        }
+    }
 
-	public List<bool[,]> GetPattern()
-	{
-		TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
-		Command getPattern = new Command("get_patterns");
-		getPattern.AddArgument("game_mode_name", this.GameMode);
-		tcpSocket.AddCommand(getPattern);
-		tcpSocket.SendCommand();
-		string response = tcpSocket.GetResponse(true, 1000);
-		tcpSocket.Close();
-		Dictionary<string, Dictionary<string, string>> patternDictionary = null;
-		try
-		{
-			Debug.Log("GetPattern response:"+response);
-			patternDictionary =
-				SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
-					response);
-		}
-		catch (SerializationException serializationException)
-		{
-			Debug.Log(serializationException);
-		}
-		List<bool[,]> patternList = null;
-		if (patternDictionary != null)
-		{
-			if (patternDictionary.Count > 1)
-			{
-				patternList = this.GetPatternByGameMode(patternDictionary);
-			}
-			else
-			{
-				patternList = new List<bool[,]>
-				{
-					this.GetPatternByGameMode(patternDictionary["0"]["pattern"])
-				};
-			}
-		}
-		return patternList;
-	}
+    public bool Contains(int value)
+    {
+        bool contains = false;
+        int i = 0, j = 0;
+        while (i < 5 && !contains)
+        {
+            while (j < 5 && !contains)
+            {
+                contains = this.Cards[i, j] == value;
+                j++;
+            }
 
-	private bool[,] GetPatternByGameMode(string pattern)
-	{
-		bool[,] converted = new bool[5,5];
-		int i = 0, j = 0;
-		if (pattern != null)
-		{
-			foreach (char character in pattern)
-			{
-				converted[i, j] = character == '1';
-				if (j == 4)
-				{
-					i++;
-					j = 0;
-				}
-				else
-				{
-					j++;
-				}
-			}
-		}
-		return converted;
-	}
-	
-	private List<bool[,]> GetPatternByGameMode(Dictionary<string,Dictionary<string,string>>patternDictionary)
-	{
-		List<bool[,]> patterns = new List<bool[,]>();
-		if (patternDictionary != null)
-		{
-			foreach (var cell in patternDictionary)
-			{
-				foreach (var cell2 in cell.Value)
-				{
-					patterns.Add(ToArrayBi(cell2.Value));
-				}
-			}
-		}
-		return patterns;
-	}
+            j = 0;
+            i++;
+        }
 
-	private bool[,] ToArrayBi(string pattern)
-	{
-		int index = 0;
-		bool[,] converted = new bool[5,5]; 
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				converted[i, j] = pattern[index] == '1';
-				index++;
-			}
-		}
-		return converted;
-	}
+        return contains;
+    }
 
-	public int[] GetPos(int card)
-	{
-		int[] position = null;
-		if (this.Contains(card))
-		{
-			int i = 0, j = 0;
-			bool found = false;
-			while (i < 5 && !found)
-			{
-				while (j < 5 && !found)
-				{
-					if (this.Cards[i, j] == card)
-					{
-						position = new int[2];
-						position[0] = i;
-						position[1] = j;
-						found = true;
-					}
-					j++;
-				}
-				j = 0;
-				i++;
-			}
-		}
-		return position;
-	}
-	
-	public int[] GetNumbers()
-	{
-		List<int> numbers = new List<int>();
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				numbers.Add(this.Cards[i, j]);
-			}
-		}
-		return numbers.ToArray();
-	}
+    public void Mark(int card)
+    {
+        if (this.Contains(card) && this.GetPos(card) != null)
+        {
+            int[] pos = this.GetPos(card);
+            this.Marks[pos[0], pos[1]] = true;
+        }
+    }
 
-	public string GetStringPattern()
-	{
-		StringBuilder stringPattern = new StringBuilder();
-		for (int i = 0; i < 5; i++)
-		{
-			for (int j = 0; j < 5; j++)
-			{
-				stringPattern.Append(Convert.ToInt32(this.Pattern[i, j]));
-			}
-		}
-		return stringPattern.ToString();
-	}
+    public static int[] GetSortedDeck(string idRoom, string email)
+    {
+        TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+        Dictionary<string, string> sortedDeck = null;
+        Command getSortedDeck = new Command("get_sorted_deck");
+        getSortedDeck.AddArgument("player_email", email);
+        getSortedDeck.AddArgument("room_id", idRoom);
+        tcpSocket.AddCommand(getSortedDeck);
+        tcpSocket.SendCommand();
+        string response = tcpSocket.GetResponse(true, 1000);
+        tcpSocket.Close();
+        Debug.Log("GetSortedDeck response:" + response);
+        if (!response.Equals("ERROR. TIMEOUT"))
+        {
+            try
+            {
+                Debug.Log(response);
+                sortedDeck = SimpleJson.DeserializeObject<Dictionary<string, string>>(response);
+            }
+            catch (SerializationException)
+            {
+                Debug.Log("Invalid JSON");
+                sortedDeck = null;
+            }
+        }
+
+        int[] converted = new int[54];
+        if (sortedDeck != null)
+        {
+            int i = 0;
+            while (i < 54)
+            {
+                converted[i] = Convert.ToInt32(sortedDeck[i.ToString()]);
+                i++;
+            }
+        }
+
+        return converted;
+    }
+
+    public string SavePattern(string userEmail)
+    {
+        TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+        string response;
+        Command savePattern = new Command("save_pattern");
+        savePattern.AddArgument("user_email", userEmail);
+        savePattern.AddArgument("game_mode_name", this.GameMode);
+        savePattern.AddArgument("pattern", this.GetStringPattern());
+        tcpSocket.AddCommand(savePattern);
+        tcpSocket.SendCommand();
+        response = tcpSocket.GetResponse(true, 1000);
+        tcpSocket.Close();
+        return response;
+    }
+
+    public bool IsEmpty()
+    {
+        bool isEmpty = true;
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                if (Pattern[i, j] == true)
+                {
+                    isEmpty = false;
+                    break;
+                }
+            }
+        }
+
+        return isEmpty;
+    }
+
+    public List<bool[,]> GetPattern()
+    {
+        TCPSocketConfiguration.BuildDefaultConfiguration(out TCPSocket tcpSocket);
+        Command getPattern = new Command("get_patterns");
+        getPattern.AddArgument("game_mode_name", this.GameMode);
+        tcpSocket.AddCommand(getPattern);
+        tcpSocket.SendCommand();
+        string response = tcpSocket.GetResponse(true, 1000);
+        tcpSocket.Close();
+        Dictionary<string, Dictionary<string, string>> patternDictionary = null;
+        try
+        {
+            Debug.Log("GetPattern response:"+response);
+            patternDictionary =
+                SimpleJson.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(
+                    response);
+        }
+        catch (SerializationException serializationException)
+        {
+            Debug.Log(serializationException);
+        }
+        List<bool[,]> patternList = null;
+        if (patternDictionary != null)
+        {
+            if (patternDictionary.Count > 1)
+            {
+                patternList = this.GetPatternByGameMode(patternDictionary);
+            }
+            else
+            {
+                patternList = new List<bool[,]>
+                {
+                    this.GetPatternByGameMode(patternDictionary["0"]["pattern"])
+                };
+            }
+        }
+        return patternList;
+    }
+
+    private bool[,] GetPatternByGameMode(string pattern)
+    {
+        bool[,] converted = new bool[5, 5];
+        int i = 0, j = 0;
+        if (pattern != null)
+        {
+            foreach (char character in pattern)
+            {
+                converted[i, j] = character == '1';
+                if (j == 4)
+                {
+                    i++;
+                    j = 0;
+                }
+                else
+                {
+                    j++;
+                }
+            }
+        }
+
+        return converted;
+    }
+
+    private List<bool[,]> GetPatternByGameMode(
+        Dictionary<string, Dictionary<string, string>> patternDictionary)
+    {
+        List<bool[,]> patterns = new List<bool[,]>();
+        if (patternDictionary != null)
+        {
+            foreach (var cell in patternDictionary)
+            {
+                foreach (var cell2 in cell.Value)
+                {
+                    patterns.Add(ToArrayBi(cell2.Value));
+                }
+            }
+        }
+
+        return patterns;
+    }
+
+    private bool[,] ToArrayBi(string pattern)
+    {
+        int index = 0;
+        bool[,] converted = new bool[5, 5];
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                converted[i, j] = pattern[index] == '1';
+                index++;
+            }
+        }
+
+        return converted;
+    }
+
+    public int[] GetPos(int card)
+    {
+        int[] position = null;
+        if (this.Contains(card))
+        {
+            int i = 0, j = 0;
+            bool found = false;
+            while (i < 5 && !found)
+            {
+                while (j < 5 && !found)
+                {
+                    if (this.Cards[i, j] == card)
+                    {
+                        position = new int[2];
+                        position[0] = i;
+                        position[1] = j;
+                        found = true;
+                    }
+
+                    j++;
+                }
+
+                j = 0;
+                i++;
+            }
+        }
+
+        return position;
+    }
+
+    public int[] GetNumbers()
+    {
+        List<int> numbers = new List<int>();
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                numbers.Add(this.Cards[i, j]);
+            }
+        }
+
+        return numbers.ToArray();
+    }
+
+    public string GetStringPattern()
+    {
+        StringBuilder stringPattern = new StringBuilder();
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                stringPattern.Append(Convert.ToInt32(this.Pattern[i, j]));
+            }
+        }
+        return stringPattern.ToString();
+    }
 }

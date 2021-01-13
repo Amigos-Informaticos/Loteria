@@ -326,7 +326,7 @@ MonoBehaviour:
   imgPassword: {fileID: 11742068}
   txtEmail: {fileID: 1487877646}
   txtPassword: {fileID: 11742067}
-  phEmail: {fileID: 1459066641}
+  phEmail: {fileID: 522246238}
   phPassword: {fileID: 1459066641}
   btnBack: {fileID: 941296504}
   btnLogin: {fileID: 1986529591}
@@ -1489,7 +1489,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459066639}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!1 &1487877644
 GameObject:
   m_ObjectHideFlags: 0
