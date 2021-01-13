@@ -103,7 +103,7 @@
 			"English": "Wrong connection"
 		}
 	},
-	"Login": {
+	"Login": {		
 		"Email": {
 			"Español": "Correo Electrónico",
 			"English": "Email"
@@ -315,6 +315,18 @@
 		"Net error": {
 			"Español": "Fallo en la conexión",
 			"English": "Connection error"
+		},
+		"NOT ENOUGH PLAYERS": {
+			"Español": "No hay suficientes jugadores",
+			"English": "Not enough players"
+		},
+		"OK":{
+			"Español": "Empezando partida...",
+			"English": "Starting party..."
+		},
+		"ERROR. TIMEOUT":{
+			"Español": "Fallo en la conexión",
+			"English": "Connection failure"
 		}
 	},
 	"GlobalScore": {

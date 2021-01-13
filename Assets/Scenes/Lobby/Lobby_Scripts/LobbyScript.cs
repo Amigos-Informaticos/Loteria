@@ -1,5 +1,5 @@
-using System;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using TMPro;
 using UnityEngine;
@@ -26,10 +26,11 @@ public class LobbyScript : MonoBehaviour
 			btnBack.text = Localization.GetMessage("Lobby", "Back");
 			StartPlayerList();
 		}
-		catch (SerializationException serializationException)
+		catch (SerializationException)
 		{
-			Debug.Log(serializationException);
+			this.feedbackMessage.text = "Translate error";
 		}
+
 		ConfigureWindow();
 		SetPlayerList();
 		IEnumerator waitingForPlayers = WaitingForPlayers();
@@ -38,49 +39,55 @@ public class LobbyScript : MonoBehaviour
 		StartCoroutine(waitingForStart);
 	}
 
-    public void ConfigureWindow()
-    {
-	    if (!_player.IsHost)
-	    {
-		    for (int i = 0; i < 4; i++)
-		    {
-			    btnLetsGo.SetActive(false);
-		    }
-	    }
-    }
+	public void ConfigureWindow()
+	{
+		if (!_player.IsHost)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				btnLetsGo.SetActive(false);
+			}
+		}
+	}
 
-    public void StartPlayerList()
-    {
-	    for (int i = 0; i < _room.NumberPlayers; i++)
-	    {
-		    txtPlayers[i].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
-	    }
-    }
-    
-    public IEnumerator WaitingForPlayers()
-    {
-        while (true)
-        {
-	        yield return new WaitForSeconds(2.0f);
-	        if (_room.GetPlayersInRoom())
-	        {
-		        StartPlayerList();
-		        SetPlayerList();    
-	        }
-	        else
-	        {
-		        feedbackMessage.text = Localization.GetMessage("Lobby", "Net error");
-	        }
-        }
-    }
+	public void StartPlayerList()
+	{
+		for (int i = 0; i < _room.NumberPlayers; i++)
+		{
+			txtPlayers[i].text = Localization.GetMessage("Lobby", "WaitingForPlayer");
+		}
+	}
 
-    public IEnumerator WaitingForStart()
+	public IEnumerator WaitingForPlayers()
+	{
+		while (true)
+		{
+			yield return new WaitForSeconds(2.0f);
+			if (_room.GetPlayersInRoom())
+			{
+				StartPlayerList();
+				SetPlayerList();
+			}
+			else
+			{
+				try
+				{
+					feedbackMessage.text = Localization.GetMessage("Lobby", "Net error");
+				}
+				catch (SerializationException)
+				{
+					feedbackMessage.text = "Translate error";
+				}
+			}
+		}
+	}
+
+	public IEnumerator WaitingForStart()
 	{
 		while (true)
 		{
 			yield return new WaitForSeconds(2.0f);
 			string response = _room.CheckPartyOn(_player.Email);
-			Debug.Log("Waiting for players: " + response);
 			if (response.Equals("ON"))
 			{
 				UnityEngine.SceneManagement.SceneManager.LoadScene("Party");
@@ -113,6 +120,13 @@ public class LobbyScript : MonoBehaviour
 	public void OnClickLetsGo()
 	{
 		string response = _room.StartTheParty(_player.Email);
-		feedbackMessage.text = response;
+		try
+		{
+			feedbackMessage.text = Localization.GetMessage("Lobby",response);
+		}
+		catch (KeyNotFoundException)
+		{
+			feedbackMessage.text = "Translate error";
+		}
 	}
 }
