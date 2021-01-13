@@ -28,9 +28,9 @@ public class Login : MonoBehaviour
             this.btnBack.text = Localization.GetMessage("Login", "Back");
             this.btnLogin.text = Localization.GetMessage("Login", "Login");
         }
-        catch (KeyNotFoundException keyNotFoundException)
+        catch (KeyNotFoundException)
         {
-            Debug.Log(keyNotFoundException);
+            txtFeedBackMessage.text = "Translate error";
         }
     }
 

@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
-	public TextMeshProUGUI btnLogin;
-	public TextMeshProUGUI btnSignUp;
-	public TextMeshProUGUI btnExit;
+	[SerializeField] private TextMeshProUGUI btnLogin;
+	[SerializeField] private TextMeshProUGUI btnSignUp;
+	[SerializeField] private TextMeshProUGUI btnExit;
+	[SerializeField] private TextMeshProUGUI feedbackMessage;
 
 	public void Start()
 	{
@@ -17,9 +18,9 @@ public class MainMenuScript : MonoBehaviour
 			this.btnSignUp.text = Localization.GetMessage("MainMenu", "SignUp");
 			this.btnExit.text = Localization.GetMessage("MainMenu", "Exit");
 		}
-		catch (KeyNotFoundException keyNotFoundException)
+		catch (KeyNotFoundException)
 		{
-			Debug.Log(keyNotFoundException);
+			this.feedbackMessage.text = "Translate error";
 		}
 	}
 
