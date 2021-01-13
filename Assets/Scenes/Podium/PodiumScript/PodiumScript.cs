@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -23,13 +21,13 @@ public class PodiumScript : MonoBehaviour
         {
             ConfigurePodium();
         }
-        catch (KeyNotFoundException fileNotFoundException)
+        catch (KeyNotFoundException)
         {
-            Debug.Log(fileNotFoundException);
+            txtLoteria.text = "Translate error";
         }
     }
 
-    public void ConfigurePodium()
+    private void ConfigurePodium()
     {
         if (_winner.Equals(_player.NickName))
         {

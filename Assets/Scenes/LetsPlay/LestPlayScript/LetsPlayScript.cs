@@ -23,9 +23,9 @@ public class LetsPlayScript : MonoBehaviour
 			this.btnBack.text = Localization.GetMessage("LetsPlay", "Back");
 			this.phCode.text = Localization.GetMessage("LetsPlay", "Code");
 		}
-		catch (SerializationException serializationException)
+		catch (SerializationException)
 		{
-			Debug.Log(serializationException);
+			this.txtFeedbackMessage.text = "Translate error";
 		}
 	}
 
@@ -51,9 +51,9 @@ public class LetsPlayScript : MonoBehaviour
 			{
 				this.txtFeedbackMessage.text = Localization.GetMessage("LetsPlay", response);
 			}
-			catch (SerializationException serializationException)
+			catch (SerializationException)
 			{
-				Debug.Log(serializationException);
+				this.txtFeedbackMessage.text = "Translate error";
 			}
 		}
 		else

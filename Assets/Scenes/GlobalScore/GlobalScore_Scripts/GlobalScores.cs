@@ -21,9 +21,9 @@ public class GlobalScores : MonoBehaviour
 			this.txtScore.text = Localization.GetMessage("GlobalScore", "Score");
 			this.txtPlayer.text = Localization.GetMessage("GlobalScore", "Player");
 		}
-		catch (SerializationException serializationException)
+		catch (SerializationException)
 		{
-			Debug.Log(serializationException);
+			this.txtHighScores.text = "Translate error";
 		}
 
 		this.FillGlobalScore();
